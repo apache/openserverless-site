@@ -6,5 +6,10 @@ in
 pkgs.mkShellNoCC {
   packages = with pkgs; [
    hugo
+   go_1_21
+   nodejs_20
   ];
+  shellHook = ''
+    npm install -D postcss postcss-cli autoprefixer
+  '';
 }
