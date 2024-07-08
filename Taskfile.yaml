@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+
+    default: task -l
+
+    preview:
+        desc: preview the websites
+        cmds:
+        - hugo server
