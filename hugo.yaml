@@ -185,7 +185,7 @@ params:
         icon: fab fa-slack
         desc: Chat with other project developers
       - name: Telegram
-        url: https://example.org/mail
+        url: https://t.me/+XhbCjBrkkaNkOWM0
         icon: fab fa-telegram
         desc: A public telegram group to discuss everything about OpenServerless
 
