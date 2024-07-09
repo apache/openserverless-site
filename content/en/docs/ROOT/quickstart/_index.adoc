@@ -1,0 +1,233 @@
+= Quick Start to Self Hosted Nuvolaris
+
+If you are looking for an hosted service check xref:mastrogpt:index.adoc[MastroGPT].
+
+If you instead prefer to self host and install Nuvolaris Community go ahead reading this document.
+
+This is a quick start guide to the installation process, targetting experienced users in a hurry. 
+
+It provides a high-level overview of the installation process, omitting advanced of details. 
+The missing pieces are covered in the rest of the documentation.
+
+Of course, if this guide is not enough and things fail, you can always apply the rule: "if everything fails, read the manual".
+
+== Prerequisites
+
+Start ensuring the prerequsites are satisfied:
+
+ 
+* xref:installation:download.adoc[Download and install] nuv, the Nuvolaris CLI, picking version suitable for your environment. We support 64-bit versions of recent Windows, MacOS and major Linux distributions.
+
+* Check that nuv is correctly installed: open the terminal and write:
+
+----
+    nuv -info
+----
+
+* Configure the services you want to enable. By default, Nuvolaris will install only the serverless engine, accessible in http with no services enabled. 
+
+If you want to enable all the services, use:
+
+----
+nuv config enable --all
+----
+
+
+otherwise pick the services you want, among `--redis`, `--mongodb`, `--minio`, `--cron`, `--postgres`. Note that `--mongodb` is actually https://www.ferretdb.com/[FerretDB] and requires Postgres which is implicitly also enabled. More details xref:installation:configure.adoc[here]. 
+
+Now, choose where to install Nuvolaris. 
+
+Your options are:
+
+* <<locally,locally>> in your workstation;
+* in a Linux <<server,server>> in your intranet
+* in a Linux <<internet-server,server>> available on Internet
+* in a Kubernetes <<cluster,cluster>> in your intranet
+* in <<cloud-cluster,cloud>>, where you can provision a Kubernetes cluster 
+
+[#locally]
+== Local Installation
+
+If you have a *decent* workstation (with at least 16GB of memory) running a *recent* **64-bit** operating system, you can install https://www.docker.com/products/docker-desktop/[Docker Desktop] and then install Nuvolaris in it.
+Once you have: 
+
+. installed the CLI 
+. configured the services 
+. installed Docker Desktop
+
+Make sure Docker Desktop its running before the next operation.
+You can install Nuvolaris and its services in Docker with just this command:
+
+----
+nuv setup devcluster
+----
+
+Once it is installed, you can proceed to read the xref:tutorial:index.adoc[tutorial] to learn how to code with it.
+
+NOTE:
+At least 16GB of memory is ideal, but if you know what you're doing and can tolerate inefficiency, you can install with less using:
+
+----
+export PREFL_NO_MEM_CHECK=1
+export PLEFL_NO_CPU_CHECK=1
+----
+
+[#internet-server]
+== Internet Server Configuration
+
+If you have access to a server on the Internet, you will know its **IP address**.
+
+Many cloud providers also give you a DNS name usually derived by the IP and very hard to remember such as `ec2-12-34-56-78.us-west-2.compute.amazonaws.com`. 
+
+Once you got the IP address and the DNS name, you can give to your server a bettername https://en.wikipedia.org/wiki/List_of_managed_DNS_providers[using a domain name provider]. We cannot give here precise instructions as there are many DNS providers and each has different rules to do the setup. Check with your chosen domain name provider.
+
+If you have this name, configure it and enable DNS with:
+
+----
+nuv config apihost <dns-name> --tls=<email-address>
+----
+
+[IMPORTANT]
+====
+Replace the `<dns-name>` with the actual DNS name, without using prefixes like `http://` or suffixes like `:443`. Also, replace `<email-address>` with your actual email address.
+====
+
+then proceed with the server installation.
+
+[#server]
+== Server Installation
+
+Once you got access to a Linux server with:
+
+. An IP address or DNS name, referred to as `<server>`
+. Passwordless access with `ssh` to a Linux user `<user>`
+. At least 8GB of memory and 50GB of disk space available
+. The user `<user>` has passwordless `sudo` rights
+. The firewall that allows traffic to ports 80, 443 and 6443
+. **Without** any Docker or Kubernetes installed
+. **Without** any Web server or Web application installed
+
+then you can install Nuvolaris in it.
+
+The server can be physical or virtual. We need Kubernetes in it but the installer takes care of installing also a flavor of Kubernetes, https://k3s.io[K3S], courtesy of https://github.com/alexellis/k3sup[K3Sup].
+
+
+To install Nuvolaris, first check you have access to the server with:
+
+----
+ssh <user>@<server> sudo hostname
+----
+
+You should see no errors and read the internal hostname of your server.
+
+If you do not receive errors, you can proceed to install Nuvolaris with this command: 
+
+----
+nuv setup server <server> <user>
+----
+
+[IMPORTANT]
+====
+Replace in the commands `<server>`  with the address of your server, and `<user>` with the actual user to use in your server. The `<server>` can be the same as `<dns-name>`  you have configured in the previous paragraph, if you did so, or simply the IP address of a server on your intranet
+====
+
+Now wait until the installation completes. Once it is installed, you can proceed to read the xref:tutorial:index.adoc[tutorial] to learn how to code with it.
+
+[#cloud-cluster]
+== Cloud Cluster Provisioning
+
+If you have access to a cloud provider, you can set up a Kubernetes cluster in it. The Kubernetes cluster needs to satisfy certain xref:installation:prereq-cluster[prerequisites] to be able to install Nuvolaris with no issues.
+
+We provide the support to easily configure and install a compliant Kubernetes cluster for the following clouds:
+
+* <<aws, Amazon AWS>>
+* <<azure, Microsoft Azure>>
+* <<gcloud, Google Cloud>>
+
+At the end of the installation you will have available and accessible a Kubernetes Cluster able to install Nuvolaris, so proceed with a <<cluster, cluster installation>>.
+
+[#aws]
+=== Amazon AWS
+
+Configure and install an Amazon EKS cluster on Amazon AWS with: 
+
+----
+nuv config eks
+nuv cloud eks create
+----
+
+then <<cluster, install the cluster>>.
+
+[#azure]
+=== Azure AKS:
+
+Configure and install an Azure AKS cluster on Microsoft Azure with: 
+
+----
+nuv config aks
+nuv cloud aks create
+----
+
+then <<cluster, install the cluster>>.
+
+[#gcloud]
+=== Google Cloud
+
+Configure and install a Google Cloud GKE with:
+
+----
+nuv config gke
+nuv cloud gke create
+----
+
+then <<cluster, install the cluster>>.
+
+[#cluster]
+== Cluster Install
+
+In short, if you have access to kubernetes cluster, you can install Nuvolaris with:
+
+----
+nuv setup cluster
+----
+
+For a slightly longer discussion, checking prerequisites before installing, read on.
+
+=== Prerequisites to install
+
+If you have access to a Kubernetes cluster with: 
+
+. Access to the `cluster-admin` role
+. Block storage configured as the default storage class
+. The `nginx-ingress` installed
+. Knowledge of the IP address of your `nginx-ingress` controller
+
+you can install Nuvolaris in it. You can read xref:installation:prereq-cluster.adoc[more details here].
+
+You can get this access either by provisioning a Kubernetes cluster in <<cloud, cloud>> or getting access to it from your system administrator.
+
+Whatever the way you get access to your Kubernetes cluster, you will end up with a configuration file which is usually stored in a file named `.kube/config` in your home directory. This file will give access to the Kubernetes cluster to install Nuvolaris.
+
+=== Performing the installation
+
+To install, first, verify you have actually access to the Kubernetes cluster, by running this command:
+
+----
+nuv debug kube info
+----
+
+You should get information about your cluster, something like this:
+
+=====
+Kubernetes control plane is running at https://api.nuvolaris.osh.n9s.cc:6443
+=====
+
+Now you can finally install Nuvolaris with the command:
+
+----
+nuv setup cluster
+----
+
+Wait until the process is complete and if there are no errors, Nuvolaris is installed and ready to go.
+
+Once it is installed, you can proceed to read the xref:tutorial:index.adoc[tutorial] to learn how to code with it.

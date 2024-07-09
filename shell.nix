@@ -8,6 +8,7 @@ pkgs.mkShellNoCC {
    hugo
    go_1_21
    nodejs_20
+   asciidoctor
   ];
   shellHook = ''
     npm install -D postcss postcss-cli autoprefixer

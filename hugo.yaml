@@ -198,3 +198,7 @@ module:
   imports:
     - path: github.com/google/docsy
       disable: false
+
+security:
+  exec:
+    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', 'asciidoctor$']

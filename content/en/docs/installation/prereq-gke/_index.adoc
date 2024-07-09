@@ -1,0 +1,100 @@
+= Prerequisites to install Nuvolaris in a Google GKE Cluster
+
+https://cloud.google.com/kubernetes-engine[Google GKE] is a pre-built Kubernetes cluster offered by the cloud provider https://cloud.google.com/gcp[Google Cloud Platform (GCP)].
+
+You can create a GKE Cluster in GCP for installing using Nuvolaris using xref:download.adoc[nuv] as follows:
+
+. install the <<install-cli, GCloud CLI>>
+. <<configure, configure GKE>>
+. <<provision, provision GKE>>
+. optionally, retrieve the <<retrieve-lb, load balancer address>> to configure a DNS name
+
+Once you have GKE up and running you can proceed xref:configure.adoc[configuring] and xref:install-cluster.adoc[installing Nuvolaris].
+
+[#install-cli]
+== Installing the GCloud CLI
+
+Our cli `nuv` uses under the hood the https://cloud.google.com/sdk/gcloud[GCloud CLI version 2], so you need to dowload and install it https://cloud.google.com/sdk/docs/install[following those instructions].
+
+Once installed, ensure it is available on the terminal executing the following command:
+
+----
+gcloud version
+----
+
+you should receive something like this:
+
+====
+`
+Google Cloud SDK 443.0.0
+beta 2023.08.11
+bq 2.0.96
+bundled-python3-unix 3.9.16
+core 2023.08.11
+gcloud-crc32c 1.0.0
+gke-gcloud-auth-plugin 0.5.5
+gsutil 5.25
+`
+====
+
+[#configure]
+== Configuring GKE
+
+Before starting, you need to create a project in Google Cloud. Then, to install GKE you need to configure `nuv` for GKE with the command `nuv config gke` answering to all the questions, as in the following example:
+
+----
+$ nuv config gke
+*** Please, specify GCloud Project Id and press enter.
+nuvolaris
+*** Please, specify GCloud Cluster Name and press enter.
+The cluster name must be unique.
+
+Just press enter for default [nuvolaris]: 
+
+*** Please, specify GCloud Cluster Zone and press enter.
+To get a list of valid values use:
+  gcloud compute zones list
+
+Just press enter for default [us-east1]: 
+
+*** Please, specify GCloud number of worker nodes and press enter.
+Just press enter for default [3]: 
+
+*** Please, specify GKE virtual machine type and press enter.
+To get a list of valid values, use:
+  gcloud compute machine-types list
+
+Just press enter for default [e2-standard-2]: 
+
+*** Please, specify GKE disk size in gigabyte and press enter.
+Just press enter for default [50]: 
+----
+
+Once you have configured it, you can create the EKS cluster with the command:
+
+----
+nuv cloud gke create
+----
+
+It will take around 10 minutes to be ready. Please be patient.
+
+At the end of the process, you will have access directly to the created Kubernetes cluster for installation.
+
+[#retrieve-lb]
+== Retrieving the Load Balancer DNS name
+
+Once the cluster is up and running, you need to retrieve the DNS name of the load balancer.
+
+You can read this with the command:
+
+----
+nuv cloud gke lb
+----
+
+Take note of the result as it is required for  xref:configure-dns.adoc[configuring a dns name] for your cluster.
+
+== Additional Commands
+
+You can delete the created cluster with: `nuv cloud gke delete`
+
+You can extract again the cluster configuration, if you lose it, reconfiguring the cluster and then using the command `nuv cloud gke kubeconfig`.

@@ -1,0 +1,50 @@
+[#mastrogpt31]
+== What's new in MastroGPT (and Nuvolaris 3.1)?
+
+MastroGPT is a hosted service (also available on preises for enteprise customers) providing a number of extra features built on top of Nuvolaris in order to support easy development of LLM-based AI applications.
+
+It provides:
+
+* an administrative interface
+* an integrated GPT apps builder
+* incremental deployer
+* an online IDE to build applications 
+* a set of starter application 
+* a set of examples and demo
+* access to OpenAI API
+
+There are also tons of improvements in Nuvolaris under the hood to support MastroGPT.
+
+Most of the imporevements are in the development tools, however there are also performance and reliability optimizations, bug fixes and new features to support MastroGPT.
+
+[#nuvolaris3]
+== What's new in Nuvolaris Community 3?
+
+Nuvolaris community is a distribution of Apache Openwhisk providing availability on multiple clouds and a set of integrated services
+
+Nuvolaris itself is based on a rich operator, supporting the deployment of several  services:
+
+* Publishing of static assets
+* https://redis.io[Redis], an in-memory key-value store
+* https://min.io[MinIO], an object storage service
+* https://www.postgresql.org[Postgres] a relational database
+* https://www.ferretdb.io[FerretDB] A MongoDB-compatible adapter 
+
+Nuvolaris is coupled with a rich and extendible CLI, `nuv`.
+
+You can use it to install and run Nuvolaris locally on https://www.docker.com[Docker Desktop] using https://kind.sigs.k8s.io[Kind]
+
+You can then install Nuvolaris in the following cloud providers:
+
+* https://aws.amazon.com/eks[Amazon EKS]
+* https://azure.microsoft.com/en-us/products/kubernetes-service[Azure AKS]
+* https://cloud.google.com/kubernetes-engine[Google GKE]
+* https://linode.com/[Akamai] (formerly Linode LKS)
+
+You can also install it in private clouds on servers running:
+
+* https://www.redhat.com/en/technologies/cloud-computing/openshift[RedHat OpenShift]
+* https://microk8s.io[Canonical MicroK8S]
+* https://k3s.io[Rancher (now SuSE) K3S]
+
+The CLI also supports installation directly on servers accessible with SSH.

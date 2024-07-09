@@ -1,0 +1,43 @@
+= Installation Overview
+
+If you are in hurry and you think this guide is TL;DR (too long, don't read), please read at least our xref:ROOT:quickstart.adoc[quick start] single page installation guide. 
+
+It gives you an overview of the installation process,  omitting some more advanced details. It  can be enough to get you started and install Nuvolaris.
+
+Once you want to know more, you can come back.
+
+If you instead want the read the full documentation first, please read on.
+
+== Installation Steps
+
+Nuvolaris can be installed in many environments, using our powerful command line interface `nuv`. 
+
+So you should start downloading the CLI xref:download.adoc[from this page].
+
+Once you installed `nuv`, before installing you need to xref:prereq.adoc[check the prerequisites] for the installation, and satisfy them
+
+If the the prerequisites are OK, you can make your choices of what you want to install xref:configure.adoc[configuring] your Nuvolaris installation. 
+
+Finally, once you have:
+
+. downloaded `nuv`
+. satisfied the prerequisites  
+. configured your installation
+
+you can choose where to install, either:
+
+* in your xref:install-local.adoc[local machine]
+* in a xref:install-server.adoc[Linux server]
+* in a xref:install-cluster.adoc[Kubernetes cluster].
+
+== Post Installation
+
+After the installation, you can change later the configuration and update the system.
+
+== Support
+
+If you have issues, please check:
+
+* the xref:faq.adoc[FAQ] 
+* the xref:debug.adoc[troubleshooting] page. 
+* our  http://nuvolaris.discourse.group[discussion forum].

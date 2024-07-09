@@ -1,0 +1,25 @@
+= Administration
+
+If you are the administrator and you have access to the Kubernetes cluster where  xref:installation:index.adoc[Nvolaris is installed] you can administer the system.
+
+You have access to the `nuv admin` subcommand with the following synopsis:
+
+-----
+Subcommand: nuv admin
+
+Usage:
+  admin adduser <username> <email> <password> [--all] [--redis] [--mongodb] [--minio] [--postgres] [--storagequota=<quota>|auto]
+  admin deleteuser <username>
+
+Commands:
+  admin adduser       create a new user in Nuvolaris with the username, email and password provided
+  admin deleteuser    delete a user from the Nuvolaris installation via the username provided
+
+Options:
+  --all                   enable all services
+  --redis                 enable redis
+  --mongodb               enable mongodb
+  --minio                 enable minio
+  --postgres              enable postgres
+  --storagequota=<quota>
+-----
