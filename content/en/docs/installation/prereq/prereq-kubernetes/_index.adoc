@@ -1,3 +1,6 @@
+---
+title: prereq-kubernetes
+---
 = Prerequisites to install Nuvolaris in a Kubernetes cluster
 
 You can install Nuvolaris in any Kubernetes cluster which xref:prereq-cluster.adoc[satisfy some requirements].

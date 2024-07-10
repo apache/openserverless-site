@@ -1,3 +1,6 @@
+---
+title: feeds
+---
 == Implementing feeds
 
 OpenWhisk and Nuvolaris support an open API, where any user can expose an event

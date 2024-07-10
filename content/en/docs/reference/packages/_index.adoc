@@ -1,3 +1,6 @@
+---
+title: packages
+---
 == Using and creating packages
 
 In OpenWhisk and Nuvolaris, you can use packages to bundle together a set of related

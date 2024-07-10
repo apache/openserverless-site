@@ -1,3 +1,6 @@
+---
+title: scheduler
+---
 = Nuvolaris Scheduler
 
 Nuvolaris Operator offers the possibility to deploy a simple "scheduler" to invoke repetitive or one-shot Nuvolaris actions. For example, an action executing a SQL script to create a PostgreSQL Database or inserting reference data, or simply an action that sends notifications with an API call every day at the same time.

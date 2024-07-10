@@ -1,3 +1,6 @@
+---
+title: packaging
+---
 == Packaging the App
 
 With Nuvolaris you can write a manifest file (in YAML) to have an easy way to deploy applications.

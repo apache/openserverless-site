@@ -1,3 +1,6 @@
+---
+title: actions-python
+---
 [WARNING]
 ====
 This document is still 🚧 **work in progress** 🚧

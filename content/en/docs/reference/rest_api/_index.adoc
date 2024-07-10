@@ -1,3 +1,6 @@
+---
+title: rest_api
+---
 == Using REST APIs with OpenWhisk and Nuvolaris
 :namespace: yourNamespace
 :packagename: yourPackageName

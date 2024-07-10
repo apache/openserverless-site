@@ -1,3 +1,6 @@
+---
+title: actions-go
+---
 [WARNING]
 ====
 This document is still 🚧 **work in progress** 🚧

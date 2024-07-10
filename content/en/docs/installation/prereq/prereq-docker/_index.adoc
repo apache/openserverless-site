@@ -1,3 +1,6 @@
+---
+title: prereq-docker
+---
 = Prerequisites to install Nuvolaris with Docker
 
 You can install Nuvolaris on your local machine using Docker. This page lists the prerequisits.

@@ -4,22 +4,3 @@ weight: 20
 menus: main
 ---
 
-= Nuvolaris Community 3 beta
-
-Welcome to xref:about.adoc[Nuvolaris Community and MastroGPT] version 3.1 (still beta...).
-
-Starting points to consult this documentation:
-
-* xref:mastrogpt:index.adoc[Hosted Service MastroGPT]
-* xref:whats-new.adoc[What's New]
-* xref:tutorial:index.adoc[Tutorial to build serverless apps]
-* xref:development:index.adoc[Development Guide]
-* xref:cli:index.adoc[`nuv` the Nuvolaris CLI]
-* xref:quickstart.adoc[Quick start to Self-Hosting Nuvolaris]
-
-[IMPORTANT]
-====
-Documentation is **almost** complete but there are a few parts still work in progress where the documentation may be missing or not up to date.
-
-They are marked with this icon: 🚧 that means **Work in progress**
-====

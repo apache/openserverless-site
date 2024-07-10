@@ -1,3 +1,6 @@
+---
+title: download
+---
 = Download and Install `nuv` 
 
 :base-url: github.com/nuvolaris/nuv/releases/download

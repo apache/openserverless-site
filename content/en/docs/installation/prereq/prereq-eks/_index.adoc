@@ -1,3 +1,6 @@
+---
+title: prereq-eks
+---
 = Prerequisites to install Nuvolaris in an Amazon EKS Cluster
 
 https://aws.amazon.com/eks/[Amazon EKS] is a pre-built Kubernetes cluster offered by the cloud provider https://aws.amazon.com/[Amazon Web Services].

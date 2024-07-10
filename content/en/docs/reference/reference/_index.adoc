@@ -1,3 +1,6 @@
+---
+title: reference
+---
 == System  details
 
 The following sections provide more details about the OpenWhisk and Nuvolaris system.

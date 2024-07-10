@@ -1,3 +1,6 @@
+---
+title: prereq-server-generic
+---
 = Configure a generic Linux server to install Nuvolaris 
 
 If you have access to a generic Linux server, to be able to install Nuvolaris it needs to:

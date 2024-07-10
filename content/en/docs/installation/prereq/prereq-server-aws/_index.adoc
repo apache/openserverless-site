@@ -1,3 +1,6 @@
+---
+title: prereq-server-aws
+---
 = Provision a Linux server in Amazon Web Services
 
 You can provision a server suitable to install Nuvolaris in cloud provider https://aws.amazon.com/[Amazon Web Services] xref:download.adoc[nuv] as follows: 

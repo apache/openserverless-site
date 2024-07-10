@@ -1,3 +1,6 @@
+---
+title: install-server
+---
 = Server Installation
 
 This page describes how to install Nuvolaris on a Linux server accessible with SSH.

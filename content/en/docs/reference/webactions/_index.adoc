@@ -1,3 +1,6 @@
+---
+title: webactions
+---
 == Web Actions
 
 Web actions are OpenWhisk and Nuvolaris actions annotated to quickly enable you to

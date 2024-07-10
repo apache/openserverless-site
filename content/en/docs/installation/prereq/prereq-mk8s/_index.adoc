@@ -1,3 +1,6 @@
+---
+title: prereq-mk8s
+---
 = Install MicroK8S in a server
 
 You can install Nuvolaris as xref:install-server.adoc[describe here] and you do not need to install any Kubernetes in it, as it is installed as part of the procedure. In this case it installs K3S. 

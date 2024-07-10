@@ -1,3 +1,6 @@
+---
+title: parameters
+---
 == Working with parameters
 
 When working with serverless actions, data is supplied by adding

@@ -1,3 +1,6 @@
+---
+title: configure
+---
 = Configuring Nuvolaris Installation
 
 This section guides configuring the Nuvolaris installation. 

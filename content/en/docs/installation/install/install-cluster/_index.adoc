@@ -1,3 +1,6 @@
+---
+title: install-cluster
+---
 = Cluster Installation
 
 This section describes how to install Nuvolaris on a Kubernetes Cluster

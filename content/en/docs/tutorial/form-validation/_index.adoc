@@ -1,3 +1,6 @@
+---
+title: form-validation
+---
 == Form Validation and Submission
 
 Now that we have a contact form and a package for our actions, we have to handle the submission. We can do that by adding a new action that will be called when the form is submitted. Let's create a `submit.js` file in our `packages/contact` folder.

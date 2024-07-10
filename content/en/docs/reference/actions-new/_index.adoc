@@ -1,3 +1,6 @@
+---
+title: actions-new
+---
 == Adding Action Language Runtimes
 
 OpenWhisk and Nuvolaris supports xref:index-runtimes.adoc[several

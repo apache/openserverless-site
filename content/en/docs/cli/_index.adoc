@@ -1,5 +1,6 @@
 ---
 title: CLI
+weight: 30
 ---
 
 =  Nuvolaris CLI 

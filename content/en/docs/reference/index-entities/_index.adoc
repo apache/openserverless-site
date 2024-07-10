@@ -1,3 +1,6 @@
+---
+title: index-entities
+---
 = Entities
 
 You can find more informations about Nuvolaris and OpenWhisk entities here:

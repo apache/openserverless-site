@@ -1,3 +1,6 @@
+---
+title: getting-started
+---
 == Getting Started
 
 Imagine we have a static website and need server logic to store contacts and validate data. This would require a server, a database and some code to glue it all together. With a serverless approach, we can just sprinkle little functions (that we call actions) on top of our static website and let Nuvolaris take care of the rest. No more setting up VMs, backend web servers, databases, etc.

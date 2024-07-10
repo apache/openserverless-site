@@ -1,3 +1,6 @@
+---
+title: prereq-cluster
+---
 = Kubernetes Cluster requirements
 
 Nuvolaris installs in any Kubernetes cluster which satisfies the following requirements:

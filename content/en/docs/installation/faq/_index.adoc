@@ -1,3 +1,6 @@
+---
+title: faq
+---
 = Frequently Asked Questions
 
 

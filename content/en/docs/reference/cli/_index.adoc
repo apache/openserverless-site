@@ -1,3 +1,6 @@
+---
+title: cli
+---
 ==  Nuvolaris CLI
 
 Nuvolaris offers a powerful command line interface named `nuv` which extends and embeds the OpenWhisk `wsk`.

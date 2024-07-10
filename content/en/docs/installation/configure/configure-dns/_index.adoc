@@ -1,3 +1,6 @@
+---
+title: configure-dns
+---
 = Configuring DNS and SSL
 
 You can use Nuvolaris as just as a serverless engine, and use the default IP or DNS provided when provisioned your server or cluster. If you do so, only http is avaialble, and it is not secure.

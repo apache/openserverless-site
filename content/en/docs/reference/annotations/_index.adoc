@@ -1,3 +1,6 @@
+---
+title: annotations
+---
 == Annotations
 
 OpenWhisk and Nuvolaris actions, triggers, rules and packages (collectively referred

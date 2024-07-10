@@ -1,3 +1,6 @@
+---
+title: use-database
+---
 == Storing the Message in the Database
 
 We are ready to use the database that we enabled at the beginning of the tutorial.

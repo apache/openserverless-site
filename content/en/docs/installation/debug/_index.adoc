@@ -1,3 +1,6 @@
+---
+title: debug
+---
 = Debug
 
 This document gives you hints for diagnostics and solving issues, using the (hidden) subcommand `debug`.

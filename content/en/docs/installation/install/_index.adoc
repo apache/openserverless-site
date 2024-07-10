@@ -1,3 +1,6 @@
+---
+title: install
+---
 = Installation Overview
 
 This page provides an overview of the installation process.

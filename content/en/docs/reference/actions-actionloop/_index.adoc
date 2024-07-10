@@ -1,3 +1,6 @@
+---
+title: actions-actionloop
+---
 == Developing a new Runtime with the ActionLoop proxy
 
 The xref:actions-new.adoc[OpenWhisk and Nuvolaris runtime specification] defines the

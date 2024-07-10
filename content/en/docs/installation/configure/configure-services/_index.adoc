@@ -1,3 +1,6 @@
+---
+title: configure-services
+---
 = Configuring Nuvolaris services
 
 After you satisfied the xref:prereq.adoc[prerequisites] and before you actually xref:install.adoc[install] Nuvolaris, you have to select which services you want to install:

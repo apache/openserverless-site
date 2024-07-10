@@ -1,3 +1,6 @@
+---
+title: install-local
+---
 = Local Installation
 
 This page describes how to install Nuvolaris on your local machine. The services are limited and not accessible from the outside so it is an installation useful only for development purposes.
