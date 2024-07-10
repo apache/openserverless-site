@@ -11,7 +11,7 @@ In this example, we'll see as demo a simplified nuvolaris environment from which
 
 === Choose Your Starter from IDE
 
-image::IdeStarters.png["IdeStarters",align="center"]
+image::../images/IdeStarters.png["IdeStarters",align="center"]
 
 When you click on one of these starters (which you can see as ready-to-use templates), nuv will redirect you to a web IDE with a devcontainer inside, from which you can edit code and test it directly!
 
@@ -41,17 +41,17 @@ def main(args):
 
 === Development
 
-image::WebIde1.png["WebIde1",align="center"]
+image::../images/WebIde1.png["WebIde1",align="center"]
 
 Once inside the web IDE, you'll be prompted to enter `Task devel` or `Task deploy` via CLI. Task devel is a nuv feature that will create packages, actions, and web content (placed into the web folder) into your nuvolaris environment.
 
 So, if you enter `Task devel` or `devel`, a devcontainer will start and you'll see the output of this code immediately via the browser.
 
-image::WebIde4.png["WebIde4",align="center"]
+image::../images/WebIde4.png["WebIde4",align="center"]
 
 === Requirements
 
-image::Requirements.png["Requirements",align="center"]
+image::../images/Requirements.png["Requirements",align="center"]
 
 Inside the packages folder, you can place a file called `requirements.txt` which will be used to install your needed libraries.
 Here's a simple example:
@@ -158,9 +158,9 @@ To improve user development, MastroGPT offers some util features. For example, e
 
 === Web and Packages Folders
 
-image::webFolder.png["webFolder",align="center"]
+image::../images/webFolder.png["webFolder",align="center"]
 
-image::packagesFolder.png["packagesFolder",align="center"]
+image::../images/packagesFolder.png["packagesFolder",align="center"]
 
 The `packages` folder contains your server-side code. There, you can deploy and publish your actions.
 

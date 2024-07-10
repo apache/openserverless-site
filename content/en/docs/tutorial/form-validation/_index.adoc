@@ -133,7 +133,7 @@ Now if you go to the contact form page the send button should work. It will invo
 
 If you fill it correctly, you should see the "Thank you" page.
 
-image::submit.png["Submit Result",align="center"]
+image::../images/submit.png["Submit Result",align="center"]
 
 Note how only the HTML from the `body` field is displayed, the other fields are ignored in this case.
 

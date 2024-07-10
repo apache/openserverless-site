@@ -13,7 +13,7 @@ We need to:
 
 Check out the following scheme for the steps:
 
-image::slackurl.png["Slack Webhook",align="center"]
+image::../images/slackurl.png["Slack Webhook",align="center"]
 
 Once we have a webhook we can use to send messages we can proceed to create a new action called `notify.js` (in the `packages/contact` folder):
 

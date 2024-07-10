@@ -41,7 +41,7 @@ Since MacOS uses a virtual machine for Docker with a constrained memory. you als
 On MacOS, the default 2GB and they are definitely **not enough** to run Nuvolaris on your local machine.
 ====
 
-image::install_docker_desktop.png[]
+image::../../images/install_docker_desktop.png[]
 
 Instructions to increase the memory reserved to Docker Desktopo on MacOS:
 
