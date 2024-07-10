@@ -1,3 +1,7 @@
+---
+title: Installation
+---
+
 = Installation Overview
 
 If you are in hurry and you think this guide is TL;DR (too long, don't read), please read at least our xref:ROOT:quickstart.adoc[quick start] single page installation guide. 

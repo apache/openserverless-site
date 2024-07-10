@@ -1,3 +1,7 @@
+---
+title: Entities
+---
+
 = Entities
 
 Nuvolaris applications are composed by some "entities" that you can manipulate either using a command line interface or programmatically with code. 

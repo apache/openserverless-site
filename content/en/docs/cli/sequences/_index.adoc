@@ -1,4 +1,9 @@
+---
+title: Sequences
+---
+
 = Sequences
+
 
 You can combine actions into sequences and invoke them as a single action. Therefore, a sequence represents a logical junction between two or more actions, where each action is invoked in a specific order.
 

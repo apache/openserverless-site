@@ -1,3 +1,6 @@
+---
+title: Actions
+----
 = Actions
 
 An action can generally be considered as a function, a snippet of code, or generally a method.

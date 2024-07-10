@@ -1,3 +1,6 @@
+---
+title: Tutorial
+---
 = Tutorial
 
 This tutorial walks you through developing a simple Nuvolaris application 

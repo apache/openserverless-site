@@ -7,4 +7,9 @@ tasks:
     preview:
         desc: preview the websites
         cmds:
-        - hugo server
+        - hugo server --debug
+
+    debug:
+        desc: debug the websites
+        cmds:
+        - hugo server --ignoreCache  --debug --disableFastRender

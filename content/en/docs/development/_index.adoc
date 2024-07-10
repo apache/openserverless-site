@@ -1,3 +1,6 @@
+---
+title: Development
+---
 = Welcome to MastroGPT
 
 == Intro

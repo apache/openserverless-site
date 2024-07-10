@@ -1,3 +1,6 @@
+---
+title: Activations
+---
 = Activations
 
 When an event occurs that triggers a function, nuv creates an activation record, which contains information about the function execution, such as input parameters, output results, and any metadata associated with the activation. It's something similar to the classic concept of `log`.

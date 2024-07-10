@@ -1,3 +1,7 @@
+---
+title: Admin
+---
+
 = Administration
 
 If you are the administrator and you have access to the Kubernetes cluster where  xref:installation:index.adoc[Nvolaris is installed] you can administer the system.

@@ -1,3 +1,7 @@
+---
+title: Triggers
+---
+
 = Triggers
 
 Now let's see what a trigger is and how to use it.

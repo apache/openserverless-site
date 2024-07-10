@@ -1,3 +1,9 @@
+---
+title: Docs
+weight: 20
+menus: main
+---
+
 = Nuvolaris Community 3 beta
 
 Welcome to xref:about.adoc[Nuvolaris Community and MastroGPT] version 3.1 (still beta...).

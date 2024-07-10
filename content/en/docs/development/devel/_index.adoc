@@ -1,3 +1,6 @@
+---
+title: Development
+---
 == Development
 
 As mentioned in xref:environment.adoc[environment], MastroGPT offers a complete developer suite with functions and capabilities.

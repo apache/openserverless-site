@@ -4,6 +4,7 @@ weight: 10
 description: How to contribute to the Apache OpenServerless Project
 ---
 
+
 1. Subscribe our mailing list sending an email  to 
 ```
 dev-subscribe@openserverless.apache.org

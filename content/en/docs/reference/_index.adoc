@@ -1,3 +1,6 @@
+---
+title: Reference
+---
 = Developer Guide
 
 Welcome to Nuvolaris Developer guide. 
