@@ -1,7 +1,10 @@
 ---
-title: form-validation
+title: Form validation
+description: Learn how to add form validation from front to back-end
+weight: 30
+draft: false
 ---
-== Form Validation and Submission
+= Form Validation and Submission
 
 Now that we have a contact form and a package for our actions, we have to handle the submission. We can do that by adding a new action that will be called when the form is submitted. Let's create a `submit.js` file in our `packages/contact` folder.
 
@@ -17,7 +20,7 @@ function main(args) {
 
 This action is a bit more complex. It takes the input object (called args) which will contain the form data (accessible via `args.name`, `args.email`, etc.). With that. we will do some validation and then return the result.
 
-=== Form Validation
+== Form Validation
 
 Let's start filling out the "Form Validation" part by checking the name:
 
@@ -63,7 +66,7 @@ if(args.message) {
 }
 ----
 
-=== Validation Done, Return the Result
+== Validation Done, Return the Result
 
 With the validation phase, we added to the "errors" array all the errors we found, and to the "message" array all the data we want to show to the user. So if there are errors, we have to show them, otherwise, we store the message and return a "thank you" page.
 

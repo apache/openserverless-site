@@ -1,6 +1,11 @@
 ---
-title: use-database
+title: Use database
+description: Store data into a relational database
+weight: 40
+draft: false
 ---
+= Use database
+
 == Storing the Message in the Database
 
 We are ready to use the database that we enabled at the beginning of the tutorial.

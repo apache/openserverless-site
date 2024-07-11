@@ -1,7 +1,12 @@
 ---
-title: notify-message
+title: Sending notifications
+description: Sending notifications on user interaction
+weight: 50
+draft: false
 ---
-== Contact Notification
+= Sending notifications
+
+== Contact notification
 
 It would be great if we receive a notification when an user tries to contact us. For this tutorial we will pick slack to receive a message when it happens.
 

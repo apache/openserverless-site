@@ -1,5 +1,7 @@
 ---
-title: actions-python
+title: Python
+draft: false
+weight: 50
 ---
 [WARNING]
 ====
@@ -9,7 +11,7 @@ This document is still 🚧 **work in progress** 🚧
 == Creating and invoking Python actions
 
 The process of creating Python actions is similar to that of
-link:actions.md#the-basics[other actions]. The following sections guide
+xref:../../actions/index.adoc#the-basics[other actions]. The following sections guide
 you through creating and invoking a single Python action, and
 demonstrate how to bundle multiple Python files and third party
 dependencies.

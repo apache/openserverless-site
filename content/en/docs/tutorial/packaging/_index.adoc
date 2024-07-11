@@ -1,6 +1,11 @@
 ---
-title: packaging
+title: App deployment
+description: Learn how to deploy your app on Apache Openserverless
+weight: 60
+draft: false
 ---
+= App deployment
+
 == Packaging the App
 
 With Nuvolaris you can write a manifest file (in YAML) to have an easy way to deploy applications.

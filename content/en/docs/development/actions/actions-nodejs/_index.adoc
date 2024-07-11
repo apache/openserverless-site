@@ -1,5 +1,7 @@
 ---
-title: actions-nodejs
+title: Nodejs
+draft: false
+weight: 30
 ---
 [WARNING]
 ====
@@ -9,7 +11,7 @@ This document is still 🚧 **work in progress** 🚧
 == Creating and invoking JavaScript actions
 
 The process of creating JavaScript actions is similar to that of
-link:actions.md#the-basics[other actions]. The following sections guide
+xref:../../actions/index.adoc#the-basics[other actions]. The following sections guide
 you through creating and invoking a single JavaScript action, and
 demonstrate how to bundle multiple JavaScript files and third party
 dependencies.
@@ -229,7 +231,7 @@ is shown as output on the command-line:
 This example also passed a parameter to the action by using the
 `--param` flag and a value that can be changed each time the action is
 invoked. Find out more about parameters in the
-link:./parameters.md[Working with parameters] section.
+xref:../../../reference/parameters/index.adoc#working-with-parameters[Working with Parameters] section.
 
 == Packaging actions as Node.js modules with NPM libraries
 

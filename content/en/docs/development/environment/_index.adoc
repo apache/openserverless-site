@@ -1,14 +1,16 @@
 ---
 title: Environment
+description: Admin as your companion in development journey
+weight: 10
+draft: false
 ---
-
 = Environment
 
 Admin is your principal access gateway to MastroGPT env.
 Here, you can build everything you need to deploy your code and integrate with OpenAI API and with nuv serverless and full scalable infrastucture. 
 
 If you already know how to use Admin env and prefere to see MastroGPT spec for what concern devel and deploy, go on:
-xref:devel.adoc[Devel] and xref:deploy.adoc[Deploy]
+xref:../devel/index.adoc[Deveopmentl] and xref:../deploy/index.adoc[Deploy]
 
 
 == Homepage

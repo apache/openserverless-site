@@ -1,9 +1,12 @@
 ---
-title: first-steps
+title: First steps
+description: Move your first steps on Apache Openserverless
+draft: false
+weight: 20
 ---
-== Nuvolaris First Steps
+= First Steps
 
-=== Starting at the Front
+== Starting at the Front
 
 Right now, after a freshly installation, if we visit the `<apihost>` you will see a very simple page 
 with:

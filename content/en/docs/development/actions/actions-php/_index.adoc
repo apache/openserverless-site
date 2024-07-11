@@ -1,5 +1,7 @@
 ---
-title: actions-php
+title: PHP
+draft: false
+weight: 40
 ---
 [WARNING]
 ====
@@ -9,7 +11,7 @@ This document is still 🚧 **work in progress** 🚧
 == Creating and invoking PHP actions
 
 The process of creating PHP actions is similar to that of
-link:actions.md#the-basics[other actions]. The following sections guide
+xref:../../actions/index.adoc#the-basics[other actions]. The following sections guide
 you through creating and invoking a single PHP action, and demonstrate
 how to bundle multiple PHP files and third party dependencies.
 
@@ -99,8 +101,8 @@ nuv action invoke --result helloPHP --param name World
 }
 ----
 
-Find out more about parameters in the link:./parameters.md[Working with
-parameters] section.
+Find out more about parameters in the 
+xref:../../../reference/parameters/index.adoc#working-with-parameters[Working with Parameters] section.
 
 == Packaging PHP actions in zip files
 

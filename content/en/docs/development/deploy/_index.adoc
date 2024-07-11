@@ -1,7 +1,9 @@
 ---
 title: Deploy
+description: How to make application available on Apache Openserverless
+weight: 30
+draft: false
 ---
-
 = Deploy
 
 To make your application available on your Nuvolaris environment, you can run this command in the CLI from your web IDE. All actions, packages, and files in the web folder will be immediately accessible.

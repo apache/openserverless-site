@@ -1,15 +1,18 @@
 ---
 title: Development
+description: How to develop using a complete suite
+weight: 20
+draft: false
 ---
-== Development
+= Development
 
-As mentioned in xref:environment.adoc[environment], MastroGPT offers a complete developer suite with functions and capabilities.
+As mentioned in xref:../environment/index.adoc[Environment], MastroGPT offers a complete developer suite with functions and capabilities.
 
 To start using it, simply click on `IDE` in your Admin environment at https://nuvolaris.dev and choose a starter point to explore MastroGPT architecture.
 
 In this example, we'll see as demo a simplified nuvolaris environment from which you can develop both your backend functions and frontend HTML/CSS/JS files.
 
-=== Choose Your Starter from IDE
+== Choose Your Starter from IDE
 
 image::../images/IdeStarters.png["IdeStarters",align="center"]
 
@@ -168,4 +171,4 @@ Inside the `web` folder, you can place every HTML/CSS/JS file that you need to b
 
 So, if your index.html needs to call via index.js a backend action, simply call the URL of your action here, and your platform will be entirely available.
 
-To make available on your nuvolaris env, see xref:deploy.adoc[deploy]
+To make available on your nuvolaris env, see xref:../deploy/index.adoc[Deploy]
