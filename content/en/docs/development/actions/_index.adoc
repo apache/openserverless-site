@@ -2,13 +2,12 @@
 title: Actions
 description: What Actions are and how to create and execute them
 weight: 40
-draft: false
+draft: true
 ---
-= Actions
 
 == The Basics
 [#the-basics]
-Actions are stateless functions that run on the OpenWhisk and Nuvolaris platform. For
+Actions are stateless functions that run on the OpenWhisk and OpenServerless platform. For
 example, an action can be used to detect the faces in an image, respond
 to a database change, respond to an API call, or post a Tweet. In
 general, an action is invoked in response to an event and produces some
@@ -18,7 +17,7 @@ An action may be created from a function programmed using a number of
 xref:../../reference/index-runtimes/index.adoc[supported languages and runtimes], or from
 a binary-compatible executable.
 
-* The Nuvolaris CLI makes it easy to create and invoke actions. Instructions for configuring and using the CLI are available xref:../../cli/index.adoc[here].
+* The OpenServerless CLI makes it easy to create and invoke actions. Instructions for configuring and using the CLI are available xref:../../cli/index.adoc[here].
 * You can also use the xref:../../reference/rest_api/index.adoc[REST API].
 
 While the actual function code will be specific to a
@@ -47,7 +46,7 @@ invocation might run before the first. If the actions have side effects,
 they might be observed in any order.
 * There is no guarantee that actions will execute atomically. Two
 actions can run concurrently and their side effects can be interleaved.
-OpenWhisk and Nuvolaris does not ensure any particular concurrent consistency model
+OpenWhisk and OpenServerless does not ensure any particular concurrent consistency model
 for side effects. Any concurrency side effects will be
 implementation-dependent.
 * Actions have two phases: an initialization phase, and a run phase.
@@ -69,13 +68,13 @@ developer error_.
 
 The action environment contains several properties that are specific to
 the running action. These allow the action to programmatically work with
-OpenWhisk and Nuvolaris assets via the REST API, or set an internal alarm when the
+OpenWhisk and OpenServerless assets via the REST API, or set an internal alarm when the
 action is about to use up its allotted time budget. The properties are
 accessible via the system environment for all supported runtimes:
-Node.js, Python, Swift, Java and Docker actions when using the OpenWhisk and Nuvolaris
+Node.js, Python, Swift, Java and Docker actions when using the OpenWhisk and OpenServerless
 Docker skeleton.
 
-* `__OW_API_HOST` the API host for the OpenWhisk and Nuvolaris deployment running this
+* `__OW_API_HOST` the API host for the OpenWhisk and OpenServerless deployment running this
 action.
 * `__OW_API_KEY` the API key for the subject invoking the action, this
 key may be a restricted API key. This property is absent unless requested with the annotation

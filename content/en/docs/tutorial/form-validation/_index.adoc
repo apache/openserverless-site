@@ -4,7 +4,7 @@ description: Learn how to add form validation from front to back-end
 weight: 30
 draft: false
 ---
-= Form Validation and Submission
+== Form Validation and Submission
 
 Now that we have a contact form and a package for our actions, we have to handle the submission. We can do that by adding a new action that will be called when the form is submitted. Let's create a `submit.js` file in our `packages/contact` folder.
 
@@ -21,7 +21,6 @@ function main(args) {
 This action is a bit more complex. It takes the input object (called args) which will contain the form data (accessible via `args.name`, `args.email`, etc.). With that. we will do some validation and then return the result.
 
 == Form Validation
-
 Let's start filling out the "Form Validation" part by checking the name:
 
 [source,javascript]
@@ -99,7 +98,7 @@ Let's start deploying the action:
 
 [source,bash]
 ----
-nuv action create contact/submit submit.js --web true
+ops action create contact/submit submit.js --web true
 ok: created action contact/submit
 ----
 
@@ -109,9 +108,9 @@ You can retrieve the url with:
 
 [source,bash]
 ----
-nuv url contact/submit
+ops url contact/submit
 
-$ <apihost>/api/v1/web/nuvolaris/contact/submit
+$ <apihost>/api/v1/web/openserverless/contact/submit
 ----
 
 If you click on it you will see the Error page with a list of errors, that's because we just invoked the submit logic for the contact form directly, without passing in any args. This is meant to be used via the contact form page!
@@ -121,7 +120,7 @@ We need to wire it into the index.html. So let's open it again and add a couple 
 [source,html]
 ----
 ---             <form method="POST"> <-- old
-+++            <form method="POST" action="/api/v1/web/nuvolaris/contact/submit"
++++            <form method="POST" action="/api/v1/web/openserverless/contact/submit"
                enctype="application/x-www-form-urlencoded"> <-- new
 ----
 
@@ -129,7 +128,7 @@ Upload the web folder again with the new changes:
 
 [source,bash]
 ----
-nuv web upload web/
+ops web upload web/
 ----
 
 Now if you go to the contact form page the send button should work. It will invoke the submit action which in turn will return some html. 
@@ -142,24 +141,24 @@ Note how only the HTML from the `body` field is displayed, the other fields are 
 
 ====
 
-The `nuv action` command can be used for many more things besides creating actions. For example, you can use it to list all available actions:
+The `ops action` command can be used for many more things besides creating actions. For example, you can use it to list all available actions:
 
 [source,bash]
 ----
-nuv action list
+ops action list
 
 actions
-/nuvolaris/contact/submit               private nodejs:18
+/openserverless/contact/submit               private nodejs:18
 ---- 
 
 And you can also get info on a specific action:
 
 [source,bash]
 ----
-nuv action get contact/submit
+ops action get contact/submit
 
 {
-    "namespace": "nuvolaris/contact",
+    "namespace": "openserverless/contact",
     "name": "submit",
     "version": "0.0.1",
     "exec": {

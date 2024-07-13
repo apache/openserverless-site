@@ -1,0 +1,100 @@
+---
+title: Rules
+---
+== Rules
+
+Once we have a trigger and some actions, we can create rules for the trigger. A rule connects the trigger with an action, so if you fire the trigger, it will invoke the action. Let's see this in practice in the next listing.
+
+== Create data
+
+First of all, create a file called *alert.js*.
+
+[source,javascript]
+----
+function main() {
+  console.log("Suspicious activity!");
+  return {
+    result: "Suspicious activity!"
+  };
+}
+----
+
+Then, create a OpenServerless action for this file:
+
+[source,shell]
+----
+$ ops action create alert alert.js  
+----
+
+Now, create a trigger that we'll call *notifyAlert*:
+
+[source,shell]
+----
+$ ops trigger create notifyAlert
+----
+
+Now, all is ready, and now we can create our rule! The syntax follows this pattern: "ops rule create \{ruleName} \{triggerName} \{actionName}".
+
+[source,shell]
+----
+$ ops rule create alertRule notifyAlert alert
+----
+
+=== Test your rule
+
+Our environment can now be alerted if something suspicious occurs! Before starting, let's open another terminal window and enable polling (with the command `ops activation poll`) to see what happens.
+
+[source,shell]
+----
+$ ops activation poll
+Enter Ctrl-c to exit.
+Polling for activation logs
+----
+
+It's time to fire the trigger!
+
+[source,shell]
+----
+$ ops trigger fire notifyAlert
+ok: triggered /notifyAlert with id 86b8d33f64b845f8b8d33f64b8f5f887
+----
+
+Now, go to see the result! Check the terminal where you are polling activations now!
+
+[source,shell]
+----
+Enter Ctrl-c to exit.
+Polling for activation logs
+
+Activation: 'alert' (dfb43932d304483db43932d304383dcf)
+[
+    "2024-02-20T03:15.15472494535Z stdout: Suspicious activity!"
+]
+
+----
+
+== Conclusion
+
+[NOTE]
+As with all the other commands, you can execute `list`, `update`, and `delete` by name.
+
+A trigger can enable multiple rules, so firing one trigger actually activates multiple actions. Rules can also be enabled and disabled without removing them. As in the last example, let's try to disable the first rule and fire the trigger again to see what happens.
+
+[source,shell]
+----
+$ ops rule disable alertRule    <1>
+ok: disabled rule alertRule
+$ ops trigger fire notifyAlert  <2>
+ok: triggered /_/notifyAlert with id 0f4fa69d910f4c738fa69d910f9c73af
+----
+
+<1> Disabling the rule.
+<2> Firing the trigger again.
+
+
+In the activation polling window, we can see that no action is executed now. Of course, we can enable the rule again with:
+
+[source,shell]
+----
+ops rule enable alertRule  
+----

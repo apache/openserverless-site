@@ -1,46 +1,47 @@
 ---
 title: Entities
+weight: 10
 ---
 
-= Entities
+== Entities
 
-Nuvolaris applications are composed by some "entities" that you can manipulate either using a command line interface or programmatically with code. 
+OpenServerless applications are composed by some "entities" that you can manipulate either using a command line interface or programmatically with code. 
 
-The command line interface is the `nuv` command line tools, that can be used directly on the command line or automated through scripts. You can also a REST API crafted explicitly for Nuvolaris. 
+The command line interface is the `ops` command line tools, that can be used directly on the command line or automated through scripts. You can also a REST API crafted explicitly for OpenServerless. 
 
-The entities available in Nuvolaris are:
+The entities available in OpenServerless are:
 
-* xref:packages.adoc[Packages]: They serve as a means of grouping actions together, facilitating the sharing of parameters, annotations, etc. Additionally, they offer a base URL that can be utilized by web applications.
-* xref:actions.adoc[Actions]: These are the fundamental components of a Nuvolaris application, capable of being written in any programming language. Actions accept input and produce output, both formatted in JSON.
-* xref:activations.adoc[Activations]: Each action invocations produces an activation id that can be listed. Action output and results logged and are associated to activations and can be retrieved providing an activativation id.
-* xref:sequences.adoc[Sequences]: Actions can be interconnected, where the output of one action serves as the input for another, effectively forming a sequence.
-* xref:triggers.adoc[Triggers]: Serving as entry points with distinct names, triggers are instrumental in activating multiple actions.
-* xref:rules.adoc[Rules]: Rules establish an association between a trigger and an action. Consequently, when a trigger is fired, all associated actions are invoked accordingly.
+* xref:../packages/index.adoc[Packages]: They serve as a means of grouping actions together, facilitating the sharing of parameters, annotations, etc. Additionally, they offer a base URL that can be utilized by web applications.
+* xref:../actions/index.adoc[Actions]: These are the fundamental components of a OpenServerless application, capable of being written in any programming language. Actions accept input and produce output, both formatted in JSON.
+* xref:../activations/index.adoc[Activations]: Each action invocations produces an activation id that can be listed. Action output and results logged and are associated to activations and can be retrieved providing an activativation id.
+* xref:../sequences/index.adoc[Sequences]: Actions can be interconnected, where the output of one action serves as the input for another, effectively forming a sequence.
+* xref:../triggers/index.adoc[Triggers]: Serving as entry points with distinct names, triggers are instrumental in activating multiple actions.
+* xref:../rules/index.adoc[Rules]: Rules establish an association between a trigger and an action. Consequently, when a trigger is fired, all associated actions are invoked accordingly.
 
-== The `nuv` command
+== The `ops` command
 
-Let's now provide an overview of Nuvolaris' command line interface, focusing on the `nuv` command.
+Let's now provide an overview of OpenServerless' command line interface, focusing on the `ops` command.
 
 The command can be dowloaded in precompile binary format for many platform following the `Download` button on  https://www.nuvolaris.io/
 
-The `nuv` command is composed of many commands, each one with many subcommands. The general format is: 
+The `ops` command is composed of many commands, each one with many subcommands. The general format is: 
 
 ----
-nuv <entity> <command> <parameters> <flags>
+ops <entity> <command> <parameters> <flags>
 ----
 
 Note that `<parameters>` and `<flags>` are different for each `<command>`, and for each `<entity>` there are many subcommands.
 
-The CLI shows documention in the form of help output if you do not provide enough parameters to it.  Start with  `nuv` to get the list of the main commands.  If you type the `nuv <entity>` get the help for that entity, and so on. 
+The CLI shows documention in the form of help output if you do not provide enough parameters to it.  Start with  `ops` to get the list of the main commands.  If you type the `ops <entity>` get the help for that entity, and so on. 
 
-For example, let's see `nuv` output (showing the command)  and the more frequently used command, `action`, also showing the more common subcommands, shared with many others:
+For example, let's see `ops` output (showing the command)  and the more frequently used command, `action`, also showing the more common subcommands, shared with many others:
 
 ----
-$ nuv
-Welcome to Nuv, the all-mighty Nuvolaris Build Tool
+$ ops
+Welcome to Ops, the all-mighty OpenServerless Build Tool
 
 The top level commands all have subcommands.
-Just type nuv <command> to see its subcommands.
+Just type ops <command> to see its subcommands.
 
 Commands:
   action      work with actions
@@ -54,10 +55,10 @@ Commands:
   url         get the url of a web action$ wsk action
 ----
 
-There are many more sub commands used for aministrative purposes. In this documentation we only focus on the   subcommands used to manage the main entities of Nuvolaris.
+There are many more sub commands used for aministrative purposes. In this documentation we only focus on the   subcommands used to manage the main entities of OpenServerless.
 
 [NOTE]
-Keep in mind that commands represent entities, and their subcommands follow the CRUD model (Create, Retrieve via get/list, Update, Delete). This serves as a helpful mnemonic to understand the `nuv` command's functionality. While there are exceptions, these will be addressed throughout the chapter's discussion. Note however that some subcommand may have some specific flags.
+Keep in mind that commands represent entities, and their subcommands follow the CRUD model (Create, Retrieve via get/list, Update, Delete). This serves as a helpful mnemonic to understand the `ops` command's functionality. While there are exceptions, these will be addressed throughout the chapter's discussion. Note however that some subcommand may have some specific flags.
 
 == Naming Entities
 

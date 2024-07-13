@@ -4,21 +4,21 @@ weight: 20
 menus: main
 ---
 
-== About Nuvolaris Community 
+== About Apache OpenServerless
 
-Nuvolaris Community is an Open Source project, released under the https://github.com/nuvolaris/nuvolaris/blob/main/LICENSE[Apache License 2.0] providing a portable and complete https://martinfowler.com/articles/serverless.html[Serverless] environment, allowing to build quickly and easily cloud-native applications.
+Apache OpenServerless is an Open Source project, released under the https://github.com/apache/openserverless/blob/main/LICENSE[Apache License 2.0] providing a portable and complete https://martinfowler.com/articles/serverless.html[Serverless] environment, allowing to build quickly and easily cloud-native applications.
 
-Our goal is to make Nuvolaris *ubitiquous*, allowing it to easily run a complete and portable environment that runs in every https://kubernetes.io/[Kubernetes]. 
+Our goal is to make OpenServerless *ubitiquous*, allowing it to easily run a complete and portable environment that runs in every https://kubernetes.io/[Kubernetes]. 
 
-Nuvolaris is based on https://openwhisk.apache.org[Apache OpenWhisk], which provides a powerful, production-ready serverless engine.
+OpenServerless is based on https://openwhisk.apache.org[Apache OpenWhisk], which provides a powerful, production-ready serverless engine.
 
 However, the serverless engine is just the beginning, because a serverless environment requires a set of integrated services.
 
-Nuvolaris provides integrated with OpenWhisk several additional services such as databases, object storage, and a cron scheduler.
+OpenServerless provides integrated with OpenWhisk several additional services such as databases, object storage, and a cron scheduler.
 
 Furthermore, we test it on many public cloud Kubernetes services and on-premises Kubernetes vendors.
 
-The platform is paired with a powerful CLI tool, `nuv`, which lets you deploy Nuvolaris quickly and easily everywhere, and perform a lot of development tasks.
+The platform is paired with a powerful CLI tool, `ops`, which lets you deploy OpenServerless quickly and easily everywhere, and perform a lot of development tasks.
 
 Our goal is to build a *complete* distribution of a serverless environment with the following features:
 

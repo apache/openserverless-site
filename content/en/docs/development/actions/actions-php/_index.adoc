@@ -19,7 +19,7 @@ PHP actions are executed using PHP 8.0, 7.4 or 7.3. The specific version
 of PHP is listed in the CHANGELOG files in the
 https://github.com/apache/openwhisk-runtime-php[PHP runtime repository].
 
-To use a PHP runtime, specify the `nuv` CLI parameter `--kind` when
+To use a PHP runtime, specify the `ops` CLI parameter `--kind` when
 creating or updating an action. The available PHP kinds are:
 
 * PHP 8.0: `--kind php:8.0`
@@ -73,14 +73,14 @@ function main(array $args) : array
 
 PHP actions always consume an associative array and return an
 associative array. The entry method for the action is `main` by default
-but may be specified explicitly when creating the action with the `nuv`
+but may be specified explicitly when creating the action with the `ops`
 CLI using `--main`, as with any other action type.
 
-You can create an OpenWhisk and Nuvolaris action called `helloPHP` from this function
+You can create an OpenWhisk and OpenServerless action called `helloPHP` from this function
 as follows:
 
 ....
-nuv action create helloPHP hello.php
+ops action create helloPHP hello.php
 ....
 
 The CLI automatically infers the type of the action from the source file
@@ -91,7 +91,7 @@ Action invocation is the same for PHP actions as it is for
 link:actions.md#the-basics[any other action].
 
 ....
-nuv action invoke --result helloPHP --param name World
+ops action invoke --result helloPHP --param name World
 ....
 
 [source,json]
@@ -121,7 +121,7 @@ and then create the action:
 
 [source,bash]
 ----
-nuv action create helloPHP --kind php:7.4 helloPHP.zip
+ops action create helloPHP --kind php:7.4 helloPHP.zip
 ----
 
 == Including Composer dependencies
@@ -134,7 +134,7 @@ action’s zip file and create the action:
 [source,bash]
 ----
 zip -r helloPHP.zip index.php vendor
-nuv action create helloPHP --kind php:7.4 helloPHP.zip
+ops action create helloPHP --kind php:7.4 helloPHP.zip
 ----
 
 The PHP runtime will automatically include Composer’s autoloader for

@@ -7,10 +7,10 @@ draft: false
 = Environment
 
 Admin is your principal access gateway to MastroGPT env.
-Here, you can build everything you need to deploy your code and integrate with OpenAI API and with nuv serverless and full scalable infrastucture. 
+Here, you can build everything you need to deploy your code and integrate with OpenAI API and with ops serverless and full scalable infrastucture. 
 
 If you already know how to use Admin env and prefere to see MastroGPT spec for what concern devel and deploy, go on:
-xref:../devel/index.adoc[Deveopmentl] and xref:../deploy/index.adoc[Deploy]
+xref:../devel/index.adoc[Development] and xref:../deploy/index.adoc[Deploy]
 
 
 == Homepage
@@ -90,7 +90,7 @@ By clicking on the create button, located at the top-right, you'll initiate the 
 
 image::../images/CreateGPT2.png[create action,align="center"]
 
-Your GPTs can make external API calls to retrieve information in real-time when users request it. For example, in our PizzaGPTs application, a user might ask for ingredients to prepare a pizza. To obtain this response, OpenAI will call your Nuvolaris actions, as mentioned previously.
+Your GPTs can make external API calls to retrieve information in real-time when users request it. For example, in our PizzaGPTs application, a user might ask for ingredients to prepare a pizza. To obtain this response, OpenAI will call your OpenServerless actions, as mentioned previously.
 
 * Import your action url
 
@@ -102,5 +102,5 @@ Almost done! It's time to paste your action url built before as suggested in thi
 
 image::../images/InvokeActionGPT.png[invoke action gpt,align="center"]
 
-If all is correct, now your GPTs is capable of calling your nuvolaris action when needed!
+If all is correct, now your GPTs is capable of calling your OpenServerless action when needed!
 

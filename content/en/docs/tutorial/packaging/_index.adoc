@@ -1,14 +1,13 @@
 ---
-title: App deployment
+title: Deployment
 description: Learn how to deploy your app on Apache Openserverless
 weight: 60
 draft: false
 ---
-= App deployment
 
 == Packaging the App
 
-With Nuvolaris you can write a manifest file (in YAML) to have an easy way to deploy applications.
+With OpenServerless you can write a manifest file (in YAML) to have an easy way to deploy applications.
 
 In this last chapter of the tutorial we will package the code to easily deploy the app, both frontend and actions.
 
@@ -35,7 +34,7 @@ Then under each package, the `actions` keyword is needed so we can add our actio
 
 Finally we used the `inputs` keyword to define the parameters to inject in the function.
 
-If we apply this manifest file (we will see how soon), it will be the same as the previous `nuv action create contact/notify <path-to-notify.js> -p notifications $NOTIFICATIONS --web true`. You need to have the webhooks url in the `NOTIFICATIONS` environment variable.
+If we apply this manifest file (we will see how soon), it will be the same as the previous `ops action create contact/notify <path-to-notify.js> -p notifications $NOTIFICATIONS --web true`. You need to have the webhooks url in the `NOTIFICATIONS` environment variable.
 
 === The Submit Action
 
@@ -145,7 +144,7 @@ packages:
         web: true
 ----
 
-`nuv` comes equipped with a handy command to deploy an app: `nuv project deploy`.
+`ops` comes equipped with a handy command to deploy an app: `ops project deploy`.
 
 It checks if there is a `packages` folder with inside a manifest file and deploys all the specified actions. Then it checks if there is a `web` folder and uploads it to the platform. 
 
@@ -158,7 +157,7 @@ So, from the top level directory of our app, let's run (to also set the input en
 export POSTGRES_URL=<your-postgres-url>
 export NOTIFICATIONS=<the-webhook>
 
-nuv project deploy
+ops project deploy
 
 Packages and web directory present.
 Success: Deployment completed successfully.

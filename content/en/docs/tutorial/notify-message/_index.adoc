@@ -65,7 +65,7 @@ Let's first set up the action:
 
 [source,bash]
 ----
-nuv action create contact/notify notify.js -p notifications <your webhook>
+ops action create contact/notify notify.js -p notifications <your webhook>
 ok: created action contact/notify
 ----
 
@@ -81,28 +81,28 @@ Let's create the sequence, and then test it:
 
 [source,bash]
 ----
-nuv action create contact/submit-notify --sequence contact/submit-write,contact/notify --web true
+ops action create contact/submit-notify --sequence contact/submit-write,contact/notify --web true
 ok: created action contact/submit-notify
 ----
 
 We just created a new sequence `submit-notify` from the previous sequence `submit-write` and the new `notify`. 
 
 ====
-If you want to get more info about this sequence, you can use the `nuv action get` command:
+If you want to get more info about this sequence, you can use the `ops action get` command:
 
 [source,bash]
 ----
-nuv action get contact/submit-notify
+ops action get contact/submit-notify
 
 {
-    "namespace": "nuvolaris/contact",
+    "namespace": "openserverless/contact",
     "name": "submit-notify",
     "version": "0.0.1",
     "exec": {
         "kind": "sequence",
         "components": [
-            "/nuvolaris/contact/submit-write",
-            "/nuvolaris/contact/notify"
+            "/openserverless/contact/submit-write",
+            "/openserverless/contact/notify"
         ]
     },
     ...
@@ -118,21 +118,21 @@ As before let's grab the url:
 
 [source,bash]
 ----
-nuv url contact/submit-notify
-<apihost>/api/v1/web/nuvolaris/contact/submit-notify
+ops url contact/submit-notify
+<apihost>/api/v1/web/openserverless/contact/submit-notify
 ----
 
 And update the `index.html`:
 
 [source,html]
 ----
----            <form method="POST" action="/api/v1/web/nuvolaris/contact/submit-write"
+---            <form method="POST" action="/api/v1/web/openserverless/contact/submit-write"
                enctype="application/x-www-form-urlencoded"> <-- old
-+++            <form method="POST" action="/api/v1/web/nuvolaris/contact/submit-notify"
++++            <form method="POST" action="/api/v1/web/openserverless/contact/submit-notify"
                enctype="application/x-www-form-urlencoded"> <-- new
 ----
 
-Don't forget to re-upload the web folder with `nuv web upload web/`.
+Don't forget to re-upload the web folder with `ops web upload web/`.
 
 Now try to fill out the form again and press send! It will execute the sequence and you will receive the message from your Slack App.
 
@@ -143,12 +143,12 @@ The easiest way to check for all the activations that happen in this app with al
 
 [source,bash]
 ----
-nuv activation poll
+ops activation poll
 
 Enter Ctrl-c to exit.
 Polling for activation logs
 ----
 This command polls continuously for log messages. If you go ahead and submit a message in the app, all the actions will show up here together with their log messages.
 
-To also check if there are some problems with your actions, run a couple of times `nuv activation list` and check the `Status` of the activations. If you see some `developer error` or any other errors, just grab the activation ID and run `nuv logs <activation ID>`.
+To also check if there are some problems with your actions, run a couple of times `ops activation list` and check the `Status` of the activations. If you see some `developer error` or any other errors, just grab the activation ID and run `ops logs <activation ID>`.
 ====

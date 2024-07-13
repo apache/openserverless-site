@@ -1,11 +1,12 @@
 ---
-title: docs
+title: Quick Start
+weight: 5
 ---
-= Quick Start to Self Hosted Nuvolaris
+== Quick Start to Self Hosted OpenServerless
 
 If you are looking for an hosted service check xref:mastrogpt:index.adoc[MastroGPT].
 
-If you instead prefer to self host and install Nuvolaris Community go ahead reading this document.
+If you instead prefer to self host and install OpenServerless go ahead reading this document.
 
 This is a quick start guide to the installation process, targetting experienced users in a hurry. 
 
@@ -19,26 +20,28 @@ Of course, if this guide is not enough and things fail, you can always apply the
 Start ensuring the prerequsites are satisfied:
 
 
-* xref:installation:download.adoc[Download and install] nuv, the Nuvolaris CLI, picking version suitable for your environment. We support 64-bit versions of recent Windows, MacOS and major Linux distributions.
+* xref:../download/index.adoc[Download and install] ops, the OpenServerless CLI, picking version suitable for your environment. We support 64-bit versions of recent Windows, MacOS and major Linux distributions.
 
-* Check that nuv is correctly installed: open the terminal and write:
+* Check that ops is correctly installed: open the terminal and write:
 
+[source,bash]
 ----
-    nuv -info
+ops -info
 ----
 
-* Configure the services you want to enable. By default, Nuvolaris will install only the serverless engine, accessible in http with no services enabled. 
+* Configure the services you want to enable. By default, OpenServerless will install only the serverless engine, accessible in http with no services enabled. 
 
 If you want to enable all the services, use:
 
+[source,bash]
 ----
-nuv config enable --all
+ops config enable --all
 ----
 
 
-otherwise pick the services you want, among `--redis`, `--mongodb`, `--minio`, `--cron`, `--postgres`. Note that `--mongodb` is actually https://www.ferretdb.com/[FerretDB] and requires Postgres which is implicitly also enabled. More details xref:installation:configure.adoc[here]. 
+otherwise pick the services you want, among `--redis`, `--mongodb`, `--minio`, `--cron`, `--postgres`. Note that `--mongodb` is actually https://www.ferretdb.com/[FerretDB] and requires Postgres which is implicitly also enabled. More details xref:../configure/index.adoc[here]. 
 
-Now, choose where to install Nuvolaris. 
+Now, choose where to install OpenServerless. 
 
 Your options are:
 
@@ -51,7 +54,7 @@ Your options are:
 [#locally]
 == Local Installation
 
-If you have a *decent* workstation (with at least 16GB of memory) running a *recent* **64-bit** operating system, you can install https://www.docker.com/products/docker-desktop/[Docker Desktop] and then install Nuvolaris in it.
+If you have a *decent* workstation (with at least 16GB of memory) running a *recent* **64-bit** operating system, you can install https://www.docker.com/products/docker-desktop/[Docker Desktop] and then install OpenServerless in it.
 Once you have: 
 
 . installed the CLI 
@@ -59,17 +62,19 @@ Once you have:
 . installed Docker Desktop
 
 Make sure Docker Desktop its running before the next operation.
-You can install Nuvolaris and its services in Docker with just this command:
+You can install OpenServerless and its services in Docker with just this command:
 
+[source,bash]
 ----
-nuv setup devcluster
+ops setup devcluster
 ----
 
-Once it is installed, you can proceed to read the xref:tutorial:index.adoc[tutorial] to learn how to code with it.
+Once it is installed, you can proceed to read the xref:../../tutorial/index.adoc[tutorial] to learn how to code with it.
 
 NOTE:
 At least 16GB of memory is ideal, but if you know what you're doing and can tolerate inefficiency, you can install with less using:
 
+[source,bash]
 ----
 export PREFL_NO_MEM_CHECK=1
 export PLEFL_NO_CPU_CHECK=1
@@ -86,8 +91,9 @@ Once you got the IP address and the DNS name, you can give to your server a bett
 
 If you have this name, configure it and enable DNS with:
 
+[source,bash]
 ----
-nuv config apihost <dns-name> --tls=<email-address>
+ops config apihost <dns-name> --tls=<email-address>
 ----
 
 [IMPORTANT]
@@ -110,23 +116,24 @@ Once you got access to a Linux server with:
 . **Without** any Docker or Kubernetes installed
 . **Without** any Web server or Web application installed
 
-then you can install Nuvolaris in it.
+then you can install OpenServerless in it.
 
 The server can be physical or virtual. We need Kubernetes in it but the installer takes care of installing also a flavor of Kubernetes, https://k3s.io[K3S], courtesy of https://github.com/alexellis/k3sup[K3Sup].
 
 
-To install Nuvolaris, first check you have access to the server with:
+To install OpenServerless, first check you have access to the server with:
 
+[source,bash]
 ----
 ssh <user>@<server> sudo hostname
 ----
 
 You should see no errors and read the internal hostname of your server.
 
-If you do not receive errors, you can proceed to install Nuvolaris with this command: 
+If you do not receive errors, you can proceed to install OpenServerless with this command: 
 
 ----
-nuv setup server <server> <user>
+ops setup server <server> <user>
 ----
 
 [IMPORTANT]
@@ -139,7 +146,7 @@ Now wait until the installation completes. Once it is installed, you can proceed
 [#cloud-cluster]
 == Cloud Cluster Provisioning
 
-If you have access to a cloud provider, you can set up a Kubernetes cluster in it. The Kubernetes cluster needs to satisfy certain xref:installation:prereq-cluster[prerequisites] to be able to install Nuvolaris with no issues.
+If you have access to a cloud provider, you can set up a Kubernetes cluster in it. The Kubernetes cluster needs to satisfy certain xref:../prereq/kubernetes/cluster/index.adoc[prerequisites] to be able to install OpenServerless with no issues.
 
 We provide the support to easily configure and install a compliant Kubernetes cluster for the following clouds:
 
@@ -147,16 +154,17 @@ We provide the support to easily configure and install a compliant Kubernetes cl
 * <<azure, Microsoft Azure>>
 * <<gcloud, Google Cloud>>
 
-At the end of the installation you will have available and accessible a Kubernetes Cluster able to install Nuvolaris, so proceed with a <<cluster, cluster installation>>.
+At the end of the installation you will have available and accessible a Kubernetes Cluster able to install OpenServerless, so proceed with a <<cluster, cluster installation>>.
 
 [#aws]
 === Amazon AWS
 
 Configure and install an Amazon EKS cluster on Amazon AWS with: 
 
+[source,bash]
 ----
-nuv config eks
-nuv cloud eks create
+ops config eks
+ops cloud eks create
 ----
 
 then <<cluster, install the cluster>>.
@@ -167,8 +175,8 @@ then <<cluster, install the cluster>>.
 Configure and install an Azure AKS cluster on Microsoft Azure with: 
 
 ----
-nuv config aks
-nuv cloud aks create
+ops config aks
+ops cloud aks create
 ----
 
 then <<cluster, install the cluster>>.
@@ -178,9 +186,10 @@ then <<cluster, install the cluster>>.
 
 Configure and install a Google Cloud GKE with:
 
+[source,bash]
 ----
-nuv config gke
-nuv cloud gke create
+ops config gke
+ops cloud gke create
 ----
 
 then <<cluster, install the cluster>>.
@@ -188,10 +197,10 @@ then <<cluster, install the cluster>>.
 [#cluster]
 == Cluster Install
 
-In short, if you have access to kubernetes cluster, you can install Nuvolaris with:
+In short, if you have access to kubernetes cluster, you can install OpenServerless with:
 
 ----
-nuv setup cluster
+ops setup cluster
 ----
 
 For a slightly longer discussion, checking prerequisites before installing, read on.
@@ -205,32 +214,34 @@ If you have access to a Kubernetes cluster with:
 . The `nginx-ingress` installed
 . Knowledge of the IP address of your `nginx-ingress` controller
 
-you can install Nuvolaris in it. You can read xref:installation:prereq-cluster.adoc[more details here].
+you can install OpenServerless in it. You can read xref:../prereq/kubernetes/cluster/index.adoc[more details here].
 
-You can get this access either by provisioning a Kubernetes cluster in <<cloud, cloud>> or getting access to it from your system administrator.
+You can get this access either by provisioning a Kubernetes cluster in <<cloud-cluster, cloud>> or getting access to it from your system administrator.
 
-Whatever the way you get access to your Kubernetes cluster, you will end up with a configuration file which is usually stored in a file named `.kube/config` in your home directory. This file will give access to the Kubernetes cluster to install Nuvolaris.
+Whatever the way you get access to your Kubernetes cluster, you will end up with a configuration file which is usually stored in a file named `.kube/config` in your home directory. This file will give access to the Kubernetes cluster to install OpenServerless.
 
 === Performing the installation
 
 To install, first, verify you have actually access to the Kubernetes cluster, by running this command:
 
+[source,bash]
 ----
-nuv debug kube info
+ops debug kube info
 ----
 
 You should get information about your cluster, something like this:
 
 =====
-Kubernetes control plane is running at https://api.nuvolaris.osh.n9s.cc:6443
+Kubernetes control plane is running at `\https://api.nuvolaris.osh.n9s.cc:6443`
 =====
 
-Now you can finally install Nuvolaris with the command:
+Now you can finally install OpenServerless with the command:
 
+[source,bash]
 ----
-nuv setup cluster
+ops setup cluster
 ----
 
-Wait until the process is complete and if there are no errors, Nuvolaris is installed and ready to go.
+Wait until the process is complete and if there are no errors, OpenServerless is installed and ready to go.
 
-Once it is installed, you can proceed to read the xref:tutorial:index.adoc[tutorial] to learn how to code with it.
+Once it is installed, you can proceed to read the xref:../../tutorial/index.adoc[Tutorial] to learn how to code with it.

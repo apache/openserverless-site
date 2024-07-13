@@ -1,29 +1,30 @@
 ---
-title: configure
+title: Configure OpenServerless
+weight: 30
 ---
-= Configuring Nuvolaris Installation
+== Configuring OpenServerless Installation
 
-This section guides configuring the Nuvolaris installation. 
+This section guides configuring the OpenServerless installation. 
 
-Note that you can also skip this configuration, and install Nuvolaris without any configuration.
+Note that you can also skip this configuration, and install OpenServerless without any configuration.
 
-Once you configure the installation, you can proceed xref:install.adoc[installing Nuvolaris].
+Once you configure the installation, you can proceed to xref:install/index.adoc[Install OpenServerless].
 
 You can then reconfigure the system later.
 
 == Minimal Configuration
 
-Without any configuration, you get a minimal Nuvolaris:
+Without any configuration, you get a minimal OpenServerless:
 
 * only the serverless engine, no extra services
 * accessible is only in `http`
 
 You can:
 
-* xref:configure-dns[configure a DNS name or wildcard] for your server or cluster, thus enabling SSL and static publishing.
-* xref:configure-services[enable some or all] of the integrated services:
-** xref:configure-services.adoc#static[Static], publishing of static content
-** xref:configure-services.adoc#redis[REDIS], a powerful key-value store
-** xref:configure-services.adoc#minio[MinIO], an object storage
-** xref:configure-services.adoc#postgres[Postgres], a powerful SQL database 
-** xref:configure-services.adoc#ferret[FerretDB] a NO-SQL, MongoDB compatible adapter for Postgres
+* xref:dns/index.adoc[configure a DNS name or wildcard] for your server or cluster, thus enabling SSL and static publishing.
+* xref:services/index.adoc[enable some or all] of the integrated services:
+** xref:services/index.adoc#static[Static], publishing of static content
+** xref:services/index.adoc#redis[REDIS], a powerful key-value store
+** xref:services/index.adoc#minio[MinIO], an object storage
+** xref:services/index.adoc#postgres[Postgres], a powerful SQL database 
+** xref:services/index.adoc#ferretdb[FerretDB] a NO-SQL, MongoDB compatible adapter for Postgres

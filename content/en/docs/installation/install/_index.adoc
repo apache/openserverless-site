@@ -1,5 +1,6 @@
 ---
-title: install
+title: Install OpenServerless
+weight: 40
 ---
 = Installation Overview
 

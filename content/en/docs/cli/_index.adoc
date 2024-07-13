@@ -2,18 +2,17 @@
 title: CLI
 weight: 30
 ---
+== OpenServerless CLI 
 
-=  Nuvolaris CLI 
-
-The `nuv` command is the command line interface to Nuvolaris 
+The `ops` command is the command line interface to OpenServerless 
 
 It let's you to install and manipulate the components of the system.
 
-If it is not already included in the development environment provided you can xref:installation:download.adoc[download the CLI suitable for your platform from here, and install it]  
+If it is not already included in the development environment provided you can xref:../installation/download/index.adoc[download the CLI suitable for your platform from here, and install it]  
 
 == Login into the system
 
-To start working with you have to login in some Nuvolaris installation. 
+To start working with you have to login in some OpenServerless installation. 
 
 The administrator should have provided with username, password and the URL to access the system. 
 
@@ -22,7 +21,7 @@ For example, let's assume you are the user `mirella` and the system is available
 In order to login type the following command and enter you password.
 
 ----
-nuv -login https://nuvolaris.dev mirella
+ops -login https://nuvolaris.dev mirella
 Enter Password: 
 ----
 
@@ -32,6 +31,6 @@ If the password is correct you are logged in the system and you can use the comm
 
 Once logged in, you can:
 
-* learn how to manage Nuvolaris xref:entities.adoc[entities]
-* learn how to deploy xref:project.adoc[projects] and xref:assets.adoc[web assets]
-* learn how to xref:admin.adoc[administer the system] and xref:debug.adoc[debug the system]
+* learn how to manage OpenServerless xref:./entities/index.adoc[entities]
+* learn how to deploy xref:./project/index.adoc[projects] and xref:./assets/index.adoc[web assets]
+* learn how to xref:./admin/index.adoc[administer the system] and xref:./debug/index.adoc[debug the system]

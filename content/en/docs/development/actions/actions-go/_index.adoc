@@ -11,7 +11,7 @@ This document is still 🚧 **work in progress** 🚧
 == Creating and Invoking Go Actions
 
 The `action-golang-v1.15` runtime can execute actions written in the Go
-programming language in OpenWhisk and Nuvolaris, either as precompiled binary or
+programming language in OpenWhisk and OpenServerless, either as precompiled binary or
 compiling sources on the fly.
 
 === Entry Point
@@ -19,7 +19,7 @@ compiling sources on the fly.
 The source code of an action is one or more Go source files. The entry
 point of the action is a function, placed in the `main` package. The
 default name for the main function is `Main`, but you can change it to
-any name you want using the `--main` switch in `nuv`. The name is
+any name you want using the `--main` switch in `ops`. The name is
 however always capitalized. The function must have a specific signature,
 as described next.
 
@@ -90,7 +90,7 @@ func Main(obj []interface{}) []interface{} {
 You can deploy it with just:
 
 ....
-nuv action create hello-go hello.go
+ops action create hello-go hello.go
 ....
 
 You can also have multiple source files in an action, packages and
@@ -159,7 +159,7 @@ folder, _not_ the main directory. For example:
 cd src
 zip -r ../hello.zip *
 cd ..
-nuv action create hellozip hello.zip --kind go:1.15
+ops action create hellozip hello.zip --kind go:1.15
 ....
 
 Check the example
@@ -259,9 +259,9 @@ executable can be run only inside a Docker Linux container.
 Here a `Makefile` is helpful. Check the
 https://github.com/apache/openwhisk-runtime-go/tree/master/examples[examples]
 for a collection of tested Makefiles. The generated executable is
-suitable to be deployed in OpenWhisk and Nuvolaris, so you can do:
+suitable to be deployed in OpenWhisk and OpenServerless, so you can do:
 
-`nuv action create my-action exec.zip --kind go:1.15`
+`ops action create my-action exec.zip --kind go:1.15`
 
 You can also use just the `openwhisk/actionloop` as runtime, it is
 smaller.
