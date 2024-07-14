@@ -1,7 +1,9 @@
 ---
-title: download
+title: Download
+weight: 10
+draft: true
 ---
-= Download and Install `nuv` 
+== Download and Install `ops` 
 
 :base-url: github.com/nuvolaris/nuv/releases/download
 

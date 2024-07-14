@@ -1,11 +1,12 @@
 ---
-title: prereq
+title: Prerequisites
+weight: 20
 ---
-= Prerequisites to install Nuvolaris
+== Prerequisites to install OpenServerless
 
-This page lists the prerequisites to install Nuvolaris in various environments.
+This page lists the prerequisites to install OpenServerless in various environments.
 
-You can install Nuvolaris:
+You can install OpenServerless:
 
 * for **development** in a <<single-node, single node>> environment, either in your local machine or in a Linux server.
 * for **production**, in a <<multi-node, multi node>> environment provided by a Kubernetes cluster.
@@ -13,7 +14,7 @@ You can install Nuvolaris:
 [#single-node]
 == Single Node development installation
 
-For **development** purposes, you can install a single node Nuvolaris deployment in the following environments as soon as the following requirements are satisfied:
+For **development** purposes, you can install a single node OpenServerless deployment in the following environments as soon as the following requirements are satisfied:
 
 * To install in your xref:install-local.adoc[local machine], you need xref:prereq-docker.adoc[Docker Desktop] 
 * To install in a *single node* xref:install-server.adoc[Linux server],  you need a server with xref:prereq-server.adoc[passwordless ssh access and sudo].
@@ -28,15 +29,15 @@ If you choose to install Kubernetes on your server, we provide support for:
 [#multi-node]
 == Multi Node production installation
 
-For **production** purposes, you need a multi-node Kubernetes cluster that satisfies xref:prereq-kubernetes.adoc[those requirements], accessible with its `kubeconfig` file.
+For **production** purposes, you need a multi-node Kubernetes cluster that satisfies xref:kubernetes/index.adoc[those requirements], accessible with its `kubeconfig` file.
 
-If you have such a cluster, you can  install  xref:install-cluster.adoc[Nuvolaris in a Kubernetes cluster]
+If you have such a cluster, you can  install  xref:../install/cluster/index.adoc[OpenServerless in a Kubernetes cluster]
 
 If you do not have a cluster and you need to setup one, we provide support for provisioning a suitable cluster that satisfied our requirements for the following Kubernetes environments:
 
-* xref:prereq-eks.adoc[EKS in Amazon AWS] 
-* xref:prereq-aks.adoc[AKS in Microsoft Azure]
-* xref:prereq-gke.adoc[GKE in Google Cloud]
-* xref:prereq-osh.adoc[RedHat OpenShift] 
+* xref:kubernetes/eks/index.adoc[EKS in Amazon AWS] 
+* xref:kubernetes/aks/index.adoc[AKS in Microsoft Azure]
+* xref:kubernetes/gke/index.adoc[GKE in Google Cloud]
+* xref:kubernetes/openshift/index.adoc[RedHat OpenShift] 
 
-Once you have a suitable Kubernetes cluster, you can proceed xref:install.adoc[installing Nuvolaris].
+Once you have a suitable Kubernetes cluster, you can proceed xref:install.adoc[installing OpenServerless].

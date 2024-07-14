@@ -3,12 +3,12 @@ title: Debugging
 ---
 = Debugging
 
-The `nuv debug` subcomand gives access to many useful debugging utilities as follow:
+The `ops debug` subcomand gives access to many useful debugging utilities as follow:
 
-You need access to the Kubernetes cluster where Nuvolaris is installed.
+You need access to the Kubernetes cluster where OpenServerless is installed.
 
 ----
-nuv debug: available subcommands:
+ops debug: available subcommands:
 * apihost:                show current apihost
 * certs:                  show certificates
 * config:                 show deployed configuration
@@ -24,10 +24,10 @@ nuv debug: available subcommands:
 * operator:version:       show operator versions
 ----
 
-The `nuv debug kube` subcommand also gives detailed informations about the underlying Kubernetes cluster:
+The `ops debug kube` subcommand also gives detailed informations about the underlying Kubernetes cluster:
 
 ----
-nuv debug kube: available subcommands:
+ops debug kube: available subcommands:
 * ctl:            execute a kubectl command, specify with CMD=<command>
 * detect:         detect the kind of kubernetes we are using
 * exec:           exec bash in pod P=...
@@ -37,7 +37,7 @@ nuv debug kube: available subcommands:
 * operator:       describe operator
 * pod:            show pods and related
 * svc:            show services, routes and ingresses
-* users:          show nuvolaris users custom resources
-* wait:           wait for a value matching the given jsonpath on the specific resources under the namespace nuvolaris
+* users:          show openserverless users custom resources
+* wait:           wait for a value matching the given jsonpath on the specific resources under the namespace openserverless
 ----
 

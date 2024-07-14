@@ -1,19 +1,20 @@
 ---
 title: Development
+description: How to develop using a complete suite
+weight: 20
 ---
-== Development
 
-As mentioned in xref:environment.adoc[environment], MastroGPT offers a complete developer suite with functions and capabilities.
+As mentioned in xref:../environment/index.adoc[Environment], MastroGPT offers a complete developer suite with functions and capabilities.
 
 To start using it, simply click on `IDE` in your Admin environment at https://nuvolaris.dev and choose a starter point to explore MastroGPT architecture.
 
-In this example, we'll see as demo a simplified nuvolaris environment from which you can develop both your backend functions and frontend HTML/CSS/JS files.
+In this example, we'll see as demo a simplified Open Serverless environment from which you can develop both your backend functions and frontend HTML/CSS/JS files.
 
-=== Choose Your Starter from IDE
+== Choose Your Starter from IDE
 
-image::IdeStarters.png["IdeStarters",align="center"]
+image::../images/IdeStarters.png["IdeStarters",align="center"]
 
-When you click on one of these starters (which you can see as ready-to-use templates), nuv will redirect you to a web IDE with a devcontainer inside, from which you can edit code and test it directly!
+When you click on one of these starters (which you can see as ready-to-use templates), ops will redirect you to a web IDE with a devcontainer inside, from which you can edit code and test it directly!
 
 == OpenAI Integration
 
@@ -21,6 +22,7 @@ OpenAI is already integrated for every starter template. An API key is available
 
 When you need to use it, in your action file inside every package, simply insert in the first lines `--param` as in this example:
 
+[source,python]
 ----
 #--web true
 #--param OPENAI_API_KEY $OPENAI_API_KEY
@@ -41,21 +43,24 @@ def main(args):
 
 === Development
 
-image::WebIde1.png["WebIde1",align="center"]
+image::../images/WebIde1.png["WebIde1",align="center"]
 
-Once inside the web IDE, you'll be prompted to enter `Task devel` or `Task deploy` via CLI. Task devel is a nuv feature that will create packages, actions, and web content (placed into the web folder) into your nuvolaris environment.
+Once inside the web IDE, you'll be prompted to enter `Task devel` or `Task deploy` via CLI. Task devel is a ops feature that will create packages, actions, and web content (placed into the web folder) into your Open Serverless environment.
 
 So, if you enter `Task devel` or `devel`, a devcontainer will start and you'll see the output of this code immediately via the browser.
 
-image::WebIde4.png["WebIde4",align="center"]
+image::../images/WebIde4.png["WebIde4",align="center"]
+
 
 === Requirements
 
-image::Requirements.png["Requirements",align="center"]
+image::../images/Requirements.png["Requirements",align="center"]
+
 
 Inside the packages folder, you can place a file called `requirements.txt` which will be used to install your needed libraries.
 Here's a simple example:
 
+[source,text]
 ----
 farm-haystack
 requests
@@ -67,8 +72,9 @@ As packages need libraries, actions need parameters.
 
 The naming convention to use a parameter is: #--param \{paramName} \{envParamName}
 
-Some parameters are available by default inside nuv .env file. To use these parameters, remember to specify them inside every single action, as shown here:
+Some parameters are available by default inside ops .env file. To use these parameters, remember to specify them inside every single action, as shown here:
 
+[source,python]
 ----
 #--web true
 #--param OPENAI_API_KEY $OPENAI_API_KEY
@@ -150,7 +156,7 @@ def main(args):
 
 ----
 
-If your action includes in the first line a `#--web true` parameter, the action will be available online via HTTPS, both inside and outside nuvolaris environment. In this way, you can deploy your site as needed.
+If your action includes in the first line a `#--web true` parameter, the action will be available online via HTTPS, both inside and outside Open Serverless environment. In this way, you can deploy your site as needed.
 
 === Utils
 
@@ -158,9 +164,9 @@ To improve user development, MastroGPT offers some util features. For example, e
 
 === Web and Packages Folders
 
-image::webFolder.png["webFolder",align="center"]
+image::../images/webFolder.png["webFolder",align="center"]
 
-image::packagesFolder.png["packagesFolder",align="center"]
+image::../images/packagesFolder.png["packagesFolder",align="center"]
 
 The `packages` folder contains your server-side code. There, you can deploy and publish your actions.
 
@@ -168,4 +174,4 @@ Inside the `web` folder, you can place every HTML/CSS/JS file that you need to b
 
 So, if your index.html needs to call via index.js a backend action, simply call the URL of your action here, and your platform will be entirely available.
 
-To make available on your nuvolaris env, see xref:deploy.adoc[deploy]
+To make available on your Open Serverless env, see xref:../deploy/index.adoc[Deploy]

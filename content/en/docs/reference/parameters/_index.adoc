@@ -1,6 +1,7 @@
 ---
-title: parameters
+title: Parameters
 ---
+[#working-with-parameters]
 == Working with parameters
 
 When working with serverless actions, data is supplied by adding

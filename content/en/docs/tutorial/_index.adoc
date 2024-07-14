@@ -1,19 +1,14 @@
 ---
 title: Tutorial
+description: Showcase serverless development in action
 weight: 10
 ---
 = Tutorial
 
-This tutorial walks you through developing a simple Nuvolaris application 
+This tutorial walks you through developing a simple OpenServerless application 
 using the Command Line Interface (CLI) and Javascript (but any supported language will do).
 
 Its purpose is to showcase serverless development in action by creating a contact form for a website.
 We will see the development process from start to finish, including the deployment of the platform and running the application.
 
-** xref:getting-started.adoc[Getting Started]
-** xref:first-steps.adoc[First Steps]
-** xref:form-validation.adoc[Form Validation]
-** xref:use-database.adoc[Use Database]
-** xref:notify-message.adoc[Sending Notifications]
-** xref:packaging.adoc[App Deployment]
 

@@ -1,0 +1,121 @@
+---
+title: Services
+---
+== Configuring Nuvolaris services
+
+After you satisfied the xref:../../prereq/index.adoc[prerequisites] and before you actually xref:../../install/index.adoc[install] Nuvolaris, you have to select which services you want to install:
+
+* <<static, Static>>, publishing of static assets
+* <<redis>>, a storage service
+* <<minio>> an object storage service
+* <<postgres>> a relational  SQL database
+* <<ferretdb>> A MongoDB-compatible adapter for Postgres
+
+You can enable all the services with:
+
+----
+nuv config enable --all
+----
+
+or disable all of them with:
+
+----
+nuv config disable --all
+----
+
+Or select the services you want, as follows.
+
+[#static]
+== Static Asset Publishing
+
+The static service allows you to publish static asset. 
+
+[NOTE] 
+====
+you need to setup a xref:../dns/index.adoc#register-dns[a wildcard DNS name] to be able to access them from Internet.
+====
+
+You can enable the Static service with:
+
+----
+nuv config enable --static
+----
+
+and disable it with:
+
+----
+nuv config disable --static
+----
+
+[#redis]
+== REDIS
+
+https://redis.io[Redis], is a fast, in-memory key-value store, usually used as cache, but also in some cases as a (non-relational) database.
+
+Enable REDIS:
+
+----
+nuv config enable --redis
+----
+
+Disable REDIS:
+
+----
+nuv config disable --redis
+----
+
+[#minio]
+== MinIO
+
+https://min.io[MinIO] is an object storage service
+
+Enable minio:
+
+----
+nuv config enable --minio
+----
+
+Disable minio:
+
+----
+nuv config disable --minio
+----
+
+[#postgres]
+== Postgres
+
+https://www.postgresql.org[Postgres] is an SQL (relational) database.
+
+Enable postgres:
+
+----
+nuv config enable --postgres
+----
+
+Disable postgres:
+
+----
+nuv config disable --postgres
+----
+
+[#ferretdb]
+== FerretDB
+
+https://www.ferretdb.io[FerretDB] is a MongoDB-compatible adapter for Postgres. It created a document-oriented database service on top of Postgres.
+
+[NOTE]
+====
+Since FerretDB uses Postgres as its storage, if you enable it, also the service Postgresql will be enabled as it is required.
+====
+
+Enable MongoDB api with FerretDB:
+
+----
+nuv config enable --mongodb
+----
+
+Disable MongoDB api with FerretDB:
+
+----
+nuv config disable --mongodb
+----

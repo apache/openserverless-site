@@ -1,23 +1,23 @@
 ---
 title: Admin
+weight: 20
 ---
+== Administration
 
-= Administration
+If you are the administrator and you have access to the Kubernetes cluster where  xref:../../installation/index.adoc[OpenServerless is installed] you can administer the system.
 
-If you are the administrator and you have access to the Kubernetes cluster where  xref:installation:index.adoc[Nvolaris is installed] you can administer the system.
-
-You have access to the `nuv admin` subcommand with the following synopsis:
+You have access to the `ops admin` subcommand with the following synopsis:
 
 -----
-Subcommand: nuv admin
+Subcommand: ops admin
 
 Usage:
   admin adduser <username> <email> <password> [--all] [--redis] [--mongodb] [--minio] [--postgres] [--storagequota=<quota>|auto]
   admin deleteuser <username>
 
 Commands:
-  admin adduser       create a new user in Nuvolaris with the username, email and password provided
-  admin deleteuser    delete a user from the Nuvolaris installation via the username provided
+  admin adduser       create a new user in OpenServerless with the username, email and password provided
+  admin deleteuser    delete a user from the OpenServerless installation via the username provided
 
 Options:
   --all                   enable all services

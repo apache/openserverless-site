@@ -1,5 +1,7 @@
 ---
-title: actions-nodejs
+title: Nodejs
+draft: false
+weight: 30
 ---
 [WARNING]
 ====
@@ -9,7 +11,7 @@ This document is still 🚧 **work in progress** 🚧
 == Creating and invoking JavaScript actions
 
 The process of creating JavaScript actions is similar to that of
-link:actions.md#the-basics[other actions]. The following sections guide
+xref:../../actions/index.adoc#the-basics[other actions]. The following sections guide
 you through creating and invoking a single JavaScript action, and
 demonstrate how to bundle multiple JavaScript files and third party
 dependencies.
@@ -64,7 +66,7 @@ point for the action.
 example, the action is called `hello`.
 
 ....
-nuv action create hello hello.js
+ops action create hello hello.js
 ok: created action hello
 ....
 
@@ -112,11 +114,11 @@ the activation has completed abnormally.
 . Run the following commands to create the action and invoke it:
 
 ....
-nuv action create asyncAction asyncAction.js
+ops action create asyncAction asyncAction.js
 ....
 
 ....
-nuv action invoke --result asyncAction
+ops action invoke --result asyncAction
 ....
 
 [source,json]
@@ -134,11 +136,11 @@ action.
 complete:
 
 ....
-nuv activation list --limit 1 asyncAction
+ops activation list --limit 1 asyncAction
 ....
 
 ....
-nuv activation get 64581426b44e4b3d981426b44e3b3d19
+ops activation get 64581426b44e4b3d981426b44e3b3d19
 ....
 
 [source,json]
@@ -206,14 +208,14 @@ is passed as an argument to the `resolve()` function.
 . Create an action from the `weather.js` file:
 
 ....
-nuv action create weather weather.js
+ops action create weather weather.js
 ....
 
 [arabic, start=3]
 . Use the following command to run the action, and observe the output:
 
 ....
-nuv action invoke --result weather --param location "Brooklyn, NY"
+ops action invoke --result weather --param location "Brooklyn, NY"
 ....
 
 Using the `--result` flag means that the value returned from the action
@@ -229,7 +231,7 @@ is shown as output on the command-line:
 This example also passed a parameter to the action by using the
 `--param` flag and a value that can be changed each time the action is
 invoked. Find out more about parameters in the
-link:./parameters.md[Working with parameters] section.
+xref:../../../reference/parameters/index#working-with-parameters[Working with Parameters] section.
 
 == Packaging actions as Node.js modules with NPM libraries
 
@@ -296,7 +298,7 @@ zip -r action.zip *
 
 ____
 Please note: Using the Windows Explorer action for creating the zip file
-will result in an incorrect structure. OpenWhisk and Nuvolaris zip actions must have
+will result in an incorrect structure. OpenWhisk and OpenServerless zip actions must have
 `package.json` at the root of the zip, while Windows Explorer will put
 it inside a nested folder. The safest option is to use the command line
 `zip` command as shown above.
@@ -305,7 +307,7 @@ ____
 * Create the action from the zip file.
 
 ....
-nuv action create packageAction --kind nodejs:20 action.zip
+ops action create packageAction --kind nodejs:20 action.zip
 ....
 
 When creating an action from a `.zip` archive with the CLI tool, you
@@ -315,7 +317,7 @@ must explicitly provide a value for the `--kind` flag by using
 * Invoke the action as normal.
 
 ....
-nuv action invoke --result packageAction --param lines "[\"and now\", \"for something completely\", \"different\" ]"
+ops action invoke --result packageAction --param lines "[\"and now\", \"for something completely\", \"different\" ]"
 ....
 
 [source,json]
@@ -335,7 +337,7 @@ Node.js libraries can import native dependencies needed by the modules.
 These native dependencies are compiled upon installation to ensure they
 work in the local runtime. Native dependencies for NPM libraries must be
 compiled for the correct platform architecture to work in Apache
-OpenWhisk and Nuvolaris.
+OpenWhisk and OpenServerless.
 
 There are two approaches to using libraries with native dependencies…
 
@@ -368,7 +370,7 @@ zip -r action.zip *
 * Create new action with action archive.
 
 ....
-nuv action create my-action --kind nodejs:20 action.zip
+ops action create my-action --kind nodejs:20 action.zip
 ....
 
 ==== Building custom runtime image
@@ -391,7 +393,7 @@ $ docker push <USERNAME>/custom-runtime
 * Create new action using custom runtime image.
 
 ....
-nuv action create my-action --docker <USERNAME>/custom-runtime action.zip
+ops action create my-action --docker <USERNAME>/custom-runtime action.zip
 ....
 
 *Make sure the `node_modules` included in the `action.zip` does not
@@ -468,14 +470,14 @@ npx rollup --config
 * Create an action using the bundle source file.
 
 ....
-nuv action create my-action bundle.js --kind nodejs:20
+ops action create my-action bundle.js --kind nodejs:20
 ....
 
 * Invoke the action as normal. Results should be the same as the example
 above.
 
 ....
-nuv action invoke my-action --result --param lines "[\"and now\", \"for something completely\", \"different\" ]"
+ops action invoke my-action --result --param lines "[\"and now\", \"for something completely\", \"different\" ]"
 ....
 
 === Using webpack (https://webpack.js.org/)
@@ -527,14 +529,14 @@ npx webpack --config webpack.config.js
 * Create an action using the bundle source file.
 
 ....
-nuv action create my-action dist/bundle.js --kind nodejs:20
+ops action create my-action dist/bundle.js --kind nodejs:20
 ....
 
 * Invoke the action as normal. Results should be the same as the example
 above.
 
 ....
-nuv action invoke my-action --result --param lines "[\"and now\", \"for something completely\", \"different\" ]"
+ops action invoke my-action --result --param lines "[\"and now\", \"for something completely\", \"different\" ]"
 ....
 
 === Using parcel (https://parceljs.org/)
@@ -572,14 +574,14 @@ npm install parcel-bundler --save-dev
 * Create an action using the bundle source file.
 
 ....
-nuv action create my-action dist/index.js --kind nodejs:20
+ops action create my-action dist/index.js --kind nodejs:20
 ....
 
 * Invoke the action as normal. Results should be the same as the example
 above.
 
 ....
-nuv action invoke my-action --result --param lines "[\"and now\", \"for something completely\", \"different\" ]"
+ops action invoke my-action --result --param lines "[\"and now\", \"for something completely\", \"different\" ]"
 ....
 
 == Reference
@@ -598,8 +600,8 @@ The following packages are pre-installed in the Node.js version 18
 environment:
 
 * https://www.npmjs.com/package/openwhisk[openwhisk] - JavaScript client
-library for the OpenWhisk and Nuvolaris platform. Provides a wrapper around the
-OpenWhisk and Nuvolaris APIs.
+library for the OpenWhisk and OpenServerless platform. Provides a wrapper around the
+OpenWhisk and OpenServerless APIs.
 
 === Node.js version 20 environment
 
@@ -611,5 +613,5 @@ The following packages are pre-installed in the Node.js version 20
 environment:
 
 * https://www.npmjs.com/package/openwhisk[openwhisk] - JavaScript client
-library for the OpenWhisk and Nuvolaris platform. Provides a wrapper around the
-OpenWhisk and Nuvolaris APIs.
+library for the OpenWhisk and OpenServerless platform. Provides a wrapper around the
+OpenWhisk and OpenServerless APIs.

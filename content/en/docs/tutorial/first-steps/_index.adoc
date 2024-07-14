@@ -1,17 +1,20 @@
 ---
-title: first-steps
+title: First steps
+description: Move your first steps on Apache Openserverless
+draft: false
+weight: 20
 ---
-== Nuvolaris First Steps
+= First Steps
 
-=== Starting at the Front
+== Starting at the Front
 
 Right now, after a freshly installation, if we visit the `<apihost>` you will see a very simple page 
 with:
 ____
-Welcome to Nuvolaris static content distributor landing page!!! 
+Welcome to OpenServerless static content distributor landing page!!! 
 ____
 
-That's because we've activated the static content, and by default it starts with this simple `index.html` page. We will instead have our own index page that shows the users a contact form powered by Nuvolaris actions. Let's write it now.
+That's because we've activated the static content, and by default it starts with this simple `index.html` page. We will instead have our own index page that shows the users a contact form powered by OpenServerless actions. Let's write it now.
 
 Let's create a folder that will contain all of our app code: `contact_us_app`. 
 
@@ -55,18 +58,18 @@ Inside that create a new folder called `web` which will store our static fronten
 </html>
 ----
 
-Now we just have to upload it to our Nuvolaris deployment. You could upload it using something like `curl` with a `PUT` to where your platform is deployed at, but there is an handy command that does it automatically for all files in a folder:
+Now we just have to upload it to our OpenServerless deployment. You could upload it using something like `curl` with a `PUT` to where your platform is deployed at, but there is an handy command that does it automatically for all files in a folder:
 
 [source,bash]
 ----
-nuv web upload web/
+ops web upload web/
 ----
 
-Pass to `nuv web upload` the path to folder where the index.html is stored in (the `web` folder) and visit again `<apihost>`. 
+Pass to `ops web upload` the path to folder where the index.html is stored in (the `web` folder) and visit again `<apihost>`. 
 
 Now you should see the new index page:
 
-image::form.png[Form,align="center"]
+image::../images/form.png[Form,align="center"]
 
 === The Contact Package 
 
@@ -76,14 +79,14 @@ With the `debug` command you can see what's going on in your deployment. This ti
 
 [source,bash]
 ----
-nuv -config -d | grep POSTGRES_URL
+ops -config -d | grep POSTGRES_URL
 ----
 
 Copy the Postgres URL (something like `postgresql://...`). Now we can create a new package for the application:
 
 [source,bash]
 ----
-nuv package create contact -p dbUri <postgres_url>
+ops package create contact -p dbUri <postgres_url>
 ok: created package contact
 ----
 
@@ -92,26 +95,26 @@ The actions under this package will be able to access the "dbUri" variable from 
 To follow the same structure for our action files, let's create a folder `packages` and inside another folder `contact` to give our actions a nice, easy to find, home.
 
 ==== 
-To manage and check out your packages, you can use the `nuv packages` subcommands.
+To manage and check out your packages, you can use the `ops packages` subcommands.
 
 [source,bash]
 ----
-nuv package list
+ops package list
 
 packages
-/nuvolaris/contact  private
-/nuvolaris/hello    private     <-- a default package created during deployment
+/openserverless/contact  private
+/openserverless/hello    private     <-- a default package created during deployment
 ----
 
 And to get specific information on a package:
 
 [source,bash]
 ----
-nuv package get contact
+ops package get contact
 
 ok: got package contact
 {
-    "namespace": "nuvolaris",
+    "namespace": "openserverless",
     "name": "contact",
     "version": "0.0.1",
     "publish": false,

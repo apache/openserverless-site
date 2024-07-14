@@ -1,0 +1,29 @@
+---
+title: Linux Server
+weight: 20
+---
+== Prerequisites to install OpenServerless in a Linux server
+
+You can install OpenServerless on any server either in your intranet or on in Internet running a Linux distribution, with the following requirements:
+
+
+. You know the **IP address or DNS name** of the server on Internet or in your Intranet.
+. The server requires at least 8GB of memory and 30GB of disk space available.
+. It should be running a Linux distribution https://docs.k3s.io/installation/requirements[supported by K3S].
+. You must open the firewall to access ports  80, 443 and 6443 (for K3S) or 16443 (for MicroK8S) from your machine. 
+. You have to install a xref:../../prereq/server/generic/index.adoc#sshkey[public ssh key] to access it without a password.
+. You have to configure xref:../../prereq/server/generic/index.adoc#sudo[sudo] to execute root commands without a password.
+
+
+You can:
+
+* get a server on any cloud provider or even install by yourself and then xref::../../prereq/server/generic/index.adoc[configure it]
+* provision such a server with `ops` xref:../../prereq/server/aws/index.adoc[on Amazon Web Services]
+* provision such a server with `ops` on xref:../../prereq/server/gcp/index.adoc[on Google Cloud Platform]
+
+Once you have such a server you can optionally (it is not required) install xref:../../prereq/server/k3s/index.adoc[K3S] or xref:../../prereq/server/mk8s/index.adoc[MicroK8S] in it.
+
+
+
+Once you have configured you server, you can proceed xref:../../configure/index.adoc[configuring OpenServerless] for the installation.
+

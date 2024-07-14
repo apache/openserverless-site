@@ -1,0 +1,35 @@
+---
+title: Kubernetes Cluster
+weight: 30
+---
+== Prerequisites to install OpenServerless in a Kubernetes cluster
+
+You can install OpenServerless in any Kubernetes cluster which xref:cluster/index.adoc[satisfy some requirements].
+
+Kubernetes clusters are  available pre-built from a variety of cloud providers. We provide with our `nuv` tool the commands to install a Kubernetes cluster ready for OpenServerless in the following environments:
+
+* xref:eks/index.adoc[Amazon EKS]
+* xref:aks/index.adoc[Azure AKS]
+* xref:gke/index.adoc[Google GKE]
+* xref:openshift/index.adoc[RedHat OpenShift]
+
+You can also provision a suitable cluster by yourself, in any cloud or on premises, ensuring the prerequites are satisfied.
+
+Once provisioned, you will receive a configuration file to access the cluster, called `kubeconfig`.
+
+This file should be placed in `~/.kube/config` to give access to the cluster
+
+If you have this file, you can check if you have access to the cluster with the command:
+
+----
+ops debug kube info
+----
+ 
+You should see something like this:
+
+====
+Kubernetes control plane is running at `\https://xxxxxx.yyy.us-east-1.eks.amazonaws.com`
+==== 
+
+Once you have got access to the Kubernetes cluster, either installing one with out commands or provisioning one by yourself, you can proceed xref:../../configure/index.adoc[configuring the installation] and then xref:../../install/cluster/index.adoc[installing OpenServerless] in the cluster.
+

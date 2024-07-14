@@ -1,30 +1,34 @@
 ---
-title: actions
+title: Actions
+description: What Actions are and how to create and execute them
+weight: 40
+draft: true
 ---
-== Actions
 
-Actions are stateless functions that run on the OpenWhisk and Nuvolaris platform. For
+== The Basics
+[#the-basics]
+Actions are stateless functions that run on the OpenWhisk and OpenServerless platform. For
 example, an action can be used to detect the faces in an image, respond
 to a database change, respond to an API call, or post a Tweet. In
 general, an action is invoked in response to an event and produces some
 observable output.
 
 An action may be created from a function programmed using a number of
-xref:index-runtimes.adoc[supported languages and runtimes], or from
+xref:../../reference/index-runtimes/index.adoc[supported languages and runtimes], or from
 a binary-compatible executable.
 
-* The Nuvolaris CLI makes it easy to create and invoke actions. Instructions for configuring and using the CLI are available xref:cli:index.adoc[here].
-* You can also use the xref:rest_api.adoc[REST API].
+* The OpenServerless CLI makes it easy to create and invoke actions. Instructions for configuring and using the CLI are available xref:../../cli/index.adoc[here].
+* You can also use the xref:../../reference/rest_api/index.adoc[REST API].
 
 While the actual function code will be specific to a
-xref:index-runtimes.adoc[language and runtime], the
+xref:../../reference/index-runtimes/index.adoc[language and runtime], the
 operations to create, invoke and manage an action are the same
 regardless of the implementation choice. 
 
-We recommend that you review xref:cli:index.adoc[the cli] and read xref:tutorial:index.adoc[the tutorial] before moving on to advanced topics.
+We recommend that you review xref:../../cli/index.adoc[the cli] and read xref:../../tutorial/index.adoc[the tutorial] before moving on to advanced topics.
 
 
-=== What you need to know about actions
+== What you need to know about actions
 
 * Functions should be stateless, or _idempotent_. While the system does
 not enforce this property, there is no guarantee that any state
@@ -42,7 +46,7 @@ invocation might run before the first. If the actions have side effects,
 they might be observed in any order.
 * There is no guarantee that actions will execute atomically. Two
 actions can run concurrently and their side effects can be interleaved.
-OpenWhisk and Nuvolaris does not ensure any particular concurrent consistency model
+OpenWhisk and OpenServerless does not ensure any particular concurrent consistency model
 for side effects. Any concurrency side effects will be
 implementation-dependent.
 * Actions have two phases: an initialization phase, and a run phase.
@@ -60,21 +64,21 @@ execution separately. If the action time limit is exceeded during the
 initialization or run phase, the activation’s response status is _action
 developer error_.
 
-=== Accessing action metadata within the action body
+== Accessing action metadata within the action body
 
 The action environment contains several properties that are specific to
 the running action. These allow the action to programmatically work with
-OpenWhisk and Nuvolaris assets via the REST API, or set an internal alarm when the
+OpenWhisk and OpenServerless assets via the REST API, or set an internal alarm when the
 action is about to use up its allotted time budget. The properties are
 accessible via the system environment for all supported runtimes:
-Node.js, Python, Swift, Java and Docker actions when using the OpenWhisk and Nuvolaris
+Node.js, Python, Swift, Java and Docker actions when using the OpenWhisk and OpenServerless
 Docker skeleton.
 
-* `__OW_API_HOST` the API host for the OpenWhisk and Nuvolaris deployment running this
+* `__OW_API_HOST` the API host for the OpenWhisk and OpenServerless deployment running this
 action.
 * `__OW_API_KEY` the API key for the subject invoking the action, this
 key may be a restricted API key. This property is absent unless requested with the annotation
-explicitly xref:annotations.adoc#annotations-for-all-actions[`provide-api-key`] 
+explicitly xref:../../reference/annotations/index.adoc#annotations-for-all-actions[`provide-api-key`] 
 * `__OW_NAMESPACE` the namespace for the _activation_ (this may not be
 the same as the namespace for the action).
 * `__OW_ACTION_NAME` the fully qualified name of the running action.

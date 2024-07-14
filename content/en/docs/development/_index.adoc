@@ -1,8 +1,9 @@
 ---
 title: Development
 weight: 20
+draft: true
 ---
-= Welcome to MastroGPT
+== Welcome to MastroGPT
 
 == Intro
 
@@ -14,7 +15,7 @@ With MastroGPT, you can deploy your software based on Nuv entities (packages, ac
 
 MastroGPT, as mentioned earlier, offers developers everything they need to build their own applications, with specific integrations for AI and major cloud providers, a dedicated user interface, and a scalable serverless platform. In particular, direct access to OpenAI is provided (each environment has its own specific key) and is integrated seamlessly.
 
-The unique constraint is to place server side code under the `/packages` folder and client side code under the `/web` folder. We'll explain this further in xref:./environment.adoc[Environment].
+The unique constraint is to place server side code under the `/packages` folder and client side code under the `/web` folder. We'll explain this further in xref:environment/index.adoc[Environment].
 
 == Getting Started with GitHub
 
@@ -28,4 +29,4 @@ Consider these templates as starting points to become familiar with Nuv concepts
 
 Nuvolaris Admin is a fully integrated platform, linked to the Nuv namespace (every user has one namespace in Nuv) and all features ready to use. Its graphical interface makes the development process easy and intuitive. To use it, you have to register on our login page link:https://nuvolaris.dev/[https://nuvolaris.dev/].
 
-Every Admin feature is explained in xref:./environment.adoc[Environment].
+Every Admin feature is explained in xref:environment/index.adoc[Environment].

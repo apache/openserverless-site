@@ -1,5 +1,7 @@
 ---
-title: actions-java
+title: Java
+draft: false
+weight: 20
 ---
 [WARNING]
 ====
@@ -9,7 +11,7 @@ This document is still 🚧 **work in progress** 🚧
 == Creating and invoking Java actions
 
 The process of creating Java actions is similar to that of
-link:actions.md#the-basics[other actions]. The following sections guide
+xref:../../actions/index.adoc#the-basics[other actions]. The following sections guide
 you through creating and invoking a single Java action, and demonstrate
 how to bundle multiple files and third party dependencies.
 
@@ -91,11 +93,11 @@ jar cvf hello.jar Hello.class
 *Note:* https://github.com/google/gson[google-gson] must exist in your
 Java CLASSPATH when compiling the Java file.
 
-You can create a OpenWhisk and Nuvolaris action called `helloJava` from this JAR file
+You can create a OpenWhisk and OpenServerless action called `helloJava` from this JAR file
 as follows:
 
 ....
-nuv action create helloJava hello.jar --main Hello
+ops action create helloJava hello.jar --main Hello
 ....
 
 When you use the command line and a `.jar` source file, you do not need
@@ -115,7 +117,7 @@ Action invocation is the same for Java actions as it is for Swift and
 JavaScript actions:
 
 ....
-nuv action invoke --result helloJava --param name World
+ops action invoke --result helloJava --param name World
 ....
 
 [source,json]
@@ -125,5 +127,5 @@ nuv action invoke --result helloJava --param name World
   }
 ----
 
-Find out more about parameters in the link:./parameters.md[Working with
-parameters] section.
+Find out more about parameters in the
+ xref:../../../reference/parameters/index#working-with-parameters[Working with Parameters] section.

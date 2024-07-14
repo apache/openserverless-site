@@ -1,5 +1,6 @@
 ---
-title: faq
+title: Faq
+draft: true
 ---
 = Frequently Asked Questions
 
