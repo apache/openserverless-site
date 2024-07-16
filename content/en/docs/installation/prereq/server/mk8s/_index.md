@@ -1,0 +1,67 @@
+---
+title: Install MicroK8S
+---
+# Install MicroK8S in a server
+
+You can install Nuvolaris as [describe here](#install-server.adoc) and
+you do not need to install any Kubernetes in it, as it is installed as
+part of the procedure. In this case it installs K3S.
+
+But you can [install MicroK8S](#install-mk8s) instead, if you prefer.
+Check here for [informations about MicroK8S](https://microk8s.io/).
+
+If you install MicroK8S in your server, you can then proceed
+[configuring](#configure.adoc) and then installing Nuvolaris [as in any
+other Kubernetes cluster](#install-cluster.adoc).
+
+Before installing ensure you have [satisfied the
+prerequisites](#prereq-server.adoc), most notably:
+
+1. you know the **IP address or DNS name**
+
+2. you have passwordless access with ssh
+
+3. you have an user with passwordless sudo rights
+
+4. you have opened the port **16443** in the firewall
+
+Furthermore, since MicroK8S is installed using `snap`, you also need to
+[install `snap`](https://snapcraft.io/docs/installing-snapd).
+
+While `snap` is available for many linux distributions, it is typically
+pre-installed and well supported in in Ubuntu and its derivatives. So we
+recommend MicroK8S only if you are actually using an Ubuntu-like Linux
+distribution.
+
+If you system is suitable to run MicroK8S you can use the following
+subcommand to install in the server:
+
+    nuv cloud mk8s create SERVER=<server> USERNAME=<username>
+
+where `<server>` is **IP address or DNS name** to access the server, and
+`<username>` is the user you use to access the server.
+
+Those informations should have been provided when provisioning the
+server.
+
+If you installed a Kubernetes cluster in the server in this way, you
+should proceed installing Nuvolars as in [a Kubernetes
+cluster](#install-cluster.adoc), **not** as a server.
+
+The installation retrieves also a kubernets configuration file so you
+can proceed to installing it without any other step involved.
+
+# Additional Commands
+
+In addition to `create` you have available also the following
+subcommands:
+
+- `nuv cloud mk8s delete SERVER=<server> USERNAME=<username>`:
+    uninstall K3S from the server
+
+- `nuv cloud mk8s kubeconfig SERVER=<server> USERNAME=<username>`:
+    retrieve the kubeconfig from the MicroK8S server
+
+- `nuv cloud mk8s info`: informations about the server
+
+- `nuv cloud mk8s status`: status of the server
