@@ -1,12 +1,13 @@
 ---
 title: Admin
+description: System administration
 weight: 20
 ---
-# Administration
+## Administration
 
 If you are the administrator and you have access to the Kubernetes
 cluster where [OpenServerless is
-installed](#../../installation/index.adoc) you can administer the
+installed](/docs/installation/) you can administer the
 system.
 
 You have access to the `ops admin` subcommand with the following

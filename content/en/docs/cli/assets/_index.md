@@ -1,7 +1,8 @@
 ---
 title: Web Assets
+description: How to handle frontend deployment
 ---
-# Upload Web Assets
+## Upload Web Assets
 
 The `web` folder in the root of a project is used to deploy static
 frontends. A static front-end is a collection of static asset under a

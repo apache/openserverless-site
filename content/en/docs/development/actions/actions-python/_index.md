@@ -1,11 +1,11 @@
 ---
 title: Python
-draft: false
 weight: 50
+draft: true
 ---
-This document is still 🚧 **work in progress** 🚧
+## Creating and invoking Python actions
 
-# Creating and invoking Python actions
+This document is still 🚧 **work in progress** 🚧
 
 The process of creating Python actions is similar to that of [other
 actions](#../../actions/index.adoc#the-basics). The following sections

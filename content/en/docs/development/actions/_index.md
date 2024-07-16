@@ -4,7 +4,7 @@ description: What Actions are and how to create and execute them
 weight: 40
 draft: true
 ---
-# The Basics
+## The Basics
 
 Actions are stateless functions that run on the OpenWhisk and
 OpenServerless platform. For example, an action can be used to detect
@@ -14,18 +14,18 @@ an event and produces some observable output.
 
 An action may be created from a function programmed using a number of
 [supported languages and
-runtimes](#../../reference/index-runtimes/index.adoc), or from a
+runtimes](/docs/reference/index-runtimes), or from a
 binary-compatible executable.
 
 - The OpenServerless CLI makes it easy to create and invoke actions.
     Instructions for configuring and using the CLI are available
-    [here](#../../cli/index.adoc).
+    [here](/docs/cli/).
 
 - You can also use the [REST
-    API](#../../reference/rest_api/index.adoc).
+    API](/docs/reference/rest_api/).
 
 While the actual function code will be specific to a [language and
-runtime](#../../reference/index-runtimes/index.adoc), the operations to
+runtime](/docs/reference/index-runtimes/), the operations to
 create, invoke and manage an action are the same regardless of the
 implementation choice.
 

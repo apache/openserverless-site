@@ -1,11 +1,11 @@
 ---
 title: Golang
-draft: false
 weight: 10
+draft: true
 ---
-This document is still 🚧 **work in progress** 🚧
+## Creating and Invoking Go Actions
 
-# Creating and Invoking Go Actions
+This document is still 🚧 **work in progress** 🚧
 
 The `action-golang-v1.15` runtime can execute actions written in the Go
 programming language in OpenWhisk and OpenServerless, either as

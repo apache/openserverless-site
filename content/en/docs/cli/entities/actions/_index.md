@@ -1,7 +1,8 @@
 ---
 title: Actions
+description: Functions, the core of OpenServerless
 ---
-# Actions
+## Actions
 
 An action can generally be considered as a function, a snippet of code,
 or generally a method.
@@ -18,7 +19,7 @@ The `hello.js` script with the following content:
         return { body: "Hello" }
     }
 
-# Simple Action Deployment
+## Simple Action Deployment
 
 If we want to deploy this simple action in the package `demo`, let’s
 execute:
@@ -42,7 +43,7 @@ does not exist, while `update` does not, so it is practical to always
 use `update` instead of `create` (unless we really want an error for an
 existing action for some reason).
 
-# How to Invoke Actions
+## How to Invoke Actions
 
 Let’s try to run the action:
 
@@ -73,7 +74,7 @@ without logging into the system first.
 However, you can mark an action to be public by creating it with
 `--web true` (see below).
 
-## Public Actions
+### Public Actions
 
 If you want an action to be public, you can do:
 
@@ -108,7 +109,7 @@ delete them:
     $ ops action delete demo/hello
     ok: deleted action demo/hello
 
-# Conclusion
+## Conclusion
 
 Actions are a core part of our entities. A ops action is a
 self-contained and executable unit of code deployed on the ops

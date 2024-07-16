@@ -1,7 +1,8 @@
 ---
 title: Packages
+description: How to group actions and their related files
 ---
-# Packages
+## Packages
 
 OpenServerless groups actions and feeds in **packages** under a
 namespace. It is conceptually similar to a folder containing a group of
@@ -24,7 +25,7 @@ parameter:
 
 This command creates a new package with the specified name.
 
-# Package Creation, Update, and Deletion
+## Package Creation, Update, and Deletion
 
 Let’s proceed with the commands to list, get information, update, and
 finally delete a package:
@@ -56,7 +57,7 @@ Finally, let’s delete a package:
 
     ok: deleted package demo-package
 
-## Adding Actions to the Package
+### Adding Actions to the Package
 
 Actions can be added to a package using this command:
 
@@ -64,13 +65,13 @@ Actions can be added to a package using this command:
 
 This associates an existing action with the specified package.
 
-## Using Packages
+### Using Packages
 
 Once a package is created, actions within it can be invoked using their
 full path, with this schema: `<package-name>/<action-name>`. This allows
 organizing actions hierarchically and avoiding naming conflicts.
 
-# Conclusion
+## Conclusion
 
 Packages in OpenServerless provide a flexible and organized way to
 manage actions and their dependencies. Using the Ops CLI, you can

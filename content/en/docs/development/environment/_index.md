@@ -2,7 +2,7 @@
 title: Environment
 description: Admin as your companion in development journey
 weight: 10
-draft: false
+draft: true
 ---
 Admin is your principal access gateway to MastroGPT env. Here, you can
 build everything you need to deploy your code and integrate with OpenAI

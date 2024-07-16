@@ -1,11 +1,11 @@
 ---
 title: Java
-draft: false
 weight: 20
+draft: true
 ---
-This document is still 🚧 **work in progress** 🚧
+## Creating and invoking Java actions
 
-# Creating and invoking Java actions
+This document is still 🚧 **work in progress** 🚧
 
 The process of creating Java actions is similar to that of [other
 actions](#../../actions/index.adoc#the-basics). The following sections

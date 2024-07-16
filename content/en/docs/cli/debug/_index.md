@@ -1,5 +1,6 @@
 ---
 title: Debugging
+description: Utilities to troubleshoot OpenServerless' cluster
 ---
 The `ops debug` subcomand gives access to many useful debugging
 utilities as follow:

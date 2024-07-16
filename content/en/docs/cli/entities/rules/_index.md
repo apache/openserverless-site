@@ -1,14 +1,15 @@
 ---
 title: Rules
+description: Connection rules between triggers and actions
 ---
-# Rules
+## Rules
 
 Once we have a trigger and some actions, we can create rules for the
 trigger. A rule connects the trigger with an action, so if you fire the
 trigger, it will invoke the action. Let’s see this in practice in the
 next listing.
 
-# Create data
+### Create data
 
 First of all, create a file called **alert.js**.
 
@@ -32,7 +33,7 @@ this pattern: "ops rule create {ruleName} {triggerName} {actionName}".
 
     ops rule create alertRule notifyAlert alert
 
-## Test your rule
+### Test your rule
 
 Our environment can now be alerted if something suspicious occurs!
 Before starting, let’s open another terminal window and enable polling
@@ -58,7 +59,7 @@ activations now!
         "2024-02-20T03:15.15472494535Z stdout: Suspicious activity!"
     ]
 
-# Conclusion
+## Conclusion
 
 As with all the other commands, you can execute `list`, `update`, and
 `delete` by name.

@@ -1,14 +1,15 @@
 ---
 title: Activations
+description: Detailed records of action executions
 ---
-# Activations
+## Activations
 
 When an event occurs that triggers a function, ops creates an activation
 record, which contains information about the function execution, such as
 input parameters, output results, and any metadata associated with the
 activation. It’s something similar to the classic concept of `log`.
 
-# How activations work
+## How activations work
 
 When invoking an action with `ops action invoke`, you’ll receive only an
 invocation id as an answer.
@@ -46,7 +47,7 @@ retrieve the logs using `ops activation logs` or just `ops logs`.
     $ ops logs 0367e39ba7c74268a7e39ba7c7126846
     2024-02-17T20:01:31.901124753Z stdout: Hello
 
-## List of activations
+### List of activations
 
 You can list the activations with `ops activation list` and limit the
 number with `--limit` if you are interested in a subset.
@@ -68,7 +69,7 @@ are two useful alternatives.
 With `ops result --last` and `ops logs --last`, you can retrieve just
 the last result or log.
 
-## Polling activations
+### Polling activations
 
 With `ops activation poll`, the CLI starts a loop and displays all the
 activations as they happen.
@@ -78,7 +79,7 @@ activations as they happen.
     Enter Ctrl-c to exit.
     Polling for activation logs
 
-# Conclusion
+## Conclusion
 
 Activations provide a way to monitor and track the execution of
 functions, enabling understanding of how code behaves in response to

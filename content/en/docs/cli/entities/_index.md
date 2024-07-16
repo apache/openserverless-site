@@ -1,8 +1,9 @@
 ---
 title: Entities
+description: The parts that OpenServerless applications are made of
 weight: 10
 ---
-# Entities
+## Entities
 
 OpenServerless applications are composed by some "entities" that you can
 manipulate either using a command line interface or programmatically
@@ -14,34 +15,34 @@ also a REST API crafted explicitly for OpenServerless.
 
 The entities available in OpenServerless are:
 
-- [Packages](#../packages/index.adoc): They serve as a means of
+- [Packages](/docs/cli/entities/packages/): They serve as a means of
     grouping actions together, facilitating the sharing of parameters,
     annotations, etc. Additionally, they offer a base URL that can be
     utilized by web applications.
 
-- [Actions](#../actions/index.adoc): These are the fundamental
+- [Actions](/docs/cli/entities/actions/): These are the fundamental
     components of a OpenServerless application, capable of being written
     in any programming language. Actions accept input and produce
     output, both formatted in JSON.
 
-- [Activations](#../activations/index.adoc): Each action invocations
+- [Activations](/docs/cli/entities/activations/): Each action invocations
     produces an activation id that can be listed. Action output and
     results logged and are associated to activations and can be
     retrieved providing an activativation id.
 
-- [Sequences](#../sequences/index.adoc): Actions can be
+- [Sequences](/docs/cli/entities/sequences/): Actions can be
     interconnected, where the output of one action serves as the input
     for another, effectively forming a sequence.
 
-- [Triggers](#../triggers/index.adoc): Serving as entry points with
+- [Triggers](/docs/cli/entities/triggers/): Serving as entry points with
     distinct names, triggers are instrumental in activating multiple
     actions.
 
-- [Rules](#../rules/index.adoc): Rules establish an association
+- [Rules](/docs/cli/entities/rules/): Rules establish an association
     between a trigger and an action. Consequently, when a trigger is
     fired, all associated actions are invoked accordingly.
 
-# The `ops` command
+## The `ops` command
 
 Let’s now provide an overview of OpenServerless' command line interface,
 focusing on the `ops` command.
@@ -94,7 +95,7 @@ functionality. While there are exceptions, these will be addressed
 throughout the chapter’s discussion. Note however that some subcommand
 may have some specific flags.
 
-# Naming Entities
+## Naming Entities
 
 Let’s see how entities are named.
 

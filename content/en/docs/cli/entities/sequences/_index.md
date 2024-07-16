@@ -1,13 +1,14 @@
 ---
 title: Sequences
+description: Combine actions in sequences
 ---
-# Sequences
+## Sequences
 
 You can combine actions into sequences and invoke them as a single
 action. Therefore, a sequence represents a logical junction between two
 or more actions, where each action is invoked in a specific order.
 
-# Combine actions sequentially
+### Combine actions sequentially
 
 Suppose we want to describe an algorithm for preparing a pizza. We could
 prepare everything in a single action, creating it all in one go, from
@@ -87,7 +88,7 @@ before cooking pizza (or after).
 
 Let’s try it.
 
-## Testing the sequence
+### Testing the sequence
 
 First, create our two actions
 
@@ -107,7 +108,7 @@ Finally, let’s invoke it
         "result": "Cook Mix 720 grams of flour with 480 ml of water and add 24 grams of brewer's yeast topped with tomato and mozzarella for 3 minutes at 380°C"
     }
 
-# Conclusion
+## Conclusion
 
 Now, thanks to sequences, our code is split correctly, and we are able
 to scale it more easily!

@@ -2,6 +2,7 @@
 title: Development
 description: How to develop using a complete suite
 weight: 20
+draft: true
 ---
 As mentioned in [Environment](#../environment/index.adoc), MastroGPT
 offers a complete developer suite with functions and capabilities.

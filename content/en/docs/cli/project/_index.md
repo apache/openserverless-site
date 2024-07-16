@@ -1,9 +1,10 @@
 ---
 title: Project
+description: How to deal with OpenServerless projects
 ---
-This document is still 🚧 **work in progress** 🚧
+## A OpenServerless Project
 
-# A OpenServerless Project
+This document is still 🚧 **work in progress** 🚧
 
 A project represents a logical unit of functionality whose boundaries
 are up to you. Your app can contain one or more projects. The folder
@@ -33,7 +34,7 @@ folders and project documentation).
 ### Single File Actions
 
 A single file action is simply a file with specific extension (the
-supported ones: `.js` `.py` `.go` `.java`), whici is directly deployed
+supported ones: `.js` `.py` `.php` `.go` `.java`), whici is directly deployed
 as an action.
 
 ### Multi File Actions

@@ -1,6 +1,9 @@
 ---
 title: Triggers
+description: Event source that triggers an action execution
 ---
+## Triggers
+
 Now let’s see what a trigger is and how to use it.
 
 We can define a **trigger** as an object representing an event source
@@ -11,12 +14,12 @@ In other words, a trigger is a mechanism that listens for specific
 events or conditions and initiates actions in response to those events.
 It acts as the starting point for a workflow.
 
-# Example: Sending Slack Notifications
+## Example: Sending Slack Notifications
 
 Let’s consider a scenario where we want to send Slack notifications when
 users visit specific pages and submit a contact form.
 
-## Step 1: Define the Trigger
+### Step 1: Define the Trigger
 
 We create a trigger named "PageVisitTrigger" that listens for events
 related to user visits on our website. To create it, you can use the
@@ -34,7 +37,7 @@ and they work as expected, updating and deleting triggers. In the next
 paragraph, we will also see the `fire` command, which requires you to
 first create rules to do something useful.
 
-## Step 2: Associate the Trigger with an Action
+### Step 2: Associate the Trigger with an Action
 
 Next, we create an action named "SendSlackNotification" that sends a
 notification to Slack when invoked. Then, we associate this action with
@@ -46,13 +49,14 @@ command:
 
     ops rule create TriggerRule PageVisitTrigger SendSlackNotification
 
-We’ll have a better understanding of this aspect in [Rules](#rules.adoc)
+We’ll have a better understanding of this aspect in
+[Rules](/docs/cli/entities/rules/index#rules)
 
 In this example, whenever a user visits either the homepage or the
 contact page, the "SendSlackNotification" action will be triggered,
 resulting in a Slack notification being sent.
 
-# Conclusion
+## Conclusion
 
 Triggers provide a flexible and scalable way to automate workflows based
 on various events. By defining triggers and associating them with

@@ -3,9 +3,9 @@ title: Development
 weight: 20
 draft: true
 ---
-# Welcome to MastroGPT
+## Welcome to MastroGPT
 
-# Intro
+## Intro
 
 MastroGPT is a product of Nuvolaris that enables the creation of your
 own applications in a serverless environment. The environment is
@@ -17,7 +17,7 @@ With MastroGPT, you can deploy your software based on Nuv entities
 Python, Node.js, Java, Go, and JavaScript runtimes. You can choose your
 preferred language and build your own AI application.
 
-# How to Start
+## How to Start
 
 MastroGPT, as mentioned earlier, offers developers everything they need
 to build their own applications, with specific integrations for AI and
@@ -28,9 +28,9 @@ seamlessly.
 
 The unique constraint is to place server side code under the `/packages`
 folder and client side code under the `/web` folder. We’ll explain this
-further in [Environment](#environment/index.adoc).
+further in [Environment](/docs/development/environment).
 
-# Getting Started with GitHub
+## Getting Started with GitHub
 
 If you’re new to the product and want to start with some examples to
 better understand it, you can visit <https://github.com/mastrogpt> and
@@ -44,7 +44,7 @@ understand capabilities and development possibilities.
 Consider these templates as starting points to become familiar with Nuv
 concepts and MastroGPT features.
 
-# Start from Admin
+## Start from Admin
 
 Nuvolaris Admin is a fully integrated platform, linked to the Nuv
 namespace (every user has one namespace in Nuv) and all features ready
