@@ -2,7 +2,7 @@
 title: Project
 description: How to deal with OpenServerless projects
 ---
-## A OpenServerless Project
+## An OpenServerless Project
 
 This document is still 🚧 **work in progress** 🚧
 

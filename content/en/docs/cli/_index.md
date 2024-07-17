@@ -1,5 +1,6 @@
 ---
 title: CLI
+description: An handy command line to interact with all parts of OpenServerless
 weight: 30
 ---
 ## OpenServerless CLI

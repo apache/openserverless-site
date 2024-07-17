@@ -1,8 +1,9 @@
 ---
 title: Quick Start
+description: 
 weight: 5
 ---
-# Quick Start to Self Hosted OpenServerless
+## Quick Start to Self Hosted OpenServerless
 
 If you are looking for an hosted service check
 [MastroGPT](#mastrogpt:index.adoc).
