@@ -1,5 +1,5 @@
 ---
-title: index-references
+title: References
 ---
 # Advanced Reference Guides
 

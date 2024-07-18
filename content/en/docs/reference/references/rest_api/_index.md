@@ -1,5 +1,5 @@
 ---
-title: rest_api
+title: Rest API
 ---
 # Using REST APIs with OpenWhisk and Nuvolaris
 

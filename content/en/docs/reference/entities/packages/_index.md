@@ -1,5 +1,6 @@
 ---
-title: packages
+title: Packages
+weight: 50
 ---
 # Using and creating packages
 

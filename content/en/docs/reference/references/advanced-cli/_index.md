@@ -1,5 +1,5 @@
 ---
-title: cli
+title: Advanced CLI
 ---
 # Nuvolaris CLI
 

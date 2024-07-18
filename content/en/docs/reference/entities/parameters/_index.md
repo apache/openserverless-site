@@ -1,5 +1,6 @@
 ---
 title: Parameters
+weight: 30
 ---
 When working with serverless actions, data is supplied by adding
 parameters to the actions; these are in the parameter declared as an

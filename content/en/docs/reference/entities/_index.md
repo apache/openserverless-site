@@ -1,5 +1,5 @@
 ---
-title: index-entities
+title: Entities
 ---
 You can find more informations about Nuvolaris and OpenWhisk entities
 here:

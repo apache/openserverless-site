@@ -1,5 +1,6 @@
 ---
-title: feeds
+title: Feeds
+weight: 60
 ---
 # Implementing feeds
 

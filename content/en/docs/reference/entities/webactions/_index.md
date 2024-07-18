@@ -1,5 +1,6 @@
 ---
-title: webactions
+title: Web Actions
+weight: 20
 ---
 # Web Actions
 
