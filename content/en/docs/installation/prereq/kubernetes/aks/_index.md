@@ -1,14 +1,14 @@
 ---
 title: Azure AKS
+description: Prerequisites for Azure AKS
 ---
-# Prerequisites to install Nuvolaris in an Azure AKS Cluster
+## Prerequisites to install OpenServerless in an Azure AKS Cluster
 
 [Azure AKS](https://aws.amazon.com/eks/) is a pre-built Kubernetes
-cluster offered by the cloud provider [Microsoft
-Azure](https://azure.microsoft.com/).
+cluster offered by the cloud provider [Microsoft Azure](https://azure.microsoft.com/).
 
 You can create an AKS Cluster in Microsoft Azure for installing using
-Nuvolaris using [nuv](#download.adoc) as follows:
+OpenServerless using [ops](#download.adoc) as follows:
 
 1. install `az`, the [Azure CLI](#install-cli)
 
@@ -21,12 +21,13 @@ Nuvolaris using [nuv](#download.adoc) as follows:
 
 Once you have AKS up and running you can proceed
 [configuring](#configure.adoc) and [installing
-Nuvolaris](#install-cluster.adoc).
+OpenServerless](#install-cluster.adoc).
 
-Our CLI `nuv` uses under the hood the [Azure
+### Installing the Azure CLI{#install-cli}
+Our CLI `ops` uses under the hood the [Azure
 CLI](https://learn.microsoft.com/en-us/cli/azure/), so you need to
-dowload and install it [following those
-instructions](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+dowload and install it 
+[following those instructions](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
 
 Once installed, ensure it is available on the terminal executing the
 following command:
@@ -42,11 +43,13 @@ you should receive something like this:
       "extensions": {}
     }
 
+### Configuring Azure AKS{#configure}
+
 Before provisioning your AKS cluster you need to configure AKS with the
-command `nuv config aks` answering to all the questions, as in the
+command `ops config aks` answering to all the questions, as in the
 following example:
 
-    $ nuv config aks
+    $ ops config aks
     *** Please, specify AKS Name for Cluster and Resource Group and press enter.
     Just press enter for default [nuvolaris]:
 
@@ -76,29 +79,33 @@ following example:
 
     Just press enter for default [~/.ssh/id_rsa.pub]:
 
+### Provisioning Azure AKS{#provision}
+
 Once you have configured it, you can create the AKS cluster with the
 command:
 
-    nuv cloud aks create
+    ops cloud aks create
 
 It will take around 10 minutes to be ready. Please be patient.
 
 At the end of the process, you will have access directly to the created
 Kubernetes cluster for installation.
 
+### Retrieving the Load Balancer DNS name{#retrieve-lb}
+
 Once the cluster is up and running, you need to retrieve the DNS name of
 the load balancer.
 
 You can read this with the command:
 
-    nuv cloud aks lb
+    ops cloud aks lb
 
-Take note of the result as it is required for [configuring a dns
-name](#configure-dns.adoc) for your cluster.
+Take note of the result as it is required for 
+[configuring a dns name](/docs/installation/configure/dns/) for your cluster.
 
-# Additional Commands
+### Additional Commands
 
-You can delete the created cluster with: `nuv cloud aks delete`
+You can delete the created cluster with: `ops cloud aks delete`
 
 You can extract again the cluster configuration, if you lose it,
 reconfiguring the cluster and then using the command

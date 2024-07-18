@@ -38,9 +38,9 @@ following command:
 
 you should receive something like this:
 
-\` Google Cloud SDK 443.0.0 beta 2023.08.11 bq 2.0.96
-bundled-python3-unix 3.9.16 core 2023.08.11 gcloud-crc32c 1.0.0
-gke-gcloud-auth-plugin 0.5.5 gsutil 5.25 \`
+    Google Cloud SDK 443.0.0 beta 2023.08.11 bq 2.0.96
+    bundled-python3-unix 3.9.16 core 2023.08.11 gcloud-crc32c 1.0.0
+    gke-gcloud-auth-plugin 0.5.5 gsutil 5.25
 
 ### Enabling gcloud services{#enable-services}
 
@@ -99,10 +99,12 @@ You can create a new server with:
 
     ops cloud gcloud vm-create <server-name>
 
-Replace `<server-name>` with a name you choose, for example
-`nuvolaris-server`
+> ❗ **IMPORTANT**
+> 
+> Replace `<server-name>` with a name you choose, for example
+    `ops-server`
 
-The command will create a new server in Google CLoud with the parameters
+The command will create a new server in Google Cloud with the parameters
 you specified in configuration.
 
 You can also:

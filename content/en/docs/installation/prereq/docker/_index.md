@@ -3,6 +3,7 @@ title: Local Docker
 description: Install OpenServerless with Docker locally
 weight: 10
 ---
+## Prerequisites to install OpenServerless with Docker
 
 You can install OpenServerless on your local machine using Docker. This
 page lists the prerequisits.
@@ -10,18 +11,18 @@ page lists the prerequisits.
 First and before all you need a computer with at least 16 GB of memory
 and 30GB of available space.
 
-**IMPORTANT**
+**IMPORTANT**:
 8GB are definitely **not enough** to run OpenServerless on your local
 machine.
 
 Furthermore, you need to install Docker. Let’s see the which one to
 install and configure if you have:
 
-- [Windows](#windows)
-- [MacOS](#macos)
-- [Linux](#linux)
+1. [Windows](#windows)
+2. [MacOS](#macos)
+3. [Linux](#linux)
 
-## Windows
+### Windows
 
 You require the 64 bit edition in Intel Architecture of a recent version
 of Windows (at least version 10). The installer `nuv` does not run on 32
@@ -34,7 +35,7 @@ Once installed, you can proceed
 [configuring OpenServerless](/docs/installation/configure/) for the
 installation.
 
-## MacOS
+### MacOS
 
 You require a recent version of MacOS (at least version 11.xb BigSur).
 The installer `nuv` is available both for Intel and ARM.
@@ -66,7 +67,7 @@ MacOS:
 Once installed, you can proceed
 [configuring OpenServerless](/docs/installation/configure/) for the installation.
 
-## Linux
+### Linux
 
 Docker Desktop is available also on Linux, however we advice to install
 instead the [Server Docker

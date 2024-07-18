@@ -1,39 +1,41 @@
 ---
 title: Kubernetes cluster
-weight: 20
+description: Install OpenServerless on a Kubernetes Cluster
+weight: 30
 ---
-This section describes how to install Nuvolaris on a Kubernetes Cluster
+## Cluster Installation
+This section describes how to install OpenServerless on a Kubernetes Cluster
 
-# Prerequisite
+### Prerequisites
 
 Before installing, you need to:
 
-- [Provision](#prereq-kubernetes.adoc) a Kubernetes Cluster
+- [Provision](/docs/installation/prereq/kubernetes/) a Kubernetes Cluster
 
-- [Configure](#configure.adoc) the installation
+- [Configure](/docs/installation/configure/) the installation
 
-- install [Download and install](#download.adoc) Nuvolaris CLI, `nuv`.
+- install [Download and install](/docs/installation/download/) OpenServerless CLI, `ops`.
 
-# Installation
+### Installation
 
 If you have a Kubernetes cluster directly accessible with its
-configuration, or you provisioned a cluster in some cloud using `nuv`
+configuration, or you provisioned a cluster in some cloud using `ops`
 embedded tools, you just need to type:
 
-    nuv setup cluster
+    ops setup cluster
 
 Sometimes the kubeconfig includes access to multiple Kubernetes
 instances, each one identified by a different `<context>` name. You can
-install the Nuvolaris cluster in a specified `<context>` with:
+install the OpenServerless cluster in a specified `<context>` with:
 
-    nuv setup cluster <context>
+    ops setup cluster <context>
 
-# Post Install
+### Post Install
 
-- [Check the tutorial](#tutorial:index.adoc) to learn how to use it.
+- [Check the tutorial](/docs/tutorial) to learn how to use it.
 
 - To uninstall, execute the command:
 
-<!-- -->
-
-    nuv setup cluster --uninstall
+```
+ops setup cluster --uninstall
+```

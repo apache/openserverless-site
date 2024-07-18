@@ -1,82 +1,85 @@
 ---
 title: Troubleshooting
+description: How to diagnose and solve issues
 ---
+## Debug
+
 This document gives you hints for diagnostics and solving issues, using
 the (hidden) subcommand `debug`.
 
 Note it is technical and assumes you have some knowledge of how
 Kubernetes operates.
 
-# Watching
+### Watching
 
 While installing, you can watch the installation (opening another
 terminal) with the command:
 
-    nuv debug watch
+    ops debug watch
 
 Check that no pods will go in error while deploying.
 
-# Configuration
+### Configuration
 
-You can inspect the configuration with the `nuv debug subcommand`
+You can inspect the configuration with the `ops debug subcommand`
 
-- API host: `nuv debug apihost`
+- **API host**: `ops debug apihost`
 
-- Static Configuration: `nuv debug config`.
+- **Static Configuration**: `ops debug config`.
 
-- Current Status : `nuv debug status`
+- **Current Status**: `ops debug status`
 
-- Runtimes: `nuv debug runtimes`
+- **Runtimes**: `ops debug runtimes`
 
-- Load Balancer: `nuv debug lb`
+- **Load Balancer**: `ops debug lb`
 
-- Images: `nuv debug images`
+- **Images**: `ops debug images`
 
-# Logs
+### Logs
 
-You can inspect logs with `nuv debug log` subcommand. Logs you can show:
+You can inspect logs with `ops debug log` subcommand. Logs you can show:
 
-- operator: `nuv debug log operator` (continuously:
-    `nuv debug log foperator`)
+- **operator**: `ops debug log operator` (continuously:
+    `ops debug log foperator`)
 
-- controller: `nuv debug log controller` (continuously:
-    `nuv debug log fcontroller`)
+- **controller**: `ops debug log controller` (continuously:
+    `ops debug log fcontroller`)
 
-- database: `nuv debug log couchdb` (continuously:
-    `nuv debug log fcouchdb`)
+- **database**: `ops debug log couchdb` (continuously:
+    `ops debug log fcouchdb`)
 
-- certificate manager: database: `nuv debug log certman`
-    (continuously: `nuv debug log fcertmap`)
+- **certificate manager**: `ops debug log certman`
+    (continuously: `ops debug log fcertmap`)
 
-# Kubernetes
+### Kubernetes
 
 You can detect which Kubernetes are you using with:
 
-`nuv debug detect`
+`ops debug detect`
 
 You can then inspect Kubernetes objects with:
 
-- namespaces: `nuv debug kube ns`
+- **namespaces**: `ops debug kube ns`
 
-- nodes: `nuv debug kube nodes`
+- **nodes**: `ops debug kube nodes`
 
-- pod: `nuv debug kube pod`
+- **pod**: `ops debug kube pod`
 
-- services: `nuv debug kube svc`
+- **services**: `ops debug kube svc`
 
-- users: `nuv debug kube users`
+- **users**: `ops debug kube users`
 
 You can enter a pod by name (use `kube pod` to find the name) with:
 
-    nuv debug kube exec P=<pod-name>
+    ops debug kube exec P=<pod-name>
 
-# Kubeconfig
+### Kubeconfig
 
-Usually, `nuv` uses a hidden kubeconfig so does not override your
+Usually, `ops` uses a hidden kubeconfig so does not override your
 Kubernetes configuration.
 
 If you want to go more in-depth and you are knowledgeable of Kubernetes,
-you can export the kubeconfig with `nuv debug export F=<file>`.
+you can export the kubeconfig with `ops debug export F=<file>`.
 
 You can **overwrite your kubeconfig** (be aware there is no backup) with
-`nuv debug export F=-`.
+`ops debug export F=-`.

@@ -18,14 +18,16 @@ Please ensure you have:
 
 Once you have completed the preparation steps,  you can proceed with:
 
-- a local installation in your
+- a local installation on your
   [local machine](/docs/installation/install/local/)
-- a single server installation in a
+- a single server installation on a
   [Linux server](/docs/installation/install/server/)
-- a clustered installation in a
+- a clustered installation on a
   [Kubernetes cluster](/docs/installation/install/cluster/).
 
-**NOTE:**  The install process will notify nuvolaris creators with the type of installation (for example: clustered or server installation), no other info will be submitted. If you want to disable the notification, you can execute the following command before the setup command:
+> 💡 **NOTE**
+>
+> The install process will notify nuvolaris creators with the type of installation (for example: clustered or server installation), no other info will be submitted. If you want to disable the notification, you can execute the following command before the setup command:
 
     ops -config DO_NOT_NOTIFY_NUVOLARIS=1
 

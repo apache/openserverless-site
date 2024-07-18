@@ -1,7 +1,10 @@
 ---
 title: Generic Kubernetes
+description: Prerequisites for all Kubernetes
 ---
-Nuvolaris installs in any Kubernetes cluster which satisfies the
+## Kubernetes Cluster requirements
+
+OpenServerless installs in any Kubernetes cluster which satisfies the
 following requirements:
 
 - `cluster-admin` access
@@ -36,4 +39,4 @@ The result should be something like this:
     ingress-nginx-controller   LoadBalancer   10.0.9.99    20.62.156.19   80:30898/TCP,443:31451/TCP   4d1h
 
 Take note of the value under **EXTERNAL-IP** as you need it in the next
-step of installation, [configuring DNS](#configure-dns.adoc).
+step of installation, [configuring DNS](/docs/installation/configure/dns/).

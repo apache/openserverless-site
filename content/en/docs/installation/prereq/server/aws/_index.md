@@ -37,7 +37,7 @@ following command:
 
 you should receive something like this:
 
-`aws-cli/2.9.4 Python/3.9.11 Linux/5.19.0-1025-aws exe/x86_64.ubuntu.22 prompt/off`
+    aws-cli/2.9.4 Python/3.9.11 Linux/5.19.0-1025-aws exe/x86_64.ubuntu.22 prompt/off
 
 Ensure the version is at least 2.
 
@@ -46,12 +46,14 @@ Ensure the version is at least 2.
 Next step is to retrieve credentials, in the form of an access key and a
 secret key.
 
-So you need to: \* access the AWS console [following those
-instructions](https://repost.aws/knowledge-center/create-access-key)
-create an access key and secret key, \* give to the credentials the
-minimum required permissions [as described
-here](https://eksctl.io/usage/minimum-iam-policies/) to build an EKS
-cluster.
+So you need to: 
+
+* access the AWS console 
+  [following those instructions](https://repost.aws/knowledge-center/create-access-key)
+create an access key and secret key;
+* give to the credentials the minimum required permissions 
+  [as described here](https://eksctl.io/usage/minimum-iam-policies/) to build an 
+  EKS cluster.
 
 You will end up with a couple of string as follows:
 
@@ -119,8 +121,10 @@ You can create a new server with:
 
     ops cloud aws vm-create <server-name>
 
-Replace `<server-name>` with a name you choose, for example
-`nuvolaris-server`
+> ❗ **IMPORTANT**
+> 
+> Replace `<server-name>` with a name you choose, for example
+    `ops-server`
 
 The command will create a new server in AWS with the parameters you
 specified in configuration.

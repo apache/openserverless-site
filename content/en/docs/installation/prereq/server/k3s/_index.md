@@ -41,9 +41,12 @@ and `<username>` is the user you use to access the server.
 Those pieces of information should have been provided when provisioning
 the server.
 
-If you installed a Kubernetes cluster in the server this way, you should
-proceed installing OpenServerless as in [a Kubernetes
-cluster](#../../../install/cluster/index.adoc), **not** as a server.
+> ❗ **IMPORTANT**
+>
+>   If you installed a Kubernetes cluster in the server this way, you should
+    proceed installing OpenServerless as in 
+    [a Kubernetes cluster](/docs/installation/install/cluster/), **not** 
+    as a server.
 
 The installation retrieves also a Kubernetes configuration file, so you
 can proceed to installing it without any other step involved.
