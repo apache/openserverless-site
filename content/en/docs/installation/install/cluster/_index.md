@@ -1,5 +1,6 @@
 ---
 title: Kubernetes cluster
+weight: 20
 ---
 This section describes how to install Nuvolaris on a Kubernetes Cluster
 

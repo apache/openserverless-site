@@ -1,37 +1,37 @@
 ---
 title: Local Machine
+weight: 10
+description: Install OpenServerless in a local machine
 ---
-This page describes how to install Nuvolaris on your local machine. The
+This page describes how to install OpenServerless on your local machine. The
 services are limited and not accessible from the outside so it is an
 installation useful only for development purposes.
 
-# Prerequisite
+## Prerequisite
 
 Before installing, you need to:
 
-- install [Docker](#prereq-docker.adoc).
+- install [Docker](/docs/installation/prereq/docker/).
 
-- install [nuv](#download.adoc).
+- install [ops](/docs/installation/download/).
 
-- [configure](#configure.adoc) the services you want
+- [configure](/docs/installation/configure/) the services you want
 
-You cannot have `` https` `` and static publishing in a local
+You cannot have ``https`` and static publishing in a local
 installation. If you enable them, the configuration will be ignored.
 
-# Installation
+## Installation
 
 Run the command:
 
-    nuv setup devcluster
+    ops setup devcluster
 
 and wait until the command terminates.
 
-# Post Install
+## Post install
 
-- [Check the tutorial](#tutorial:index.adoc) to learn how to use it.
+[Check the tutorial](/docs/installation/tutorial) to learn how to use it.
 
-- To uninstall, execute the command:
+To uninstall, execute the command:
 
-<!-- -->
-
-    nuv setup devcluster --uninstall
+    ops setup devcluster --uninstall

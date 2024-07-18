@@ -1,5 +1,6 @@
 ---
 title: Kubernetes Cluster
+description: Install OpenServerless in a Kubernetes cluster
 weight: 30
 ---
 # Prerequisites to install OpenServerless in a Kubernetes cluster

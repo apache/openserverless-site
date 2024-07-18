@@ -1,7 +1,9 @@
 ---
 title: SSH and Sudo
+description: General prerequisites to install OpenServerless
+weight: 10
 ---
-# Configure a generic Linux server to install Nuvolaris
+## Configure a generic Linux server to install OpenServerless
 
 If you have access to a generic Linux server, to be able to install
 Nuvolaris it needs to:
@@ -13,8 +15,10 @@ Nuvolaris it needs to:
 3. open the ports 80, 443 and 6443 or 16443
 
 If your server does not already satisfy those requirements, read below
-for information how to create a [sshkey](#sshkey), [configure
-sudo](#sudo) and [open the firewall](#firewall)
+for information how to create a [sshkey](#sshkey),
+[configure sudo](#sudo) and [open the firewall](#firewall)
+
+### Installing a public SSH key{#sshkey}
 
 To connect to a server without a password using `openssh` (used by the
 installer), you need a couple of files called **ssh keys**.
@@ -48,6 +52,8 @@ Create the file if it does not exist. Append the line to the file (as a
 single line) if it already exists. Do not remove other lines if you do
 not want to remove access to other users.
 
+### Configure Sudo {#sudo}
+
 You normally access Linux servers using a user that is **not** `root`
 (the system administrator with unlimited power on the system).
 
@@ -69,7 +75,7 @@ Type either `su` or `sudo bash` to become root and edit the file
 
 where `<user>` is the user you use to log into the system.
 
-# Open the Firewall
+### Open the firewall {#firewall}
 
 You need to open the following ports in the firewall of the server:
 

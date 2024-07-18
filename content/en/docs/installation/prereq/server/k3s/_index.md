@@ -1,7 +1,9 @@
 ---
 title: Install K3S
+description: Prerequisites to install OpenServerless in K3S
+weight: 40
 ---
-# Install K3S in a server
+## Install K3S in a server
 
 You can install OpenServerless as [described
 here](#../../../install/server/index.adoc), and you do not need to
@@ -12,6 +14,8 @@ Or you can [install K3S in advance](#installing-k3s), and then proceed
 [configuring](#../../../configure/index.adoc) and then installing
 OpenServerless [as in any other Kubernetes
 cluster](#../../../install/cluster/index.adoc).
+
+### Installing K3S in a server{#installing-k3s}
 
 Before installing ensure you have [satified the
 prerequisites](#../../../prereq/index.adoc), most notably:
@@ -44,7 +48,7 @@ cluster](#../../../install/cluster/index.adoc), **not** as a server.
 The installation retrieves also a Kubernetes configuration file, so you
 can proceed to installing it without any other step involved.
 
-# Additional Commands
+### Additional Commands
 
 In addition to `create` the following subcommands are also available:
 

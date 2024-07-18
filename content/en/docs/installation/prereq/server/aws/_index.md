@@ -1,11 +1,13 @@
 ---
 title: Server on AWS
+description: Prerequisites to install OpenServerless in AWS
+weight: 20
 ---
-# Provision a Linux server in Amazon Web Services
+## Provision a Linux server in Amazon Web Services
 
-You can provision a server suitable to install Nuvolaris in cloud
+You can provision a server suitable to install OpenServerless in cloud
 provider [Amazon Web Services](https://aws.amazon.com/)
-[nuv](#download.adoc) as follows:
+[ops](#download.adoc) as follows:
 
 1. install `aws`, the [AWS CLI](#install-cli)
 
@@ -18,10 +20,12 @@ provider [Amazon Web Services](https://aws.amazon.com/)
 5. retrieve the [ip address](#retrieve-ip) to configure a DNS name
 
 Once you have a Linux server up and running you can proceed
-[configuring](#configure.adoc) and [installing
-Nuvolaris](#install-cluster.adoc).
+[configuring](/docs/installation/configure/) and
+[installing OpenServerless](/docs/installation/install/cluster/).
 
-Our cli `nuv` uses under the hood the [AWS CLI version
+### Installing the AWS CLI{#install-cli}
+
+Our cli `ops` uses under the hood the [AWS CLI version
 2](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html),
 so you need to dowload and install it [following those
 instructions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
@@ -37,6 +41,8 @@ you should receive something like this:
 
 Ensure the version is at least 2.
 
+### Getting the Access and Secret key{#get-credentials}
+
 Next step is to retrieve credentials, in the form of an access key and a
 secret key.
 
@@ -49,20 +55,23 @@ cluster.
 
 You will end up with a couple of string as follows:
 
-Sample AWS Access Key ID: AKIAIOSFODNN7EXAMPLE Sample AWS Secret Access
-Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    Sample AWS Access Key ID: AKIAIOSFODNN7EXAMPLE Sample AWS Secret Access
+    Key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 Take note of them as you need them for configuring out CLI.
+
+### Configure AWS to provision a server{#configure}
 
 Before you can provision a Linux server you have to configure AWS typing
 the command:
 
-    nuv config aws
+    ops config aws
 
 The system will then ask the following questions:
 
     *** Please, specify AWS Access Id and press enter.
     AKIAIOSFODNN7EXAMPLE
+    
     *** Please, specify AWS Secret Key and press enter.
     wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
     *** Please, specify AWS Region to use and press enter.
@@ -101,12 +110,14 @@ The system will then ask the following questions:
     *** Please, specify AWS Disk Size to use for VMs and press enter.
     Just press enter for default [100]:
 
-You can provision one or more servers using `nuv`. The servers will use
+### Provision a server{#provision}
+
+You can provision one or more servers using `ops`. The servers will use
 the parameters you have just configured.
 
 You can create a new server with:
 
-    nuv cloud aws vm-create <server-name>
+    ops cloud aws vm-create <server-name>
 
 Replace `<server-name>` with a name you choose, for example
 `nuvolaris-server`
@@ -116,16 +127,18 @@ specified in configuration.
 
 You can also:
 
-1. list servers you created with `nuv cloud aws vm-list`
+1. list servers you created with `ops cloud aws vm-list`
 
 2. delete a server you created and you do not need anymore with
-    `nuv cloud aws vm-delete <server-name>`
+    `ops cloud aws vm-delete <server-name>`
+
+### Retrieve IP{#retrieve-ip}
 
 The server will be provisioned with an IP address assigned by AWS.
 
 You can read the IP address of your server with
 
-    nuv cloud aws vm-getip <server-name>
+    ops cloud aws vm-getip <server-name>
 
-You need this IP when [configuring a DNS name](#configure-dns.adoc) for
+You need this IP when [configuring a DNS name](/docs/installation/configure/dns/) for
 the server.

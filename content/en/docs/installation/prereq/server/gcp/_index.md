@@ -1,25 +1,32 @@
 ---
 title: Server on GCP
+description: Prerequisites to install OpenServerless in Google Cloud
+weight: 30
 ---
-# Provision a Linux Server in Google Cloud
 
-You can provision a server suitable to install Nuvolaris in cloud
+## Provision a Linux Server in Google Cloud
+
+You can provision a server suitable to install OpenServerless in cloud
 provider [Google Cloud Platform (GCP)](https://cloud.google.com/gcp) as
 follows:
 
 1. install the [GCloud CLI](#install-cli)
 
-2. [configure GKE](#configure)
+2. Enable [Gcloud services](#enable-services)
 
-3. [provision a server](#provision)
+3. [configure GKE](#configure)
 
-4. retrieve the [ip address](#retrieve-ip) to configure a DNS name
+4. [provision a server](#provision)
+
+5. retrieve the [IP address](#retrieve-ip) to configure a DNS name
 
 Once you have Linux server up and running you can proceed
-[configuring](#configure.adoc) and [installing
-Nuvolaris](#install-cluster.adoc).
+[configuring](/docs/installation/configure) and
+[installing OpenServerless](/docs/installation/install/cluster/).
 
-Our cli `nuv` uses under the hood the [GCloud CLI version
+### Installing the GCloud CLI{#install-cli}
+
+Our cli `ops` uses under the hood the [GCloud CLI version
 2](https://cloud.google.com/sdk/gcloud), so you need to dowload and
 install it [following those
 instructions](https://cloud.google.com/sdk/docs/install).
@@ -35,6 +42,8 @@ you should receive something like this:
 bundled-python3-unix 3.9.16 core 2023.08.11 gcloud-crc32c 1.0.0
 gke-gcloud-auth-plugin 0.5.5 gsutil 5.25 \`
 
+### Enabling gcloud services{#enable-services}
+
 You need to enable the following permissions for Google Cloud
 
     gcloud services enable cloudresourcemanager.googleapis.com
@@ -48,10 +57,12 @@ You need to enable the following permissions for Google Cloud
     gcloud services enable deploymentmanager.googleapis.com
     gcloud services enable resourcemanager.projects.delete
 
+### Configuring GKE to provision a server{#configure}
+
 Before you can provision a Linux server you have to configure AWS typing
 the command:
 
-    nuv config gcloud
+    ops config gcloud
 
 The system will then ask the following questions:
 
@@ -79,12 +90,14 @@ The system will then ask the following questions:
 
     Just press enter for default [/home/ubuntu/.ssh/id_rsa.pub]:
 
-You can provision one or more servers using `nuv`. The servers will use
+### Provision a server{#provision}
+
+You can provision one or more servers using `ops`. The servers will use
 the parameters you have just configured.
 
 You can create a new server with:
 
-    nuv cloud gcloud vm-create <server-name>
+    ops cloud gcloud vm-create <server-name>
 
 Replace `<server-name>` with a name you choose, for example
 `nuvolaris-server`
@@ -94,17 +107,19 @@ you specified in configuration.
 
 You can also:
 
-1. list servers you created with `nuv cloud gcloud vm-list`
+1. list servers you created with `ops cloud gcloud vm-list`
 
 2. delete a server you created and you do not need anymore with
-    `nuv cloud gcloud vm-delete <server-name>`
+    `ops cloud gcloud vm-delete <server-name>`
+
+### Retrieve IP{#retrieve-ip}
 
 The server will be provisioned with an IP address assigned by Google
 Cloud.
 
 You can read the IP address of your server with
 
-    nuv cloud gcloud vm-getip <server-name>
+    ops cloud gcloud vm-getip <server-name>
 
-You need this IP when [configuring a DNS name](#configure-dns.adoc) for
+You need this IP when [configuring a DNS name](/docs/installation/configure/dns/) for
 the server.

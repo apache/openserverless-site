@@ -1,11 +1,12 @@
 ---
 title: Download
+description: Download OpenServerless with ops CLI
 weight: 10
-draft: true
+draft: false
 ---
-# Download and Install `ops`
+## Download and Install `ops`
 
-You can install Nuvolaris using its Command Line Interface, `nuv`.
+You can install OpenServerless using its Command Line Interface, `ops`.
 
 You can download it for your system. It is available for the following
 operating systems, architectures and formats:
@@ -45,22 +46,22 @@ Download your version from this page, then install it according to the
 procedures of your operating system.
 
 In all the operating systems with a graphical user interface, you can
-just double click on the installer to install Nuvolaris.
+just double click on the installer to install OpenServerless.
 
 beta version is currently unsigned. Check [here for install on
 Mac](https://www.wikihow.com/Install-Software-from-Unsigned-Developers-on-a-Mac).
 
-Once installed, in the first run `nuv` will tell to update the tasks
+Once installed, in the first run `ops` will tell to update the tasks
 executing:
 
-`nuv -update`
+`ops -update`
 
-This command updates the Nuvolaris "tasks" (its internal logic) to the
+This command updates the OpenServerless "tasks" (its internal logic) to the
 latest version. This command should be also executed frequently, as the
 tasks are continuously evolving and expanding.
 
-`nuv` will suggest when to update them (at least once a day).
+`ops` will suggest when to update them (at least once a day).
 
 You normally just need to update the tasks but sometimes you also need
-to update `nuv` itself. The system will detect when it is the case and
+to update `ops` itself. The system will detect when it is the case and
 tell you what to do.

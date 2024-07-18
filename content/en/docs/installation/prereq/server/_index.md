@@ -1,8 +1,9 @@
 ---
 title: Linux Server
+description: Install OpenServerless in a Linux server
 weight: 20
 ---
-# Prerequisites to install OpenServerless in a Linux server
+## Prerequisites to install OpenServerless in a Linux server
 
 You can install OpenServerless on any server either in your intranet or
 on in Internet running a Linux distribution, with the following
@@ -20,28 +21,28 @@ requirements:
 4. You must open the firewall to access ports 80, 443 and 6443 (for
     K3S) or 16443 (for MicroK8S) from your machine.
 
-5. You have to install a [public ssh
-    key](#../../prereq/server/generic/index.adoc#sshkey) to access it
+5. You have to install a
+   [public ssh key](/docs/installation/prereq/server/generic/#ssh) to access it
     without a password.
 
 6. You have to configure
-    [sudo](#../../prereq/server/generic/index.adoc#sudo) to execute root
+    [sudo](/docs/installation/prereq/server/generic/#sudo) to execute root
     commands without a password.
 
 You can:
 
 - get a server on any cloud provider or even install by yourself and
-    then [configure it](#:../../prereq/server/generic/index.adoc)
+    then [configure it](/docs/installation/prereq/server/generic/)
 
-- provision such a server with `ops` [on Amazon Web
-    Services](#../../prereq/server/aws/index.adoc)
+- provision such a server with `ops`
+  [on Amazon Web Services](/docs/installation/prereq/server/aws/)
 
-- provision such a server with `ops` on [on Google Cloud
-    Platform](#../../prereq/server/gcp/index.adoc)
+- provision such a server with `ops` on 
+  [on Google Cloud Platform](/docs/installation/prereq/server/gcp/)
 
 Once you have such a server you can optionally (it is not required)
-install [K3S](#../../prereq/server/k3s/index.adoc) or
-[MicroK8S](#../../prereq/server/mk8s/index.adoc) in it.
+install [K3S](/docs/installation/prereq/server/k3s/) or
+[MicroK8S](/docs/installation/prereq/server/mk8s/) in it.
 
-Once you have configured you server, you can proceed [configuring
-OpenServerless](#../../configure/index.adoc) for the installation.
+Once you have configured you server, you can proceed
+[configuring OpenServerless](/docs/installation/configure/) for the installation.

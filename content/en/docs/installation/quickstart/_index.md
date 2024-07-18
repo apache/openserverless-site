@@ -1,17 +1,11 @@
 ---
 title: Quick Start
-description: 
+description: Fast path to install a self-hosted OpenServerless 
 weight: 5
 ---
-## Quick Start to Self Hosted OpenServerless
+## Quick Start
 
-If you are looking for an hosted service check
-[MastroGPT](#mastrogpt:index.adoc).
-
-If you instead prefer to self host and install OpenServerless go ahead
-reading this document.
-
-This is a quick start guide to the installation process, targetting
+This is a quick start guide to the installation process, targeting
 experienced users in a hurry.
 
 It provides a high-level overview of the installation process, omitting
@@ -21,11 +15,11 @@ documentation.
 Of course, if this guide is not enough and things fail, you can always
 apply the rule: "if everything fails, read the manual".
 
-# Prerequisites
+## Prerequisites
 
 Start ensuring the prerequsites are satisfied:
 
-- [Download and install](#../download/index.adoc) ops, the
+- [Download and install](/docs/installation/download/) ops, the
     OpenServerless CLI, picking version suitable for your environment.
     We support 64-bit versions of recent Windows, MacOS and major Linux
     distributions.
@@ -47,7 +41,7 @@ If you want to enable all the services, use:
 otherwise pick the services you want, among `--redis`, `--mongodb`,
 `--minio`, `--cron`, `--postgres`. Note that `--mongodb` is actually
 [FerretDB](https://www.ferretdb.com/) and requires Postgres which is
-implicitly also enabled. More details [here](#../configure/index.adoc).
+implicitly also enabled. More details [here](/docs/installation/configure).
 
 Now, choose where to install OpenServerless.
 
@@ -206,7 +200,7 @@ OpenServerless with:
 For a slightly longer discussion, checking prerequisites before
 installing, read on.
 
-# Prerequisites to install
+## Prerequisites to install
 
 If you have access to a Kubernetes cluster with:
 
@@ -230,7 +224,7 @@ up with a configuration file which is usually stored in a file named
 `.kube/config` in your home directory. This file will give access to the
 Kubernetes cluster to install OpenServerless.
 
-# Performing the installation
+## Performing the installation
 
 To install, first, verify you have actually access to the Kubernetes
 cluster, by running this command:
