@@ -3,7 +3,9 @@ title: Installation
 description: How to and where install OpenServerless
 weight: 50
 ---
-## Overview
+## Installation
+
+### Overview
 
 If you are in hurry and you think this guide is TL;DR (too long, don’t
 read), please read at least our [Quick Start](/docs/installation/quickstart/)
@@ -18,7 +20,7 @@ Once you want to know more, you can come back.
 If you instead want the read the full documentation first, please read
 on.
 
-## Steps to follow
+### Steps to follow
 
 OpenServerless can be installed in many environments, using our powerful
 command line interface `ops`.
@@ -50,12 +52,12 @@ you can choose where to install, either:
 
 - in a [Kubernetes cluster](/docs/installation/install/cluster/)
 
-## Post Installation
+### Post Installation
 
 After the installation, you can change later the configuration and
 update the system.
 
-## Support
+### Support
 
 If you have issues, please check:
 

@@ -2,9 +2,13 @@
 title: Project
 description: How to deal with OpenServerless projects
 ---
-## An OpenServerless Project
+## Project
 
-This document is still 🚧 **work in progress** 🚧
+### An OpenServerless Project
+
+> ⚠️ **WARNING**
+>
+> This document is still 🚧 **work in progress** 🚧
 
 A project represents a logical unit of functionality whose boundaries
 are up to you. Your app can contain one or more projects. The folder
@@ -15,7 +19,7 @@ ignores.
 You can detect and load entire projects into OpenServerless with a
 single command using the `ops` CLI tool.
 
-## Project Detection
+### Project Detection
 
 When deploying a project, `ops` checks in the given path for 2 special
 folders:
@@ -31,13 +35,13 @@ Anything else is ignored. This lets you store things in the root folder
 that are not meant to be deployed on OpenServerless (such as build
 folders and project documentation).
 
-### Single File Actions
+#### Single File Actions
 
 A single file action is simply a file with specific extension (the
 supported ones: `.js` `.py` `.php` `.go` `.java`), whici is directly deployed
 as an action.
 
-### Multi File Actions
+#### Multi File Actions
 
 A multi-file action is a folder containing a `main` file and
 dependencies. The folder is bundled into a zip file and deployed as an

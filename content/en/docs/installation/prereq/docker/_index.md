@@ -11,8 +11,9 @@ page lists the prerequisits.
 First and before all you need a computer with at least 16 GB of memory
 and 30GB of available space.
 
-**IMPORTANT**:
-8GB are definitely **not enough** to run OpenServerless on your local
+> ❗ **IMPORTANT**
+>
+> 8GB are definitely **not enough** to run OpenServerless on your local
 machine.
 
 Furthermore, you need to install Docker. Let’s see the which one to
@@ -46,10 +47,12 @@ Desktop](https://www.docker.com/products/docker-desktop/) for MacOS.
 Since MacOS uses a virtual machine for Docker with a constrained memory.
 you also need also to reserve at least 8GB.
 
-On MacOS, the default 2GB and they are definitely **not enough** to run
+> ❗ **IMPORTANT**
+>
+> On MacOS, the default 2GB and they are definitely **not enough** to run
 OpenServerless on your local machine.
 
-![](../../images/install_docker_desktop.png)
+![](/docs/installation/images/install_docker_desktop.png)
 
 Instructions to increase the memory reserved to Docker Desktopo on
 MacOS:

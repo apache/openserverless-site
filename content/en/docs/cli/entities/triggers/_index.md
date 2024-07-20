@@ -1,6 +1,7 @@
 ---
 title: Triggers
 description: Event source that triggers an action execution
+weight: 50
 ---
 ## Triggers
 
@@ -25,14 +26,20 @@ We create a trigger named "PageVisitTrigger" that listens for events
 related to user visits on our website. To create it, you can use the
 following command:
 
-    ops trigger create PageVisitTrigger
+```bash
+ops trigger create PageVisitTrigger
+```
 
 Once the trigger is created, you can update it to add parameters, such
 as the page parameter:
 
-    ops trigger update PageVisitTrigger --param page homepage
+```bash
+ops trigger update PageVisitTrigger --param page homepage
+```
 
-Of course, there are not only `create` and `update`, but also `delete`,
+> 💡 **NOTE**
+>
+> Of course, there are not only `create` and `update`, but also `delete`,
 and they work as expected, updating and deleting triggers. In the next
 paragraph, we will also see the `fire` command, which requires you to
 first create rules to do something useful.
@@ -47,7 +54,9 @@ when users visit certain pages.
 To associate the trigger with an action, you can use the following
 command:
 
-    ops rule create TriggerRule PageVisitTrigger SendSlackNotification
+```bash
+ops rule create TriggerRule PageVisitTrigger SendSlackNotification
+```
 
 We’ll have a better understanding of this aspect in
 [Rules](/docs/cli/entities/rules/index#rules)

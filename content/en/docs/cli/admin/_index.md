@@ -1,5 +1,5 @@
 ---
-title: Admin
+title: Administration
 description: System administration
 weight: 20
 ---
@@ -13,7 +13,7 @@ system.
 You have access to the `ops admin` subcommand with the following
 synopsis:
 
-    Subcommand: ops admin
+Subcommand: ops admin
 
     Usage:
       admin adduser <username> <email> <password> [--all] [--redis] [--mongodb] [--minio] [--postgres] [--storagequota=<quota>|auto]

@@ -26,8 +26,6 @@ Start ensuring the prerequsites are satisfied:
 
 - Check that ops is correctly installed: open the terminal and write:
 
-<!-- -->
-
     ops -info
 
 - Configure the services you want to enable. By default,
@@ -58,6 +56,8 @@ Your options are:
 - in [cloud](#cloud-cluster), where you can provision a Kubernetes
     cluster
 
+## Local Installation
+
 If you have a **decent** workstation (with at least 16GB of memory)
 running a **recent** **64-bit** operating system, you can install
 [Docker Desktop](https://www.docker.com/products/docker-desktop/) and
@@ -84,6 +84,8 @@ doing and can tolerate inefficiency, you can install with less using:
     export PREFL_NO_MEM_CHECK=1
     export PLEFL_NO_CPU_CHECK=1
 
+## Internet Server Configuration
+
 If you have access to a server on the Internet, you will know its **IP
 address**.
 
@@ -102,11 +104,15 @@ If you have this name, configure it and enable DNS with:
 
     ops config apihost <dns-name> --tls=<email-address>
 
-Replace the `<dns-name>` with the actual DNS name, without using
+> ❗ **IMPORTANT**
+>
+> Replace the `<dns-name>` with the actual DNS name, without using
 prefixes like `http://` or suffixes like `:443`. Also, replace
 `<email-address>` with your actual email address.
 
 then proceed with the server installation.
+
+## Server Installation
 
 Once you got access to a Linux server with:
 
@@ -143,7 +149,9 @@ with this command:
 
     ops setup server <server> <user>
 
-Replace in the commands `<server>` with the address of your server, and
+> ❗ **IMPORTANT**
+>
+> Replace in the commands `<server>` with the address of your server, and
 `<user>` with the actual user to use in your server. The `<server>` can
 be the same as `<dns-name>` you have configured in the previous
 paragraph, if you did so, or simply the IP address of a server on your
@@ -152,6 +160,8 @@ intranet
 Now wait until the installation completes. Once it is installed, you can
 proceed to read the [tutorial](#tutorial:index.adoc) to learn how to
 code with it.
+
+## Cloud Cluster Provisioning
 
 If you have access to a cloud provider, you can set up a Kubernetes
 cluster in it. The Kubernetes cluster needs to satisfy certain
@@ -171,12 +181,16 @@ At the end of the installation you will have available and accessible a
 Kubernetes Cluster able to install OpenServerless, so proceed with a
 [cluster installation](#cluster).
 
+### Amazon AWS
+
 Configure and install an Amazon EKS cluster on Amazon AWS with:
 
     ops config eks
     ops cloud eks create
 
 then [install the cluster](#cluster).
+
+### Azure AKS
 
 Configure and install an Azure AKS cluster on Microsoft Azure with:
 
@@ -185,12 +199,16 @@ Configure and install an Azure AKS cluster on Microsoft Azure with:
 
 then [install the cluster](#cluster).
 
+### Google Cloud GKE
+
 Configure and install a Google Cloud GKE with:
 
     ops config gke
     ops cloud gke create
 
 then [install the cluster](#cluster).
+
+## Cluster Install
 
 In short, if you have access to kubernetes cluster, you can install
 OpenServerless with:
@@ -200,7 +218,7 @@ OpenServerless with:
 For a slightly longer discussion, checking prerequisites before
 installing, read on.
 
-## Prerequisites to install
+### Prerequisites to install
 
 If you have access to a Kubernetes cluster with:
 
@@ -224,7 +242,7 @@ up with a configuration file which is usually stored in a file named
 `.kube/config` in your home directory. This file will give access to the
 Kubernetes cluster to install OpenServerless.
 
-## Performing the installation
+### Performing the installation
 
 To install, first, verify you have actually access to the Kubernetes
 cluster, by running this command:

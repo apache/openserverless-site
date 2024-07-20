@@ -100,7 +100,7 @@ You can create a new server with:
     ops cloud gcloud vm-create <server-name>
 
 > ❗ **IMPORTANT**
-> 
+>
 > Replace `<server-name>` with a name you choose, for example
     `ops-server`
 

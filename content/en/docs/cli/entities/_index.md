@@ -53,7 +53,9 @@ platform following the `Download` button on <https://www.nuvolaris.io/>
 The `ops` command is composed of many commands, each one with many
 subcommands. The general format is:
 
-    ops <entity> <command> <parameters> <flags>
+```bash
+ops <entity> <command> <parameters> <flags>
+```
 
 Note that `<parameters>` and `<flags>` are different for each
 `<command>`, and for each `<entity>` there are many subcommands.
@@ -67,22 +69,24 @@ For example, let’s see `ops` output (showing the command) and the more
 frequently used command, `action`, also showing the more common
 subcommands, shared with many others:
 
-    $ ops
-    Welcome to Ops, the all-mighty OpenServerless Build Tool
+```bash
+$ ops
+Welcome to Ops, the all-mighty OpenServerless Build Tool
 
-    The top level commands all have subcommands.
-    Just type ops <command> to see its subcommands.
+The top level commands all have subcommands.
+Just type ops <command> to see its subcommands.
 
-    Commands:
-      action      work with actions
-      activation  work with activations
-      invoke      shorthand for action invoke (-r is the default)
-      logs        shorthand for activation logs
-      package     work with packages
-      result      shorthand for activation result
-      rule        work with rules
-      trigger     work with triggers
-      url         get the url of a web action$ wsk action
+Commands:
+    action      work with actions
+    activation  work with activations
+    invoke      shorthand for action invoke (-r is the default)
+    logs        shorthand for activation logs
+    package     work with packages
+    result      shorthand for activation result
+    rule        work with rules
+    trigger     work with triggers
+    url         get the url of a web action$ wsk action
+```
 
 There are many more sub commands used for aministrative purposes. In
 this documentation we only focus on the subcommands used to manage the
@@ -123,7 +127,9 @@ entities are named
 
 - `/mirella/demo-package/demo-feed`
 
-In the commands you do not require to specify a namespace. If your user
+> 💡 **NOTE**
+>
+> In the commands you do not require to specify a namespace. If your user
 is `mirella`, your namespace is `/mirella`, and You type `demo-package`
 to mean `/mirella/demo-package`, and `demo-package/demo-action` to mean
 `/mirella/demo-package/demo-action`.

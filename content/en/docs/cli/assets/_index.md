@@ -15,18 +15,18 @@ You can upload a folder in this web area with
 
 `ops web upload <folder>`
 
-Synopsis:
+    Synopsis:
 
-    Subcommand: ops web
+        Subcommand: ops web
 
-    Commands to upload and manage static content.
+        Commands to upload and manage static content.
 
-    Usage:
-      web upload <folder> [--quiet] [--clean]
+        Usage:
+          web upload <folder> [--quiet] [--clean]
 
-    Commands:
-      upload <folder>  Uploads a folder to the web bucket in OpenServerless.
+        Commands:
+          upload <folder>  Uploads a folder to the web bucket in OpenServerless.
 
-    Options:
-      --quiet   Do not print anything to stdout.
-      --clean   Remove all files from the web bucket instead.
+        Options:
+          --quiet   Do not print anything to stdout.
+          --clean   Remove all files from the web bucket instead.

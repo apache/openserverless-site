@@ -1,6 +1,7 @@
 ---
 title: Sequences
 description: Combine actions in sequences
+weight: 40
 ---
 ## Sequences
 
@@ -27,59 +28,63 @@ This is where sequences come into play.
 
 Create a file called **preparePizzaDough.js**
 
-    function main(args) {
+```javascript
+function main(args) {
 
-      let persons = args.howManyPerson;
+  let persons = args.howManyPerson;
 
-      let flour = persons * 180; // grams
-      let water = persons * 120; // ml
+  let flour = persons * 180; // grams
+  let water = persons * 120; // ml
 
-      let yeast = (flour + water) * 0.02;
+  let yeast = (flour + water) * 0.02;
 
-      let pizzaDough =
-        "Mix " +
-        flour +
-        " grams of flour with " +
-        water +
-        " ml of water and add " +
-        yeast +
-        " grams of brewer's yeast";
+  let pizzaDough =
+    "Mix " +
+    flour +
+    " grams of flour with " +
+    water +
+    " ml of water and add " +
+    yeast +
+    " grams of brewer's yeast";
 
-      return {
-        pizzaDough: pizzaDough,
-        whichPizza: args.whichPizza,
-      };
-    }
+  return {
+    pizzaDough: pizzaDough,
+    whichPizza: args.whichPizza,
+  };
+}
+```
 
 Now, in a file **cookPizza.js**
 
-    function main(args) {
+```javascript
+function main(args) {
 
-      let pizzaDough = args.pizzaDough;
-      let whichPizza = args.whichPizza;
+  let pizzaDough = args.pizzaDough;
+  let whichPizza = args.whichPizza;
 
-      let baseIngredients = "tomato and mozzarella";
-      if (whichPizza === "Margherita") {
-        return {
-          result:
-            "Cook " +
-            pizzaDough +
-            " topped with " +
-            baseIngredients +
-            " for 3 minutes at 380°C",
-        };
-      } else if (whichPizza === "Sausage") {
-        baseIngredients += "plus sausage";
-        return {
-          result:
-            "Cook " +
-            pizzaDough +
-            " topped with " +
-            baseIngredients +
-            ". Cook for 3 minutes at 380°C",
-        };
-      }
-    }
+  let baseIngredients = "tomato and mozzarella";
+  if (whichPizza === "Margherita") {
+    return {
+      result:
+        "Cook " +
+        pizzaDough +
+        " topped with " +
+        baseIngredients +
+        " for 3 minutes at 380°C",
+    };
+  } else if (whichPizza === "Sausage") {
+    baseIngredients += "plus sausage";
+    return {
+      result:
+        "Cook " +
+        pizzaDough +
+        " topped with " +
+        baseIngredients +
+        ". Cook for 3 minutes at 380°C",
+    };
+  }
+}
+```
 
 We have now split our code to prepare pizza into two different actions.
 When we need to edit only one action without editing everything, we can
@@ -92,21 +97,27 @@ Let’s try it.
 
 First, create our two actions
 
-    ops action create preparePizzaDough preparePizzaDough.js
+```bash
+ops action create preparePizzaDough preparePizzaDough.js
 
-    ops action create cookPizza cookPizza.js
+ops action create cookPizza cookPizza.js
+```
 
 Now, we can create the sequence:
 
-    ops action create pizzaSequence --sequence preparePizzaDough,cookPizza
+```bash
+ops action create pizzaSequence --sequence preparePizzaDough,cookPizza
+```
 
 Finally, let’s invoke it
 
-    ops action invoke --result pizzaSequence -p howManyPerson 4 -p whichPizza "Margherita"
+```bash
+ops action invoke --result pizzaSequence -p howManyPerson 4 -p whichPizza "Margherita"
 
-    {
-        "result": "Cook Mix 720 grams of flour with 480 ml of water and add 24 grams of brewer's yeast topped with tomato and mozzarella for 3 minutes at 380°C"
-    }
+{
+    "result": "Cook Mix 720 grams of flour with 480 ml of water and add 24 grams of brewer's yeast topped with tomato and mozzarella for 3 minutes at 380°C"
+}
+```
 
 ## Conclusion
 

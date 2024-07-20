@@ -26,8 +26,10 @@ available on `https://nuvolaris.dev`.
 
 In order to login type the following command and enter you password.
 
-    ops -login https://nuvolaris.dev mirella
-    Enter Password:
+```bash
+ops -login https://nuvolaris.dev mirella
+Enter Password:
+```
 
 If the password is correct you are logged in the system and you can use
 the commands described below.

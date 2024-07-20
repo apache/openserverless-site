@@ -35,10 +35,10 @@ Furthermore, since MicroK8S is installed using `snap`, you also need to
 
 > 💡 **NOTE**
 >
->   While `snap` is available for many linux distributions, it is typically
-    pre-installed and well supported in in Ubuntu and its derivatives. So we
-    recommend MicroK8S only if you are actually using an Ubuntu-like Linux
-    distribution.
+> While `snap` is available for many linux distributions, it is typically
+pre-installed and well supported in in Ubuntu and its derivatives. So we
+recommend MicroK8S only if you are actually using an Ubuntu-like Linux
+distribution.
 
 If you system is suitable to run MicroK8S you can use the following
 subcommand to install in the server:
@@ -53,9 +53,9 @@ server.
 
 > ❗ **IMPORTANT**
 >
->   If you installed a Kubernetes cluster in the server in this way, you
-    should proceed installing OpenServerless as in 
-    [a Kubernetes cluster](/docs/installation/install/cluster), **not** as a server.
+> If you installed a Kubernetes cluster in the server in this way, you
+should proceed installing OpenServerless as in 
+[a Kubernetes cluster](/docs/installation/install/cluster), **not** as a server.
 
 The installation retrieves also a kubernets configuration file so you
 can proceed to installing it without any other step involved.

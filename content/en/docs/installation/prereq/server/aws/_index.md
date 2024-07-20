@@ -122,7 +122,7 @@ You can create a new server with:
     ops cloud aws vm-create <server-name>
 
 > ❗ **IMPORTANT**
-> 
+>
 > Replace `<server-name>` with a name you choose, for example
     `ops-server`
 
