@@ -53,9 +53,15 @@ github:
 #  target: main
 #  theme: theme/apache
 #  whoami: main
+
+website:
+  # Directory contenente i file da pubblicare
+  source: pub
+
 staging:
   profile: ~
   whoami: asf-staging
-#publish:
-#  whoami: asf-site
+
+publish:
+  whoami: asf-site
 
