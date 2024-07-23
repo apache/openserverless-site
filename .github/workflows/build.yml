@@ -21,9 +21,9 @@ jobs:
     - uses: DeterminateSystems/magic-nix-cache-action@v2
     - run: nix-build
     - run: nix-shell --run "echo OK"
-    #- name: Install Hugo
-    #  run: |
-    #    nix-env -iA nixpkgs.hugo
+    - name: Install Hugo
+      run: |
+        nix-env -iA nixpkgs.hugo_0_80_0
 
     - name: Build Hugo site
       run: |
