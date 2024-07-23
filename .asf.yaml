@@ -43,14 +43,9 @@ github:
 
   collaborators:  []# Note: the number of collaborators is limited to 10
 
-website:
-  # Directory contenente i file da pubblicare
-  source: pub
-
 staging:
   profile: ~
   whoami: asf-staging
 
 publish:
   whoami: asf-site
-
