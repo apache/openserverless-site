@@ -42,17 +42,6 @@ github:
       required_conversation_resolution: true
 
   collaborators:  []# Note: the number of collaborators is limited to 10
-#notifications:
-#  commits:      commits@nifi.apache.org
-#  issues:       issues@nifi.apache.org
-#  pullrequests: issues@nifi.apache.org
-#  jira_options: link label worklog
-#pelican:
-#  notify: ing.mattiamolinaro@gmail.com
-#  autobuild: preview/*
-#  target: main
-#  theme: theme/apache
-#  whoami: main
 
 website:
   # Directory contenente i file da pubblicare
