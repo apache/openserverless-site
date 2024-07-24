@@ -1,5 +1,5 @@
 ---
-title: OpensShift
+title: OpenShift 
 description: Prerequisites for RedHat™ OpenShift
 ---
 [RedHat™ OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)
