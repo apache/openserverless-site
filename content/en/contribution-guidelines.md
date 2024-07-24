@@ -3,7 +3,7 @@ title: Contribution Guidelines
 weight: 10
 description: How to contribute to the Apache OpenServerless Project
 ---
-
+## Contribution Guidelines
 
 1. Subscribe our mailing list sending an email to `dev-subscribe@openserverless.apache.org`
 2. Discuss your contribution and get a ticket assigned in our [Issue Tracker](https://github.com/apache/openserverless/issues)
