@@ -5,8 +5,11 @@ on:
     branches:
       - main
 
-#permissions:
-#  contents: write
+env:
+  PUBLISH_DIRECTORY: public
+
+permissions:
+  contents: write
 
 jobs:
   tests:
@@ -14,22 +17,20 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Install Nix
-      uses: cachix/install-nix-action@v25
+    - name: Checkout Production
+      if: github.ref_name == 'main'
+      uses: actions/checkout@v3
       with:
-        nix_path: nixpkgs=channel:nixos-unstable
-    - run: nix-build
-    - run: nix-shell --run "echo OK"
-    - run: nix-channel --add https://nixos.org/channels/nixos-23.11 nixpkgs
-    - run: nix-channel --update
+        ref: asf-site
+        path: ${{ env.PUBLISH_DIRECTORY }}
     - name: Install Hugo
       run: |
-        nix-env -iA nixpkgs.hugo
-
-    - name: Install Asciidoctor
+        sudo apt-get update
+        sudo apt-get install -y hugo asciidoctor
+    - name: Prepare
+      working-directory: ${{ env.PUBLISH_DIRECTORY }}
       run: |
-        nix-env -iA nixpkgs.asciidoctor
-
+        rm -rf stylesheets
     - name: Build Hugo site
       run: |
         hugo
