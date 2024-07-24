@@ -19,7 +19,7 @@ jobs:
       uses: actions/checkout@v4
     - name: Checkout Production
       if: github.ref_name == 'main'
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         ref: asf-site
         path: ${{ env.PUBLISH_DIRECTORY }}
