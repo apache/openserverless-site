@@ -33,6 +33,7 @@ jobs:
         rm -rf stylesheets
     - name: Build Hugo site
       run: |
+        hugo mod clean --all
         hugo
   
     #- name: Deploy to ASF
