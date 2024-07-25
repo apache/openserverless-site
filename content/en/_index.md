@@ -2,7 +2,5 @@
 title: Apache OpenServerless
 ---
 
-{{< blocks/cover background="devenv.png" >}}
-# COMING SOON
-{{< /blocks/cover >}}
+{{< blocks/cover title="Coming Soon" image_anchor="top" height="full" background="devenv.png" >}}
 
