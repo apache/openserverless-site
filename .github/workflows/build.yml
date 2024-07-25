@@ -36,12 +36,6 @@ jobs:
         npm install
         npm run clean
         npm run build:production
-    - name: checks
-      run: |
-        pwd
-        ls
-        ls public
-        echo $GITHUB_WORKSPACE
     - name: Deploy to ASF
       working-directory: ${{ env.PUBLISH_DIRECTORY }}
       run: |
