@@ -45,6 +45,8 @@ jobs:
     - name: Deploy to ASF
       working-directory: ${{ env.PUBLISH_DIRECTORY }}
       run: |
+        git config --global user.name MatMol96
+        git config --global user.email ing.mattiamolinaro@gmail.com
         git add .
         git commit -m "Published changes from $GITHUB_SHA"
         git push
