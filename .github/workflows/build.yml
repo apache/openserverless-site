@@ -31,6 +31,8 @@ jobs:
       working-directory: ${{ env.PUBLISH_DIRECTORY }}
       run: |
         rm -rf stylesheets
+        which hugo
+        hugo version
     - name: Build Hugo site
       run: |
         hugo mod clean --all
