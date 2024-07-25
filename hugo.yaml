@@ -1,7 +1,7 @@
 baseURL: "/"
 title: "Apache OpenServerless"
 
-cSpell: ignore  github hugo readingtime subdir lastmod pygments linenos OpenServerless
+cSpell: ignore github hugo readingtime subdir lastmod pygments linenos OpenServerless
 
 # Language settings
 contentDir: content/en
@@ -173,7 +173,7 @@ params:
         icon: fab fa-x-twitter
         desc: Follow us on Twitter to get the latest news!
       - name: Reddit
-        url: https://reddit/r/openserverless
+        url: https://reddit.com/r/openserverless
         icon: fab fa-reddit
         desc: Practical questions and curated answers
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
@@ -203,4 +203,4 @@ module:
 
 security:
   exec:
-    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', 'asciidoctor$']
+    allow: ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', 'git']
