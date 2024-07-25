@@ -26,19 +26,21 @@ jobs:
     - name: Install Hugo
       run: |
         sudo apt-get update
-        sudo apt-get install -y hugo asciidoctor
+        sudo apt-get install -y asciidoctor
+        wget https://github.com/gohugoio/hugo/releases/download/v0.128.0/hugo_0.128.0_linux-amd64.deb
+        sudo dpkg -i hugo_0.128.0_linux-amd64.deb
     - name: Prepare
       working-directory: ${{ env.PUBLISH_DIRECTORY }}
       run: |
         rm -rf stylesheets
         which hugo
-        ./node_modules/.bin/hugo version
+        hugo version
     - name: Build Hugo site
       run: |
-        ./node_modules/.bin/hugo mod clean --all
+        hugo mod clean --all
         git submodule update --init --recursive
         npm install
-        ./node_modules/.bin/hugo
+        hugo
   
     #- name: Deploy to ASF
     #  run: |
