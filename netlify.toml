@@ -9,8 +9,4 @@ publish = "public"
 GO_VERSION = "1.22.2"
 
 [context.production]
-command = """
-export PATH=~/.bin/:$PATH
-mkdir -p ~/.bin && touch ~/.bin/asciidoctor && chmod +x ~/.bin/asciidoctor
-npm run build:production
-"""
+command = "npm run build:production"
