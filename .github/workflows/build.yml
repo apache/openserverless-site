@@ -32,13 +32,13 @@ jobs:
       run: |
         rm -rf stylesheets
         which hugo
-        hugo version
+        ./node_modules/.bin/hugo version
     - name: Build Hugo site
       run: |
-        hugo mod clean --all
+        ./node_modules/.bin/hugo mod clean --all
         git submodule update --init --recursive
         npm install
-        hugo
+        ./node_modules/.bin/hugo
   
     #- name: Deploy to ASF
     #  run: |
