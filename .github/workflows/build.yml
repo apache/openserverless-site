@@ -36,3 +36,13 @@ jobs:
         npm install
         npm run clean
         npm run build:production
+    - name: checks
+      run: |
+        pwd
+        ls -al
+        ls -al public
+        echo $GITHUB_WORKSPACE
+
+    - name: Deploy to ASF
+      run: |
+        cp -r public/* $GITHUB_WORKSPACE/public/
