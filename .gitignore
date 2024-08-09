@@ -6,3 +6,5 @@ package-lock.json
 .env
 .direnv/
 .idea
+openserverless-cli
+openserverless-task

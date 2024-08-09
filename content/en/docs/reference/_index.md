@@ -20,9 +20,13 @@ languages](#index-runtimes.adoc). The list is expanding over the time.
 
 See below for documentation related to:
 
-- [Nuvolaris and OpenWhisk Entities](#index-entities.adoc)
+- [OpenWhisk Entities](#index-entities.adoc)
 
-- [Nuvolaris Runtimes](#index-runtimes.adoc)
+- [OpenServerless Runtimes](#index-runtimes.adoc)
+
+- [OpenServerless `ops` Tools](tools)
+
+- [OpenServerless `ops` Tasks](tasks)
 
 - [Advanced Reference Documentation](#index-references)
 
