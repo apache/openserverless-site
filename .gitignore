@@ -8,5 +8,4 @@ package-lock.json
 .idea
 openserverless-cli
 openserverless-task
-content/en/docs/reference/tasks/
-content/en/docs/reference/tools/
+
