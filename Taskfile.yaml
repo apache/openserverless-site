@@ -2,44 +2,50 @@ version: '3'
 
 tasks:
 
-    default: task -l
+  default: task -l
 
-    import-tools:
-      desc: import tool documentation
-      cmds:
-        -  git clone https://github.com/apache/openserverless-cli 
-        -  |
-            find openserverless-cli/tools -name "*.md" | while read file
-            do 
-               name=$(basename $file .md)
-               echo $name $file
-               mkdir -p content/en/docs/reference/tools/$name
-               echo  -e "---\ntitle: -$name\n---\n" >content/en/docs/reference/tools/$name/_index.md
-               cat $file >>content/en/docs/reference/tools/$name/_index.md
-            done
-        - cp tools.md content/en/docs/reference/tools/_index.md
+  import-tools:
+    desc: import tool documentation
+    silent: true
+    cmds:
+      - test -d "openserverless-cli" && git pull || git clone https://github.com/apache/openserverless-cli
+      - |
+        find openserverless-cli/tools -name "*.md" | while read file
+        do 
+          name=$(basename $file .md)
+          echo "Working on tool ${name} in file ${file}"
+          mkdir -p content/en/docs/reference/tools/$name
+          echo  -e "---\ntitle: $name\n---\n" > content/en/docs/reference/tools/$name/_index.md
+          sed '/^# /d' "$file" >> content/en/docs/reference/tools/$name/_index.md
+          # cat $file >> content/en/docs/reference/tools/$name/_index.md
+        done
+      - cp tools.md content/en/docs/reference/tools/_index.md
+      #- rm -rf openserverless-cli
 
-    import-task:
-      desc: import task documentation
-      cmds:
-        -  git clone https://github.com/apache/openserverless-task
-        -  |
-            find openserverless-task -name "docopts.md" | while read file
-            do 
-               tgt=$(echo $file | sed -e 's!openserverless-task/!!' -e 's/docopts/_index/')
-               echo $tgt
-               mkdir -p "content/en/docs/reference/tasks/$(dirname $tgt)"
-               name="$(basename $(dirname "Tasks"/$tgt))"
-               echo  -e "---\ntitle: ${name}\n---\n" >content/en/docs/reference/tasks/$tgt
-               cat $file >>content/en/docs/reference/tasks/$tgt
-            done
+  import-task:
+    desc: import task documentation
+    silent: true
+    cmds:
+      - test -d "openserverless-task" && git pull || git clone https://github.com/apache/openserverless-task
+      - |
+        find openserverless-task -name "docopts.md" | while read file
+        do 
+          tgt=$(echo $file | sed -e 's!openserverless-task/!!' -e 's/docopts/_index/')
+          echo "> Converting ${file} to ${tgt}"
+          mkdir -p "content/en/docs/reference/tasks/$(dirname $tgt)"
+          name="$(basename $(dirname "Tasks"/$tgt))"
+          echo  -e "---\ntitle: ${name}\n---\n" >content/en/docs/reference/tasks/$tgt
+          sed '/^# /d' "$file" >>content/en/docs/reference/tasks/$tgt
+          #cat $file >>content/en/docs/reference/tasks/$tgt
+        done
+      #- rm -rf openserverless-task
 
-    preview:
-        desc: preview the websites
-        cmds:
-        - hugo server
+  preview:
+    desc: preview the websites
+    cmds:
+      - hugo server
 
-    debug:
-        desc: debug the websites
-        cmds:
-        - hugo server --ignoreCache  --debug --disableFastRender
+  debug:
+    desc: debug the websites
+    cmds:
+      - hugo server --ignoreCache  --debug --disableFastRender
