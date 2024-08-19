@@ -27,10 +27,12 @@ Managed by a Kubernetes Operator
 <br/>
 Here are some of the operator's strong points:
 <br/>
-
+<br/>
 The first operator capable of configuring a complete OpenWhisk distribution on various versions of Kubernetes, both on cloud providers and on bare metal.
 <br/>
+<br/>
 The operator takes care of resources setup and mainteinance.
+<br/>
 <br/>
 Allows you to configure a set of resources to be used for the development / deployment of cloud native applications based on the OpenWhisk serverless engine: redis, postgresql, minio and much more!
 {.text-left}

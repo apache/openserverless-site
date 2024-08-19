@@ -12,11 +12,18 @@
 }
 
 #ops_asc_cast {
-    width: 500px;
+    width: 100%;
     margin:0 auto;
 }
 
-ops-asciinema-ext {
-    width: 100%;
+.ops-asciinema-ext {
+    width: 90%; /* Default to 90% of the screen width */
+    max-width: 600px; /* Ensure it doesn't exceed 450px */
+    margin: 0 auto; /* Center the div horizontally */
+}
 
+@media only screen and (min-width: 600px) {
+    .ops-asciinema-ext {
+        width: 600px; /* For screens wider than 450px, set the width to 450px */
+    }
 }
