@@ -24,6 +24,9 @@ menu: {main: {weight: 10}}
 
 Managed by a Kubernetes Operator
 {.h1 .text-center}
+
+{.text-left}
+
 <br/>
 Here are some of the operator's strong points:
 <br/>
@@ -35,7 +38,7 @@ The operator takes care of resources setup and mainteinance.
 <br/>
 <br/>
 Allows you to configure a set of resources to be used for the development / deployment of cloud native applications based on the OpenWhisk serverless engine: redis, postgresql, minio and much more!
-{.text-left}
+
 
 {{% /blocks/lead %}}
 
@@ -43,12 +46,22 @@ Allows you to configure a set of resources to be used for the development / depl
 
 A super-powered CLI extensible with plugins
 {.h1 .text-center}
+<br/>
 
+The <strong>ops</strong> cli is more than a standard cli: infact it is...
+<br/>
+<br/>
+<strong>rich</strong> - yes, it includes installation, system administration, debugging, developing tools and much much more!
+<br/>
+<strong>extensible</strong> - easily extendable by writing simple plugins in shell or javascript.
+<br/>
+<strong>whisk-ready</strong> - it includes all openwhisk tools.
+<br/>
 <div class="ops-asciinema-ext">
 {{% asciinema src="ops" cols="80" rows="25" %}}
 </div>
 
-{.text-center}
+
 
 {{% /blocks/lead %}}
 
