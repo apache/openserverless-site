@@ -2,7 +2,6 @@
 title: random
 ---
 
-
 Generate random numbers, strings and uuids
 
 ```text

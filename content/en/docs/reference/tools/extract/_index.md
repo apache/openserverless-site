@@ -2,7 +2,6 @@
 title: extract
 ---
 
-
 Extract one single file from a .zip .tar, .tgz, .tar.gz, tar.bz2, tar.gz.
 
 ```text

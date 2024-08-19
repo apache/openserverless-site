@@ -2,7 +2,6 @@
 title: remove
 ---
 
-
 Remove a file
 
 ```text

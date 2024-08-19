@@ -2,7 +2,6 @@
 title: filetype
 ---
 
-
 Show extension and MIME type of a file.
 Supported types are documented [here](https://github.com/h2non/filetype?tab=readme-ov-file#supported-types)
 

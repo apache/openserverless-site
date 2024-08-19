@@ -2,7 +2,6 @@
 title: retry
 ---
 
-
 ```text
 Usage:
     ops -retry [options] task [task options]

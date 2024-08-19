@@ -2,7 +2,6 @@
 title: base64
 ---
 
-
 `base64` utility acts as a base64 decoder when passed the `--decode` (or -d) flag and as a base64 encoder
 otherwise. As a decoder it only accepts raw base64 input and as an encoder it does not produce the framing
 lines.

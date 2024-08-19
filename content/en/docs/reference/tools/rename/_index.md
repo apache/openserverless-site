@@ -2,7 +2,6 @@
 title: rename
 ---
 
-
 Rename a file
 
 ```text

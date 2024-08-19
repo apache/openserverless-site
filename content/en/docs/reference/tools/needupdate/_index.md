@@ -2,7 +2,6 @@
 title: needupdate
 ---
 
-
 Check if a semver version A > semver version B.
 Exits with 0 if greater, 1 otherwise.
 

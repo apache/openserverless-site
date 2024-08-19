@@ -2,7 +2,6 @@
 title: echoifempty
 ---
 
-
 `echoifempty` is a utility that echoes the value of `<a>` if `<str>` is empty, echoes the value of `<b>` otherwise.
 
 ```text

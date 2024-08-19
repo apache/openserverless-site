@@ -2,7 +2,6 @@
 title: echoif
 ---
 
-
 `echoif` is a utility that echoes the value of `<a>` if the exit code of the previous command is 0,
 echoes the value of `<b>` otherwise
 

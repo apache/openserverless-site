@@ -2,7 +2,6 @@
 title: validate
 ---
 
-
 Check if a value is valid according to the given constraints.
 If -e is specified, the value is retrieved from the environment variable with the given name.
 
