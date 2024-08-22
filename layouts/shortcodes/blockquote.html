@@ -4,16 +4,25 @@
 {{- $blockType := .Get 0 | default "info" -}}
 
 {{ $icon := "💡" }}
-{{ $title := "NOTE" }}
+{{ $title := .Get 1 | default "NOTE" }}
 
 {{ if (eq $blockType "warning") }}
     {{ $icon = "⚠" }}
-    {{ $title = "WARNING" }}
+    {{ $title = .Get 1 | default "WARNING" }}
+{{ end }}
+
+{{ if (eq $blockType "important") }}
+    {{ $icon = "❗" }}
+    {{ $title = .Get 1 | default "IMPORTANT" }}
 {{ end }}
 
 <style>
     blockquote.warning {
         border-color: #b91900 !important;
+    }
+
+    blockquote.important {
+        border-color: #e7c416 !important;
     }
 
 </style>

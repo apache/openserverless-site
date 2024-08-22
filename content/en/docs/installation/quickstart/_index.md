@@ -104,11 +104,10 @@ If you have this name, configure it and enable DNS with:
 
     ops config apihost <dns-name> --tls=<email-address>
 
-> ❗ **IMPORTANT**
->
-> Replace the `<dns-name>` with the actual DNS name, without using
-prefixes like `http://` or suffixes like `:443`. Also, replace
-`<email-address>` with your actual email address.
+{{< blockquote important >}}
+Replace the `<dns-name>` with the actual DNS name, without using prefixes like `http://` or suffixes like `:443`. Also, 
+replace <email-address>` with your actual email address.
+{{< /blockquote >}}
 
 then proceed with the server installation.
 
@@ -149,13 +148,13 @@ with this command:
 
     ops setup server <server> <user>
 
-> ❗ **IMPORTANT**
->
-> Replace in the commands `<server>` with the address of your server, and
+{{< blockquote important >}}
+ Replace in the commands `<server>` with the address of your server, and
 `<user>` with the actual user to use in your server. The `<server>` can
 be the same as `<dns-name>` you have configured in the previous
 paragraph, if you did so, or simply the IP address of a server on your
-intranet
+intranet.
+{{< /blockquote >}}
 
 Now wait until the installation completes. Once it is installed, you can
 proceed to read the [tutorial](#tutorial:index.adoc) to learn how to
