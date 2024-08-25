@@ -13,7 +13,7 @@ menu: {main: {weight: 10}}
 {{% blocks/lead %}}
 
 
-{{% imgproccenter openserverless-diagram Fit "800x600"  %}}
+{{% imgproccenter openserverless-diagram2 Fit "1280x800"  %}}
 <br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
 {{% /imgproccenter %}}
 
@@ -34,7 +34,7 @@ Here are some of the operator's strong points:
 The first operator capable of configuring a complete OpenWhisk distribution on various versions of Kubernetes, both on cloud providers and on bare metal.
 <br/>
 <br/>
-The operator takes care of resources setup and mainteinance.
+The operator takes care of resources setup and maintenance.
 <br/>
 <br/>
 Allows you to configure a set of resources to be used for the development / deployment of cloud native applications based on the OpenWhisk serverless engine: redis, postgresql, minio and much more!
