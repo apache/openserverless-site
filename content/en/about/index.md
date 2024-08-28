@@ -12,8 +12,7 @@ menu: {main: {weight: 10}}
 
 {{% blocks/lead %}}
 
-
-{{% imgproccenter openserverless-diagram Fit "800x600"  %}}
+{{% imgproccenter openserverless-diagram Fit "3456x1728"  %}}
 <br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
 {{% /imgproccenter %}}
 
