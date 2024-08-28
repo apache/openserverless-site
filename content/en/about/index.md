@@ -67,7 +67,7 @@ The <strong>ops</strong> cli is more than a standard cli: infact it is...
 
 {{% blocks/lead %}}
 
-{{% imgproccenter openwhisk %}}
+{{% imgproccenter openwhisk  %}}
 {{% /imgproccenter %}}
 <br>
 Built around <a href="https://openwhisk.apache.org">Apache OpenWhisk</a>, a production-ready and widely deployed serverless engine providing all the patterns and best practices for scalable cloud-native applications.
@@ -86,7 +86,7 @@ You can install OpenServerless everywhere: from your local Windows / Mac / Linux
 to powerful multi node Kubernetes cluster on premise or on your favorite Cloud Provider (AKS, AWS , GKS are fully supported)
 {.text-center}
 
-{{% imgproccenter gke_aks_aws_kube Fit "508x512" %}}
+{{% imgproccenter gke_aks_aws_kube %}}
 {{% /imgproccenter %}}
 
 {{% /blocks/section %}}
