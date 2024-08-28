@@ -50,7 +50,7 @@ For announcement of latest features etc.
 
 
 {{% blocks/section  %}}
-{{% imgproccenter openserverless-diagram Fit "800x600"  %}}
+{{% imgproccenter openserverless-diagram Fit "3456x1728"  %}}
 Apache OpenServerless Architecture Overview
 {{% /imgproccenter %}}
 {{% /blocks/section %}}
