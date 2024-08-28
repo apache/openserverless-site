@@ -4,7 +4,7 @@ linkTitle: About
 menu: {main: {weight: 10}}
 ---
 
-{{% blocks/cover promo_image="openserverless-diagram.png" title="About Apache OpenServerless" image_anchor="smart" height="auto" %}}
+{{% blocks/cover promo_image="background.png"  title="Apache OpenServerless" %}}
 
 {.mt-5}
 
