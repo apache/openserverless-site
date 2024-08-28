@@ -8,13 +8,17 @@ menu: {main: {weight: 10}}
 
 {.mt-5}
 
+
 {{% /blocks/cover %}}
 
 {{% blocks/lead %}}
 
+<div class="rounded-image">
 {{% imgproccenter openserverless-diagram Fit "3456x1728"  %}}
-<br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
 {{% /imgproccenter %}}
+
+</div>
+<br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
 
 
 {{% /blocks/lead %}}
@@ -85,7 +89,9 @@ You can install OpenServerless everywhere: from your local Windows / Mac / Linux
 to powerful multi node Kubernetes cluster on premise or on your favorite Cloud Provider (AKS, AWS , GKS are fully supported)
 {.text-center}
 
-{{% imgproccenter gke_aks_aws_kube %}}
-{{% /imgproccenter %}}
+<div class="rounded-image">
+    {{% imgproccenter gke_aks_aws_kube %}}
+    {{% /imgproccenter %}}
+</div>
 
 {{% /blocks/section %}}
