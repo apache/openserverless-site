@@ -67,7 +67,7 @@ The <strong>ops</strong> cli is more than a standard cli: infact it is...
 
 {{% blocks/lead %}}
 
-{{% imgproccenter openwhisk Fit "508x512" %}}
+{{% imgproccenter openwhisk %}}
 {{% /imgproccenter %}}
 <br>
 Built around <a href="https://openwhisk.apache.org">Apache OpenWhisk</a>, a production-ready and widely deployed serverless engine providing all the patterns and best practices for scalable cloud-native applications.
