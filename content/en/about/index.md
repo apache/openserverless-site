@@ -4,18 +4,22 @@ linkTitle: About
 menu: {main: {weight: 10}}
 ---
 
-{{% blocks/cover promo_image="openserverless-diagram.png" title="About Apache OpenServerless" image_anchor="smart" height="auto" %}}
+{{% blocks/cover promo_image="background.png"  title="Apache OpenServerless" %}}
 
 {.mt-5}
+
+
 
 {{% /blocks/cover %}}
 
 {{% blocks/lead %}}
 
-
-{{% imgproccenter openserverless-diagram Fit "800x600"  %}}
-<br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
+<div class="rounded-image">
+{{% imgproccenter openserverless-diagram Fit "3456x1728"  %}}
 {{% /imgproccenter %}}
+
+</div>
+<br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
 
 
 {{% /blocks/lead %}}
@@ -67,7 +71,7 @@ The <strong>ops</strong> cli is more than a standard cli: infact it is...
 
 {{% blocks/lead %}}
 
-{{% imgproccenter openwhisk Fit "508x512" %}}
+{{% imgproccenter openwhisk  %}}
 {{% /imgproccenter %}}
 <br>
 Built around <a href="https://openwhisk.apache.org">Apache OpenWhisk</a>, a production-ready and widely deployed serverless engine providing all the patterns and best practices for scalable cloud-native applications.
@@ -86,7 +90,9 @@ You can install OpenServerless everywhere: from your local Windows / Mac / Linux
 to powerful multi node Kubernetes cluster on premise or on your favorite Cloud Provider (AKS, AWS , GKS are fully supported)
 {.text-center}
 
-{{% imgproccenter gke_aks_aws_kube Fit "508x512" %}}
-{{% /imgproccenter %}}
+<div class="rounded-image">
+    {{% imgproccenter gke_aks_aws_kube %}}
+    {{% /imgproccenter %}}
+</div>
 
 {{% /blocks/section %}}
