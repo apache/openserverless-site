@@ -1,7 +1,7 @@
 ---
 title: About Apache OpenServerless
 linkTitle: About
-menu: {main: {weight: 10}}
+menu: { main: { weight: 10 } }
 ---
 
 {{% blocks/cover promo_image="background.png"  title="Apache OpenServerless" %}}
@@ -15,50 +15,48 @@ menu: {main: {weight: 10}}
 <div class="rounded-image">
 {{% imgproccenter openserverless-diagram Fit "3456x1728"  %}}
 {{% /imgproccenter %}}
-
 </div>
-<br>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
+
+<br/>
+A complete Serverless Development Environment for Any Cloud and Any Kubernetes
 
 
 {{% /blocks/lead %}}
 
 {{% blocks/lead %}}
 
-Managed by a Kubernetes Operator
-{.h1 .text-center}
+# Managed by a Kubernetes Operator {.text-center}
 
-{.text-left}
-
-<br/>
 Here are some of the operator's strong points:
-<br/>
-<br/>
-The first operator capable of configuring a complete OpenWhisk distribution on various versions of Kubernetes, both on cloud providers and on bare metal.
-<br/>
-<br/>
+
+The first operator capable of configuring a complete OpenWhisk distribution on various versions of Kubernetes, 
+both on cloud providers and on bare metal.
+
 The operator takes care of resources setup and maintenance.
-<br/>
-<br/>
-Allows you to configure a set of resources to be used for the development / deployment of cloud native applications based on the OpenWhisk serverless engine: redis, postgresql, minio and much more!
+
+Allows you to configure a set of resources to be used for the development / deployment of cloud native applications 
+based on the OpenWhisk serverless engine: redis, postgresql, minio and much more!
 
 
 {{% /blocks/lead %}}
 
 {{% blocks/lead %}}
 
-A super-powered CLI extensible with plugins
-{.h1 .text-center}
+# A super-powered CLI extensible with plugins {.text-center}
 <br/>
 
 The <strong>ops</strong> cli is more than a standard cli: infact it is...
-<br/>
-<br/>
-<strong>rich</strong> - yes, it includes installation, system administration, debugging, developing tools and much much more!
-<br/>
-<strong>extensible</strong> - easily extendable by writing simple plugins in shell or javascript.
-<br/>
-<strong>whisk-ready</strong> - it includes all openwhisk tools.
-<br/>
+
+
+_RICH_ - yes, it includes installation, system administration, debugging, developing tools and much much
+more!
+
+_EXTENSIBLE_ - easily extendable by writing simple plugins in shell or javascript.
+
+
+WHISK-READY - it includes all openwhisk tools.
+
+
 <div class="ops-asciinema-ext">
 {{% asciinema src="ops" cols="80" rows="25" %}}
 </div>
@@ -69,28 +67,28 @@ The <strong>ops</strong> cli is more than a standard cli: infact it is...
 
 {{% blocks/lead %}}
 
-{{% imgproccenter openwhisk  %}}
+{{% imgproccenter openwhisk %}}
 {{% /imgproccenter %}}
-<br>
-Built around <a href="https://openwhisk.apache.org">Apache OpenWhisk</a>, a production-ready and widely deployed serverless engine providing all the patterns and best practices for scalable cloud-native applications.
 
-
+Built around <a href="https://openwhisk.apache.org">Apache OpenWhisk</a>, a production-ready and widely deployed
+serverless engine providing all the patterns and best practices for scalable cloud-native applications.
 
 {{% /blocks/lead %}}
 
 
-{{% blocks/section %}}
+{{% blocks/lead %}}
 
-Available everywhere
-{.h1 .text-center}
+# Available everywhere {.text-center}
 
 You can install OpenServerless everywhere: from your local Windows / Mac / Linux machine for development and testing,
-to powerful multi node Kubernetes cluster on premise or on your favorite Cloud Provider (AKS, AWS , GKS are fully supported)
-{.text-center}
+to powerful multi node Kubernetes cluster on premise or on your favorite Cloud Provider (AKS, AWS , GKS are fully
+supported)
+
 
 <div class="rounded-image">
     {{% imgproccenter gke_aks_aws_kube %}}
     {{% /imgproccenter %}}
 </div>
 
-{{% /blocks/section %}}
+{{% /blocks/lead %}}
+
