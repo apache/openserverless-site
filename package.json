@@ -1,13 +1,13 @@
 {
-  "name": "docsy-example-site",
+  "name": "openserverless-site",
   "version": "0.10.0",
   "version.next": "0.10.1-dev.0-unreleased",
-  "description": "Example site that uses Docsy theme for technical documentation.",
-  "repository": "github:google/docsy-example",
-  "homepage": "https://example.docsy.dev",
-  "author": "Docsy Authors",
+  "description": "OpenServerless Web Site.",
+  "repository": "github:apache/openserverless-site",
+  "homepage": "https://openserverless.apache.org",
+  "author": "OpenServerless Authors",
   "license": "Apache-2.0",
-  "bugs": "https://github.com/google/docsy-example/issues",
+  "bugs": "https://github.com/apache/openserverless-site/issues",
   "spelling": "cSpell:ignore HTMLTEST precheck postbuild -",
   "scripts": {
     "_build": "npm run _hugo-dev --",
@@ -34,10 +34,10 @@
     "update:pkg:hugo": "npm install --save-dev --save-exact hugo-extended@latest"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "cross-env": "^7.0.3",
-    "hugo-extended": "0.128.0",
-    "postcss": "^8.4.39",
+    "hugo-extended": "0.133.0",
+    "postcss": "^8.4.41",
     "postcss-cli": "^11.0.0"
   }
 }
