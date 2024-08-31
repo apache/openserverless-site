@@ -12,13 +12,11 @@ menu: { main: { weight: 10 } }
 
 {{% blocks/lead %}}
 
-<div class="rounded-image">
-{{% imgproccenter openserverless-diagram Fit "3456x1728"  %}}
+{{% imgproccenter openserverless-diagram.webp "Fit" "3456x1728" "rounded-image"  %}}
 {{% /imgproccenter %}}
-</div>
 
-<br/>
-A complete Serverless Development Environment for Any Cloud and Any Kubernetes
+<br/>A complete Serverless Development Environment for Any Cloud and Any Kubernetes
+
 
 
 {{% /blocks/lead %}}
@@ -85,10 +83,9 @@ to powerful multi node Kubernetes cluster on premise or on your favorite Cloud P
 supported)
 
 
-<div class="rounded-image">
-    {{% imgproccenter gke_aks_aws_kube %}}
-    {{% /imgproccenter %}}
-</div>
+
+{{% imgproccenter gke_aks_aws_kube.svg "" "" "rounded-image"  %}}
+{{% /imgproccenter %}}
 
 {{% /blocks/lead %}}
 

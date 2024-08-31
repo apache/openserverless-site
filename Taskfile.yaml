@@ -8,7 +8,7 @@ tasks:
     desc: import tool documentation
     silent: true
     cmds:
-      - test -d "openserverless-cli" && git pull || git clone https://github.com/d4rkstar/openserverless-cli
+      - test -d "openserverless-cli" && git pull || git clone https://github.com/apache/openserverless-cli
       - |
         find openserverless-cli/tools -name "*.md" | while read file
         do 
