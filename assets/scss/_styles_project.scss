@@ -82,8 +82,15 @@ aside{
     color: #fff;
 }
 
-.disclaimer {
-    font-size: 12px;
+.disclaimer p {
+    font-size: 16px;
+    font-family: "Baloo 2" !important;
+}
+
+.asf-logo {
+    background: white;
+    padding: 20px;
+    margin: 8px;
 }
 
 .ops-asciinema-ext {

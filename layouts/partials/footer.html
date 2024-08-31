@@ -1,0 +1,52 @@
+<footer class="td-footer row d-print-none">
+    <div class="container-fluid">
+        <div class="disclaimer text-center">
+            <div class="row mx-md-2">
+                <div class="td-footer__left col-6 col-sm-2 order-sm-1">&nbsp;</div>
+                <div class="td-footer__right col-6 col-sm-2 order-sm-3">&nbsp;</div>
+                <div class="td-footer__center col-12 col-sm-8 py-2 order-sm-2">
+                    <p>Apache Openserverless is an effort undergoing incubation at The Apache Software Foundation (ASF),
+                        sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a
+                        further review indicates that the infrastructure, communications, and decision making process
+                        have stabilized in a manner consistent with other successful ASF projects. While incubation
+                        status is not necessarily a reflection of the completeness or stability of the code, it does
+                        indicate that the project has yet to be fully endorsed by the ASF.</p>
+                    <br/>
+                    <br/>
+                    <p>Copyright © 2024 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
+                        Apache Openserverless, the names of other Apache projects, and the ASF logo are either
+                        registered trademarks or trademarks of the Apache Software Foundation in the United States
+                        and/or other countries.</p>
+                </div>
+            </div>
+            <div class="row mx-md-2">
+                <div class="td-footer__left col-6 col-sm-4 order-sm-1">&nbsp;</div>
+                <div class="td-footer__right col-6 col-sm-4 order-sm-3">&nbsp;</div>
+                <div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+                    <a href="https://www.apache.org/">
+                        <img class=" asf-logo rounded-image" src="/images/asf.webp" width="256" height="104">
+                    </a>
+                    <a href="https://incubator.apache.org/projects/openserverless.html">
+                        <img class=" asf-logo rounded-image" src="/images/apache_incubator.webp" width="256"
+                             height="104">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row mx-md-2">
+            <div class="td-footer__left col-6 col-sm-4 order-sm-1">
+                {{ partial "footer/left.html" . }}
+            </div>
+            {{- /* Trim WS */ -}}
+            <div class="td-footer__right col-6 col-sm-4 order-sm-3">
+                {{ partial "footer/right.html" . }}
+            </div>
+            {{- /* Trim WS */ -}}
+            <div class="td-footer__center col-12 col-sm-4 py-2 order-sm-2">
+                {{ partial "footer/center.html" . }}
+            </div>
+        </div>
+    </div>
+</footer>
