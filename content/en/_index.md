@@ -6,12 +6,10 @@ title: Apache OpenServerless
 
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
+</a> 
+<a class="btn btn-lg btn-secondary me-3 mb-4" href="/docs/installation/download/">
+  Download <i class="fas fa-download ms-2 "></i>
 </a>
-<!-- 
-<a class="btn btn-lg btn-secondary me-3 mb-4" href="https://github.com/google/docsy-example">
-  Download <i class="fab fa-github ms-2 "></i>
-</a>
--->
 
 <h1 class="lead mt-5">Upgrading Kubernetes to a Serverless powerhouse to build your cloud-native A.I. application!</h1> 
 {{< blocks/link-down color="info" >}}
@@ -50,7 +48,7 @@ For announcement of latest features etc.
 
 
 {{% blocks/section  %}}
-{{% imgproccenter openserverless-diagram Fit "800x600"  %}}
+{{% imgproccenter openserverless-diagram.webp Fit "3456x1728" "rounded-image"  %}}
 Apache OpenServerless Architecture Overview
 {{% /imgproccenter %}}
 {{% /blocks/section %}}
@@ -60,7 +58,7 @@ Apache OpenServerless Architecture Overview
 
 <div class="col-md-6 text-center">
 <h2>Public Cloud</h2>
-{{% imgproccenter public-cloud Fit "242x76" %}}
+{{% imgproccenter public-cloud Fit "242x76"  %}}
 We support the major public cloud Kubernetes,<br>including <a href="https://aws.amazon.com/eks/">Amazon EKS</a>, <a href="https://azure.microsoft.com/en-us/products/kubernetes-service">Azure AKS</a> and <a href="https://cloud.google.com/kubernetes-engine">Gcloud GKE</a>
 {{% /imgproccenter %}}
 </div>
