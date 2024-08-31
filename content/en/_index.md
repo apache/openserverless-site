@@ -6,10 +6,12 @@ title: Apache OpenServerless
 
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
-</a> 
-<a class="btn btn-lg btn-secondary me-3 mb-4" href="/docs/installation/download/">
-  Download <i class="fas fa-download ms-2 "></i>
 </a>
+<!-- 
+<a class="btn btn-lg btn-secondary me-3 mb-4" href="https://github.com/google/docsy-example">
+  Download <i class="fab fa-github ms-2 "></i>
+</a>
+-->
 
 <h1 class="lead mt-5">Upgrading Kubernetes to a Serverless powerhouse to build your cloud-native A.I. application!</h1> 
 {{< blocks/link-down color="info" >}}
@@ -48,7 +50,7 @@ For announcement of latest features etc.
 
 
 {{% blocks/section  %}}
-{{% imgproccenter openserverless-diagram.webp Fit "3456x1728" "rounded-image"  %}}
+{{% imgproccenter openserverless-diagram Fit "800x600"  %}}
 Apache OpenServerless Architecture Overview
 {{% /imgproccenter %}}
 {{% /blocks/section %}}
@@ -58,7 +60,7 @@ Apache OpenServerless Architecture Overview
 
 <div class="col-md-6 text-center">
 <h2>Public Cloud</h2>
-{{% imgproccenter public-cloud Fit "242x76"  %}}
+{{% imgproccenter public-cloud Fit "242x76" %}}
 We support the major public cloud Kubernetes,<br>including <a href="https://aws.amazon.com/eks/">Amazon EKS</a>, <a href="https://azure.microsoft.com/en-us/products/kubernetes-service">Azure AKS</a> and <a href="https://cloud.google.com/kubernetes-engine">Gcloud GKE</a>
 {{% /imgproccenter %}}
 </div>
@@ -70,5 +72,16 @@ We support the major private cloud Kubernetes,<br>including <a href="https://www
 {{% /imgproccenter %}}
 </div>
 
+{{% /blocks/section %}}
+
+{{% blocks/section %}}
+
+<div class="disclaimer text-center">
+Apache Openserverless is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
+<br/>
+<br/>
+Copyright © 2024 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
+Apache Openserverless, the names of other Apache projects, and the ASF logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries.
+</div>
 
 {{% /blocks/section %}}

@@ -125,7 +125,7 @@ params:
   prism_syntax_highlighting: true
 
   copyright:
-    authors: Apache OpenServerless
+    authors: The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
     from_year: 2024
 
   # User interface configuration
