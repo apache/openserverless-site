@@ -2,7 +2,7 @@
 title: Apache OpenServerless
 ---
 
-{{< blocks/cover title="Welcome to Apache OpenServerless!" image_anchor="top" height="full" >}}
+{{< blocks/cover title="Welcome to Apache OpenServerless!"  height="full" >}}
 
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
@@ -68,18 +68,6 @@ We support the major public cloud Kubernetes,<br>including <a href="https://aws.
 {{% imgproccenter private-cloud Fit "217x95" %}}
 We support the major private cloud Kubernetes,<br>including <a href="https://www.redhat.com/en/technologies/cloud-computing/openshift">RedHat OpenShift</a>, <a href="https://microk8s.io/">Ubuntu MicroK8S</a> and <a href="https://k3s.io/">SuSE K3S</a>
 {{% /imgproccenter %}}
-</div>
-
-{{% /blocks/section %}}
-
-{{% blocks/section %}}
-
-<div class="disclaimer text-center">
-Apache Openserverless is an effort undergoing incubation at The Apache Software Foundation (ASF), sponsored by the Apache Incubator. Incubation is required of all newly accepted projects until a further review indicates that the infrastructure, communications, and decision making process have stabilized in a manner consistent with other successful ASF projects. While incubation status is not necessarily a reflection of the completeness or stability of the code, it does indicate that the project has yet to be fully endorsed by the ASF.
-<br/>
-<br/>
-Copyright © 2024 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.
-Apache Openserverless, the names of other Apache projects, and the ASF logo are either registered trademarks or trademarks of the Apache Software Foundation in the United States and/or other countries.
 </div>
 
 {{% /blocks/section %}}
