@@ -13,39 +13,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-github:
-  description: "Apache OpenServerless website"
-  homepage: https://openserverless.apache.org/
-  labels:
-    - openserverless
-    - cloud
-    - serverless
-    - kubernetes
-    - hugo
-  features:
-    wiki: true
-    issues: true
-    projects: true
-  enabled_merge_buttons:
-    squash:  true
-    merge:   false
-    rebase:  true
-
-  protected_branches:
-    main:
-      required_linear_history: true
-      required_status_checks:
-        strict: true
-      required_pull_request_reviews:
-        required_approving_review_count: 1
-        dismiss_stale_reviews: true
-      required_conversation_resolution: true
-
-  collaborators:  []# Note: the number of collaborators is limited to 10
-
-staging:
-  profile: ~
-  whoami: asf-staging
 
 publish:
   whoami: asf-site
