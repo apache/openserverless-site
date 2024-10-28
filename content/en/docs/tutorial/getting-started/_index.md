@@ -4,6 +4,7 @@ description: Let's start building a sample application
 weight: 10
 draft: false
 ---
+
 ## Getting started
 
 ### Build a sample Application
@@ -28,8 +29,8 @@ allows you to deploy (and interact with) the platform seamlessly to the
 cloud, locally and in custom environments.
 
 Ops is cross-platform and can be installed on Windows, Linux and MacOS.
-You can find it here: [Ops
-Releases](https://github.com/nuvolaris/nuv/releases)
+You can find the project and the sources on
+[Apache OpenServerless Cli Github page](https://github.com/apache/openserverless-cli)
 
 ### Deploy OpenServerless
 
@@ -42,10 +43,10 @@ come back here!
 
 ### Enabling Services
 
-We also want to enable some extra services: a Postgres database, Static
-content with the Minio storage and a cron scheduler. We will use them
-shortly to upload frontend and store the data for our app! Let’s run in
-the terminal:
+After installing OpenServerless on a local machine with Docker or on a 
+supported cloud, you can enable or disable the services offered by the platform. 
+As we will use Postgres database, the Static content with the Minio S3 compatible 
+storage and a cron scheduler, let’s run in the terminal:
 
 ```bash
 ops config enable --postgres --static --minio --cron
@@ -69,4 +70,5 @@ run:
 ```bash
 ops config disable --postgres --static --minio --cron
 ```
+
 ---

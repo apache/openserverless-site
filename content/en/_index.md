@@ -1,8 +1,8 @@
 ---
-title: Apache OpenServerless
+title: Apache OpenServerless™
 ---
 
-{{< blocks/cover title="Welcome to Apache OpenServerless!"  height="full" >}}
+{{< blocks/cover title="Welcome to Apache OpenServerless™!"  height="full" >}}
 
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
@@ -17,16 +17,16 @@ title: Apache OpenServerless
 
 {{% blocks/lead color="primary" %}}
 
-<h3>Apache OpenServerless is a <b>distribution</b>, running in any <b>Kubernetes</b> Clusters or even plain Linux <b>Virtual Machine</b>, straightforward to install and easy to use, deploying a <b>Serverless</b> Enviroment ready to use to build <b>A.I. applications</b>. </h3>
+<h3>Apache OpenServerless™ is a <b>distribution</b>, running in any <b>Kubernetes</b> Clusters or even plain Linux <b>Virtual Machine</b>, straightforward to install and easy to use, deploying a <b>Serverless</b> Enviroment ready to use to build <b>A.I. applications</b>. </h3>
 
-<h4>Apache OpenServerless lets you <b>stop worrying</b> of building, deploying, configuring and orchestrating containers. You can <b>focus on writing your A.I. code</b> and run it anywere, production ready, <b>without any vendor-lockin</b>.</h4>
+<h4>Apache OpenServerless™ lets you <b>stop worrying</b> of building, deploying, configuring and orchestrating containers. You can <b>focus on writing your A.I. code</b> and run it anywere, production ready, <b>without any vendor-lockin</b>.</h4>
 {{% /blocks/lead %}}
 
 
 {{% blocks/section color="dark" type="row" %}}
 
 {{% blocks/feature icon="fab fa-reddit" title="Join our subreddit!" url="https://reddit.com/r/openserverless" %}}
-A friendly place to discuss Apache OpenServerless
+A friendly place to discuss Apache OpenServerless™
 {{% /blocks/feature %}}
 
 
@@ -49,7 +49,7 @@ For announcement of latest features etc.
 
 {{% blocks/section  %}}
 {{% imgproccenter openserverless-diagram.webp Fit "3456x1728" "rounded-image"  %}}
-Apache OpenServerless Architecture Overview
+Apache OpenServerless™ Architecture Overview
 {{% /imgproccenter %}}
 {{% /blocks/section %}}
 

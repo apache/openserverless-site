@@ -23,7 +23,7 @@ prerequisites](#../../../prereq/index.adoc), most notably:
 1. you know the **IP address or DNS name**
 
 2. your server operating system satisfies the [K3S
-    requirements](https://docs.k3s.io/installation/requirements)
+   requirements](https://docs.k3s.io/installation/requirements)
 
 3. you have passwordless access with ssh
 
@@ -33,10 +33,11 @@ prerequisites](#../../../prereq/index.adoc), most notably:
 
 Then you can use the following subcommand to install in the server:
 
-    ops cloud k3s create SERVER=<server> USERNAME=<username>
+    ops cloud k3s create <server> [<username>]
 
 where `<server>` is the **IP address or DNS name** to access the server,
-and `<username>` is the user you use to access the server.
+and the optional `<username>` is the user you use to access the server:
+if <username> is not specified, the `root` username will be used.
 
 Those pieces of information should have been provided when provisioning
 the server.
@@ -44,8 +45,8 @@ the server.
 > ❗ **IMPORTANT**
 >
 > If you installed a Kubernetes cluster in the server this way, you should
-proceed installing OpenServerless as in 
-[a Kubernetes cluster](/docs/installation/install/cluster/), **not** 
+proceed installing OpenServerless as in
+[a Kubernetes cluster](/docs/installation/install/cluster/), **not**
 as a server.
 
 The installation retrieves also a Kubernetes configuration file, so you
@@ -55,11 +56,11 @@ can proceed to installing it without any other step involved.
 
 In addition to `create` the following subcommands are also available:
 
-- `ops cloud k3s delete SERVER=<server> USERNAME=<username>`:
-    uninstall K3S from the server
+- `ops cloud k3s delete <server> [<username>]`:
+  uninstall K3S from the server
 
-- `ops cloud k3s kubeconfig SERVER=<server> USERNAME=<username>`:
-    retrieve the kubeconfig from the K3S server
+- `ops cloud k3s kubeconfig <server> [<username>]`:
+  retrieve the kubeconfig from the K3S server
 
 - `ops cloud k3s info`: some information about the server
 

@@ -1,5 +1,5 @@
 baseURL: "/"
-title: "Apache OpenServerless"
+title: "Apache OpenServerless™"
 
 cSpell: ignore github hugo readingtime subdir lastmod pygments linenos OpenServerless
 
@@ -67,6 +67,35 @@ markup:
 # Comment out if you don't want the "print entire section" link enabled.
 outputs:
   section: [HTML, print, RSS]
+
+menus:
+  main:
+    - name: "Apache Software Foundation"
+      url: "#"
+    - name: "Apache Homepage"
+      parent: "Apache Software Foundation"
+      url: "https://www.apache.org/"
+      weight: 1
+    - name: "License"
+      parent: "Apache Software Foundation"
+      url: "https://www.apache.org/licenses/"
+      weight: 2
+    - name: "Sponsorship"
+      parent: "Apache Software Foundation"
+      url: "https://www.apache.org/foundation/sponsorship.html"
+      weight: 3
+    - name: "Thanks"
+      parent: "Apache Software Foundation"
+      url: "https://www.apache.org/foundation/thanks.html"
+      weight: 4
+    - name: "Security"
+      parent: "Apache Software Foundation"
+      url: "https://www.apache.org/security/"
+      weight: 5
+    - name: "Events"
+      parent: "Apache Software Foundation"
+      url: "https://www.apache.org/events/current-event"
+      weight: 6
 
 params:
   taxonomy:
@@ -186,10 +215,10 @@ params:
         url: https://the-asf.slack.com/archives/C07B6K5R3F0
         icon: fab fa-slack
         desc: Chat with other project developers
-      #- name: Telegram
-      #  url: https://t.me/+XhbCjBrkkaNkOWM0
-      #  icon: fab fa-telegram
-      #  desc: A public telegram group to discuss everything about OpenServerless
+      - name: Telegram
+        url: https://t.me/+XhbCjBrkkaNkOWM0
+        icon: fab fa-telegram
+        desc: A public telegram group to discuss everything about OpenServerless
 
 module:
   # Uncomment the next line to build and serve using local docsy clone declared in the named Hugo workspace:
