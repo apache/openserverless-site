@@ -1,0 +1,13 @@
+/public
+resources/
+node_modules/
+package-lock.json
+.hugo_build.lock
+.env
+.direnv/
+.vscode
+.idea
+openserverless-cli
+openserverless-task
+
+
