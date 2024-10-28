@@ -22,6 +22,10 @@ The predefined set of tasks are all you need to install and manage an OpenServer
 ### Download links
 You can install OpenServerless using its Command Line Interface, `ops`.
 
+{{< blockquote warning >}}
+Since we are in a preview phase, this is not an official link approved by the Apache Software Foundation.
+{{< /blockquote >}}
+
 Quick install in Linux, MacOS and Windows with WSL or GitBash:
 
 ```bash

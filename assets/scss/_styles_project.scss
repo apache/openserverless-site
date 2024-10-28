@@ -104,3 +104,11 @@ aside{
         width: 600px; /* For screens wider than 450px, set the width to 450px */
     }
 }
+
+.dropdown-menu {
+    display: block;
+    position: absolute;
+    transform: translate3d(0, 0, 0); /* Adjusts visibility and position */
+    visibility: visible;
+    opacity: 1;
+}
