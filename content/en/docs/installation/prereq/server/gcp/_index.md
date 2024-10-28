@@ -2,6 +2,7 @@
 title: Server on GCP
 description: Prerequisites to install OpenServerless in Google Cloud
 weight: 30
+draft: true
 ---
 
 ## Provision a Linux Server in Google Cloud

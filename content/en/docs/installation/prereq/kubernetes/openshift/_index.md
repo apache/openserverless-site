@@ -1,6 +1,7 @@
 ---
 title: OpenShift 
 description: Prerequisites for RedHat™ OpenShift
+draft: true
 ---
 [RedHat™ OpenShift](https://www.redhat.com/en/technologies/cloud-computing/openshift)
 is a Kubernetes distribution offered by

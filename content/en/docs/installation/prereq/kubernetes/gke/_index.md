@@ -1,6 +1,7 @@
 ---
 title: Google GKE
 description: Prerequisites for Google GKE
+draft: true
 ---
 ## Prerequisites to install OpenServerless in a Google GKE Cluster
 
