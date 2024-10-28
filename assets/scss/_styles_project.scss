@@ -1,0 +1,107 @@
+/* baloo-2-regular - latin */
+@font-face {
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/baloo-2-v21-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/baloo-2-v21-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+
+/* baloo-2-700 - latin */
+@font-face {
+    font-family: 'Baloo 2';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/baloo-2-v21-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/baloo-2-v21-latin-700.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+/* quattrocento-regular - latin */
+@font-face {
+    font-family: 'Quattrocento';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/quattrocento-v23-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+    url('/fonts/quattrocento-v23-latin-regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5+, IE 9+, Safari 3.1+, iOS 4.2+, Android Browser 2.2+ */
+}
+
+p { font-family: "Quattrocento" !important;}
+
+.navbar, aside, .quote-title {
+    font-family: "Baloo 2" !important;
+}
+
+h1, h2, h3 ,h4, h5, .lead {
+    font-family: "Baloo 2" !important;
+}
+
+div.td-content h1,
+div.td-content h2,
+div.td-content h3,
+div.td-content h4,
+div.td-content h5,
+div.td-content h6 {
+    color: #265d85 !important;
+}
+
+.td-sidebar-nav-active-item {
+    color: #ff0000;
+}
+
+aside{
+    font-size: 1em !important;
+}
+
+.text-black { color: black; }
+.text-default { color: black; }
+.text-white { color: white; }
+
+.center-image-container {
+    text-align: center;
+}
+
+.center-image-container img {
+    display: inline-block;
+    margin: auto;
+}
+
+.rounded-image {
+    border-radius: 15px; 
+    overflow: hidden;    
+    display: inline-block;
+}
+
+#ops_asc_cast {
+    width: 100%;
+    margin:0 auto;
+}
+
+.td-box--6 {
+    background-color: #245b80;
+    color: #fff;
+}
+
+.disclaimer p {
+    font-size: 16px;
+    font-family: "Baloo 2" !important;
+}
+
+.asf-logo {
+    background: white;
+    padding: 20px;
+    margin: 8px;
+}
+
+.ops-asciinema-ext {
+    width: 90%; /* Default to 90% of the screen width */
+    max-width: 600px; /* Ensure it doesn't exceed 450px */
+    margin: 0 auto; /* Center the div horizontally */
+}
+
+@media only screen and (min-width: 600px) {
+    .ops-asciinema-ext {
+        width: 600px; /* For screens wider than 450px, set the width to 450px */
+    }
+}
+

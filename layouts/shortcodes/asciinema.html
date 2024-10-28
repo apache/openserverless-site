@@ -1,0 +1,11 @@
+<div id='{{ index .Params "src" }}_asc_cast'></div>
+<script src="{{ .Site.BaseURL }}js/asciinema-player.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/asciinema-player.css" />
+<script>
+AsciinemaPlayer.create('/casts/{{ index .Params "src" }}.cast', document.getElementById('{{ index .Params "src" }}_asc_cast'),
+{ {{ range $key, $value := .Params }}
+    {{- if ne $key "src" }}
+        {{- $key }}: {{ $value }},
+    {{- end }}
+{{- end }}});
+</script>

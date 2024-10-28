@@ -1,0 +1,36 @@
+{{ $original := .Page.Resources.GetMatch (printf "**%s*" (.Get 0)) -}}
+{{ $command := .Get 1 -}}
+{{ $options := .Get 2 -}}
+{{ $classes := .Get 3 | default "" -}}
+{{ $divclass := "" }}
+{{ if (ne $classes "") -}}
+{{ $divclass = printf " %s"  $classes }}
+{{ end -}}
+{{ if eq $original.MediaType.SubType "svg" }}
+<div class="text-center">
+<img
+    class="img-fluid mx-auto d-block{{- $divclass -}}"
+    src="{{- $original.RelPermalink -}}"
+    style="max-width: 100%"
+    alt="SVG Image"
+/>
+</div>{{ else }}
+{{ if eq $command "Fit" -}} {{ .Scratch.Set "image" ($original.Fit $options) -}}
+{{ else if eq $command "Resize" -}} {{ .Scratch.Set "image" ($original.Resize $options) -}}
+{{ else if eq $command "Fill" -}} {{ .Scratch.Set "image" ($original.Fill $options) -}}
+{{ else if eq $command "Crop" -}} {{ .Scratch.Set "image" ($original.Crop $options) -}}
+{{ else -}} {{ errorf "Invalid image processing command: Must be one of Fit, Fill, Crop or Resize." -}}
+{{ end -}}
+{{ $image := .Scratch.Get "image" -}}
+<div class="text-center">
+<img class="img-fluid mx-auto d-block{{- $divclass -}}" src="{{- $image.RelPermalink -}}" width="{{- $image.Width -}}" height="{{- $image.Height -}}" />
+{{ with .Inner -}}
+{{/* Do **not** remove this comment! It ends above html block! See https://spec.commonmark.org/0.30/#html-blocks, 7. */}}
+{{ . }}
+{{ with $image.Params.byline }}
+<small class="text-body-secondary"><br />{{ . }}</small>
+{{ end }}
+{{ end -}}
+</div>
+{{ end }}
+
