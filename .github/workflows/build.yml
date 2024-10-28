@@ -1,8 +1,13 @@
-name: test
+name: website
 
 on:
   pull_request:
     types: [closed]
+
+  push:
+    branches:
+      - main
+
 
 env:
   PUBLISH_DIRECTORY: public
@@ -12,7 +17,7 @@ permissions:
 
 jobs:
   publish:
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    if: github.event_name == 'push' || github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
