@@ -92,10 +92,14 @@ menus:
       parent: "Apache Software Foundation"
       url: "https://www.apache.org/security/"
       weight: 5
+    - name: "Privacy"
+      parent: "Apache Software Foundation"
+      url: "https://privacy.apache.org/policies/privacy-policy-public.html"
+      weight: 6
     - name: "Events"
       parent: "Apache Software Foundation"
       url: "https://www.apache.org/events/current-event"
-      weight: 6
+      weight: 7
 
 params:
   taxonomy:
