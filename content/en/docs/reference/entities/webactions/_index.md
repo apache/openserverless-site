@@ -4,10 +4,10 @@ weight: 20
 ---
 # Web Actions
 
-Web actions are OpenWhisk and Nuvolaris actions annotated to quickly
+Web actions are OpenWhisk and OpenServerless actions annotated to quickly
 enable you to build web based applications. This allows you to program
 backend logic which your web application can access anonymously without
-requiring an OpenWhisk and Nuvolaris authentication key. It is up to the
+requiring an OpenWhisk and OpenServerless authentication key. It is up to the
 action developer to implement their own desired authentication and
 authorization (i.e. OAuth flow).
 
@@ -30,13 +30,13 @@ You may create a *web action* `hello` in the package `demo` for the
 namespace `guest` using the CLI’s `--web` flag with a value of `true` or
 `yes`:
 
-    $ nuv package create demo
+    $ ops package create demo
     ok: created package demo
 
-    $ nuv action create demo/hello hello.js --web true
+    $ ops action create demo/hello hello.js --web true
     ok: created action demo/hello
 
-    $ nuv action get demo/hello --url
+    $ ops action get demo/hello --url
     ok: got action hello
     https://${APIHOST}/api/v1/web/guest/demo/hello
 
@@ -128,17 +128,17 @@ omitted from the headers.
 It is important to be aware of the [response size
 limit](#reference.adoc) for actions since a response that exceeds the
 predefined system limits will fail. Large objects should not be sent
-inline through OpenWhisk and Nuvolaris, but instead deferred to an
+inline through OpenWhisk and OpenServerless, but instead deferred to an
 object store, for example.
 
 ## Handling HTTP requests with actions
 
-An OpenWhisk and Nuvolaris action that is not a web action requires both
+An OpenWhisk and OpenServerless action that is not a web action requires both
 authentication and must respond with a JSON object. In contrast, web
 actions may be invoked without authentication, and may be used to
 implement HTTP handlers that respond with *headers*, *statusCode*, and
 *body* content of different types. The web action must still return a
-JSON object, but the OpenWhisk and Nuvolaris system (namely the
+JSON object, but the OpenWhisk and OpenServerless system (namely the
 `controller`) will treat a web action differently if its result includes
 one or more of the following as top level JSON properties:
 
@@ -181,7 +181,7 @@ as parameters to the action input argument. They are:
     (matching stops after consuming the action extension).
 
 4. `__ow_user` (type: string): the namespace identifying the OpenWhisk
-    and Nuvolaris authenticated subject.
+    and OpenServerless authenticated subject.
 
 5. `__ow_body` (type: string): the request body entity, as a base64
     encoded string when content is binary or JSON object/array, or plain
@@ -360,7 +360,7 @@ qualified name of the action must include its package name, which is
 Action parameters are protected and treated as immutable. Parameters are
 automatically finalized when enabling web actions.
 
-    $ nuv action create /guest/demo/hello hello.js \
+    $ ops action create /guest/demo/hello hello.js \
           --parameter name Jane \
           --web true
 
@@ -377,7 +377,7 @@ annotation](#annotations.adoc#annotations-specific-to-web-actions) to
 secure the web action. When the `require-whisk-auth` annotation is set
 to `true`, the action will authenticate the invocation request’s Basic
 Authorization credentials to confirm they represent a valid OpenWhisk
-and Nuvolaris identity. When set to a number or a case-sensitive string,
+and OpenServerless identity. When set to a number or a case-sensitive string,
 the action’s invocation request must include a `X-Require-Whisk-Auth`
 header having this same value. Secured web actions will return a
 `Not Authorized` when credential validation fails.
@@ -389,11 +389,11 @@ generated as the `require-whisk-auth` annotation value. When set to
 other value, that value is used as the `require-whisk-auth` annotation
 value.
 
-    nuv action update /guest/demo/hello hello.js --web true --web-secure my-secret
+    ops action update /guest/demo/hello hello.js --web true --web-secure my-secret
 
 or
 
-    nuv action update /guest/demo/hello hello.js --web true -a require-whisk-auth my-secret
+    ops action update /guest/demo/hello hello.js --web true -a require-whisk-auth my-secret
 
     curl https://${APIHOST}/api/v1/web/guest/demo/hello.json?name=Jane -X GET -H "X-Require-Whisk-Auth: my-secret"
 
@@ -407,7 +407,7 @@ To disable a web action from being invoked via web API
 (`https://APIHOST/api/v1/web/`), pass a value of `false` or `no` to the
 `--web` flag while updating an action with the CLI.
 
-    nuv action update /guest/demo/hello hello.js --web false
+    ops action update /guest/demo/hello hello.js --web false
 
 ## Raw HTTP handling
 
@@ -442,14 +442,14 @@ parameters and as JSON value in the HTTP request body:
 Raw HTTP web actions are enabled via the `--web` flag using a value of
 `raw`.
 
-    nuv action create /guest/demo/hello hello.js --web raw
+    ops action create /guest/demo/hello hello.js --web raw
 
 ### Disabling raw HTTP handling
 
 Disabling raw HTTP can be accomplished by passing a value of `false` or
 `no` to the `--web` flag.
 
-    nuv update create /guest/demo/hello hello.js --web false
+    ops update create /guest/demo/hello hello.js --web false
 
 ### Decoding binary body content from Base64
 
@@ -488,7 +488,7 @@ utilizing the saved artifact, and invoke the web action.
 As an example, save the Node function as `decode.js` and execute the
 following commands:
 
-    $ nuv action create decode decode.js --web raw
+    $ ops action create decode decode.js --web raw
     ok: created action decode
     $ curl -k -H "content-type: application" -X POST -d "Decoded body" https://${APIHOST}/api/v1/web/guest/default/decodeNode.json
     {
@@ -532,7 +532,7 @@ OPTIONS requests.
 Save the above function to `custom-options.js` and execute the following
 commands:
 
-    $ nuv action create custom-option custom-options.js --web true -a web-custom-options true
+    $ ops action create custom-option custom-options.js --web true -a web-custom-options true
     $ curl https://${APIHOST}/api/v1/web/guest/default/custom-options.http -kvX OPTIONS
     < HTTP/1.1 200 OK
     < Server: nginx/1.11.13
@@ -559,7 +559,7 @@ values through a package binding.
 
 ## Error Handling
 
-When an OpenWhisk and Nuvolaris action fails, there are two different
+When an OpenWhisk and OpenServerless action fails, there are two different
 failure modes. The first is known as an *application error* and is
 analogous to a caught exception: the action returns a JSON object
 containing a top level `error` property. The second is a *developer

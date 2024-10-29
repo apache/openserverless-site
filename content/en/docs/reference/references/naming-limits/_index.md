@@ -81,7 +81,7 @@ style="text-align: left;"><p><code>/myOrg/video/transcode</code></p></td>
 </table>
 
 You will be using this naming scheme when you use the OpenWhisk and
-Nuvolaris CLI, among other places.
+OpenServerless CLI, among other places.
 
 ### Entity names
 

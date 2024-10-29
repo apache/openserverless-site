@@ -4,17 +4,17 @@ weight: 50
 ---
 # Using and creating packages
 
-In OpenWhisk and Nuvolaris, you can use packages to bundle together a
+In OpenWhisk and OpenServerless, you can use packages to bundle together a
 set of related actions, and share them with others.
 
 A package can include *actions* and *feeds*. - An action is a piece of
-code that runs on OpenWhisk and Nuvolaris. For example, the Cloudant
+code that runs on OpenWhisk. For example, the Cloudant
 package includes actions to read and write records to a Cloudant
 database. - A feed is used to configure an external event source to fire
 trigger events. For example, the Alarm package includes a feed that can
 fire a trigger at a specified frequency.
 
-Every OpenWhisk and Nuvolaris entity, including packages, belongs in a
+Every OpenWhisk and OpenServerless entity, including packages, belongs in a
 *namespace*, and the fully qualified name of an entity is
 `/namespaceName[/packageName]/entityName`. Refer to the [naming
 guidelines](#reference.adoc#openwhisk-entities) for more information.
@@ -26,7 +26,7 @@ creating and sharing packages.
 
 ## Browsing packages
 
-Several packages are registered with OpenWhisk and Nuvolaris. You can
+Several packages are registered with OpenWhisk and OpenServerless. You can
 get a list of packages in a namespace, list the entities in a package,
 and get a description of the individual entities in a package.
 
@@ -34,7 +34,7 @@ and get a description of the individual entities in a package.
 
 <!-- -->
 
-    $ nuv package list /nuvolaris
+    $ ops package list /nuvolaris
 
     packages
     /nuvolaris/openai                                       private
@@ -45,7 +45,7 @@ and get a description of the individual entities in a package.
 
 <!-- -->
 
-    $ nuv package get --summary /nuvolaris/openai
+    $ ops package get --summary /nuvolaris/openai
     package /nuvolaris/openai
        (parameters: none defined)
      action /nuvolaris/openai/models
@@ -67,7 +67,7 @@ entity.
 
 <!-- -->
 
-    $ nuv action get --summary /nuvolaris/openai/chat
+    $ ops action get --summary /nuvolaris/openai/chat
     action /nuvolaris/openai/chat: Returns a result based on parameters OPENAI_API_HOST and OPENAI_API_KEY
        (parameters: **OPENAI_API_HOST, **OPENAI_API_KEY)
 
@@ -90,14 +90,14 @@ example:
 
 <!-- -->
 
-    $ nuv package create custom
+    $ ops package create custom
     ok: created package custom
 
 1. Get a summary of the package.
 
 <!-- -->
 
-    $ nuv package get --summary custom
+    $ ops package get --summary custom
     package /myNamespace/custom
        (parameters: none defined)
 
@@ -114,7 +114,7 @@ Notice that the package is empty.
 
 <!-- -->
 
-    $ nuv action create custom/identity identity.js
+    $ ops action create custom/identity identity.js
     ok: created action custom/identity
 
 Creating an action in a package requires that you prefix the action name
@@ -125,7 +125,7 @@ contain only actions and can’t contain another package.
 
 <!-- -->
 
-    $ nuv package get --summary custom
+    $ ops package get --summary custom
     package /myNamespace/custom
       (parameters: none defined)
      action /myNamespace/custom/identity
@@ -137,7 +137,7 @@ You can see the `custom/identity` action in your namespace now.
 
 <!-- -->
 
-    $ nuv action invoke --result custom/identity
+    $ ops action invoke --result custom/identity
     {}
 
 You can set default parameters for all the entities in a package. You do
@@ -150,7 +150,7 @@ example:
 
 <!-- -->
 
-    $ nuv package update custom --param city Austin --param country USA
+    $ ops package update custom --param city Austin --param country USA
     ok: updated package custom
 
 1. Display the parameters in the package and action, and see how the
@@ -159,7 +159,7 @@ example:
 
 <!-- -->
 
-    $ nuv package get custom
+    $ ops package get custom
     ok: got package custom
     ...
     "parameters": [
@@ -174,7 +174,7 @@ example:
     ]
     ...
 
-    $ nuv action get custom/identity
+    $ ops action get custom/identity
     ok: got action custom/identity
     ...
     "parameters": [
@@ -194,7 +194,7 @@ example:
 
 <!-- -->
 
-    $ nuv action invoke --result custom/identity
+    $ ops action invoke --result custom/identity
     {
         "city": "Austin",
         "country": "USA"
@@ -206,7 +206,7 @@ example:
 
 <!-- -->
 
-    $ nuv action invoke --result custom/identity --param city Dallas --param state Texas
+    $ ops action invoke --result custom/identity --param city Dallas --param state Texas
     {
         "city": "Dallas",
         "country": "USA",
@@ -216,16 +216,16 @@ example:
 ## Sharing a package
 
 After the actions and feeds that comprise a package are debugged and
-tested, the package can be shared with all OpenWhisk and Nuvolaris
+tested, the package can be shared with all OpenWhisk and OpenServerless
 users. Sharing the package makes it possible for the users to bind the
 package, invoke actions in the package, and author OpenWhisk and
-Nuvolaris rules and sequence actions.
+OpenServerless rules and sequence actions.
 
 1. Share the package with all users:
 
 <!-- -->
 
-    $ nuv package update custom --shared yes
+    $ ops package update custom --shared yes
     ok: updated package custom
 
 1. Display the `publish` property of the package to verify that it is
@@ -233,7 +233,7 @@ Nuvolaris rules and sequence actions.
 
 <!-- -->
 
-    $ nuv package get custom
+    $ ops package get custom
     ok: got package custom
     ...
     "publish": true,
@@ -250,7 +250,7 @@ is private, then all of its contents are also private.
 
 <!-- -->
 
-    $ nuv package get --summary custom
+    $ ops package get --summary custom
     package /myNamespace/custom: Returns a result based on parameters city and country
        (parameters: *city, *country)
      action /myNamespace/custom/identity

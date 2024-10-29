@@ -20,7 +20,7 @@ programming language](https://golang.org/), originally developed
 specifically to support the [OpenWhisk and OpenServerless Go language
 runtime](https://github.com/apache/openwhisk-runtime-go). However, it
 was written in a generic way such that it has since been adopted to
-implement OpenWhisk and Nuvolaris runtimes for Swift, PHP, Python, Rust,
+implement OpenWhisk and OpenServerless runtimes for Swift, PHP, Python, Rust,
 Java, Ruby and Crystal. Even though it was developed with compiled
 languages in mind it works equally well with scripting languages.
 
@@ -168,7 +168,7 @@ change to one supporting `Ruby` as we continue in this tutorial.
 ## Preparing the Docker environment
 
 Our language runtime’s `Dockerfile` has the task of preparing an
-environment for executing OpenWhisk and Nuvolaris Actions. Using the
+environment for executing OpenWhisk and OpenServerless Actions. Using the
 ActionLoop approach, we use a multistage Docker build to
 
 1. derive our OpenWhisk and OpenServerless language runtime from an existing
@@ -182,7 +182,7 @@ ActionLoop approach, we use a multistage Docker build to
 2. leverage the existing `openwhisk/actionlooop-v2` image on Docker Hub
     from which we will “extract” the *ActionLoop* proxy (i.e. copy
     `/bin/proxy` binary) our runtime will use to process Activation
-    requests from the OpenWhisk and Nuvolaris platform and execute
+    requests from the OpenWhisk and OpenServerless platform and execute
     Actions by using the language’s tools and libraries from step \#1.
 
 ## Repurpose the renamed Python Dockerfile for Ruby builds
@@ -284,7 +284,7 @@ In Ruby, this can be rewritten as:
 
 *Note that you are free to decide the path and filename for the
 function’s source code. In our examples, we chose a base filename that
-includes the word `"main"` (since it is OpenWhisk and Nuvolaris’s
+includes the word `"main"` (since it is OpenWhisk and OpenServerless
 default function name) and append two underscores to better assure
 uniqueness.*
 
@@ -585,7 +585,7 @@ Here we will learn how to:
 
 3. writing the validation tests
 
-4. testing the image in an actual OpenWhisk and Nuvolaris environment
+4. testing the image in an actual OpenWhisk and OpenServerless environment
 
 ### Entering in the test environment
 
@@ -645,7 +645,7 @@ one terminal type:
     # results omitted for brevity ...
     # (you should see a shell prompt of your image)
     $ /bin/proxy -debug
-    2019/04/08 07:47:36 OpenWhisk and Nuvolaris ActionLoop Proxy 2: starting
+    2019/04/08 07:47:36 OpenWhisk and OpenServerless ActionLoop Proxy 2: starting
 
 Now the runtime is started in debug mode, listening on port 8080, and
 ready to accept Action deployments.
@@ -672,7 +672,7 @@ the `init` and `run` requests above.
 The proxy’s debug output should appear something like:
 
     /proxy # /bin/proxy -debug
-    2019/04/08 07:54:57 OpenWhisk and Nuvolaris ActionLoop Proxy 2: starting
+    2019/04/08 07:54:57 OpenWhisk and OpenServerless ActionLoop Proxy 2: starting
     2019/04/08 07:58:00 compiler: /proxy/bin/compile
     2019/04/08 07:58:00 it is source code
     2019/04/08 07:58:00 compiling: ./action/16/src/exec main: hello
@@ -761,7 +761,7 @@ Now compile and examine the results again:
 If we have reached this point in the tutorial, the runtime is able to
 run and execute a simple test action. Now we need to validate the
 runtime against a set of mandatory tests both locally and within an
-OpenWhisk and Nuvolaris staging environment. Additionally, we should
+OpenWhisk and OpenServerless staging environment. Additionally, we should
 author and automate additional tests for language specific features and
 styles.
 
@@ -854,7 +854,7 @@ image to Docker Hub with `make push`.
 To run this test you need to configure access to OpenWhisk and OpenServerless
 with `ops`. A simple way is to get access is to register a free account
 in the IBM Cloud but this works also with our own deployment of
-OpenWhisk and Nuvolaris.
+OpenWhisk and OpenServerless.
 
 Edit the Makefile as we did previously:
 
@@ -871,13 +871,13 @@ real thing”.
 Test single:
 
     $ make test-single
-    nuv action update hello-demo-ruby hello.rb --docker docker.io/linus/actionloop-demo-ruby-v2.6:latest --main hello
+    ops action update hello-demo-ruby hello.rb --docker docker.io/linus/actionloop-demo-ruby-v2.6:latest --main hello
     ok: updated action hello-demo-ruby
-    nuv action invoke hello-demo-ruby -r
+    ops action invoke hello-demo-ruby -r
     {
         "greeting": "Hello stranger!"
     }
-    nuv action invoke hello-demo-ruby -p name Mike -r
+    ops action invoke hello-demo-ruby -p name Mike -r
     {
         "greeting": "Hello Mike!"
     }
@@ -888,13 +888,13 @@ Test source zip:
     zip src.zip main.rb hello.rb
       adding: main.rb (deflated 42%)
       adding: hello.rb (deflated 42%)
-    nuv action update hello-demo-ruby src.zip --docker docker.io/linus/actionloop-demo-ruby-v2.6:latest
+    ops action update hello-demo-ruby src.zip --docker docker.io/linus/actionloop-demo-ruby-v2.6:latest
     ok: updated action hello-demo-ruby
-    nuv action invoke hello-demo-ruby -r
+    ops action invoke hello-demo-ruby -r
     {
         "greeting": "Hello stranger!"
     }
-    nuv action invoke hello-demo-ruby -p name Mike -r
+    ops action invoke hello-demo-ruby -p name Mike -r
     {
         "greeting": "Hello Mike!"
     }
@@ -903,13 +903,13 @@ Test binary ZIP:
 
     $ make test-bin-zip
     docker run -i actionloop-demo-ruby-v2.6:latest -compile main <src.zip >bin.zip
-    nuv action update hello-demo-ruby bin.zip --docker docker.io/actionloop/actionloop-demo-ruby-v2.6:latest
+    ops action update hello-demo-ruby bin.zip --docker docker.io/actionloop/actionloop-demo-ruby-v2.6:latest
     ok: updated action hello-demo-ruby
-    nuv action invoke hello-demo-ruby -r
+    ops action invoke hello-demo-ruby -r
     {
         "greeting": "Hello stranger!"
     }
-    nuv action invoke hello-demo-ruby -p name Mike -r
+    ops action invoke hello-demo-ruby -p name Mike -r
     {
         "greeting": "Hello Mike!"
     }
@@ -977,5 +977,5 @@ You can verify tests are running properly with:
 
 Big congratulations are in order having reached this point successfully.
 At this point, our runtime should be ready to run on any OpenWhisk and
-Nuvolaris platform and also can be submitted for consideration to be
-included in the Apache OpenWhisk and Nuvolaris project.
+OpenServerless platform and also can be submitted for consideration to be
+included in the Apache OpenWhisk and OpenServerless project.
