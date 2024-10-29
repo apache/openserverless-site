@@ -4,14 +4,14 @@ weigth: 40
 ---
 # Annotations
 
-OpenWhisk and Nuvolaris actions, triggers, rules and packages
+OpenWhisk and OpenServerless actions, triggers, rules and packages
 (collectively referred to as assets) may be decorated with
 `annotations`. Annotations are attached to assets just like parameters
 with a `key` that defines a name and `value` that defines the value. It
 is convenient to set them from the command line interface (CLI) via
 `--annotation` or `-a` for short.
 
-Rationale: Annotations were added to OpenWhisk and Nuvolaris to allow
+Rationale: Annotations were added to OpenWhisk and OpenServerless to allow
 for experimentation without making changes to the underlying asset
 schema. We had, until the writing of this document, deliberately not
 defined what `annotations` are permitted. However as we start to use
@@ -19,7 +19,7 @@ annotations more heavily to impart semantic changes, it’s important that
 we finally start to document them.
 
 The most prevalent use of annotations to date is to document actions and
-packages. You’ll see many of the packages in the OpenWhisk and Nuvolaris
+packages. You’ll see many of the packages in the OpenWhisk and OpenServerless
 catalog carry annotations such as a description of the functionality
 offered by their actions, which parameters are required at package
 binding time, and which are invoke-time parameters, whether a parameter
@@ -31,7 +31,7 @@ its input arguments unmodified (e.g.,
 `function main(args) { return args }`). This action may be useful for
 logging input parameters for example as part of a sequence or rule.
 
-    nuv action create echo echo.js \
+    ops action create echo echo.js \
         -a description 'An action which returns its input. Useful for logging input to enable debug/replay.' \
         -a parameters  '[{ "required":false, "description": "Any JSON entity" }]' \
         -a sampleInput  '{ "msg": "Five fuzzy felines"}' \
@@ -82,7 +82,7 @@ The following annotations on an action are available.
 
 - `provide-api-key`: This annotation may be attached to actions which
     require an API key, for example to make REST API calls to the
-    OpenWhisk and Nuvolaris host. For newly created actions, if not
+    OpenWhisk and OpenServerless host. For newly created actions, if not
     specified, it defaults to a false value. For existing actions, the
     absence of this annotation, or its presence with a value that is not
     *falsy* (i.e., a value that is different from zero, null, false, and
@@ -101,7 +101,7 @@ in the system. The annotations are:
 - `web-export`: Makes its corresponding action accessible to REST
     calls *without* authentication. We call these [*web
     actions*](#webactions.adoc) because they allow one to use OpenWhisk
-    and Nuvolaris actions from a browser for example. It is important to
+    and OpenServerless actions from a browser for example. It is important to
     note that the *owner* of the web action incurs the cost of running
     them in the system (i.e., the *owner* of the action also owns the
     activations record). The rest of the annotations described below
@@ -146,7 +146,7 @@ are:
     only present for actions in a package binding.
 
 - `kind`: the kind of action executed, and one of the support
-    OpenWhisk and Nuvolaris runtime kinds.
+    OpenWhisk and OpenServerless runtime kinds.
 
 - `limits`: the time, memory and log limits that this activation were
     subject to.
@@ -163,7 +163,7 @@ Lastly, and in order to provide you with some performance transparency,
 activations also record:
 
 - `waitTime`: the time spent waiting in the internal OpenWhisk and
-    Nuvolaris system. This is roughly the time spent between the
+    OpenServerless system. This is roughly the time spent between the
     controller receiving the activation request and when the invoker
     provisioned a container for the action.
 

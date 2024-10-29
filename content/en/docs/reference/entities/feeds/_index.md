@@ -4,13 +4,13 @@ weight: 60
 ---
 # Implementing feeds
 
-OpenWhisk and Nuvolaris support an open API, where any user can expose
+OpenWhisk and OpenServerless support an open API, where any user can expose
 an event producer service as a **feed** in a **package**. This section
 describes architectural and implementation options for providing your
 own feed.
 
-This material is intended for advanced OpenWhisk and Nuvolaris users who
-intend to publish their own feeds. Most OpenWhisk and Nuvolaris users
+This material is intended for advanced OpenWhisk and OpenServerless users who
+intend to publish their own feeds. Most OpenWhisk and OpenServerless users
 can safely skip this section.
 
 # Feed Architecture
@@ -28,7 +28,7 @@ easiest and most attractive option for implementing low-frequency feeds.
 
 ## Polling
 
-In the `Polling` pattern, we arrange for an OpenWhisk and Nuvolaris
+In the `Polling` pattern, we arrange for an OpenWhisk and OpenServerless
 *action* to poll an endpoint periodically to fetch new data. This
 pattern is relatively easy to build, but the frequency of events will of
 course be limited by the polling interval.
@@ -45,7 +45,7 @@ polling, or to set up a push notification.
 Feeds and triggers are closely related, but technically distinct
 concepts.
 
-- OpenWhisk and Nuvolaris process **events** which flow into the
+- OpenWhisk and OpenServerless process **events** which flow into the
     system.
 
 - A **trigger** is technically a name for a class of events. Each
@@ -63,12 +63,12 @@ concepts.
 
 # Implementing Feed Actions
 
-The *feed action* is a normal OpenWhisk and Nuvolaris *action*, but it
+The *feed action* is a normal OpenWhisk and OpenServerless *action*, but it
 should accept the following parameters: \* **lifecycleEvent**: one of
 ‘CREATE’, ‘READ’, ‘UPDATE’, ‘DELETE’, ‘PAUSE’, or ‘UNPAUSE’. \*
 **triggerName**: the fully-qualified name of the trigger which contains
 events produced from this feed. \* **authKey**: the Basic auth
-credentials of the OpenWhisk and Nuvolaris user who owns the trigger
+credentials of the OpenWhisk and OpenServerless user who owns the trigger
 just mentioned.
 
 The feed action can also accept any other parameters it needs to manage
@@ -83,11 +83,11 @@ For example, assume the user has created a `mycloudant` binding for the
 `cloudant` package with their username and password as bound parameters.
 When the user issues the following command from the CLI:
 
-`nuv trigger create T --feed mycloudant/changes -p dbName myTable`
+`ops trigger create T --feed mycloudant/changes -p dbName myTable`
 
 then under the covers the system will do something equivalent to:
 
-`nuv action invoke mycloudant/changes -p lifecycleEvent CREATE -p triggerName T -p authKey <userAuthKey> -p password <password value from mycloudant binding> -p username <username value from mycloudant binding> -p dbName mytype`
+`ops action invoke mycloudant/changes -p lifecycleEvent CREATE -p triggerName T -p authKey <userAuthKey> -p password <password value from mycloudant binding> -p username <username value from mycloudant binding> -p dbName mytype`
 
 The feed action named *changes* takes these parameters, and is expected
 to take whatever action is necessary to set up a stream of events from
@@ -98,8 +98,8 @@ For the Cloudant *changes* feed, the action happens to talk directly to
 a *cloudant trigger* service we’ve implemented with a connection-based
 architecture. We’ll discuss the other architectures below.
 
-A similar feed action protocol occurs for `nuv trigger delete`,
-`nuv trigger update` and `nuv trigger get`.
+A similar feed action protocol occurs for `ops trigger delete`,
+`ops trigger update` and `ops trigger get`.
 
 # Implementing Feeds with Hooks
 
@@ -107,27 +107,27 @@ It is easy to set up a feed via a hook if the event producer supports a
 webhook/callback facility.
 
 With this method there is *no need* to stand up any persistent service
-outside of OpenWhisk and Nuvolaris. All feed management happens
-naturally though stateless OpenWhisk and Nuvolaris *feed actions*, which
+outside of OpenWhisk and OpenServerless. All feed management happens
+naturally though stateless OpenWhisk and OpenServerless *feed actions*, which
 negotiate directly with a third part webhook API.
 
 When invoked with `CREATE`, the feed action simply installs a webhook
 for some other service, asking the remote service to POST notifications
-to the appropriate `fireTrigger` URL in OpenWhisk and Nuvolaris.
+to the appropriate `fireTrigger` URL in OpenWhisk and OpenServerless.
 
 The webhook should be directed to send notifications to a URL such as:
 
     POST /namespaces/{namespace}/triggers/{triggerName}
 
 The form with the POST request will be interpreted as a JSON document
-defining parameters on the trigger event. OpenWhisk and Nuvolaris rules
+defining parameters on the trigger event. OpenWhisk and OpenServerless rules
 pass these trigger parameters to any actions to fire as a result of the
 event.
 
 # Implementing Feeds with Polling
 
-It is possible to set up an OpenWhisk and Nuvolaris *action* to poll a
-feed source entirely within OpenWhisk and Nuvolaris, without the need to
+It is possible to set up an OpenWhisk and OpenServerless *action* to poll a
+feed source entirely within OpenWhisk and OpenServerless, without the need to
 stand up any persistent connections or external service.
 
 For feeds where a webhook is not available, but do not need high-volume
@@ -145,7 +145,7 @@ steps when called for `CREATE`:
 3. The feed action sets up a *rule* *T → pollMyService*.
 
 This procedure implements a polling-based trigger entirely using
-OpenWhisk and Nuvolaris actions, without any need for a separate
+OpenWhisk and OpenServerless actions, without any need for a separate
 service.
 
 # Implementing Feeds via Connections
@@ -154,18 +154,18 @@ The previous 2 architectural choices are simple and easy to implement.
 However, if you want a high-performance feed, there is no substitute for
 persistent connections and long-polling or similar techniques.
 
-Since OpenWhisk and Nuvolaris actions must be short-running, an action
+Since OpenWhisk and OpenServerless actions must be short-running, an action
 cannot maintain a persistent connection to a third party . Instead, we
-must stand up a separate service (outside of OpenWhisk and Nuvolaris)
+must stand up a separate service (outside of OpenWhisk and OpenServerless)
 that runs all the time. We call these *provider services*. A provider
 service can maintain connections to third party event sources that
 support long polling or other connection-based notifications.
 
 The provider service should provide a REST API that allows the OpenWhisk
-and Nuvolaris *feed action* to control the feed. The provider service
-acts as a proxy between the event provider and OpenWhisk and Nuvolaris –
+and OpenServerless *feed action* to control the feed. The provider service
+acts as a proxy between the event provider and OpenWhisk and OpenServerless –
 when it receives events from the third party, it sends them on to
-OpenWhisk and Nuvolaris by firing a trigger.
+OpenWhisk and OpenServerless by firing a trigger.
 
 The connection-based architecture is the highest performance option, but
 imposes more overhead on operations compared to the polling and hook

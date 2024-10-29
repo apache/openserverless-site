@@ -42,14 +42,14 @@ from the `params` object in this example.
 
 <!-- -->
 
-    nuv action update hello hello.js
+    ops action update hello hello.js
 
 1. Parameters can be provided explicitly on the command-line, or by
     supplying a file containing the desired parameters
 
 To pass parameters directly through the command-line, supply a key/value
 pair to the `--param` flag:
-`nuv action invoke --result hello --param name Dorothy --param place Kansas`
+`ops action invoke --result hello --param name Dorothy --param place Kansas`
 
 This produces the result:
 
@@ -74,7 +74,7 @@ Now the action expects a single `person` parameter to have fields `name`
 and `place`. If we invoke the action with a single `person` parameter
 that is valid JSON:
 
-    nuv action invoke --result hello -p person '{"name": "Dorothy", "place": "Kansas"}'
+    ops action invoke --result hello -p person '{"name": "Dorothy", "place": "Kansas"}'
 
 The result is the same because the CLI automatically parses the `person`
 parameter value into the structured object that the action now expects:
@@ -98,13 +98,13 @@ parameter so that the action defaults to the place “Kansas”:
 To specify default parameters explicitly on the command-line, provide a
 key/value pair to the `param` flag:
 
-    nuv action update hello --param place Kansas
+    ops action update hello --param place Kansas
 
 1. Invoke the action, passing only the `name` parameter this time.
 
 <!-- -->
 
-    nuv action invoke --result hello --param name Dorothy
+    ops action invoke --result hello --param name Dorothy
 
     {
         "payload": "Hello, Dorothy from Kansas"
@@ -119,7 +119,7 @@ specifying the parameter value at invocation time.
 
 <!-- -->
 
-    nuv action invoke --result hello --param name Dorothy --param place "Washington, DC"
+    ops action invoke --result hello --param name Dorothy --param place "Washington, DC"
 
     {
         "payload": "Hello, Dorothy from Washington, DC"
@@ -145,7 +145,7 @@ package and shows an action making use of it.
 
 <!-- -->
 
-    nuv package update MyApp --param name World
+    ops package update MyApp --param name World
 
 1. Create an action in this package:
 
@@ -155,13 +155,13 @@ package and shows an action making use of it.
            return {payload: "Hello, " + params.name};
        }
 
-    nuv action update MyApp/hello hello.js
+    ops action update MyApp/hello hello.js
 
 1. Invoke the action, and observe the default package parameter in use:
 
 <!-- -->
 
-    nuv action invoke --result MyApp/hello
+    ops action invoke --result MyApp/hello
 
        {
            "payload": "Hello, World"
@@ -187,7 +187,7 @@ creating/updating them, and when invoking actions.
 
 <!-- -->
 
-    nuv action update hello hello.js
+    ops action update hello hello.js
 
 1. Create a parameter file called `parameters.json` containing
     JSON-formatted parameters:
@@ -204,7 +204,7 @@ creating/updating them, and when invoking actions.
 
 <!-- -->
 
-    nuv action invoke --result hello --param-file parameters.json
+    ops action invoke --result hello --param-file parameters.json
 
     {
         "payload": "Hello, Dorothy from Kansas"

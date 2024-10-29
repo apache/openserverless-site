@@ -191,10 +191,10 @@ object providing a new activation context and the input parameters for
 the function. There may be many activations of the same function against
 the same proxy (viz. container). Currently, the activations are
 guaranteed not to overlap — that is, at any given time, there is at most
-one request to `/run` from the OpenWhisk and Nuvolaris platform.
+one request to `/run` from the OpenWhisk and OpenServerless platform.
 
 The route must accept a JSON object and respond with a JSON object,
-otherwise the OpenWhisk and Nuvolaris platform will treat the activation
+otherwise the OpenWhisk and OpenServerless platform will treat the activation
 as a failure and proceed to destroy the container. The JSON object
 provided by the platform follows the following schema:
 
@@ -212,7 +212,7 @@ provided by the platform follows the following schema:
 - `value` is a JSON object and contains all the parameters for the
     function activation.
 
-- `namespace` is the OpenWhisk and Nuvolaris namespace for the action
+- `namespace` is the OpenWhisk and OpenServerless namespace for the action
     (e.g., `whisk-system`).
 
 - `action_name` is the [fully qualified
@@ -231,7 +231,7 @@ The `value` is the function parameters. The rest of the properties
 become part of the activation context which is a set of environment
 variables constructed by capitalizing each of the property names, and
 prefixing the result with `__OW_`. Additionally, the context must define
-`__OW_API_HOST` whose value is the OpenWhisk and Nuvolaris API host.
+`__OW_API_HOST` whose value is the OpenWhisk and OpenServerless API host.
 This value is currently provided as an environment variable defined at
 container startup time and hence already available in the context.
 
@@ -244,7 +244,7 @@ activation](actions.md#understanding-the-activation-record).
 activation error. The response from the handler must be a JSON object
 with a single field called `error` describing the failure. The value of
 the error field may be any valid JSON value. Should the proxy fail to
-respond with a JSON object, the OpenWhisk and Nuvolaris platform will
+respond with a JSON object, the OpenWhisk and OpenServerless platform will
 treat the failure as an uncaught exception. These two failures modes are
 distinguished by the value of the `response.status` in the activation
 record which is `application error` if the proxy returned an `error`

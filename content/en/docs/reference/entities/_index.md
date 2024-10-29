@@ -1,7 +1,7 @@
 ---
 title: Entities
 ---
-You can find more informations about Nuvolaris and OpenWhisk entities
+You can find more informations about OpenServerless and OpenWhisk entities
 here:
 
 - [Actions](#actions.adoc)

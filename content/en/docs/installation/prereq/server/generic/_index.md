@@ -6,7 +6,7 @@ weight: 10
 ## Configure a generic Linux server to install OpenServerless
 
 If you have access to a generic Linux server, to be able to install
-Nuvolaris it needs to:
+OpenServerless it needs to:
 
 1. be accessible without a password with `ssh`
 

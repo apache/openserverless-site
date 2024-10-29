@@ -48,7 +48,7 @@ To deploy an action and request a single execution automatically via the OpenSer
 
  `ops action create scheduled-action scheduled-action.py -a autoexec true`
 
-If we now print activation logs with nuv activation poll, we will see our action execution log:
+If we now print activation logs with `ops activation poll`, we will see our action execution log:
 
 ```bash
 Activation: 'scheduled' (ebd532139a464e9d9532139a46ae9d8a)

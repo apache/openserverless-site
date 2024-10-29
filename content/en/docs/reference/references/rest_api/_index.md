@@ -7,7 +7,7 @@ After your OpenWhisk and OpenServerlesss environment is enabled, you can use
 it with your web apps or mobile apps with REST API calls.
 
 For more details about the APIs for actions, activations, packages,
-rules, and triggers, see the [OpenWhisk and Nuvolaris API
+rules, and triggers, see the [OpenWhisk and OpenServerless API
 documentation](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/openwhisk/openwhisk/master/core/controller/src/main/resources/apiv1swagger.json).
 
 All the capabilities in the system are available through a REST API.
@@ -51,7 +51,7 @@ All APIs are protected with HTTP Basic authentication. You can use the
 authentication. The Basic authentication credentials are in the `AUTH`
 property in your `~/.nuvprops` file, delimited by a colon. You can also
 retrieve these credentials using the CLI running
-`nuv property get --auth`.
+`ops property get --auth`.
 
 The following is an example that uses the [cURL](https://curl.haxx.se)
 command tool to get the list of all packages in the `whisk.system`
@@ -90,13 +90,13 @@ allowed (that is, Access-Control-Allow-Methods is
 **Attention:** Because OpenWhisk and OpenServerless currently supports only
 one key per namespace, it is not recommended to use CORS beyond simple
 experiments. Use [Web Actions](#webactions.adoc) to expose your actions
-to the public and not use the OpenWhisk and Nuvolaris authorization key
+to the public and not use the OpenWhisk and OpenServerless authorization key
 for client applications that require CORS.
 
 ## Using the CLI verbose mode
 
 The OpenWhisk and OpenServerless CLI is an interface to the OpenWhisk and
-Nuvolaris REST API. You can run the CLI in verbose mode with the flag
+OpenServerless REST API. You can run the CLI in verbose mode with the flag
 `-v`, this will print truncated information about the HTTP request and
 response. To print all information use the flag `-d` for debug.
 
@@ -115,7 +115,7 @@ Let’s try getting the namespace value for the current user.
         "Basic XXXYYYY"
       ],
       "User-Agent": [
-        "OpenWhisk and Nuvolaris-CLI/1.0 (2017-08-10T20:09:30+00:00)"
+        "OpenWhisk and OpenServerless-CLI/1.0 (2017-08-10T20:09:30+00:00)"
       ]
     }
     RESPONSE:Got response with code 200
@@ -140,7 +140,7 @@ string. The response is of content type `application/json`.
 ## Actions
 
 **Note:** In the examples that follow, `$AUTH` and `$APIHOST` represent
-environment variables set respectively to your OpenWhisk and Nuvolaris
+environment variables set respectively to your OpenWhisk and OpenServerless
 authorization key and API host.
 
 To create or update an action send a HTTP request with method `PUT` on
@@ -221,7 +221,7 @@ on the action
     -d '{"namespace":"_","name":"hello","exec":{"kind":"nodejs:6","code":"function main(params) { return {payload:\"Hello \"+params.name}}"},"annotations":[{"key":"web-export","value":true},{"key":"raw-http","value":false},{"key":"final","value":true}]}'
 
 You can now invoke this action as a public URL with no OpenWhisk and
-Nuvolaris authorization. Try invoking using the web action public URL
+OpenServerless authorization. Try invoking using the web action public URL
 including an optional extension such as `.json` or `.http` for example
 at the end of the URL.
 
@@ -240,7 +240,7 @@ To create an action sequence, you need to create it by providing the
 names of the actions that compose the sequence in the desired order, so
 the output from the first action is passed as input to the next action.
 
-$ nuv action create sequenceAction –sequence
+$ ops action create sequenceAction –sequence
 /whisk-system/utils/split,/whisk-system/utils/sort
 
 Create a sequence with the actions `/whisk-system/utils/split` and
