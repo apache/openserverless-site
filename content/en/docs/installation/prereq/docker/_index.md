@@ -49,7 +49,7 @@ you also need also to reserve at least 8GB.
 
 > ❗ **IMPORTANT**
 >
-> On MacOS, the default 2GB and they are definitely **not enough** to run
+> On MacOS, Docker defaults to 2GB memoery and they are definitely **not enough** to run
 OpenServerless on your local machine.
 
 ![](/docs/installation/images/install_docker_desktop.png)
