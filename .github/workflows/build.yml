@@ -32,6 +32,8 @@ jobs:
           npm install
           npm run clean
           npm run build:production
+      - name: Copy .asf.yaml to publish directory
+        run: cp .github/.asf.prod.yaml ${{ env.PUBLISH_DIRECTORY }}/.asf.yaml
       - name: Deploy to ASF
         working-directory: ${{ env.PUBLISH_DIRECTORY }}
         run: |
