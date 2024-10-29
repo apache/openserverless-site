@@ -1,41 +1,41 @@
 ---
 title: Advanced CLI
 ---
-# Nuvolaris CLI
+# OpenServerless CLI
 
-Nuvolaris offers a powerful command line interface named `nuv` which
+OpenServerless offers a powerful command line interface named `ops` which
 extends and embeds the OpenWhisk `wsk`.
 
 You can download it from [here](#installation:download.adoc).
 
-We can see here some advanced uses of `nuv`.
+We can see here some advanced uses of `ops`.
 
-Nuvolaris access is usually configure logging into it with the
-`nuv -login`.
+OpenServerless access is usually configure logging into it with the
+`ops -login`.
 
-You can also configure access directly using the `nuv -wsk` command.
+You can also configure access directly using the `ops -wsk` command.
 
 There are two required properties to configure:
 
-1. **API host** (name or IP address) for the OpenWhisk and Nuvolaris
+1. **API host** (name or IP address) for the OpenWhisk and OpenServerless
     deployment you want to use.
 
 2. **Authorization key** (username and password) which grants you
     access to the OpenWhisk and Nuvolaris API.
 
 The API host ia the installationj host, the one you configure in
-installation with `nuv config apihost`
+installation with `ops config apihost`
 
-    nuv -wsk property set --apihost <openwhisk_baseurl>
+    ops -wsk property set --apihost <openwhisk_baseurl>
 
 If you know your authorization key, you can configure the CLI to use it.
 Otherwise, you will need to obtain an authorization key for most CLI
 operations. The API key is visible in the file `~/.wskprops` after you
-perform a `nuv -login`. This file can be sourced to be read as
+perform a `ops -login`. This file can be sourced to be read as
 environment variables.
 
     source ~/.wskprops
-    nuv -wsk property set --auth $AUTH
+    ops -wsk property set --auth $AUTH
 
 **Tip:** The OpenWhisk and Nuvolaris CLI stores properties in the
 `~/.wskprops` configuration file by default. The location of this file
@@ -48,7 +48,7 @@ The required properties described above have the following keys in the
 
 - **AUTH** - Required key for the Authorization key.
 
-To verify your CLI setup, try `nuv action list`.
+To verify your CLI setup, try `ops action list`.
 
 ## Configure the CLI to use an HTTPS proxy
 
@@ -64,4 +64,4 @@ provides default client certificate configuration which deployment
 process generated, then you can refer to below steps to use client
 certificate:
 
-    nuv -wsk property set --cert <client_cert_path> --key <client_key_path>
+    ops -wsk property set --cert <client_cert_path> --key <client_key_path>
