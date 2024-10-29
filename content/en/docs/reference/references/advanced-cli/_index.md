@@ -21,7 +21,7 @@ There are two required properties to configure:
     deployment you want to use.
 
 2. **Authorization key** (username and password) which grants you
-    access to the OpenWhisk and Nuvolaris API.
+    access to the OpenWhisk and OpenServerless API.
 
 The API host ia the installationj host, the one you configure in
 installation with `ops config apihost`
@@ -37,7 +37,7 @@ environment variables.
     source ~/.wskprops
     ops -wsk property set --auth $AUTH
 
-**Tip:** The OpenWhisk and Nuvolaris CLI stores properties in the
+**Tip:** The OpenWhisk and OpenServerless CLI stores properties in the
 `~/.wskprops` configuration file by default. The location of this file
 can be altered by setting the `WSK_CONFIG_FILE` environment variable.
 

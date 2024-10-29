@@ -3,8 +3,8 @@ title: Building your runtime
 ---
 # Developing a new Runtime with the ActionLoop proxy
 
-The [OpenWhisk and Nuvolaris runtime specification](#actions-new.adoc)
-defines the expected behavior of an OpenWhisk and Nuvolaris runtime; you
+The [OpenWhisk and OpenServerless runtime specification](#actions-new.adoc)
+defines the expected behavior of an OpenWhisk and OpenServerless runtime; you
 can choose to implement a new runtime from scratch by just following
 this specification. However, the fastest way to develop a new, compliant
 runtime is by reusing the *[ActionLoop
@@ -17,7 +17,7 @@ runtime in a few hours or less.
 
 The `ActionLoop proxy` is a runtime “engine”, written in the [Go
 programming language](https://golang.org/), originally developed
-specifically to support the [OpenWhisk and Nuvolaris Go language
+specifically to support the [OpenWhisk and OpenServerless Go language
 runtime](https://github.com/apache/openwhisk-runtime-go). However, it
 was written in a generic way such that it has since been adopted to
 implement OpenWhisk and Nuvolaris runtimes for Swift, PHP, Python, Rust,
@@ -33,11 +33,11 @@ and responsive. In fact, the ActionLoop proxy has also been adopted to
 improve the performance of existing runtimes like Python, Ruby, PHP, and
 Java where performance has improved by a factor between 2x to 20x.
 
-### Precompilation of OpenWhisk and Nuvolaris Actions
+### Precompilation of OpenWhisk and OpenServerless Actions
 
 In addition to being the basis for new runtime development, ActionLoop
 runtimes can also support offline “precompilation” of OpenWhisk and
-Nuvolaris Action source files into a ZIP file that contains only the
+OpenServerless Action source files into a ZIP file that contains only the
 compiled binaries which are very fast to start once deployed. More
 information on this approach can be found here: [Precompiling Go Sources
 Offline](https://github.com/apache/openwhisk-runtime-go/blob/master/docs/DEPLOY.md#precompile)
@@ -171,7 +171,7 @@ Our language runtime’s `Dockerfile` has the task of preparing an
 environment for executing OpenWhisk and Nuvolaris Actions. Using the
 ActionLoop approach, we use a multistage Docker build to
 
-1. derive our OpenWhisk and Nuvolaris language runtime from an existing
+1. derive our OpenWhisk and OpenServerless language runtime from an existing
     Docker image that has all the target language’s tools and libraries
     for running functions authored in that language.
 
@@ -424,7 +424,7 @@ launch the Java runtime.
 
 ### How the ActionLoop proxy handles action uploads
 
-The OpenWhisk and Nuvolaris user can upload actions with the `nuv`
+The OpenWhisk and OpenServerless user can upload actions with the `ops`
 Command Line Interface (CLI) tool as a single file.
 
 This single file can be:
@@ -486,7 +486,7 @@ environment variable (you may have noticed it in the Dockerfile) that
 will be invoked with 3 parameters:
 
 1. `<main>` is the name of the main function specified by the user on
-    the `nuv` command line
+    the `ops` command line
 
 2. `<src>` is the absolute directory with the sources already unzipped
 
@@ -849,10 +849,10 @@ Congratulations! The runtime works locally! Time to test it on the
 public cloud. So as the last step before moving forward, let’s push the
 image to Docker Hub with `make push`.
 
-### Testing on OpenWhisk and Nuvolaris
+### Testing on OpenWhisk and OpenServerless
 
-To run this test you need to configure access to OpenWhisk and Nuvolaris
-with `nuv`. A simple way is to get access is to register a free account
+To run this test you need to configure access to OpenWhisk and OpenServerless
+with `ops`. A simple way is to get access is to register a free account
 in the IBM Cloud but this works also with our own deployment of
 OpenWhisk and Nuvolaris.
 

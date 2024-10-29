@@ -19,7 +19,7 @@ apply the rule: "if everything fails, read the manual".
 
 Start ensuring the prerequsites are satisfied:
 
-- [Download and install](/docs/installation/download/) ops, the
+- [Download and install](/docs/installation/download/) `ops`, the
     OpenServerless CLI, picking version suitable for your environment.
     We support 64-bit versions of recent Windows, MacOS and major Linux
     distributions.
@@ -69,8 +69,7 @@ then install OpenServerless in it. Once you have:
 
 3. installed Docker Desktop
 
-Make sure Docker Desktop its running before the next operation. You can
-install OpenServerless and its services in Docker with just this
+Make sure Docker Desktop its running before the next operation. Install OpenServerless and its services in Docker with just this
 command:
 
     ops setup devcluster

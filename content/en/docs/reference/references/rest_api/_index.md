@@ -1,11 +1,10 @@
 ---
 title: Rest API
 ---
-# Using REST APIs with OpenWhisk and Nuvolaris
+# Using REST APIs with OpenWhisk and NuvoOpenServerlesslaris
 
-After your OpenWhisk and Nuvolaris environment is enabled, you can use
-OpenWhisk and Nuvolaris with your web apps or mobile apps with REST API
-calls.
+After your OpenWhisk and OpenServerlesss environment is enabled, you can use
+it with your web apps or mobile apps with REST API calls.
 
 For more details about the APIs for actions, activations, packages,
 rules, and triggers, see the [OpenWhisk and Nuvolaris API
@@ -25,7 +24,7 @@ These are the collection endpoints:
     https://$APIHOST/api/v1/namespaces/{namespace}/activations
     https://$APIHOST/api/v1/namespaces/{namespace}/limits
 
-The `$APIHOST` is the OpenWhisk and Nuvolaris API hostname (for example,
+The `$APIHOST` is the OpenWhisk and OpenServerless API hostname (for example,
 localhost, 172.17.0.1, and so on). For the `{namespace}`, the character
 `_` can be used to specify the user’s *default namespace*.
 
@@ -88,7 +87,7 @@ allowed (that is, Access-Control-Allow-Methods is
 `GET, DELETE, POST, PUT, HEAD`), and Access-Control-Allow-Headers yields
 `Authorization, Origin, X-Requested-With, Content-Type, Accept, User-Agent`.
 
-**Attention:** Because OpenWhisk and Nuvolaris currently supports only
+**Attention:** Because OpenWhisk and OpenServerless currently supports only
 one key per namespace, it is not recommended to use CORS beyond simple
 experiments. Use [Web Actions](#webactions.adoc) to expose your actions
 to the public and not use the OpenWhisk and Nuvolaris authorization key
@@ -96,7 +95,7 @@ for client applications that require CORS.
 
 ## Using the CLI verbose mode
 
-The OpenWhisk and Nuvolaris CLI is an interface to the OpenWhisk and
+The OpenWhisk and OpenServerless CLI is an interface to the OpenWhisk and
 Nuvolaris REST API. You can run the CLI in verbose mode with the flag
 `-v`, this will print truncated information about the HTTP request and
 response. To print all information use the flag `-d` for debug.
@@ -106,7 +105,7 @@ they exceed 1000 bytes.
 
 Let’s try getting the namespace value for the current user.
 
-    nuv namespace list -v
+    ops namespace list -v
 
     REQUEST:
     [GET]  https://$APIHOST/api/v1/namespaces
@@ -133,9 +132,9 @@ Let’s try getting the namespace value for the current user.
 As you can see you the printed information provides the properties of
 the HTTP request, it performs a HTTP method `GET` on the URL
 `https://$APIHOST/api/v1/namespaces` using a User-Agent header
-`OpenWhisk and Nuvolaris-CLI/1.0 (<CLI-Build-version>)` and Basic
+`OpenWhisk and OpenServerless-CLI/1.0 (<CLI-Build-version>)` and Basic
 Authorization header `Basic XXXYYYY`. Notice that the authorization
-value is your base64-encoded OpenWhisk and Nuvolaris authorization
+value is your base64-encoded OpenWhisk and OpenServerless authorization
 string. The response is of content type `application/json`.
 
 ## Actions
@@ -269,7 +268,7 @@ value `webhook` set.
 
 Now whenever you have an event that needs to fire this trigger it just
 takes an HTTP request with a method `POST` using the OpenWhisk and
-Nuvolaris Authorization key.
+OpenServerless Authorization key.
 
 To fire the trigger `events` with a parameter `temperature`, send the
 following HTTP request.
