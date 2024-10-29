@@ -3,7 +3,7 @@ title: Runtimes under the hood
 ---
 # Adding Action Language Runtimes
 
-OpenWhisk and Nuvolaris supports [several languages and
+OpenWhisk and OpenServerless supports [several languages and
 runtimes](#index-runtimes.adoc) but there may be other languages or
 runtimes that are important for your organization, and for which you
 want tighter integration with the platform.
@@ -12,7 +12,7 @@ The platform is extensible and you can add new languages or runtimes
 (with custom packages and third-party dependencies)
 
 This guide describes the contract a runtime must satisfy. However all
-the Nuvolaris runtimes are implemented the [using the ActionLoop
+the OpenServerless runtimes are implemented the [using the ActionLoop
 Proxy](#actions-actionloop.adoc). This proxy is implemented in Go,
 already satifies the semantic of a runtime ands makes very easy to build
 a new runtime. You just need to provide "launcher code" in your favorite
@@ -92,7 +92,7 @@ with a `-`. For example, a plain text function for `nodejs:20` becomes
 
 An action consists of the user function (and its dependencies) along
 with a *proxy* that implements a canonical protocol to integrate with
-the OpenWhisk and Nuvolaris platform.
+the OpenWhisk and OpenServerless platform.
 
 The proxy is a web server with two endpoints.
 
@@ -154,7 +154,7 @@ with a JSON object as follows:
         milliseconds).
 
 The initialization route is called exactly once by the OpenWhisk and
-Nuvolaris platform, before executing a function. The route should report
+OpenServerless platform, before executing a function. The route should report
 an error if called more than once. It is possible however that a single
 initialization will be followed by many activations (via `/run`). If an
 `env` property is provided, the corresponding environment variables
@@ -171,7 +171,7 @@ failure. The value of the error field may be any valid JSON value. The
 proxy should make sure to generate meaningful log message on failure to
 aid the end user in understanding the failure.
 
-**Time limit:** Every action in OpenWhisk and Nuvolaris has a defined
+**Time limit:** Every action in OpenWhisk and OpenServerless has a defined
 time limit (e.g., 60 seconds). The initialization must complete within
 the allowed duration. Failure to complete initialization within the
 allowed time frame will destroy the container.
@@ -179,13 +179,13 @@ allowed time frame will destroy the container.
 **Limitation:** The proxy does not currently receive any of the
 activation context at initialization time. There are scenarios where the
 context is convenient if present during initialization. This will
-require a change in the OpenWhisk and Nuvolaris platform itself. Note
+require a change in the OpenWhisk and OpenServerless platform itself. Note
 that even if the context is available during initialization, it must be
 reset with every new activation since the information will change with
 every execution.
 
 The proxy is ready to execute a function once it has successfully
-completed initialization. The OpenWhisk and Nuvolaris platform will
+completed initialization. The OpenWhisk and OpenServerless platform will
 invoke the function by posting an HTTP request to `/run` with a JSON
 object providing a new activation context and the input parameters for
 the function. There may be many activations of the same function against
@@ -250,7 +250,7 @@ distinguished by the value of the `response.status` in the activation
 record which is `application error` if the proxy returned an `error`
 object, and `action developer error` otherwise.
 
-**Time limit:** Every action in OpenWhisk and Nuvolaris has a defined
+**Time limit:** Every action in OpenWhisk and OpenServerless has a defined
 time limit (e.g., 60 seconds). The activation must complete within the
 allowed duration. Failure to complete activation within the allowed time
 frame will destroy the container.
@@ -297,12 +297,12 @@ The canonical test suite should be extended by the new runtime tests.
 Additional tests will be required depending on the feature set provided
 by the runtime.
 
-Since the OpenWhisk and Nuvolaris platform is language and runtime
+Since the OpenWhisk and OpenServerless platform is language and runtime
 agnostic, it is generally not necessary to add integration tests. That
 is the unit tests verifying the protocol are sufficient. However, it may
-be necessary in some cases to modify the `nuv` CLI or other OpenWhisk
-and Nuvolaris clients. In which case, appropriate tests should be added
-as necessary. The OpenWhisk and Nuvolaris platform will perform a
+be necessary in some cases to modify the `ops` CLI or other OpenWhisk
+and OpenServerless clients. In which case, appropriate tests should be added
+as necessary. The OpenWhisk and OpenServerless platform will perform a
 generic integration test as part of its basic system tests. This
 integration test will require a [test function](#the-test-action) to be
 available so that the test harness can create, invoke, and delete the

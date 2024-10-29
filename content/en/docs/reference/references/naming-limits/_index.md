@@ -4,20 +4,20 @@ title: Naming And Limits
 # System details
 
 The following sections provide more details about the OpenWhisk and
-Nuvolaris system.
+OpenServerless system.
 
 ## Entities
 
 ### Namespaces and packages
 
-OpenWhisk and Nuvolaris actions, triggers, and rules belong in a
+OpenWhisk and OpenServerless actions, triggers, and rules belong in a
 namespace, and optionally a package.
 
 Packages can contain actions and feeds. A package cannot contain another
 package, so package nesting is not allowed. Also, entities do not have
 to be contained in a package.
 
-In Nuvolaris a namespace corresponds to an user. You can create users
+In OpenServerless a namespace corresponds to an user. You can create users
 with the [admin subcommand](#cli:admin.adoc) of the CLI.
 
 The fully qualified name of an entity is
@@ -105,7 +105,7 @@ More precisely, a name must match the following regular expression
 
 ### Actions
 
-OpenWhisk and Nuvolaris has a few system limits, including how much
+OpenWhisk and OpenServerless has a few system limits, including how much
 memory an action can use and how many action invocations are allowed per
 minute.
 

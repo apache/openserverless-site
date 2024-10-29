@@ -3,7 +3,7 @@ title: Runtimes
 ---
 This document is still 🚧 **work in progress** 🚧
 
-The programming languages currently directly supported by Nuvolaris are:
+The programming languages currently directly supported by OpenServerless are:
 
 - [🚧 Node](#actions-nodejs.adoc)
 
