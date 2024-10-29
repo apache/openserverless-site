@@ -26,7 +26,7 @@ install and configure if you have:
 ### Windows
 
 You require the 64 bit edition in Intel Architecture of a recent version
-of Windows (at least version 10). The installer `nuv` does not run on 32
+of Windows (at least version 10). The installer `ops` does not run on 32
 bit versions nor in the ARM architecture.
 
 Download and install [Docker
@@ -39,7 +39,7 @@ installation.
 ### MacOS
 
 You require a recent version of MacOS (at least version 11.xb BigSur).
-The installer `nuv` is available both for Intel and ARM.
+The installer `ops` is available both for Intel and ARM.
 
 Download and install [Docker
 Desktop](https://www.docker.com/products/docker-desktop/) for MacOS.
