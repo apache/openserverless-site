@@ -1,7 +1,9 @@
 ---
-title: Naming And Limits
+title: Naming Limits
+description: Details of OpenServerless and OpenWhisk system
+weight: 30
+draft: false
 ---
-# System details
 
 The following sections provide more details about the OpenWhisk and
 OpenServerless system.
@@ -55,8 +57,7 @@ entities and their aliases.
 </thead>
 <tbody>
 <tr class="odd">
-<td
-style="text-align: left;"><p><code>/whisk.system/cloudant/read</code></p></td>
+<td style="text-align: left;"><p><code>/whisk.system/cloudant/read</code></p></td>
 <td style="text-align: left;"></td>
 <td style="text-align: left;"><p><code>/whisk.system</code></p></td>
 <td style="text-align: left;"><p><code>cloudant</code></p></td>

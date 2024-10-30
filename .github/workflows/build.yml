@@ -34,6 +34,8 @@ jobs:
           npm run build:production
       - name: Copy .asf.yaml to publish directory
         run: cp .github/.asf.prod.yaml ${{ env.PUBLISH_DIRECTORY }}/.asf.yaml
+      - name: Copy .htaccess to publish directory
+        run: cp .github/.htaccess ${{ env.PUBLISH_DIRECTORY }}/.htaccess
       - name: Deploy to ASF
         working-directory: ${{ env.PUBLISH_DIRECTORY }}
         run: |

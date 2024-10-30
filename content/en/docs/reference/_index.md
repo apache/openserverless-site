@@ -20,15 +20,15 @@ languages](#index-runtimes.adoc). The list is expanding over the time.
 
 See below for documentation related to:
 
-- [OpenWhisk Entities](#index-entities.adoc)
+- [OpenWhisk Entities](entities)
 
-- [OpenServerless Runtimes](#index-runtimes.adoc)
+- [OpenServerless Runtimes](runtimes)
 
 - [OpenServerless `ops` Tools](tools)
 
 - [OpenServerless `ops` Tasks](tasks)
 
-- [Advanced Reference Documentation](#index-references)
+- [Advanced Reference Documentation](references)
 
 There is also a [tutorial and a development
 kit](#actions-actionloop.adoc) to build your own runtime for your

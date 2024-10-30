@@ -1,16 +1,21 @@
 ---
 title: Runtimes
+description: List of OpenServerless' supported runtimes
+#weight: 60
+draft: false
 ---
+
+## Supported Runtimes
 This document is still 🚧 **work in progress** 🚧
 
 The programming languages currently directly supported by OpenServerless are:
 
-- [🚧 Node](#actions-nodejs.adoc)
+- [🚧 Node](actions-nodejs)
 
-- [🚧 Python](#actions-python.adoc)
+- [🚧 Python](actions-python)
 
-- [🚧 Go](#actions-go.adoc)
+- [🚧 Go](actions-go)
 
-- [🚧 Java](#actions-java.adoc)
+- [🚧 Java](actions-java)
 
-- [🚧 PHP](#actions-php.adoc)
+- [🚧 PHP](actions-php)
