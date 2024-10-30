@@ -1,12 +1,16 @@
 ---
 title: Advanced CLI
+description: How to use the advanced features of ops command line
+weight: 10
+draft: false
 ---
-# OpenServerless CLI
+
+## OpenServerless Cli
 
 OpenServerless offers a powerful command line interface named `ops` which
 extends and embeds the OpenWhisk `wsk`.
 
-Download instructions are available [here](/installation/download).
+Download instructions are available [here](/docs/installation/download/).
 
 Let's see some advanced uses of `ops`.
 

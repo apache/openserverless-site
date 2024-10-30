@@ -1,7 +1,11 @@
 ---
 title: Rest API
+description: Use OpenServerless with your Rest API calls.
+weight: 30
+draft: false
 ---
-# Using REST APIs with OpenWhisk and NuvoOpenServerlesslaris
+
+## Using REST APIs with OpenWhisk and OpenServerless
 
 After your OpenWhisk and OpenServerlesss environment is enabled, you can use
 it with your web apps or mobile apps with REST API calls.
@@ -93,7 +97,7 @@ experiments. Use [Web Actions](#webactions.adoc) to expose your actions
 to the public and not use the OpenWhisk and OpenServerless authorization key
 for client applications that require CORS.
 
-## Using the CLI verbose mode
+### Using the CLI verbose mode
 
 The OpenWhisk and OpenServerless CLI is an interface to the OpenWhisk and
 OpenServerless REST API. You can run the CLI in verbose mode with the flag
@@ -137,7 +141,7 @@ Authorization header `Basic XXXYYYY`. Notice that the authorization
 value is your base64-encoded OpenWhisk and OpenServerless authorization
 string. The response is of content type `application/json`.
 
-## Actions
+### Actions
 
 **Note:** In the examples that follow, `$AUTH` and `$APIHOST` represent
 environment variables set respectively to your OpenWhisk and OpenServerless
@@ -203,7 +207,7 @@ You get the following response:
       "payload": "hello John"
     }
 
-## Annotations and Web Actions
+### Annotations and Web Actions
 
 To create an action as a web action, you need to add an
 [annotation](#annotations.adoc) of `web-export=true` for web actions.
@@ -234,7 +238,7 @@ at the end of the URL.
 Note that this example source code will not work with `.http`, see [web
 actions](webactions.md) documentation on how to modify.
 
-## Sequences
+### Sequences
 
 To create an action sequence, you need to create it by providing the
 names of the actions that compose the sequence in the desired order, so
@@ -253,7 +257,7 @@ Create a sequence with the actions `/whisk-system/utils/split` and
 Take into account when specifying the names of the actions, they have to
 be full qualified.
 
-## Triggers
+### Triggers
 
 To create a trigger, the minimum information you need is a name for the
 trigger. You could also include default parameters that get passed to
@@ -277,7 +281,7 @@ following HTTP request.
     -X POST -H "Content-Type: application/json" \
     -d '{"temperature":60}'
 
-## Rules
+### Rules
 
 To create a rule that associates a trigger with an action, send a HTTP
 request with a `PUT` method providing the trigger and action in the body
@@ -296,7 +300,7 @@ method.
     -X POST -H "Content-Type: application/json" \
     -d '{"status":"inactive","trigger":null,"action":null}'
 
-## Packages
+### Packages
 
 To create an action in a package you have to create a package first, to
 create a package with name `iot` send an HTTP request with a `PUT`
@@ -315,7 +319,7 @@ deleted.
     curl -u $AUTH https://$APIHOST/api/v1/namespaces/_/packages/iot?force=true \
     -X DELETE
 
-## Activations
+### Activations
 
 To get the list of the last 3 activations use a HTTP request with a
 `GET` method, passing the query parameter `limit=3`
@@ -328,7 +332,7 @@ a path parameter
 
     curl -u $AUTH https://$APIHOST/api/v1/namespaces/_/activations/f81dfddd7156401a8a6497f2724fec7b
 
-## Limits
+### Limits
 
 To get the limits set for a namespace (i.e. invocationsPerMinute,
 concurrentInvocations, firesPerMinute, actionMemoryMax, actionLogsMax…)

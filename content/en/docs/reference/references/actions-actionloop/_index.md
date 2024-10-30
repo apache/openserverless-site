@@ -1,7 +1,10 @@
 ---
 title: Building your runtime
+description: How to implement your runtime from scratch
+weight: 60
+draft: false
 ---
-# Developing a new Runtime with the ActionLoop proxy
+## Developing a new Runtime with the ActionLoop proxy
 
 The [OpenWhisk and OpenServerless runtime specification](#actions-new.adoc)
 defines the expected behavior of an OpenWhisk and OpenServerless runtime; you
@@ -44,13 +47,13 @@ Offline](https://github.com/apache/openwhisk-runtime-go/blob/master/docs/DEPLOY.
 which describes how to do this for the Go language, but the approach
 applies to any language supported by ActionLoop.
 
-# Tutorial - How to write a new runtime with the ActionLoop Proxy
+## Tutorial - How to write a new runtime with the ActionLoop Proxy
 
 This section contains a stepwise tutorial which will take you through
 the process of developing a new ActionLoop runtime using the Ruby
 language as the example.
 
-## General development process
+### General development process
 
 The general procedure for authoring a runtime with the
 `ActionLoop proxy` requires the following steps:
@@ -64,7 +67,7 @@ The general procedure for authoring a runtime with the
 
 - writing some mandatory tests for your language.
 
-## ActionLoop Starter Kit
+### ActionLoop Starter Kit
 
 To facilitate the process, there is an `actionloop-starter-kit` in the
 [openwhisk-devtools](https://github.com/apache/openwhisk-devtools/tree/master/actionloop-starter-kit)
@@ -96,7 +99,7 @@ Finally, you will need to update the `ActionLoopPythonBasicTests.scala`
 test file which, although written in the Scala language, only serves as
 a wrapper that you will use to embed your target language tests into.
 
-## Notation
+### Notation
 
 In each step of this tutorial, we typically show snippets of either
 terminal transcripts (i.e., commands and results) or “diffs” of changes
@@ -111,7 +114,7 @@ When snippets show changes to existing source files, lines without a
 prefix should be left “as is”, lines with `-` should be removed and
 lines with `+` should be added.
 
-## Prerequisites
+### Prerequisites
 
 - Docker engine - please have a valid [docker engine
     installed](https://docs.docker.com/install/) that supports
@@ -131,7 +134,7 @@ lines with `+` should be added.
 
     # The result should be a valid response listing running processes
 
-## Setup the development directory
+### Setup the development directory
 
 So let’s start to create our own `actionloop-demo-ruby-2.6` runtime.
 First, check out the `devtools` repository to access the starter kit,
@@ -165,7 +168,7 @@ At this point, we have built a new image named
 internally it still is a `Python` language runtime which we will need to
 change to one supporting `Ruby` as we continue in this tutorial.
 
-## Preparing the Docker environment
+### Preparing the Docker environment
 
 Our language runtime’s `Dockerfile` has the task of preparing an
 environment for executing OpenWhisk and OpenServerless Actions. Using the
@@ -185,7 +188,7 @@ ActionLoop approach, we use a multistage Docker build to
     requests from the OpenWhisk and OpenServerless platform and execute
     Actions by using the language’s tools and libraries from step \#1.
 
-## Repurpose the renamed Python Dockerfile for Ruby builds
+### Repurpose the renamed Python Dockerfile for Ruby builds
 
 Let’s edit the `ruby2.6/Dockerfile` to use the official Ruby image on
 Docker Hub as our base image, instead of a Python image, and add our our
@@ -220,7 +223,7 @@ Note that:
     course, you may choose to rewrite the `compile` script in `Ruby` if
     you wish to as your own exercise.
 
-## Implementing the ActionLoop protocol
+### Implementing the ActionLoop protocol
 
 This section will take you through how to convert the contents of
 `launcher.rb` (formerly `launcher.py`) to the target Ruby programming

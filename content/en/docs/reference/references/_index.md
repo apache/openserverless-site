@@ -1,16 +1,9 @@
 ---
-title: Advanced
+title: Advanced Reference Guide
+description: Advanced documentation
+#weight: 60
+draft: false
 ---
-# Advanced Reference Guides
+In this section, you can find advanced reference documentations here.
 
-You can find advanced reference documentations here:
-
-- [Naming and Limits](#reference.adoc)
-
-- [Advanced CLI](#cli.adoc)
-
-- [Rest API](#rest_api.adoc)
-
-- [Runtimes under the hood](#actions-new.adoc)
-
-- [Building your runtime](#actions-actionloop.adoc)
+Please follow the links below.

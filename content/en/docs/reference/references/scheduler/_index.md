@@ -1,9 +1,12 @@
 ---
 title: Scheduler
+description: Use the scheduler to invoke repetitive or one-shot actions
+weight: 40
+draft: false
 ---
 OpenServerless Operator offers the possibility to deploy a simple "scheduler" to invoke repetitive or one-shot OpenWhisk actions. For example, an action executing a SQL script to create a PostgreSQL Database or inserting reference data, or simply an action that sends notifications with an API call every day at the same time.
 
-# How to Activate the Scheduler
+## How to Activate the Scheduler
 
 Using the `ops` CLI, you can enable the scheduler with the following command:
 
@@ -20,7 +23,7 @@ ops update apply
 
 By default, the internal scheduler executes a job every minute that starts searching for OpenWhisk actions with special annotations.
 
-# How to Deploy a Repetitive Action
+## How to Deploy a Repetitive Action
 
 Let's assume we want to deploy an OpenWhisk action to be executed every 30 minutes. Suppose it's an action that simply prints something, like this:
 
@@ -40,7 +43,7 @@ To deploy the action and instruct OpenServerless to execute it every 30 minutes,
 
 So you can create the action in the usual way and at the end add -a cron yourCronExpression.
 
-# How to Deploy a One-Shot Execution Action
+## How to Deploy a One-Shot Execution Action
 
 Now suppose we want to execute the same action `scheduled-action.py` only once.
 
@@ -57,7 +60,7 @@ Activation: 'scheduled' (ebd532139a464e9d9532139a46ae9d8a)
 ]
 ```
 
-# Remarks
+## Remarks
 
 The Scheduler executes the action according to the following rules:
 
