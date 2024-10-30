@@ -1,0 +1,8 @@
+RewriteEngine on
+
+# Redirect HTTP to HTTPS
+RewriteCond     %{HTTPS} !=on
+RewriteRule     ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]
+
+# Redirect 404 errors to Hugo's 404 page
+ErrorDocument 404 /404.html
