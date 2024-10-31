@@ -26,7 +26,7 @@ There are two required properties to configure:
 2. **Authorization key** (username and password) which grants you
     access to the OpenWhisk and OpenServerless API.
 
-The API host ia the installationj host, the one you configure in
+The API host is the installation host, the one you configure in
 installation with `ops config apihost`
 
     ops -wsk property set --apihost <openwhisk_baseurl>

@@ -1,20 +1,26 @@
 ---
 title: Tasks
+description: Type `ops <task>` to see usage and subtasks.
 ---
 
+## OpenServerless Administration Tasks
 
-Type `ops <task>` to see usage and subtasks.
-
-## OpenServerless Tasks:
-
-```
+```text
+  admin       Manage additional users in OpenServerless
   config      Manage the Apache OpenServerless configuration
   setup       Setup the Apache OpenServerless platform on multiple environments
   debug       Debug utilities for the Apache OpenServerless platform
+  cloud       OpenServerless setup utilities for supported Deployment models on Cloud Providers
   util        Utilities
 ```
 
-## OpenWhisk Tasks:
+## OpenServerless Development Tasks
+
+```text
+  ide         OpenServerless Development Utilities
+```
+
+## OpenWhisk Tasks
 
 ```text
   action      Manage actions

@@ -20,7 +20,7 @@ package, so package nesting is not allowed. Also, entities do not have
 to be contained in a package.
 
 In OpenServerless a namespace corresponds to an user. You can create users
-with the [admin subcommand](#cli:admin.adoc) of the CLI.
+with the [admin subcommand](/docs/cli/admin/) of the CLI.
 
 The fully qualified name of an entity is
 `/namespaceName[/packageName]/entityName`. Notice that `/` is used to
@@ -110,7 +110,7 @@ OpenWhisk and OpenServerless has a few system limits, including how much
 memory an action can use and how many action invocations are allowed per
 minute.
 
-**Note:** On Openwhisk 2.0 with the scheduler service, **concurrent** in
+**Note:** On Openwhisk 2.0 with the scheduler service, _**concurrent**_ in
 the table below really means the max containers that can be provisioned
 at once for a namespace. The api *may* be able to accept more
 activations than this number at once depending on a number of factors.
