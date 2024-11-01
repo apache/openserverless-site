@@ -51,7 +51,7 @@ support POST requests, which are used to invoke actions and triggers and
 enable or disable rules.
 
 All APIs are protected with HTTP Basic authentication. You can use the
-[nuvadmin](../tools/admin/nuvadmin) tool to generate a new namespace and
+[ops admin](/docs/reference/tasks/admin) tool to generate a new namespace and
 authentication. The Basic authentication credentials are in the `AUTH`
 property in your `~/.nuvprops` file, delimited by a colon. You can also
 retrieve these credentials using the CLI running
@@ -93,7 +93,7 @@ allowed (that is, Access-Control-Allow-Methods is
 
 **Attention:** Because OpenWhisk and OpenServerless currently supports only
 one key per namespace, it is not recommended to use CORS beyond simple
-experiments. Use [Web Actions](#webactions.adoc) to expose your actions
+experiments. Use [Web Actions](/docs/reference/entities/webactions) to expose your actions
 to the public and not use the OpenWhisk and OpenServerless authorization key
 for client applications that require CORS.
 
@@ -210,7 +210,7 @@ You get the following response:
 ### Annotations and Web Actions
 
 To create an action as a web action, you need to add an
-[annotation](#annotations.adoc) of `web-export=true` for web actions.
+[annotation](/docs/reference/entities/annotations) of `web-export=true` for web actions.
 Since web-actions are publicly accessible, you should protect
 pre-defined parameters (i.e., treat them as final) using the annotation
 `final=true`. If you create or update an action using the CLI flag

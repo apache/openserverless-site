@@ -13,7 +13,7 @@ Usage:
 ## Options
 
 ```
-    -h, --help		 print this help info
+-h, --help		 print this help info
 ```
 
 ## Examples

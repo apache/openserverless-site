@@ -8,27 +8,28 @@ draft: false
 ## Adding Action Language Runtimes
 
 OpenWhisk and OpenServerless supports [several languages and
-runtimes](#index-runtimes.adoc) but there may be other languages or
+runtimes](/docs/reference/runtimes) but there may be other languages or
 runtimes that are important for your organization, and for which you
 want tighter integration with the platform.
 
 The platform is extensible and you can add new languages or runtimes
 (with custom packages and third-party dependencies)
 
+{{< blockquote info >}}
 This guide describes the contract a runtime must satisfy. However all
 the OpenServerless runtimes are implemented the [using the ActionLoop
-Proxy](#actions-actionloop.adoc). This proxy is implemented in Go,
+Proxy](/docs/reference/references/actions-actionloop). This proxy is implemented in Go,
 already satifies the semantic of a runtime ands makes very easy to build
 a new runtime. You just need to provide "launcher code" in your favorite
 programming language and a compilation script (generally written in
 python) for the initialization of an action. You are advised to use it
 for your own runtimes and use the material of this document as reference
 for the behaviour of a runtime.
+{{< /blockquote >}}
 
 ### Runtime general requirements
 
-The unit of execution for all functions is a [Docker
-container](https://docs.docker.com) which must implement a specific
+The unit of execution for all functions is a [Docker container](https://docs.docker.com) which must implement a specific
 [Action interface](##action-interface) that, in general performs:
 
 1. **[Initialization](##initialization)** - accepts an initialization
@@ -79,6 +80,8 @@ structure defines the Docker image name that is used for actions of this
 kind (e.g., `openwhisk/nodejs10action:latest` for the JSON example
 above).
 
+## The test action
+
 The standard test action is shown below in JavaScript. It should be
 adapted for the new language and added to the [test artifacts
 directory](../tests/dat/actions/unicode.tests) with the name
@@ -94,6 +97,8 @@ with a `-`. For example, a plain text function for `nodejs:20` becomes
         return { "winter": str };
     }
 
+## Action Interface
+
 An action consists of the user function (and its dependencies) along
 with a *proxy* that implements a canonical protocol to integrate with
 the OpenWhisk and OpenServerless platform.
@@ -108,6 +113,8 @@ The proxy is a web server with two endpoints.
 
 The proxy also prepares the execution context, and flushes the logs
 produced by the function to stdout and stderr.
+
+### Initialization
 
 The initialization route is `/init`. It must accept a `POST` request
 with a JSON object as follows:
@@ -188,6 +195,8 @@ that even if the context is available during initialization, it must be
 reset with every new activation since the information will change with
 every execution.
 
+### Activation
+
 The proxy is ready to execute a function once it has successfully
 completed initialization. The OpenWhisk and OpenServerless platform will
 invoke the function by posting an HTTP request to `/run` with a JSON
@@ -259,12 +268,18 @@ time limit (e.g., 60 seconds). The activation must complete within the
 allowed duration. Failure to complete activation within the allowed time
 frame will destroy the container.
 
+### Logging
+
 The proxy must flush all the logs produced during initialization and
 execution and add a frame marker to denote the end of the log stream for
 an activation. This is done by emitting the token
 `XXX_THE_END_OF_A_WHISK_ACTIVATION_XXX` as the last log line for the
 `stdout` *and* `stderr` streams. Failure to emit this marker will cause
 delayed or truncated activation logs.
+
+## Testing
+
+### Action Interface tests
 
 The [Action interface](##action-interface) is enforced via a canonical
 test suite which validates the initialization protocol, the runtime

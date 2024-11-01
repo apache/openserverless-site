@@ -20,7 +20,7 @@ tasks:
           # cat $file >> content/en/docs/reference/tools/$name/_index.md
         done
       - cp tools.md content/en/docs/reference/tools/_index.md
-      #- rm -rf openserverless-cli
+      - rm -rf openserverless-cli
 
   import-task:
     desc: import task documentation
@@ -34,11 +34,14 @@ tasks:
           echo "> Converting ${file} to ${tgt}"
           mkdir -p "content/en/docs/reference/tasks/$(dirname $tgt)"
           name="$(basename $(dirname "Tasks"/$tgt))"
-          echo  -e "---\ntitle: ${name}\n---\n" >content/en/docs/reference/tasks/$tgt
-          sed '/^# /d' "$file" >>content/en/docs/reference/tasks/$tgt
+          description=$(awk '/^# /{flag=1; next} /^## /{flag=0} flag && NF' "$file")
+          description=$(echo "$description" | tr -d '\n' | tr -d '\r' | xargs)
+          remaining=$(awk '/^## /{flag=1} flag' "$file")
+          echo  -e "---\ntitle: ${name^}\ndescription: ${description}\n---\n" >content/en/docs/reference/tasks/$tgt
+          echo -e "$remaining" >>content/en/docs/reference/tasks/$tgt
           #cat $file >>content/en/docs/reference/tasks/$tgt
         done
-      #- rm -rf openserverless-task
+      - rm -rf openserverless-task
 
   preview:
     desc: preview the websites

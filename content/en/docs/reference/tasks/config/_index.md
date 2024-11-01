@@ -1,12 +1,12 @@
 ---
-title: config
+title: Config
+description: Configure OpenServerless
 ---
 
+## Synopsis
 
-  `ops config`
-
-
-```Usage:
+```text
+Usage:
   config (enable|disable) [--all] [--redis] [--mongodb] [--minio] [--cron] [--static] [--postgres] [--prometheus] [--slack] [--mail] [--affinity] [--tolerations] [--quota]  
   config apihost (<apihost>|auto) [--tls=<email>] [--protocol=<http/https>|auto]
   config runtimes [<runtimesjson>]  
@@ -20,14 +20,17 @@ title: config
   config postgres [--failover] [--backup] [--schedule=<cron_expression>] [--replicas=<replicas>]
   config minio [--s3] [--console]  
   config aws [--access=<access>] [--secret=<secret>] [--region=<region>] [--image=<image>] [--vm=<vm>] [--vmuser=<vmuser>] [--disk=<disk>] [--key=<key>] 
-  config eks [--access=<access>] [--secret=<secret>] [--region=<region>] [--name=<name>] [--count=<count>] [--vm=<vm>] [--disk=<disk>] [--key=<key>] [--kubever=<kubever>]
+  config eks [--project=<project>] [--access=<access>] [--secret=<secret>] [--region=<region>] [--name=<name>] [--count=<count>] [--vm=<vm>] [--disk=<disk>] [--key=<key>] [--kubever=<kubever>]
   config gcloud [--project=<project>] [--region=<region>] [--vm=<vm>] [--disk=<disk>] [--key=<key>] [--image=<image>]
   config gke [--name=<name>] [--project=<project>] [--region=<region>] [--count=<count>] [--vm=<vm>] [--disk=<disk>]
-  config aks [--name=<name>] [--region=<region>] [--count=<count>]  [--vm=<vm>] [--disk=<disk>] [--key=<key>]
+  config azcloud [--project=<project>] [--region=<region>] [--vm=<vm>] [--disk=<disk>] [--key=<key>] [--image=<image>]
+  config aks [--project=<project>] [--name=<name>] [--region=<region>] [--count=<count>]  [--vm=<vm>] [--disk=<disk>] [--key=<key>]
   config (status|export|reset)
   config use [<n>] [--delete] [--rename=<rename>]
   config minimal  
 ```
+
+## Commands
 
 ```
   config apihost          configure the apihost (auto: auto assign) and enable tls
@@ -45,14 +48,17 @@ title: config
   config aws              configure Amazon Web Service (AWS) credentials and parameters
   config gcloud           configure Google Cloud credentials and parameters
   config eks              configure Amazon EKS Kubernetes Cluster
-  config aks              configure Azure AKS Kubernetest Cluster
-  config gke              configure Google Cloud GKE Kubernetest Cluster
+  config azcloud          configure Azure VM credentials and parameters
+  config aks              configure Azure AKS Kubernetes Cluster
+  config gke              configure Google Cloud GKE Kubernetes Cluster
   config reset            reset configuration
   config status           show current configuration
   config export           export all the variables
   config use              use a different kubernetes cluster among those you created
   config minimal          shortcut for ops config enabling only redis,mongodb,minio,cron,static,postgres
 ```
+
+## Options
 
 ```
   --all                 select all services
@@ -75,13 +81,13 @@ title: config
   --delete              delete the selected kubeconfig
   --image=<image>       specify gcp image type (default to ubuntu-minimal-2204-lts. Passing ubuntu-minimal-2204-lts-arm64 will create ARM based VM)
   --prometheus          select monitoring via Prometheus
-  --slack               select alert manager module over slack channel
+  --slack               select alert manager module over Slack channel
   --mail                select alert manager module over mail channel using a gmail account
   --affinity            select pod affinity for multinode enterprise deployment. In such case load will be splitted between node labeled with nuvolaris-role in core or invoker
   --tolerations         select pod tolerations for multinode enterprise deployment.
   --failover            select failover support on components supporting it as postgres
   --backup              select automatic backup on components support it as postgres
   --s3                  activate s3 compatible ingress on components supporting it
-  --console             activate a s3console ingress on components supporting it (Currently MINIO)
+  --console             activate a s3 console ingress on components supporting it (Currently MINIO)
   --quota               select quota checker module
 ```

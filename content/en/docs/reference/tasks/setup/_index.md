@@ -1,10 +1,12 @@
 ---
-title: setup
+title: Setup
+description: Manage installation
 ---
 
-  ops ent setup 
+## Synopsis
 
-```
+```text
+Usage:
   setup devcluster [--uninstall|--status] 
   setup cluster [<context>] [--uninstall|--status]
   setup server <server> [<user>] [--uninstall|--status]
@@ -12,6 +14,8 @@ title: setup
   setup uninstall
   setup prereq
 ```
+
+## Commands
 
 ```
   setup cluster       deploy Apache OpenServerless in the Kubernetes cluster using the <context>, default the current
@@ -24,11 +28,15 @@ title: setup
   setup prereq        validate current configuration
 ```
 
+## Options
+
 ```
   --uninstall         execute an uninstall instead of an installation 
   --status            show the status instead of an installation 
 ```
 
-```
-  kubernetes          kubernetes subcommands
-```
+## Subtasks
+
+- `kubernetes`: prepare kubernetes
+- `nuvolaris`: install nuvolaris
+- `docker`: prepare docker

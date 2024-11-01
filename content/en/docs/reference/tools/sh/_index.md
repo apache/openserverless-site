@@ -8,7 +8,7 @@ Without args, starts an interactive shell. Otherwise execute the script specifie
 
 ```text
 Usage: 
-    ops sh [<script>|-h|--help]
+    ops -sh [<script>|-h|--help]
 ```
 
 
