@@ -1,8 +1,8 @@
 ---
 title: Packages
+description: Create and Use packages
 weight: 50
 ---
-# Using and creating packages
 
 In OpenWhisk and OpenServerless, you can use packages to bundle together a
 set of related actions, and share them with others.
@@ -17,7 +17,7 @@ fire a trigger at a specified frequency.
 Every OpenWhisk and OpenServerless entity, including packages, belongs in a
 *namespace*, and the fully qualified name of an entity is
 `/namespaceName[/packageName]/entityName`. Refer to the [naming
-guidelines](#reference.adoc#openwhisk-entities) for more information.
+guidelines](/docs/reference/references/naming-limits/#entities) for more information.
 
 The following sections describe how to browse packages and use the
 triggers and feeds in them. In addition, if you are interested in
@@ -55,7 +55,7 @@ and get a description of the individual entities in a package.
 
 **Note**: Parameters listed under the package with a prefix `*` are
 predefined, bound parameters. Parameters without a `*` are those listed
-under the [annotations](#annotations.adoc) for each entity. Furthermore,
+under the [annotations](/docs/reference/entities/annotations/) for each entity. Furthermore,
 any parameters with the prefix `**` are finalized bound parameters. This
 means that they are immutable, and cannot be changed by the user. Any
 entity listed under a package inherits specific bound parameters from

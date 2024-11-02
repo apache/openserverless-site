@@ -12,23 +12,21 @@ call, or post a Tweet. In general, an action is invoked in response to
 an event and produces some observable output.
 
 An action may be created from a function programmed using a number of
-[supported languages and
-runtimes](/docs/reference/index-runtimes), or from a
+[supported languages and runtimes](/docs/reference/runtimes/), or from a
 binary-compatible executable.
 
 - The OpenServerless CLI makes it easy to create and invoke actions.
     Instructions for configuring and using the CLI are available
     [here](/docs/cli/).
 
-- You can also use the [REST
-    API](/docs/reference/rest_api/).
+- You can also use the [REST API](/docs/reference/rest_api/).
 
 While the actual function code will be specific to a [language and
-runtime](/docs/reference/index-runtimes/), the operations to
+runtime](/docs/reference/runtimes/), the operations to
 create, invoke and manage an action are the same regardless of the
 implementation choice.
 
-We recommend that you review [the cli](#../../cli/index.adoc) and read
+We recommend that you review [the cli](/docs/cli/) and read
 [the tutorial](#../../tutorial/index.adoc) before moving on to advanced
 topics.
 
@@ -88,7 +86,7 @@ OpenWhisk and OpenServerless Docker skeleton.
 - `__OW_API_KEY` the API key for the subject invoking the action, this
     key may be a restricted API key. This property is absent unless
     requested with the annotation explicitly
-    [`provide-api-key`](#../../reference/annotations/index.adoc#annotations-for-all-actions)
+    [`provide-api-key`](/docs/reference/entities/annotations/#annotations-for-all-actions)
 
 - `__OW_NAMESPACE` the namespace for the *activation* (this may not be
     the same as the namespace for the action).
