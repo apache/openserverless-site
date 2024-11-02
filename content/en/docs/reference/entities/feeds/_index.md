@@ -1,8 +1,8 @@
 ---
 title: Feeds
+description: Implement Feeds
 weight: 60
 ---
-# Implementing feeds
 
 OpenWhisk and OpenServerless support an open API, where any user can expose
 an event producer service as a **feed** in a **package**. This section
@@ -13,12 +13,12 @@ This material is intended for advanced OpenWhisk and OpenServerless users who
 intend to publish their own feeds. Most OpenWhisk and OpenServerless users
 can safely skip this section.
 
-# Feed Architecture
+## Feed Architecture
 
 There are at least 3 architectural patterns for creating a feed:
 **Hooks**, **Polling** and **Connections**.
 
-## Hooks
+### Hooks
 
 In the *Hooks* pattern, we set up a feed using a
 [webhook](https://en.wikipedia.org/wiki/Webhook) facility exposed by
@@ -26,21 +26,21 @@ another service. In this strategy, we configure a webhook on an external
 service to POST directly to a URL to fire a trigger. This is by far the
 easiest and most attractive option for implementing low-frequency feeds.
 
-## Polling
+### Polling
 
 In the `Polling` pattern, we arrange for an OpenWhisk and OpenServerless
 *action* to poll an endpoint periodically to fetch new data. This
 pattern is relatively easy to build, but the frequency of events will of
 course be limited by the polling interval.
 
-## Connections
+### Connections
 
 In the `Connections` pattern, we stand up a separate service somewhere
 that maintains a persistent connection to a feed source. The connection
 based implementation might interact with a service endpoint via long
 polling, or to set up a push notification.
 
-# Difference between Feed and Trigger
+## Difference between Feed and Trigger
 
 Feeds and triggers are closely related, but technically distinct
 concepts.
@@ -61,13 +61,14 @@ concepts.
     services which produce the events, via a REST API that manages
     notifications.
 
-# Implementing Feed Actions
+## Implementing Feed Actions
 
 The *feed action* is a normal OpenWhisk and OpenServerless *action*, but it
-should accept the following parameters: \* **lifecycleEvent**: one of
-‘CREATE’, ‘READ’, ‘UPDATE’, ‘DELETE’, ‘PAUSE’, or ‘UNPAUSE’. \*
-**triggerName**: the fully-qualified name of the trigger which contains
-events produced from this feed. \* **authKey**: the Basic auth
+should accept the following parameters: 
+ - **lifecycleEvent**: one of ‘CREATE’, ‘READ’, ‘UPDATE’, ‘DELETE’, ‘PAUSE’, or ‘UNPAUSE’. 
+ - **triggerName**: the fully-qualified name of the trigger which contains
+events produced from this feed.
+- **authKey**: the Basic auth
 credentials of the OpenWhisk and OpenServerless user who owns the trigger
 just mentioned.
 
@@ -101,7 +102,7 @@ architecture. We’ll discuss the other architectures below.
 A similar feed action protocol occurs for `ops trigger delete`,
 `ops trigger update` and `ops trigger get`.
 
-# Implementing Feeds with Hooks
+## Implementing Feeds with Hooks
 
 It is easy to set up a feed via a hook if the event producer supports a
 webhook/callback facility.
@@ -124,7 +125,7 @@ defining parameters on the trigger event. OpenWhisk and OpenServerless rules
 pass these trigger parameters to any actions to fire as a result of the
 event.
 
-# Implementing Feeds with Polling
+## Implementing Feeds with Polling
 
 It is possible to set up an OpenWhisk and OpenServerless *action* to poll a
 feed source entirely within OpenWhisk and OpenServerless, without the need to
@@ -148,7 +149,7 @@ This procedure implements a polling-based trigger entirely using
 OpenWhisk and OpenServerless actions, without any need for a separate
 service.
 
-# Implementing Feeds via Connections
+## Implementing Feeds via Connections
 
 The previous 2 architectural choices are simple and easy to implement.
 However, if you want a high-performance feed, there is no substitute for

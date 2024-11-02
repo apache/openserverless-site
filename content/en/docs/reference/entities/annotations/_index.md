@@ -1,8 +1,10 @@
 ---
 title: Annotations
-weigth: 40
+description: How to use annotations to decorate actions
+weight: 40
 ---
-# Annotations
+
+## Annotations
 
 OpenWhisk and OpenServerless actions, triggers, rules and packages
 (collectively referred to as assets) may be decorated with
@@ -78,6 +80,8 @@ The annotations are *not* checked. So while it is conceivable to use the
 annotations to infer if a composition of two actions into a sequence is
 legal, for example, the system does not yet do that.
 
+## Annotations for all actions
+
 The following annotations on an action are available.
 
 - `provide-api-key`: This annotation may be attached to actions which
@@ -87,20 +91,19 @@ The following annotations on an action are available.
     absence of this annotation, or its presence with a value that is not
     *falsy* (i.e., a value that is different from zero, null, false, and
     the empty string) will cause an API key to be present in the [action
-    execution
-    context](#actions.adoc#accessing-action-metadata-within-the-action-body).
+    execution context](../actions/#accessing-action-metadata-within-the-action-body).
 
-# Annotations specific to web actions
+## Annotations specific to web actions
 
 Web actions are enabled with explicit annotations which decorate
 individual actions. The annotations only apply to the [web
-actions](#webactions.adoc) API, and must be present and explicitly set
+actions](../webactions/) API, and must be present and explicitly set
 to `true` to have an affect. The annotations have no meaning otherwise
 in the system. The annotations are:
 
 - `web-export`: Makes its corresponding action accessible to REST
     calls *without* authentication. We call these [*web
-    actions*](#webactions.adoc) because they allow one to use OpenWhisk
+    actions*](../webactions/) because they allow one to use OpenWhisk
     and OpenServerless actions from a browser for example. It is important to
     note that the *owner* of the web action incurs the cost of running
     them in the system (i.e., the *owner* of the action also owns the
@@ -118,7 +121,7 @@ in the system. The annotations are:
 
 - `web-custom-options`: When set, this annotation enables a web action
     to respond to OPTIONS requests with customized headers, otherwise a
-    [default CORS response](#webactions.adoc#options-requests) applies.
+    [default CORS response](../webactions/#options-requests) applies.
 
 - `require-whisk-auth`: This annotation protects the web action so
     that it is only invoked by requests that provide appropriate
@@ -133,7 +136,7 @@ in the system. The annotations are:
     system (i.e., the *owner* of the action also owns the activations
     record).
 
-# Annotations specific to activations
+## Annotations specific to activations
 
 The system decorates activation records with annotations as well. They
 are:

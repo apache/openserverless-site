@@ -1,15 +1,17 @@
 ---
 title: Web Actions
+description: Actions annotated to quickly build web based applications
 weight: 20
 ---
-# Web Actions
+
+## What web actions are
 
 Web actions are OpenWhisk and OpenServerless actions annotated to quickly
 enable you to build web based applications. This allows you to program
 backend logic which your web application can access anonymously without
 requiring an OpenWhisk and OpenServerless authentication key. It is up to the
 action developer to implement their own desired authentication and
-authorization (i.e. OAuth flow).
+authorization (i.e.OAuth flow).
 
 Web action activations will be associated with the user that created the
 action. This actions defers the cost of an action activation from the
@@ -53,7 +55,7 @@ namespace, the package name, and the action name.
 which is `default` if the action is not in a named package.*
 
 An example is `guest/demo/hello`. The last part of the URI called the
-`extension` which is typically `.http` although other values are
+`extension` which is typically `.http` although other values are
 permitted as described later. The web action API path may be used with
 `curl` or `wget` without an API key. It may even be entered directly in
 your browser.
@@ -126,7 +128,7 @@ the body may be any allowed JSON value. The default content-type may be
 omitted from the headers.
 
 It is important to be aware of the [response size
-limit](#reference.adoc) for actions since a response that exceeds the
+limit](/docs/reference/references/naming-limits/#actions) for actions since a response that exceeds the
 predefined system limits will fail. Large objects should not be sent
 inline through OpenWhisk and OpenServerless, but instead deferred to an
 object store, for example.
@@ -143,16 +145,16 @@ JSON object, but the OpenWhisk and OpenServerless system (namely the
 one or more of the following as top level JSON properties:
 
 1. `headers`: a JSON object where the keys are header-names and the
-    values are string, number, or boolean values for those headers
-    (default is no headers). To send multiple values for a single
-    header, the header’s value should be a JSON array of values.
+   values are string, number, or boolean values for those headers
+   (default is no headers). To send multiple values for a single
+   header, the header’s value should be a JSON array of values.
 
 2. `statusCode`: a valid HTTP status code (default is 200 OK if body is
-    not empty otherwise 204 No Content).
+   not empty otherwise 204 No Content).
 
 3. `body`: a string which is either plain text, JSON object or array,
-    or a base64 encoded string for binary data (default is empty
-    response).
+   or a base64 encoded string for binary data (default is empty
+   response).
 
 The `body` is considered empty if it is `null`, the empty string `""` or
 undefined.
@@ -178,28 +180,27 @@ as parameters to the action input argument. They are:
 2. `__ow_headers` (type: map string to string): the request headers.
 
 3. `__ow_path` (type: string): the unmatched path of the request
-    (matching stops after consuming the action extension).
+   (matching stops after consuming the action extension).
 
 4. `__ow_user` (type: string): the namespace identifying the OpenWhisk
-    and OpenServerless authenticated subject.
+   and OpenServerless authenticated subject.
 
 5. `__ow_body` (type: string): the request body entity, as a base64
-    encoded string when content is binary or JSON object/array, or plain
-    string otherwise.
+   encoded string when content is binary or JSON object/array, or plain
+   string otherwise.
 
 6. `__ow_query` (type: string): the query parameters from the request
-    as an unparsed string.
+   as an unparsed string.
 
 A request may not override any of the named `__ow_` parameters above;
 doing so will result in a failed request with status equal to 400 Bad
 Request.
 
 The `__ow_user` is only present when the web action is [annotated to
-require
-authentication](#annotations.adoc#annotations-specific-to-web-actions)
+require authentication](../annotations/#annotations-specific-to-web-actions)
 and allows a web action to implement its own authorization policy. The
 `__ow_query` is available only when a web action elects to handle the
-[“raw” HTTP request](##raw-http-handling). It is a string containing the
+[“raw” HTTP request](#raw-http-handling). It is a string containing the
 query parameters parsed from the URI (separated by `&`). The `__ow_body`
 property is present either when handling “raw” HTTP requests, or when
 the HTTP request entity is not a JSON object or form data. Web actions
@@ -213,33 +214,33 @@ parameters.
 Web actions bring some additional features that include:
 
 1. `Content extensions`: the request must specify its desired content
-    type as one of `.json`, `.html`, `.http`, `.svg` or `.text`. This is
-    done by adding an extension to the action name in the URI, so that
-    an action `/guest/demo/hello` is referenced as
-    `/guest/demo/hello.http` for example to receive an HTTP response
-    back. For convenience, the `.http` extension is assumed when no
-    extension is detected.
+   type as one of`.json`,`.html`,`.http`, `.svg` or `.text`. This is
+   done by adding an extension to the action name in the URI, so that
+   an action `/guest/demo/hello` is referenced as
+   `/guest/demo/hello.http` for example to receive an HTTP response
+   back. For convenience, the `.http` extension is assumed when no
+   extension is detected.
 
 2. `Query and body parameters as input`: the action receives query
-    parameters as well as parameters in the request body. The precedence
-    order for merging parameters is: package parameters, binding
-    parameters, action parameters, query parameter, body parameters with
-    each of these overriding any previous values in case of overlap . As
-    an example `/guest/demo/hello.http?name=Jane` will pass the argument
-    `{name: "Jane"}` to the action.
+   parameters as well as parameters in the request body. The precedence
+   order for merging parameters is: package parameters, binding
+   parameters, action parameters, query parameter, body parameters with
+   each of these overriding any previous values in case of overlap . As
+   an example `/guest/demo/hello.http?name=Jane` will pass the argument
+   `{name: "Jane"}` to the action.
 
 3. `Form data`: in addition to the standard `application/json`, web
-    actions may receive URL encoded from data
-    `application/x-www-form-urlencoded data` as input.
+   actions may receive URL encoded from data
+   `application/x-www-form-urlencoded data` as input.
 
 4. `Activation via multiple HTTP verbs`: a web action may be invoked
-    via any of these HTTP methods: `GET`, `POST`, `PUT`, `PATCH`, and
-    `DELETE`, as well as `HEAD` and `OPTIONS`.
+   via any of these HTTP methods: `GET`, `POST`, `PUT`, `PATCH`, and
+   `DELETE`, as well as `HEAD` and `OPTIONS`.
 
 5. `Non JSON body and raw HTTP entity handling`: A web action may
-    accept an HTTP request body other than a JSON object, and may elect
-    to always receive such values as opaque values (plain text when not
-    binary, or base64 encoded string otherwise).
+   accept an HTTP request body other than a JSON object, and may elect
+   to always receive such values as opaque values (plain text when not
+   binary, or base64 encoded string otherwise).
 
 The example below briefly sketches how you might use these features in a
 web action. Consider an action `/guest/demo/hello` with the following
@@ -373,7 +374,7 @@ that try to change this value whether by accident or intentionally.
 
 By default, a web action can be invoked by anyone having the web
 action’s invocation URL. Use the `require-whisk-auth` [web action
-annotation](#annotations.adoc#annotations-specific-to-web-actions) to
+annotation](../annotations/#annotations-specific-to-web-actions) to
 secure the web action. When the `require-whisk-auth` annotation is set
 to `true`, the action will authenticate the invocation request’s Basic
 Authorization credentials to confirm they represent a valid OpenWhisk
@@ -415,7 +416,7 @@ A web action may elect to interpret and process an incoming HTTP body
 directly, without the promotion of a JSON object to first class
 properties available to the action input (e.g., `args.name` vs parsing
 `args.__ow_query`). This is done via a `raw-http`
-[annotation](#annotations.adoc). Using the same example show earlier,
+[annotation](/docs/reference/entities/annotations/#annotations). Using the same example show earlier,
 but now as a “raw” HTTP web action receiving `name` both as a query
 parameters and as JSON value in the HTTP request body:
 
@@ -568,10 +569,10 @@ produce a response (this is similar to an uncaught exception). For web
 actions, the controller handles application errors as follows:
 
 1. The controller projects an `error` property from the response
-    object.
+   object.
 
 2. The controller applies the content handling implied by the action
-    extension to the value of the `error` property.
+   extension to the value of the `error` property.
 
 Developers should be aware of how web actions might be used and generate
 error responses accordingly. For example, a web action that is used with

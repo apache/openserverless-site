@@ -1,19 +1,7 @@
 ---
 title: Entities
+description: 
+weight: 10
 ---
-You can find more informations about OpenServerless and OpenWhisk entities
-here:
 
-- [Actions](#actions.adoc)
-
-- [Parameters](#parameters.adoc)
-
-- [Annotations](#annotations.adoc)
-
-- [Scheduler](#scheduler.adoc)
-
-- [Web Actions](#webactions.adoc)
-
-- [Packages](#packages.adoc)
-
-- [Feeds](#feeds.adoc)
+In this section you can find more informations about OpenServerless and OpenWhisk entities.

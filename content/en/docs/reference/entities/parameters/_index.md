@@ -1,7 +1,11 @@
 ---
 title: Parameters
+description: Supply data to actions adding parameters
 weight: 30
 ---
+
+## Introduction to parameters
+
 When working with serverless actions, data is supplied by adding
 parameters to the actions; these are in the parameter declared as an
 argument to the main serverless function. All data arrives this way and
@@ -19,11 +23,10 @@ is also information on how to use a file to store the parameters and
 pass the filename, rather than supplying each parameter individually on
 the command-line.
 
-# Passing parameters to an action at invoke time
+## Passing parameters to an action at invoke time
 
 Parameters can be passed to the action when it is invoked. These
-examples use JavaScript but all [the other
-languages](#index-runtimes.adoc) work the same way.
+examples use JavaScript but all [the other languages](/docs/reference/runtimes/) work the same way.
 
 1. Use parameters in the action. For example, create ‘hello.js’ file
     with the following content:
@@ -80,7 +83,7 @@ The result is the same because the CLI automatically parses the `person`
 parameter value into the structured object that the action now expects:
 `json { "payload": "Hello, Dorothy from Kansas" }`
 
-# Setting default parameters on an action
+## Setting default parameters on an action
 
 Actions can be invoked with multiple named parameters. Recall that the
 `hello` action from the previous example expects two parameters: the
@@ -93,7 +96,7 @@ parameter so that the action defaults to the place “Kansas”:
 1. Update the action by using the `--param` option to bind parameter
     values, or by passing a file that contains the parameters to
     `--param-file` (for examples of using files, see the section on
-    [working with parameter files](##working-with-parameter-files)).
+    [working with parameter files](#working-with-parameter-files).
 
 To specify default parameters explicitly on the command-line, provide a
 key/value pair to the `param` flag:
@@ -128,7 +131,7 @@ specifying the parameter value at invocation time.
 Despite a parameter set on the action when it was created/updated, this
 is overridden by a parameter that was supplied when invoking the action.
 
-# Setting default parameters on a package
+## Setting default parameters on a package
 
 Parameters can be set at the package level, and these will serve as
 default parameters for actions unless:
@@ -167,7 +170,7 @@ package and shows an action making use of it.
            "payload": "Hello, World"
        }
 
-\# Working with parameter files
+## Working with parameter files
 
 It’s also possible to put parameters into a file in JSON format, and
 then pass the parameters in by supplying the filename with the
