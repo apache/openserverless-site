@@ -46,7 +46,7 @@ Finally, once you have:
 
 you can choose where to install, either:
 
-- in your [Local machine](/docs/installation/install/local/)
+- in your [Local machine](/docs/installation/install/docker/)
 
 - in a [Linux server](/docs/installation/install/server/)
 
