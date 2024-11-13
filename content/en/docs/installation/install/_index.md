@@ -19,7 +19,7 @@ Please ensure you have:
 Once you have completed the preparation steps,  you can proceed with:
 
 - a local installation on your
-  [local machine](/docs/installation/install/local/)
+  [local machine](/docs/installation/install/docker/)
 - a single server installation on a
   [Linux server](/docs/installation/install/server/)
 - a clustered installation on a
