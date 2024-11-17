@@ -2,7 +2,7 @@
 title: "Apache OpenServerless: A FaaS Solution with Privacy and Power"
 date: 2024-11-16
 description: >
-OpenServerless: Kubernetes-based FaaS enabling privacy, GPU-powered workloads, and private LLMs for innovation. 
+  OpenServerless: Full-fledged open source FaaS, powered by Kubernetes and OpenWhisk  
 ---
 
 ## Introduction
@@ -25,7 +25,7 @@ To support various application needs, Apache OpenServerless provides a set of pr
 ### Developer-Friendly Tools
 To streamline development, Apache OpenServerless offers:
 - Ready-to-use application templates - kickstarting projects for various use cases.  
-  -Integrated Development Environments (IDEs) - the system offers a user-friendly CLI for seamless interaction with the serverless platform.  Furthermore a VScode extension is available.
+- Integrated Development Environments (IDEs) - the system offers a user-friendly CLI for seamless interaction with the serverless platform.  Furthermore a VScode extension is available.
 - Simplified deployment workflows - to build, test, and launch cloud-ready applications with ease.
 
 ### Installs everywhere and control data
