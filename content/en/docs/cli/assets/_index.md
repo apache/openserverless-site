@@ -13,7 +13,7 @@ upload static assets.
 
 You can upload a folder in this web area with
 
-`ops web upload <folder>`
+`ops util upload <folder>`
 
     Synopsis:
 
@@ -22,7 +22,7 @@ You can upload a folder in this web area with
         Commands to upload and manage static content.
 
         Usage:
-          web upload <folder> [--quiet] [--clean]
+          util upload <folder> [--quiet] [--clean]
 
         Commands:
           upload <folder>  Uploads a folder to the web bucket in OpenServerless.

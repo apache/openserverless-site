@@ -140,7 +140,7 @@ couple of attributes to the form:
 
 Upload the web folder again with the new changes:
 
-    ops web upload web/
+    ops util upload web/
 
 Now if you go to the contact form page the send button should work. It
 will invoke the submit action which in turn will return some html.
