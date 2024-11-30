@@ -144,7 +144,7 @@ And update the `index.html`:
                 enctype="application/x-www-form-urlencoded"> <-- new
 ```
 
-Don’t forget to re-upload the web folder with `ops web upload web/`.
+Don’t forget to re-upload the web folder with `ops util upload web/`.
 
 Now try to fill out the form again and press send! It will execute the
 sequence and you will receive the message from your Slack App.

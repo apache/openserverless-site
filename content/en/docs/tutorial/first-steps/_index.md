@@ -67,10 +67,10 @@ platform is deployed at, but there is an handy command that does it
 automatically for all files in a folder:
 
 ```bash
-ops web upload web/
+ops util upload web/
 ```
 
-Pass to `ops web upload` the path to folder where the index.html is
+Pass to `ops util upload` the path to folder where the index.html is
 stored in (the `web` folder) and visit again `<apihost>`.
 
 Now you should see the new index page:
