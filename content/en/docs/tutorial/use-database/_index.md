@@ -21,8 +21,10 @@ const { Client } = require('pg')
 async function main(args) {
     const client = new Client({ connectionString: args.dbUri });
 
+    const createSchema = `CREATE SCHEMA IF NOT EXISTS demo;`
+
     const createTable = `
-    CREATE TABLE IF NOT EXISTS contacts (
+    CREATE TABLE IF NOT EXISTS demo.contacts (
         id serial PRIMARY KEY,
         name varchar(50),
         email varchar(50),
@@ -137,7 +139,7 @@ async function main(args) {
 
     try {
         let res = await client.query(
-            'INSERT INTO contacts(name,email,phone,message) VALUES($1,$2,$3,$4)',
+            'INSERT INTO demo.contacts(name,email,phone,message) VALUES($1,$2,$3,$4)',
             [name, email, phone, message]
         );
         console.log(res);
@@ -243,7 +245,7 @@ with the integrated services, such as the database we are using.
 For instance, let’s run:
 
 ```bash
-ops devel psql sql "SELECT * FROM CONTACTS"
+ops devel psql sql "SELECT * FROM demo.CONTACTS"
 
 [{'id': 1, 'name': 'OpenServerless', 'email': 'info@nuvolaris.io', 'phone': '5551233210', 'message': 'This is awesome!'}]
 ```
