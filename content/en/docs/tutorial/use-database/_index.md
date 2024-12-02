@@ -37,6 +37,7 @@ async function main(args) {
     console.log('Connected to database');
 
     try {
+        await client.query(createSchema);
         await client.query(createTable);
         console.log('Contact table created');
     } catch (e) {
