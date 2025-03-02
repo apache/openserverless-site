@@ -4,6 +4,14 @@ description: Move your first steps on Apache Openserverless
 draft: false
 weight: 20
 ---
+
+{{< blockquote warning>}}
+<strong>This page is under review.</strong><br/>
+<br/>
+Several changes have been made to the project since its first draft and therefore the
+tutorial needs to be updated to the publishing system.
+{{< /blockquote >}}
+
 ## First steps
 
 ### Starting at the Front

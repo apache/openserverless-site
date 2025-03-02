@@ -4,6 +4,14 @@ description: Store data into a relational database
 weight: 40
 draft: false
 ---
+
+{{< blockquote warning>}}
+<strong>This page is under review.</strong><br/>
+<br/>
+Several changes have been made to the project since its first draft and therefore the
+tutorial needs to be updated to the publishing system.
+{{< /blockquote >}}
+
 ## Use database
 
 ### Storing the Message in the Database
