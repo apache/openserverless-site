@@ -4,6 +4,14 @@ description: Learn how to add form validation from front to back-end
 weight: 30
 draft: false
 ---
+
+{{< blockquote warning>}}
+<strong>This page is under review.</strong><br/>
+<br/>
+Several changes have been made to the project since its first draft and therefore the
+tutorial needs to be updated to the publishing system.
+{{< /blockquote >}}
+
 ## Form validation
 
 Now that we have a contact form and a package for our actions, we have
