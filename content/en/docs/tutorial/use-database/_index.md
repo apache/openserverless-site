@@ -5,13 +5,6 @@ weight: 40
 draft: false
 ---
 
-{{< blockquote warning>}}
-<strong>This page is under review.</strong><br/>
-<br/>
-Several changes have been made to the project since its first draft and therefore the
-tutorial needs to be updated to the publishing system.
-{{< /blockquote >}}
-
 ## Use database
 
 ### Storing the Message in the Database
@@ -19,15 +12,36 @@ tutorial needs to be updated to the publishing system.
 We are ready to use the database that we enabled at the beginning of the
 tutorial.
 
-Since we are using a relational database, we need to create a table to
-store the contact data. We can do that by creating a new action called
-`create-table.js` in the `packages/contact` folder:
+Usually, when working with relational databases, the best choice is to use a 
+[schema migration system](https://en.wikipedia.org/wiki/Schema_migration). 
+In our case, to keep things simple, we will emulate a migration using an action.
+
+Now, we need to create a table to store the contact data: start by creating a 
+new action called `create-table.js` in the `packages/contact` folder.
+
+The directory structure have to be like this:
+
+```shell
+contact_us_app
+├── packages
+│   └── contact
+│       ├── create-table.js
+│       └── submit.js
+└── web
+    └── index.html
+```
+
+Put this content inside the `create-table.js` file:
 
 ```javascript
+//--kind nodejs:default
+//--param POSTGRES_URL $POSTGRES_URL
+
 const { Client } = require('pg')
 
 async function main(args) {
-    const client = new Client({ connectionString: args.dbUri });
+    console.log('Starting create-table action')
+    const client = new Client({ connectionString: args.POSTGRES_URL });
 
     const createSchema = `CREATE SCHEMA IF NOT EXISTS demo;`
 
@@ -40,41 +54,87 @@ async function main(args) {
         message varchar(300)
     );
     `
-    // Connect to database server
-    await client.connect();
-    console.log('Connected to database');
 
     try {
+        console.log(`Connecting to ${args.POSTGRES_URL}`);
+        await client.connect();
+        console.log('Connected to database');
         await client.query(createSchema);
+        console.log('Schema demo created');
         await client.query(createTable);
         console.log('Contact table created');
+        return { result: 'OK' };
     } catch (e) {
-        console.log(e);
-        throw e;
+        if (e instanceof AggregateError) {
+            for (const err of e.errors) {
+                console.error('[ERROR] - ', err.message || err);
+            }
+        } else if (e instanceof Error) {
+            console.error('[ERROR]  - ', e.message);
+        } else {
+            console.error('[ERROR] - ', e);
+        }
+        return { result: 'ERROR' };
     } finally {
-        client.end();
+        console.log('Closing connection');
+        if (client) {
+            await client.end();
+        }
     }
 }
 ```
 
-We just need to run this once, therefore it doesn’t need to be a web
-action. Here we can take advantage of the `cron` service we enabled!
-There are also a couple of console logs that we can check out.
+{{< blockquote info>}}
+You may have noticed here again the comments on top of the file. As said before,
+these comments are used by `ops ide` to automatically handle the publishing of files
+by calling `ops package` or `ops action` as needed.
+In particular:
+<ul>
+<li><code>--kind nodejs:default</code> will ask OpenServerless to run this code on the nodejs default runtime.</li>
+<li>the <code>--param POSTGRES_URL $POSTGRES_URL</code> will automatically fill in the parameters required by the action,
+taking it's value from <code>ops</code>'s configuration file.</li>
+</ul>
+{{< /blockquote >}}
 
-With the cron scheduler you can annotate an action with 2 kinds of
-labels. One to make OpenServerless periodically invoke the action, the
-other to automatically execute an action once, on creation.
 
-Let’s create the action with the latter, which means annotating the
-action with `autoexec true`:
+The action is [idempotent](https://en.wikipedia.org/wiki/Idempotence), so you
+may call the action multiple times, but the schema and the table is created only
+once.
+
+You can deploy this action using `ops ide deploy` command.
 
 ```bash
-ops action create contact/create-table create-table.js -a autoexec true
-ok: created action contact/create-table
+ops ide deploy
 ```
 
-With `-a` you can add "annotations" to an action. OpenServerless will
-invoke this action as soon as possible, so we can go on.
+The output will be like:
+```shell
+/home/openserverless/.ops/tmp/deploy.pid
+PID 52906
+> Scan:
+>> Action: packages/contact/create-table.js
+>> Action: packages/contact/submit.js
+> Deploying:
+>> Package: contact
+$ $OPS package update contact 
+ok: updated package contact
+>>> Action: packages/contact/create-table.js
+$ $OPS action update contact/create-table packages/contact/create-table.js --kind nodejs:default --param POSTGRES_URL $POSTGRES_URL
+ok: updated action contact/create-table
+>>> Action: packages/contact/submit.js
+$ $OPS action update contact/submit packages/contact/submit.js --web true --kind nodejs:default
+ok: updated action contact/submit
+build process exited with code 0
+UPLOAD ASSETS FROM web
+==================| UPLOAD RESULTS |==================
+| FILES      : 1
+| COMPLETED  : 1
+| ERRORS     : 0
+| SKIPPED    : 0
+| EXEC. TIME : 28.37 ms
+======================================================
+URL: http://opstutorial.localhost:80
+```
 
 In OpenServerless an action invocation is called an `activation`. You
 can keep track, retrieve information and check logs from an action with
@@ -89,42 +149,55 @@ time you run the command the list might be empty. Just run it again and
 you will see the latest invocations (probably some `hello` actions from
 the deployment).
 
-If we want to make sure `create-table` was invoked, we can do it with
-this command. The cron scheduler can take up to 1 minute to run an
-`autoexec` action, so let’s wait a bit and run `ops activation list`
-again.
+If we want to invoke the `create-table` action, we can do it with
+this command. 
 
 ```bash
-ops activation list
+ops action invoke contact/create-table
+```
+The output will be like:
+```
+ok: invoked /_/contact/create-table with id e67a6c6f5a9c4667ba6c6f5a9c46675b
+```
 
-Datetime            Activation ID                    Kind      Start Duration   Status  Entity
-2023-10-02 09:52:01 1f02d3ef5c32493682d3ef5c32b936da nodejs:18 cold  312ms      success openserverless/create-table:0.0.1
+The activation will return an id: in our case the id is `e67a6c6f5a9c4667ba6c6f5a9c46675b`.
+You can retrieve the activation log with the command `ops activation logs <id>` or `ops activation logs --last` to retrieve
+the last activation log.
+
+```bash
+ops activation logs e67a6c6f5a9c4667ba6c6f5a9c46675b
+```
+```shell
+2025-03-17T23:28:03.390748125Z stdout: Starting create-table action
+2025-03-17T23:28:03.391745125Z stdout: Connecting to postgresql://opstutorial:password@nuvolaris-postgres.nuvolaris.svc.cluster.local:5432/opstutorial
+2025-03-17T23:28:03.405132167Z stdout: Connected to database
+2025-03-17T23:28:03.406006792Z stdout: Schema demo created
+2025-03-17T23:28:03.406601042Z stdout: Contact table created
+2025-03-17T23:28:03.406604209Z stdout: Closing connection
 ..
 ```
 
-Or we could run `ops activation poll` to listen for new logs.
+We could run `ops activation poll` or `ops ide poll` to listen for new logs.
+
+To check that the table is really there, and inspect it's schema you can 
+use the `ops devel psql describe` tool:
 
 ```bash
-ops activation poll
-
-Enter Ctrl-c to exit.
-Polling for activation logs
+ops devel psql describe "demo.contacts" --format=table
 ```
 
-When the logs from the `create-table` action appear, we can stop the
-command with `Ctrl-c`.
+You should see:
 
-Each activation has an `Activation ID` which can be used with other
-`ops activation` subcommands or with the `ops logs` command.
-
-We can also check out the logs with either `ops logs <activation-id>` or
-`ops logs --last` to quickly grab the last activation’s logs:
-
-```bash
-ops logs --last
-
-2023-10-15T14:41:01.230674546Z stdout: Connected to database
-2023-10-15T14:41:01.238457338Z stdout: Contact table created
+```shell
+┌───┬───────────────┬──────────────┬─────────────┬───────────────────┬─────────────┐
+│   │ table_catalog │ table_schema │ column_name │ data_type         │ is_nullable │
+├───┼───────────────┼──────────────┼─────────────┼───────────────────┼─────────────┤
+│ 0 │ opstutorial   │ demo         │ id          │ integer           │ NO          │
+│ 1 │ opstutorial   │ demo         │ name        │ character varying │ YES         │
+│ 2 │ opstutorial   │ demo         │ email       │ character varying │ YES         │
+│ 3 │ opstutorial   │ demo         │ phone       │ character varying │ YES         │
+│ 4 │ opstutorial   │ demo         │ message     │ character varying │ YES         │
+└───┴───────────────┴──────────────┴─────────────┴───────────────────┴─────────────┘
 ```
 
 ### The Action to Store the Data
@@ -136,15 +209,20 @@ Let’s create a new file called `write.js` in the `packages/contact`
 folder:
 
 ```javascript
-const { Client } = require('pg')
+// write.js
+
+//--kind nodejs:default
+//--param POSTGRES_URL $POSTGRES_URL
+
+const {Client} = require('pg')
 
 async function main(args) {
-    const client = new Client({ connectionString: args.dbUri });
+    const client = new Client({connectionString: args.POSTGRES_URL});
 
     // Connect to database server
     await client.connect();
 
-    const { name, email, phone, message } = args;
+    const {name, email, phone, message} = args;
 
     try {
         let res = await client.query(
@@ -165,7 +243,7 @@ async function main(args) {
         email,
         phone,
         message
-        };
+    };
 }
 ```
 
@@ -176,8 +254,39 @@ data into the table by passing the values as parameters. There is also a
 Let’s deploy it:
 
 ```bash
-ops action create contact/write write.js
-ok: created action contact/write
+ops ide deploy
+```
+```
+/home/openserverless/.ops/tmp/deploy.pid
+/Users/bruno/.ops/tmp/deploy.pid
+PID 57700
+> Scan:
+>> Action: packages/contact/write.js
+>> Action: packages/contact/create-table.js
+>> Action: packages/contact/submit.js
+> Deploying:
+>> Package: contact
+$ $OPS package update contact 
+ok: updated package contact
+>>> Action: packages/contact/write.js
+$ $OPS action update contact/write packages/contact/write.js --kind nodejs:default --param POSTGRES_URL $POSTGRES_URL
+ok: updated action contact/write
+>>> Action: packages/contact/create-table.js
+$ $OPS action update contact/create-table packages/contact/create-table.js --kind nodejs:default --param POSTGRES_URL $POSTGRES_URL
+ok: updated action contact/create-table
+>>> Action: packages/contact/submit.js
+$ $OPS action update contact/submit packages/contact/submit.js --web true --kind nodejs:default
+ok: updated action contact/submit
+build process exited with code 0
+UPLOAD ASSETS FROM web
+==================| UPLOAD RESULTS |==================
+| FILES      : 1
+| COMPLETED  : 1
+| ERRORS     : 0
+| SKIPPED    : 0
+| EXEC. TIME : 28.92 ms
+======================================================
+URL: http://opstutorial.localhost:80
 ```
 
 ### Finalizing the Submit
@@ -189,6 +298,8 @@ fields to store them. Let’s put them together into a `sequence`:
 
 ```bash
 ops action create contact/submit-write  --sequence contact/submit,contact/write --web true
+```
+```shell
 ok: created action contact/submit-write
 ```
 
@@ -210,12 +321,14 @@ Let’s check out again the action list:
 
 ```bash
 ops action list
+```
 
+```shell
 actions
-/openserverless/contact/submit-write                  private sequence
-/openserverless/contact/write                         private nodejs:18
-/openserverless/contact/create-table                  private nodejs:18
-/openserverless/contact/submit                        private nodejs:18
+/opstutorial/contact/submit-write                                      private sequence
+/opstutorial/contact/submit                                            private nodejs:21
+/opstutorial/contact/create-table                                      private nodejs:21
+/opstutorial/contact/write                                             private nodejs:21
 ```
 
 You probably have something similar. Note the submit-write is managed as
@@ -230,32 +343,45 @@ First let’s get the URL of the `submit-write` action:
 
 ```bash
 ops url contact/submit-write
+```
+```shell
 <apihost>/api/v1/web/openserverless/contact/submit-write
 ```
 
-Then we can update the `index.html` file:
+Then we can update the `index.html` file. Change the form submit 
+action with the url from the previous command:
 
 ```html
----     <form method="POST" action="/api/v1/web/openserverless/contact/submit"
-              enctype="application/x-www-form-urlencoded"> <-- old
-+++     <form method="POST" action="/api/v1/web/openserverless/contact/submit-write"
-              enctype="application/x-www-form-urlencoded"> <-- new
+<form method="POST" action="/api/v1/web/opstutorial/contact/submit-write"
+          enctype="application/x-www-form-urlencoded">
 ```
 
 We just need to add `-write` to the action name.
 
+Now give a `ops ide deploy` to publish all the modifications.
+
 Try again to fill the contact form (with correct data) and submit it.
 This time the data will be stored in the database.
 
-If you want to retrive info from you database, ops provides several
+### View data from db
+
+If you want to retrieve data from your database, `ops` provides several
 utilities under the `ops devel` command. They are useful to interact
 with the integrated services, such as the database we are using.
 
-For instance, let’s run:
+For instance, to interact with PostgreSQL database, let’s run:
 
 ```bash
-ops devel psql sql "SELECT * FROM demo.CONTACTS"
-
-[{'id': 1, 'name': 'OpenServerless', 'email': 'info@nuvolaris.io', 'phone': '5551233210', 'message': 'This is awesome!'}]
+echo "SELECT * FROM demo.CONTACTS" | ops devel psql sql --format=table
 ```
+
+You should see an output like this:
+```shell
+┌───┬────┬────────────────┬─────────────────────────┬─────────────┬──────────────────────────────┐
+│   │ id │ name           │ email                   │ phone       │ message                      │
+├───┼────┼────────────────┼─────────────────────────┼─────────────┼──────────────────────────────┤
+│ 0 │ 1  │ OpenServerless │ user@openserverless.dev │ 39123123123 │ Hello Apache OpenServerless! │
+└───┴────┴────────────────┴─────────────────────────┴─────────────┴──────────────────────────────┘
+```
+
 ---

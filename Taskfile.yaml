@@ -46,7 +46,7 @@ tasks:
   preview:
     desc: preview the websites
     cmds:
-      - hugo server
+      - hugo server -O
 
   debug:
     desc: debug the websites
