@@ -34,6 +34,7 @@
     --link-light: #0056b3;
     --code-bg-light: #f5f5f5;
     --bs-secondary-color: #333333;
+    --td-pre-bg: #ececec;
   }
   
   .dark-mode {
@@ -59,6 +60,14 @@
   
   a:hover {
     color: color-mix(in srgb, var(--link-light) 80%, white);
+  }
+
+  .td-sidebar-toc a:hover {
+    color: color-mix(in srgb, var(--link-light) 80%, black) !important;
+  }
+
+  .td-sidebar-nav a.active {
+    color: red;
   }
   
   header, footer {

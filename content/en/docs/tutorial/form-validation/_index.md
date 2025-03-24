@@ -5,7 +5,7 @@ weight: 30
 draft: false
 ---
 
-### The Contact Package
+## The Contact Package
 
 The contact form we just uploaded does not do anything. To make it work
 let’s start to fill our `package` directory with backend actions.
