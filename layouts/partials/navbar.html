@@ -71,17 +71,7 @@
                         {{ partial "navbar-lang-selector.html" . -}}
                     </li>
                 {{ end -}}
-                {{ if .Site.Params.ui.showLightDarkModeMenu -}}
-                    <li class="td-light-dark-menu nav-item dropdown">
-                        {{ partial "theme-toggler" . }}
-                    </li>
-                {{ end -}}
             </ul>
-
-
-        </div>
-        <div class="d-none d-lg-block">
-            {{ partial "search-input.html" . }}
-        </div>
+        </div>        
     </div>
 </nav>

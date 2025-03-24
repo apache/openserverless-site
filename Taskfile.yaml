@@ -44,11 +44,13 @@ tasks:
       - rm -rf openserverless-task
 
   preview:
+    silent: true
     desc: preview the websites
     cmds:
-      - hugo server -O
+      - PATH="node_modules/.bin:$PATH" hugo server --baseURL "http://localhost:1313/" -O
 
   debug:
+    silent: true
     desc: debug the websites
     cmds:
-      - hugo server --ignoreCache  --debug --disableFastRender
+      - PATH="node_modules/.bin:$PATH" hugo server --ignoreCache  --debug --disableFastRender
