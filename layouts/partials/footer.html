@@ -50,3 +50,6 @@
         </div>
     </div>
 </footer>
+{{ if .Site.Params.ui.showLightDarkModeMenu -}}
+{{ partial "theme-toggler" . }}
+{{ end -}}

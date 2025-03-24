@@ -1,0 +1,57 @@
+<div id="theme-toggler-container">
+  <button id="theme-toggler" class="btn btn-light-dark" aria-label="Toggle theme">
+    <span id="theme-icon" class="fa fa-sun"></span>
+  </button>
+</div>
+
+<script>
+  // Gestione della modalità scura
+  const themeToggler = document.getElementById('theme-toggler');
+  const themeIcon = document.getElementById('theme-icon');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+
+  // Cambia tema al clic
+  themeToggler.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    themeIcon.classList.toggle('fa-sun', !isDarkMode);
+    themeIcon.classList.toggle('fa-moon', isDarkMode);
+    
+  });
+</script>
+
+<style>
+  /* Stili per il pulsante flottante */
+  #theme-toggler-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .btn-light-dark {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-light-dark:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+  }
+
+  .dark-mode .btn-light-dark {
+    background: #333333;
+    color: #ffffff;
+    border-color: #444444;
+  }
+</style>
