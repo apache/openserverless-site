@@ -5,13 +5,6 @@ weight: 10
 draft: false
 ---
 
-{{< blockquote warning>}}
-<strong>This page is under review.</strong><br/>
-<br/>
-Several changes have been made to the project since its first draft and therefore the
-tutorial needs to be updated to the publishing system.
-{{< /blockquote >}}
-
 ## Getting started
 
 ### Build a sample Application
@@ -27,6 +20,8 @@ In this tutorial, we will see how you can take advantage of several
 services which are already part of a OpenServerless deployment and
 develop a contact form page for users to fill it with their emails and
 messages, which are then sent via email to us and stored in a database.
+
+Finally, we'll see how to activate external services using [Web hooks](https://en.wikipedia.org/wiki/Webhook).
 
 ### Openserverless CLI: Ops
 
@@ -50,14 +45,16 @@ come back here!
 
 ### Enabling Services
 
-After installing OpenServerless on a local machine with Docker or on a 
-supported cloud, you can enable or disable the services offered by the platform. 
-As we will use Postgres database, the Static content with the Minio S3 compatible 
-storage and a cron scheduler, let’s run in the terminal:
+After installing OpenServerless on a local machine with Docker or on a
+supported cloud, you can enable or disable the services offered by the platform.
+As we will use Postgres database, the Static content with the Minio S3 compatible
+storage, let’s run in the terminal:
 
 ```bash
 ops config enable --postgres --static --minio --cron
 ```
+
+This is the default set of services.
 
 Since you should already have a deployment running, we have to update it
 with the new services so they get deployed. Simply run:
@@ -68,6 +65,77 @@ ops update apply
 
 And with just that (when it finishes), we have everything we need ready
 to use!
+
+{{< blockquote info>}}
+If you've installed the local development environment using the instructions from
+the [Docker installation page](/docs/installation/install/docker/) you've already
+the base services enabled by default.
+{{< /blockquote >}}
+
+You can check what services are enabled with the command:
+
+```bash
+ops config status
+```
+
+This should be the output:
+
+```
+OPERATOR_COMPONENT_MINIO=true
+OPERATOR_COMPONENT_MONGODB=true
+OPERATOR_COMPONENT_POSTGRES=true
+OPERATOR_COMPONENT_STATIC=true
+OPERATOR_COMPONENT_CRON=true
+OPERATOR_COMPONENT_REDIS=true
+```
+
+### Create a user 
+
+If you don't have a user, it's the time to create one. We we'll use it to work on this tutorial.
+
+{{< blockquote warning>}}
+To create a user, we need to be the administrator, like described in [this section](/docs/cli/admin/).
+{{< /blockquote >}}
+
+```bash
+ops admin adduser opstutorial <youremail> SimplePassword --all 
+```
+
+The output will be:
+
+```
+Generated OPSTUTORIAL user secrets.
+Creating user opstutorial...
+whiskuser.nuvolaris.org/opstutorial created
+```
+
+### Login as user
+
+After user creation, it's time to perform ops login.
+
+{{< blockquote info>}}
+The `ops ide login` command will log you in on the server and dump the proper configuration of
+active services for your user. The configuration is automatically used by `ops` for all the tasks.
+You only need to run `ops ide login` once (unless you need to log in to another OpenServerless server or with another
+OpenServerless user).
+{{< /blockquote >}}
+
+Change your APIHOST accordly, if you've specified a custom one during the system setup
+
+```bash
+ops ide login opstutorial http://localhost:80
+```
+
+```
+*** Configuring Access to OpenServerless ***
+apihost=http://localhost:80 username=opstutorial
+Logging in http://localhost:80 as opstutorial
+Enter Password: 
+Successfully logged in as opstutorial.
+ok: whisk auth set. Run 'wsk property get --auth' to see the new value.
+ok: whisk API host set to http://localhost:80
+OpenServerless host and auth set successfully. You are now ready to use ops!
+```
 
 ### Cleaning Up
 

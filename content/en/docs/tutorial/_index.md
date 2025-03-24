@@ -4,13 +4,6 @@ description: Showcase serverless development in action
 weight: 10
 ---
 
-{{< blockquote warning>}}
-<strong>This page is under review.</strong><br/>
-<br/>
-Several changes have been made to the project since its first draft and therefore the
-tutorial needs to be updated to the publishing system.
-{{< /blockquote >}}
-
 ## Tutorial
 
 This tutorial walks you through developing a simple OpenServerless

@@ -5,51 +5,73 @@ weight: 50
 draft: false
 ---
 
-{{< blockquote warning>}}
-<strong>This page is under review.</strong><br/>
-<br/>
-Several changes have been made to the project since its first draft and therefore the
-tutorial needs to be updated to the publishing system.
-{{< /blockquote >}}
-
 ## Sending notifications
 
 ### Contact notification
 
-It would be great if we receive a notification when an user tries to
-contact us. For this tutorial we will pick slack to receive a message
-when it happens.
+It would be great if we receive a notification when a user tries to
+contact us. 
 
-We need to:
+For this tutorial we will use a free service that instantly generates 
+a unique URL through which you can receive and view webhook payloads in 
+real time.
 
-- have a slack workspace where we can send messages;
+{{< blockquote info>}}
+You could replace this service with a workflow automation system, with
+your CRM webhook, with Slack hooks etc.
+{{< /blockquote >}}
 
-- create a slack app that will be added to the workspace;
+By navigating to the site https://webhook.site/ you will receive a unique 
+url, as in the image below:
 
-- activate a webhook for the app that we can trigger from an action;
+![Webhook.site](/docs/tutorial/images/webhook_site.webp)
 
-Check out the following scheme for the steps:
+Take note of the url under the "Your unique URL" title.
 
-![Slack Webhook](/docs/tutorial/images/slackurl.png)
+Once we have a webhook we can proceed to create a new action called `notify.js` 
+(in the `packages/contact` folder).
 
-Once we have a webhook we can use to send messages we can proceed to
-create a new action called `notify.js` (in the `packages/contact`
-folder):
+The directory structure will be:
+
+```
+contact_us_app
+├── packages
+│   └── contact
+│       ├── create-table.js
+│       ├── notify.js
+│       ├── submit.js
+│       └── write.js
+└── web
+└── index.html
+```
+
+Place this content inside the `notify.js` file:
 
 ```javascript
 // notify.js
+
+//--param NOTIFICATION_URL $NOTIFICATION_URL
+
 function main(args) {
     const { name, email, phone, message } = args;
 
-    let text = `New contact request from ${name} (${email}, ${phone}):\n${message}`;
-    console.log("Built message", text);
+    const subject = `New contact request from Apache OpenServerless`;
+    const payload = {
+        subject,
+        name,
+        email,
+        phone,
+        message,
+    };
 
-    return fetch(args.notifications, {
+    console.log("Built message", payload);
+
+    return fetch(args.NOTIFICATION_URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify(payload),
     })
         .then(response => {
             if (!response.ok) {
@@ -70,27 +92,53 @@ function main(args) {
 }
 ```
 
-This action has the `args.notifications` parameter, which is the
+{{< blockquote info>}}
+In this case, we don't need to annotate the action as web. This because this action will
+be invoked in a sequence: so it's an internal action and is not exposed as an api.
+{{< /blockquote >}}
+
+This action has the `args.NOTIFICATION_URL` parameter, which is the
 webhook. It also has the usual 4 form fields parameters that receives in
 input, used to build the text of the message. The action will return the
 body of the response from the webhook.
 
-We’ve also put some logs that we can use for debugging purposes.
+The `NOTIFICATION_URL` may contains different values between a development environment
+and a production one.
+No problem! Apache OpenServerless deployer supports .env file.
+Create a `.env` file under the `package` directory.
 
-Let’s first set up the action:
+The directory structure now will look like:
 
-```bash
-ops action create contact/notify notify.js -p notifications <your webhook>
-ok: created action contact/notify
+```
+contact_us_app
+├── packages
+│   ├── .env
+│   └── contact
+│       ├── create-table.js
+│       ├── notify.js
+│       ├── submit.js
+│       └── write.js
+└── web
+└── index.html
 ```
 
-We are already setting the `notifications` parameter on action creation,
-which is the webhook. The other one is the text that the submit action
-will give in input at every invocation.
+Inside the `.env` file put this content:
+
+```env
+NOTIFICATION_URL=<url>
+```
+
+Replace `<url>` with the url received from webhook.site.
+
+Now deploy everything as usual, giving:
+
+```bash
+ops ide deploy
+```
 
 ### Creating Another Action Sequence
 
-We have developed an action that can send a Slack message as a
+We have developed an action that can send a message as a
 standalone action, but we designed it to take the output of the submit
 action and return it as is. Time to extend the previous sequence!
 
@@ -103,6 +151,9 @@ Let’s create the sequence, and then test it:
 
 ```bash
 ops action create contact/submit-notify --sequence contact/submit-write,contact/notify --web true
+```
+You should see this output:
+```shell
 ok: created action contact/submit-notify
 ```
 
@@ -114,7 +165,10 @@ If you want to get more info about this sequence, you can use the
 
 ```bash
 ops action get contact/submit-notify
+```
 
+You should see this output:
+```shell
 {
     "namespace": "openserverless/contact",
     "name": "submit-notify",
@@ -143,19 +197,20 @@ ops url contact/submit-notify
 <apihost>/api/v1/web/openserverless/contact/submit-notify
 ```
 
-And update the `index.html`:
+And update the action inside the file `web/index.html`:
 
 ```html
----            <form method="POST" action="/api/v1/web/openserverless/contact/submit-write"
-                enctype="application/x-www-form-urlencoded"> <-- old
-+++            <form method="POST" action="/api/v1/web/openserverless/contact/submit-notify"
-                enctype="application/x-www-form-urlencoded"> <-- new
+<form method="POST" action="/api/v1/web/opstutorial/contact/submit-notify"
+    enctype="application/x-www-form-urlencoded">
 ```
 
-Don’t forget to re-upload the web folder with `ops util upload web/`.
+Don’t forget to re-publish everything with `ops ide deploy`.
 
-Now try to fill out the form again and press send! It will execute the
-sequence and you will receive the message from your Slack App.
+Now try to fill out the form again and press send! It will execute the sequence 
+and you will receive the message piped from action `/contact/submit-write` to 
+`/contact/notify`.
+
+![Webhook.site result](/docs/tutorial/images/example_result.webp)
 
 The tutorial introduced you to some utilities to retrieve information
 and to the concept of `activation`. Let’s use some more commands to

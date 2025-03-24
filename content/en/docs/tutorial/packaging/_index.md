@@ -5,44 +5,88 @@ weight: 60
 draft: false
 ---
 
-{{< blockquote warning>}}
-<strong>This page is under review.</strong><br/>
-<br/>
-Several changes have been made to the project since its first draft and therefore the
-tutorial needs to be updated to the publishing system.
+## App Deployment
+
+### Deploy
+
+Apache OpenServerless makes publishing a project a very simple operation. The project, organized in two main folders `packages` for the backend and `web` for the frontend, can be published immediately using the command `ops ide deploy`.
+
+Once launched, the command takes care of:
+- creating the packages
+- preparing the actions with the relative dependencies
+- publishing the actions
+
+Through the use of files according to the [OpenWhisk manifests.yml standard](https://github.com/apache/openwhisk-wskdeploy/blob/master/docs/programming_guide.md#wskdeploy-utility-by-example), it is also possible to publish sequences, triggers and much more at the same time.
+
+{{< blockquote info>}}
+An OpenWhisk's manifest file can be useful to automate the deploy of sequences, triggers, rules. Action and packages are simpler to deploy using <code>ops ide deploy</code>
 {{< /blockquote >}}
 
-## App Deployment
+The `ops ide deploy` command also takes care of managing the parameters inserted in the annotations and injecting the variables from the configuration or from the .env file located in the `packages` folder.
+
 
 ### Packaging the App
 
-With OpenServerless you can write a manifest file (in YAML) to have an
-easy way to deploy applications.
+Even if not necessary, we'll package both actions and sequences.
+Let's create, inside the `packages` folder, two files:
+- 01-actions.yaml
+- 02-sequences.yaml
 
-In this last chapter of the tutorial we will package the code to easily
-deploy the app, both frontend and actions.
+We'll do so, because actions are required to deploy sequences.
 
-### Start The Manifest File
+The directory structure should be like this:
 
-Let’s create a "manifest.yaml" file in the `packages` directory which
-will be used to describe the actions to deploy:
+```shell
+contact_us_app
+├── packages
+│   ├── 01-actions.yaml
+│   ├── 02-sequences.yaml
+│   └── contact
+│       ├── create-table.js
+│       ├── notify.js
+│       ├── submit.js
+│       └── write.js
+└── web
+    └── index.html
+```
+
+### The Action Manifest File
+
+Inside the `01-actions.yaml` put this content:
 
 ```yaml
 packages:
   contact:
+    inputs:
+      POSTGRES_URL:
+        type: string
+        value: $POSTGRES_URL    
+
     actions:
+      submit:
+        function: contact/submit.js
+        web: true
+
+      write:
+        function: contact/write.js
+        web: true
+
       notify:
-        function: contacts/notify.js
+        function: contact/notify.js
         web: true
         inputs:
-          notifications:
-            value: $NOTIFICATIONS
+          NOTIFICATION_URL:
+            type: string
+            value: $NOTIFICATION_URL
+
+      create-table:
+        function: contact/create-table.js
 ```
 
-This is the basic manifest file with just the `notify` action. At the
-top level we have the standard `packages` keyword, under which we can
-define the packages we want. Until now we created all of our actions in
-the `contact` package so we add it under `packages`.
+At the top level we have the standard `packages` keyword,  under which 
+we can define the packages we want. 
+Until now we created all of our actions in the `contact` package so we 
+add it under `packages`.
 
 Then under each package, the `actions` keyword is needed so we can add
 our action custom names with the path to the code (with `function`).
@@ -52,70 +96,16 @@ creating the action manually.
 Finally we used the `inputs` keyword to define the parameters to inject
 in the function.
 
-If we apply this manifest file (we will see how soon), it will be the
-same as the previous
-`ops action create contact/notify <path-to-notify.js> -p notifications $NOTIFICATIONS --web true`.
-You need to have the webhooks url in the `NOTIFICATIONS` environment
-variable.
+This file will be automatically deployed by the `ops ide deploy`
+command. 
 
-### The Submit Action
+### The Sequences Manifest File
 
-The submit action is quite straightforward:
+Inside the `01-actions.yaml` put this content:
 
 ```yaml
 packages:
   contact:
-    actions:
-      ...
-      submit:
-        function: contact/submit.js
-        web: true
-```
-
-### The Database Actions
-
-Similarly to the `notify` and `submit` actions, let’s add to the
-manifest file the two actions for the database. We also need to pass as
-a package parameter the DB url, so we will use `inputs` key as before,
-but at the package level:
-
-```yaml
-packages:
-  contact:
-    inputs:
-      dbUri:
-        type: string
-        value: $POSTGRES_URL
-    actions:
-      ...
-      write:
-        function: contact/write.js
-        web: true
-
-      create-table:
-        function: contact/create-table.js
-        annotations:
-          autoexec: true
-```
-
-Note the `create-table` action does not have the `web` set to true as it
-is not needed to be exposed to the world. Instead it just has the
-annotation for cron scheduler.
-
-### The Sequences
-
-Lastly, we created a sequence with `submit` and `notify` that we have to
-specify it in the manifest file as well.
-
-```yaml
-packages:
-  contact:
-    inputs:
-      ...
-
-    actions:
-      ...
-
     sequences:
       submit-write:
         actions: submit, write
@@ -125,74 +115,65 @@ packages:
         web: true
 ```
 
-We just have to add the `sequences` key at the `contact` level (next to
-`actions`) and define the sequences we want with the available actions.
+At the top level we define the `packages` keyword and immediately after,
+ the `contact` package.
+We just have to add the `sequences` key at the `contact` level and define the sequences we want with the available actions.
 
-### Deployment
+Also this file will be automatically deployed by the `ops ide deploy`
+command. 
 
-The final version of the manifest file is:
+### Test the deploy
 
-```yaml
-packages:
-  contact:
-    inputs:
-      dbUri:
-        type: string
-        value: $POSTGRES_URL
-    actions:
-      notify:
-        function: contact/notify.js
-        web: true
-        inputs:
-          notifications:
-            value: $NOTIFICATIONS
+To test the deploy, let's run again the command `ops ide deploy`:
 
-      submit:
-        function: contact/submit.js
-        web: true
-
-      write:
-        function: contact/write.js
-        web: true
-
-      create-table:
-        function: contact/create-table.js
-        annotations:
-          autoexec: true
-
-    sequences:
-      submit-write:
-        actions: submit, write
-        web: true
-      submit-notify:
-        actions: submit-write, notify
-        web: true
+```shell
+ops ide deploy
 ```
 
-`ops` comes equipped with a handy command to deploy an app:
-`ops project deploy`.
-
-It checks if there is a `packages` folder with inside a manifest file
-and deploys all the specified actions. Then it checks if there is a
-`web` folder and uploads it to the platform.
-
-It does all what we did manually until now in one command.
-
-So, from the top level directory of our app, let’s run (to also set the
-input env var):
-
-```bash
-export POSTGRES_URL=<your-postgres-url>
-export NOTIFICATIONS=<the-webhook>
-
-ops project deploy
-
-Packages and web directory present.
+```shell
+/Users/openserverless/.ops/tmp/deploy.pid
+PID 28177
+> Scan:
+>> Action: packages/contact/write.js
+>> Action: packages/contact/create-table.js
+>> Action: packages/contact/submit.js
+>> Action: packages/contact/notify.js
+> Deploying:
+>> Package: contact
+$ $OPS package update contact 
+ok: updated package contact
+>>> Action: packages/contact/write.js
+$ $OPS action update contact/write packages/contact/write.js --kind nodejs:default --param POSTGRES_URL $POSTGRES_URL
+ok: updated action contact/write
+>>> Action: packages/contact/create-table.js
+$ $OPS action update contact/create-table packages/contact/create-table.js --kind nodejs:default --param POSTGRES_URL $POSTGRES_URL
+ok: updated action contact/create-table
+>>> Action: packages/contact/submit.js
+$ $OPS action update contact/submit packages/contact/submit.js --web true --kind nodejs:default
+ok: updated action contact/submit
+>>> Action: packages/contact/notify.js
+$ $OPS action update contact/notify packages/contact/notify.js --param NOTIFICATION_URL $NOTIFICATION_URL
+ok: updated action contact/notify
+Found packages .env file. Reading it
+>>> Manifest: packages/01-actions.yaml
+$ $OPS -wsk project deploy --manifest packages/01-actions.yaml
 Success: Deployment completed successfully.
-Found web directory. Uploading..
+>>> Manifest: packages/02-sequences.yaml
+$ $OPS -wsk project deploy --manifest packages/02-sequences.yaml
+Success: Deployment completed successfully.
+build process exited with code 0
+UPLOAD ASSETS FROM web
+==================| UPLOAD RESULTS |==================
+| FILES      : 1
+| COMPLETED  : 1
+| ERRORS     : 0
+| SKIPPED    : 0
+| EXEC. TIME : 35.72 ms
+======================================================
+URL: http://opstutorial.localhost:80
 ```
 
-With just this command you deployed all the actions (and sequences) and
-uploaded the frontend (from the web folder).
+As you can see, after deploying the actions, the deployer will find
+the manifest files and deploy them in [lexicographic order](https://en.wikipedia.org/wiki/Lexicographic_order).
 
 ---
