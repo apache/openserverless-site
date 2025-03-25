@@ -18,6 +18,9 @@ Usage:
   util kubeconfig
   util config <configjson> [--override] [--showhelp]
   util upload <folder> [--batchsize=<batchsize>] [--verbose] [--clean]
+  util add-secret <args>...
+  util remove-secret <args>...
+  util list-secrets
 ```
 
 ## Commands
@@ -34,6 +37,9 @@ Usage:
 -  kubeconfig              export OVERWRITING current kubeconfig to ~/.kube/config
 -  config                  update configuration file interactively
 -  upload                  uploads a folder to the web bucket in OpenServerless.
+-  add-secret              add one or multiple secrets to user metadata
+-  remove-secret           remove one or multiple secrets to user metadata
+-  list-secrets            list secrets from user metadata
 ```
 
 ## Options

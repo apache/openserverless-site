@@ -1,6 +1,6 @@
 ---
 title: Ide
-description: OpenServerless Development Utilities.
+description: OpenServerless Ide Development Utilities.
 ---
 
 ## Synopsis
@@ -8,7 +8,7 @@ description: OpenServerless Development Utilities.
 ```text
 Usage:
     ide login [<username>] [<apihost>]
-    ide devel [--dry-run]
+    ide devel [--fast] [--dry-run]
     ide deploy [<action>] [--dry-run]
     ide undeploy [<action>] [--dry-run]
     ide clean
@@ -36,4 +36,11 @@ Usage:
     ide shell               start a shell with current env
     ide python              python subcommands
     ide nodejs              nodejs subcommands
+```
+
+## Options
+
+```
+--fast          Skip the initial deployment step and go in incremental update mode
+--dry-run       Simulates the execution without making any actual changes 
 ```
