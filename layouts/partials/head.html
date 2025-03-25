@@ -8,11 +8,13 @@
       } else if (currentTheme === 'light') {
         document.documentElement.classList.remove('dark-mode');
       }
-      const isDarkMode = document.body.classList.contains('dark-mode');
+      const isDarkMode = document.documentElement.classList.contains('dark-mode');
       
       const themeIcon = document.getElementById('theme-icon');
-        themeIcon.classList.toggle('fa-sun', !isDarkMode);
-        themeIcon.classList.toggle('fa-moon', isDarkMode);
+      if (themeIcon) {
+        themeIcon.classList && themeIcon.classList.toggle('fa-sun', !isDarkMode);
+        themeIcon.classList && themeIcon.classList.toggle('fa-moon', isDarkMode);
+      }
     })();
   </script>
 <meta charset="utf-8">
