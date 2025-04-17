@@ -1,0 +1,17 @@
+{
+  "name": "runtimes",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "bun test",
+    "test-coverage": "bun test --coverage",
+    "build": "bun build --target=bun src/index.ts --outdir=../"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
