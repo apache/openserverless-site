@@ -42,6 +42,17 @@ tasks:
           #cat $file >>content/en/docs/reference/tasks/$tgt
         done
       - rm -rf openserverless-task
+    
+  import-runtimes:
+    desc: import runtimes dependecies
+    silent: true
+    cmds:
+      - test -d "openserverless-task" && git pull || git clone https://github.com/apache/openserverless-task
+      - test -d "openserverless-runtimes" && git pull || git clone https://github.com/apache/openserverless-runtimes
+      - |
+        bun tasks/runtimes/src/index.ts
+      - rm -rf openserverless-runtimes
+      - rm -rf openserverless-task
 
   preview:
     silent: true

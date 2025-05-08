@@ -42,13 +42,16 @@ The documentation for [OpenServerless Tasks](https://github.com/apache/openserve
 [OpenServerless Tools](https://github.com/apache/openserverless-cli/) is automatically extracted from the
 respective repositories.
 
-Is possible to align task and tools using these commands:
+Is possible to align task, tools and runtimes using these commands:
 
 - Tasks 
   - `task import-task`
 
 - Tools
   - `task import-tools`
+
+- Runtimes
+  - `task import-runtimes`
 
 ### Web site build
 
