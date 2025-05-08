@@ -30,7 +30,7 @@ The process of creating Python actions is similar to that of other actions.
 The following sections guide you through creating and invoking a single Python action,
 and demonstrate how to bundle multiple Python files and third party dependencies.
 
-1.Create a Python_app folder and then create a `package` directory.Now create a Python file with the following content inside our `packages/python`. For this example, the file name is `hello.py`.
+1. Create a Python_app folder and then create a `package` directory.Now create a Python file with the following content inside our `packages/python`. For this example, the file name is `hello.py`.
 
   ```Python
 #--web true
@@ -53,7 +53,7 @@ def main(args):
   Python_app
   └── packages
       └── Python
-          └── hello.js
+          └── hello.py
 
   ```
 2. Run the following command to deploy the action
@@ -67,13 +67,13 @@ ops ide deploy
   /home/openserverless/.ops/tmp/deploy.pid
   PID 278075
   > Scan:
-  >> Action: packages/python/hello.js
+  >> Action: packages/python/hello.py
   > Deploying:
   >> Package: python
   $ $OPS package update python 
   ok: updated package python
-  >>> Action: packages/python/hello.js
-  $ $OPS action update python/hello packages/python/hello.js --web true --kind python:default
+  >>> Action: packages/python/hello.py
+  $ $OPS action update python/hello packages/python/hello.py --web true --kind python:default
   ok: updated action python/hello
   build process exited with code 0
   UPLOAD ASSETS FROM web

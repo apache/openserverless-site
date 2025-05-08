@@ -29,13 +29,12 @@ The process of creating PHP actions is similar to that of other actions.
 The following sections guide you through creating and invoking a single PHP action,
 and demonstrate how to bundle multiple PHP files and third party dependencies.
 
-1.Create a Python_app folder and then create a `package` directory.Now create a Python file with the following content inside our `packages/php`. For this example, the file name is `hello.php`.
+1. Create a Python_app folder and then create a `package` directory.Now create a Python file with the following content inside our `packages/php`. For this example, the file name is `hello.php`.
 
   ```php
-#--web true
-#--kind php:default
-
 <?php
+//--web true
+//--kind php:default
 function main(array $args) : array
 {
     $name = $args["name"] ?? "stranger";
@@ -43,6 +42,7 @@ function main(array $args) : array
     echo $greeting;
     return ["greeting" => $greeting];
 }
+?>
 
   ```
 
@@ -105,26 +105,33 @@ In this example we're creating a more complex php action.
 
 1. Create a folder `complex_action` inside `packages/php` folder. Then create two php files
 
-__main__.py
+index.php
   ```php
-#--web true
-#--kind php:default
-import utils
+<?php
+//--web true
+//--kind php:default
+include 'utils.php';
 
-def main(args):
-    name = args.get("name", "stranger")
-    result = utils.concat_string("Nice to meet you,",name)
-    return {"greeting": result}
+function main($args) {
+    $name = isset($args['name']) ? $args['name'] : 'stranger';
+    $result = concat_string('Nice to meet you,', $name);
+    return array('greeting' => $result);
+}
+?>
 
   ```
 
-utils.py
-  ```Python
-def concat_string(first_string: str, second_string: str):
-    return f"{first_string} {second_string}"
+utils.php
+  ```php
+<?php
+
+function concat_string($first_string, $second_string) {
+    return "$first_string $second_string";
+}
+?>
   ```
 
-Note: The filename of the source file containing the entry point (e.g., `main`) must be `__main__.py`.
+Note: The filename of the source file containing the entry point (e.g., `main`) must be `index.php`.
 
 2. Deploy the action using `ide deploy`
 
@@ -132,10 +139,10 @@ Note: The filename of the source file containing the entry point (e.g., `main`) 
 ops ide deploy
 ```
 
-3. Now you can invoke your action. In this case the action name is `python/complex_action`
+3. Now you can invoke your action. In this case the action name is `php/complex_action`
 
 ```bash
-ops action invoke python/complex_action --param name Marina --result
+ops action invoke php/complex_action --param name Marina --result
 ```
  -->
 

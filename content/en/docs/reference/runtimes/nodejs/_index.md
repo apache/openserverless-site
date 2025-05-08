@@ -29,7 +29,7 @@ The process of creating JavaScript actions is similar to that of other actions.
 The following sections guide you through creating and invoking a single JavaScript action,
 and demonstrate how to bundle multiple JavaScript files and third party dependencies.
 
-1.Create a package `directory`. Create a JavaScript file with the following content inside our `packages/nodejs`. For this example, the file name is `hello.js`.
+1. Create a package `directory`. Create a JavaScript file with the following content inside our `packages/nodejs`. For this example, the file name is `hello.js`.
 
   ```javascript
   //--web true
