@@ -217,14 +217,15 @@ params:
         url: https://github.com/apache/openserverless
         icon: fab fa-github
         desc: Development takes place here!
+      - name: Discord
+        url: https://discord.com/invite/PkD7CcHgGP
+        icon: fab fa-discord
+        desc: A public discor server to discuss everything about OpenServerless
       - name: Slack
         url: https://the-asf.slack.com/archives/C07B6K5R3F0
         icon: fab fa-slack
         desc: Chat with other project developers
-      - name: Telegram
-        url: https://t.me/+XhbCjBrkkaNkOWM0
-        icon: fab fa-telegram
-        desc: A public telegram group to discuss everything about OpenServerless
+      
 
 module:
   # Uncomment the next line to build and serve using local docsy clone declared in the named Hugo workspace:

@@ -34,7 +34,10 @@ curl -sL bit.ly/get-ops | bash
 
 Quick install in Windows with PowerShell
 
+Open a powershell. Then give these commands:
+
 ```powershell
+Set-ExecutionPolicy Bypass - Scope Process -Force
 irm bit.ly/get-ops-exe | iex
 ```
 

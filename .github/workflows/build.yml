@@ -17,6 +17,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Clear NPM cache
+        run: npm cache clean --force
       - name: Checkout Production
         if: github.ref_name == 'main'
         uses: actions/checkout@v4
