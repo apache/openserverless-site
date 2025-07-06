@@ -7,6 +7,7 @@ description: Manage installation
 
 ```text
 Usage:
+  setup mini
   setup devcluster [--uninstall|--status|--skip-check-ports] 
   setup cluster [<context>] [--uninstall|--status]
   setup server <server> [<user>] [--uninstall|--status]
@@ -18,6 +19,7 @@ Usage:
 ## Commands
 
 ```
+  setup mini          deploy mini Apache OpenServerless, slim local installation available as http://devel.miniops.me 
   setup cluster       deploy Apache OpenServerless in the Kubernetes cluster using the <context>, default the current
   setup devcluster    deploy Apache OpenServerless in a devcluster created locally
                       you need Docker Desktop available with at least 6G of memory assigned
