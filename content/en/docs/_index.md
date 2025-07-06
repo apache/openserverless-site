@@ -42,7 +42,7 @@ environment with the following features:
 - Integrates all the key services to build applications.
 
 - It is as portable as possible to run potentially in every
-    Kubernetes.
+    Kubernetes. 
 
 - It is however tested regularly against a set of supported Kubernetes
     environments.
