@@ -7,7 +7,7 @@ The install process will notify nuvolaris creators with the type of installation
 Before installation Please ensure you have:
 downloaded the installer satisfied the prerequisites configured your installation Core Installation Once you have completed the preparation steps, you can proceed with:
 a local installation on your local machine a single server installation on a Linux server a clustered installation on a Kubernetes cluster. 💡 NOTE
-The install process will notify nuvolaris creators with the type of installation (for example: clustered or server installation), no other info will be submitted."><meta itemprop=dateModified content="2025-05-10T23:07:22+02:00"><meta itemprop=wordCount content="141"><meta name=twitter:card content="summary"><meta name=twitter:title content="Install OpenServerless"><meta name=twitter:description content="Installation Overview This page provides an overview of the installation process.
+The install process will notify nuvolaris creators with the type of installation (for example: clustered or server installation), no other info will be submitted."><meta itemprop=dateModified content="2025-07-06T17:37:59+02:00"><meta itemprop=wordCount content="141"><meta name=twitter:card content="summary"><meta name=twitter:title content="Install OpenServerless"><meta name=twitter:description content="Installation Overview This page provides an overview of the installation process.
 Before installation Please ensure you have:
 downloaded the installer satisfied the prerequisites configured your installation Core Installation Once you have completed the preparation steps, you can proceed with:
 a local installation on your local machine a single server installation on a Linux server a clustered installation on a Kubernetes cluster. 💡 NOTE
@@ -19,47 +19,46 @@ The install process will notify nuvolaris creators with the type of installation
 </code></pre><h3 id=post-installation>Post installation</h3><p>After the installation, you can consult the development guide
 for informations how to reconfigure and update the system.</p><h3 id=support>Support</h3><p>If something goes wrong, you can check:</p><ul><li>the <a href=/docs/installation/debug/>Troubleshooting</a> page</li><li>our online <a href=http://nuvolaris.discourse.group>Forum</a></li></ul></div></div><div class=td-content style=page-break-before:always><h1 id=pg-468eb1c803501e0c8fee24ddc1d4914c>1 - Docker</h1><div class=lead>Install OpenServerless on a local machine</div><h2 id=local-docker-installation>Local Docker installation</h2><p>This page describes how to install OpenServerless on your local machine. The
 services are limited and not accessible from the outside so it is an
-installation useful only for <b>development purposes</b>.</p><h3 id=prerequisites>Prerequisites</h3><p>Before installing, you need to:</p><ul><li><p>install <a href=/docs/installation/prereq/docker/>Docker</a>.</p></li><li><p>install <a href=/docs/installation/download/>ops</a>.</p></li><li><p>perform a minimal configuration. For more details about this,
-check <a href=/docs/installation/configure/>Configure the services</a>.</p></li></ul><style>blockquote.warning{border-color:#b91900!important}blockquote.important{border-color:#e7c416!important}</style><blockquote class=info><p class=quote-title>💡 <strong>NOTE</strong></p><p>The static service works perfectly for the default namespace nuvolaris which is linking the http://localhost to the
-nuvolaris web bucket. With this setup adding new users will add an ingress with host set to
-namespace.localhost, that in theory could also work if the host file of the development machine is configured
-to resolve it to the 127.0.0.1 ip address.</p></blockquote><style>blockquote.warning{border-color:#b91900!important}blockquote.important{border-color:#e7c416!important}</style><blockquote class=warning><p class=quote-title>⚠ <strong>WARNING</strong></p><p>You cannot have <code>https</code> in a local installation.
-If you enable it, the configuration will be ignored.</p></blockquote><h3 id=installation>Installation</h3><p>Run the commands:</p><ol><li>Minimal configuration</li></ol><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops config minimal
-</span></span></code></pre></div><p>Behind the scene, this command will write a cluster configuration file called <code>~/.ops/config.json</code> activating these
-services: <code>static</code>, <code>redis</code>, <code>postgres</code>, <code>ferretdb</code>, <code>minio</code>, <code>cron</code> constituting the common baseline for development
-tasks.</p><ol start=2><li>Setup the cluster</li></ol><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup devcluster
-</span></span></code></pre></div><p>and wait until the command terminates.</p><details><summary>Click here to see a log sample of the setup</summary><div><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup devcluster
-</span></span><span style=display:flex><span>Creating cluster <span style=color:#4e9a06>&#34;nuvolaris&#34;</span> ...
-</span></span><span style=display:flex><span> ✓ Ensuring node image <span style=color:#ce5c00;font-weight:700>(</span>kindest/node:v1.25.3<span style=color:#ce5c00;font-weight:700>)</span> 🖼
-</span></span><span style=display:flex><span> ✓ Preparing nodes 📦 📦
-</span></span><span style=display:flex><span> ✓ Writing configuration 📜
-</span></span><span style=display:flex><span> ✓ Starting control-plane 🕹️
-</span></span><span style=display:flex><span> ✓ Installing CNI 🔌
-</span></span><span style=display:flex><span> ✓ Installing StorageClass 💾
-</span></span><span style=display:flex><span> ✓ Joining worker nodes 🚜
-</span></span><span style=display:flex><span> ✓ Waiting ≤ 1m0s <span style=color:#204a87;font-weight:700>for</span> control-plane <span style=color:#ce5c00;font-weight:700>=</span> Ready ⏳
-</span></span><span style=display:flex><span> • Ready after 1s 💚
-</span></span><span style=display:flex><span>Set kubectl context to <span style=color:#4e9a06>&#34;kind-nuvolaris&#34;</span>
-</span></span><span style=display:flex><span>You can now use your cluster with:
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>kubectl cluster-info --context kind-nuvolaris --kubeconfig /Users/bruno/.ops/tmp/kubeconfig
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>Thanks <span style=color:#204a87;font-weight:700>for</span> using kind!
-</span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span><span style=color:#ce5c00;font-weight:700>[</span>...continue<span style=color:#ce5c00;font-weight:700>]</span>
-</span></span></code></pre></div><blockquote><p>💡 <strong>NOTE</strong></p><p>The log will continue because, after kind is up and running, OpenServerless namespace and relative services are
-installed inside.</p></blockquote><p>It will take some minute to complete, so be patient.</p></div></details><h3 id=troubleshooting>Troubleshooting</h3><p>Usually the setup completes without errors.</p><p>However, if <code>ops</code> is unable to complete the setup, you may see this message at the end:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>ops: Failed to run task &#34;create&#34;: exit status 1
+installation useful only for <b>development purposes</b>.</p><h3 id=prerequisites>Prerequisites</h3><p>Before installing, you need to:</p><ul><li><p>install <a href=/docs/installation/prereq/docker/>Docker</a>.</p></li><li><p>install <a href=/docs/installation/download/>ops</a>.</p></li></ul><p>Furthermore you will need a decent PC / Mac.</p><p>Docker will need 4 Gb Ram and almost 40Gb of free space to run the cluster
+locally.</p><style>blockquote.warning{border-color:#b91900!important}blockquote.important{border-color:#e7c416!important}</style><blockquote class=info><p class=quote-title>💡 <strong>NOTE</strong></p><p>We introduced a special domain called <code>miniops.me</code>: this domain will always
+resolve to 127.0.0.1.
+This way the static service for the default namespace nuvolaris will be
+linking the <code>http://miniops.me</code> to the nuvolaris web bucket.<br>Adding new users will add an ingress with host set to
+<code>http://&lt;namespace>.miniops.me</code>.</p></blockquote><style>blockquote.warning{border-color:#b91900!important}blockquote.important{border-color:#e7c416!important}</style><blockquote class=warning><p class=quote-title>⚠ <strong>WARNING</strong></p><p>You cannot have <code>https</code> in a local installation.
+If you enable it, the configuration will be ignored.</p></blockquote><h3 id=installation>Installation</h3><p>The following command will perform a full local installation:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup mini
+</span></span></code></pre></div><p>Behind the scene, this command will write a cluster configuration file called
+<code>~/.ops/config.json</code> activating these services: <code>static</code>, <code>redis</code>, <code>postgres</code>,
+<code>ferretdb</code>, <code>minio</code>, <code>cron</code>, <code>milvus</code> constituting the common baseline for
+development tasks.</p><p>Wait until the command terminates. It will take minutes to complete, so be
+patient.</p><p>The installation will ends showing these informations:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>*** Configuring Access to OpenServerless ***
+</span></span><span style=display:flex><span><span style=color:#000>apihost</span><span style=color:#ce5c00;font-weight:700>=</span>http://miniops.me <span style=color:#000>username</span><span style=color:#ce5c00;font-weight:700>=</span>devel
+</span></span><span style=display:flex><span>Logging in http://miniops.me as devel
+</span></span><span style=display:flex><span>Successfully logged in as devel.
+</span></span><span style=display:flex><span>ok: whisk auth set. Run <span style=color:#4e9a06>&#39;wsk property get --auth&#39;</span> to see the new value.
+</span></span><span style=display:flex><span>ok: whisk API host <span style=color:#204a87>set</span> to http://miniops.me
+</span></span><span style=display:flex><span>OpenServerless host and auth <span style=color:#204a87>set</span> successfully. You are now ready to use ops!
+</span></span><span style=display:flex><span><span style=color:#ce5c00;font-weight:700>==================</span><span style=color:#000;font-weight:700>|</span> UPLOAD RESULTS <span style=color:#000;font-weight:700>|</span><span style=color:#ce5c00;font-weight:700>==================</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>|</span> FILES      : <span style=color:#0000cf;font-weight:700>4</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>|</span> COMPLETED  : <span style=color:#0000cf;font-weight:700>4</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>|</span> ERRORS     : <span style=color:#0000cf;font-weight:700>0</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>|</span> SKIPPED    : <span style=color:#0000cf;font-weight:700>0</span>
+</span></span><span style=display:flex><span><span style=color:#000;font-weight:700>|</span> EXEC. TIME : 46.70 <span style=color:#000>ms</span>
+</span></span><span style=display:flex><span><span style=color:#ce5c00;font-weight:700>======================================================</span>
+</span></span><span style=display:flex><span>Login with: ops ide login devel https://miniops.me
+</span></span><span style=display:flex><span>Password is saved in: /Users/openserverless/.ops/devel.password
+</span></span><span style=display:flex><span>Web URL is: http://devel.miniops.me
+</span></span></code></pre></div><h3 id=try-your-devel-user>Try your devel user</h3><p>At the end of the setup, you&rsquo;ll have a local OpenServerless installation
+with a <code>devel</code> user.</p><p>Open a browser to <a href=http://devel.miniops.me>http://devel.miniops.me</a>. You will see a page like this:</p><img src=/welcome-mini.webp width=700 alt="Welcome Mini"><p>Take a minute to share on Linkedin your experience with the setup and to join
+us on <a href=https://discord.com/invite/PkD7CcHgGP>Discord</a>.</p><h3 id=troubleshooting>Troubleshooting</h3><p>Usually the setup completes without errors.</p><p>However, if <code>ops</code> is unable to complete the setup, you may see this message at
+the end:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text><span style=display:flex><span>ops: Failed to run task &#34;create&#34;: exit status 1
 </span></span><span style=display:flex><span>task execution error: ops: Failed to run task &#34;create&#34;: exit status 1
 </span></span><span style=display:flex><span>ops: Failed to run task &#34;devcluster&#34;: exit status 1
 </span></span><span style=display:flex><span>task execution error: ops: Failed to run task &#34;devcluster&#34;: exit status 1
-</span></span></code></pre></div><p>If this is your case, try to perform a uninstall / reinstall:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup cluster --uninstall
+</span></span></code></pre></div><p>If this is your case, try to perform a uninstall / reinstall:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup devcluster --uninstall
 </span></span><span style=display:flex><span>ops config reset
-</span></span><span style=display:flex><span>ops config minimal
-</span></span><span style=display:flex><span>ops setup devcluster
-</span></span></code></pre></div><p>If this will not solve, please contact the community.</p><h3 id=post-install>Post install</h3><p><a href=/docs/tutorial/>Check the tutorial</a> to learn how to use it.</p><h3 id=uninstall>Uninstall</h3><p>To uninstall you may:</p><h4 id=uninstall-devcluster>Uninstall devcluster</h4><p>This will actually remove the ops namespace and all the services from kind.
-Useful to re-try an installation when something gone wrong.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup cluster --uninstall
+</span></span></code></pre></div><p>If this will not solve, please contact the community.</p><h3 id=post-install>Post install</h3><p><a href=/docs/tutorial/>Check the tutorial</a> to learn how to use it.</p><h3 id=uninstall-and-remove-devcluster>Uninstall and remove devcluster</h3><p>This will actually remove the ops namespace and all the services from kind.
+Useful to re-try an installation when something gone wrong.</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup devcluster --uninstall
 </span></span><span style=display:flex><span>ops config reset
-</span></span></code></pre></div><h4 id=remove-devcluster>Remove devcluster</h4><p>This will actually remove the nodes from kind:</p><div class=highlight><pre tabindex=0 style=background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>ops setup devcluster --uninstall
 </span></span></code></pre></div></div><div class=td-content style=page-break-before:always><h1 id=pg-2a348e473e676744aeb27b6b290fa85c>2 - Linux Server</h1><div class=lead>Install on a Linux Server</div><h2 id=server-installation>Server Installation</h2><p>This page describes how to install OpenServerless on a Linux server
 accessible with SSH.</p><p>This is a single node installation, so it is advisable only for
 development purposes.</p><h3 id=prerequisites>Prerequisites</h3><p>Before installing, you need to:</p><ol><li><p>install the OpenServerless CLI <a href=/docs/installation/download/>ops</a>;</p></li><li><p>provision a <a href=/docs/installation/prereq/server/>server running a Linux operating system</a>,
