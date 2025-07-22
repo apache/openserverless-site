@@ -58,7 +58,7 @@ tasks:
     silent: true
     desc: preview the websites
     cmds:
-      - PATH="node_modules/.bin:$PATH" hugo server --baseURL "http://localhost:1313/" -O
+      - PATH="node_modules/.bin:$PATH" hugo server --baseURL "http://localhost:1313/"
 
   debug:
     silent: true
