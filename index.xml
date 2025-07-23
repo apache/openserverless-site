@@ -1,14 +1,88 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Apache OpenServerless™</title><link>/</link><description>Recent content on Apache OpenServerless™</description><generator>Hugo</generator><language>en</language><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Contribution Guidelines</title><link>/contribution-guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/contribution-guidelines/</guid><description>Contribution Guidelines Subscribe our mailing list sending an email to dev-subscribe@openserverless.apache.org Discuss your contribution and get a ticket assigned in our Issue Tracker setup your virtual machine as described here . Learn about git submodules (we use them), and use the script update-tree.sh to update your source tree to the latest version of all the branches. Fork the subrepo you want to contribute and code your contribution. Download and sign the ICLA and send to secretary@apache.</description></item><item><title>Apache OpenServerless: A FaaS Solution with Privacy and Power</title><link>/blog/2024/11/16/apache-openserverless-a-faas-solution-with-privacy-and-power/</link><pubDate>Sat, 16 Nov 2024 00:00:00 +0000</pubDate><guid>/blog/2024/11/16/apache-openserverless-a-faas-solution-with-privacy-and-power/</guid><description>Introduction Apache OpenServerless is an innovative project from the Apache Incubator, designed to deliver a versatile and scalable serverless environment compatible with any cloud provider or Kubernetes distribution. Built upon the robust Apache OpenWhisk framework, it aims to empower developers to create applications of any complexity, from simple forms to advanced AI-driven solutions.
-Currently in its preview phase, Apache OpenServerless invites the community to provide feedback and contributions, accelerating its journey towards a stable release.</description></item><item><title>Assembling the lab for OpenServerless</title><link>/blog/2024/07/12/assembling-the-lab-for-openserverless/</link><pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate><guid>/blog/2024/07/12/assembling-the-lab-for-openserverless/</guid><description>OpenServerless is a complex project. It has a lot of moving parts and relies heavily on Kubernetes.
-There are many subprojects, and each subproject has a complex set of dependencies. Setting up all those dependencies is usually complex and time consuming.
-I have worked in a project where it used to take literally a couple of days to get everything ready to code. Also, you were never sure that everything was set up correctly because the dependencies were constantly changing.</description></item><item><title>Apache OpenServerless started</title><link>/blog/2024/07/09/apache-openserverless-started/</link><pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><guid>/blog/2024/07/09/apache-openserverless-started/</guid><description>The Apache OpenServerless project&amp;rsquo;s goal is to build a serverless distribution that runs in all major flavors of Kubernetes in public and private clouds, and in any virtual machine running Linux in any cloud. It is not just a serverless engine, but a complete set of integrated tools to easily build cloud-native applications, with a focus on building AI applications.
-Specifically, we are building on top of Apache OpenWhisk, which includes Apache Kafka and Apache CouchDB as components, adding Apache APISix as an API gateway, and a set of custom runtimes.</description></item><item><title>The Name OpenServerless Was Approved</title><link>/blog/2024/06/20/the-name-openserverless-was-approved/</link><pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate><guid>/blog/2024/06/20/the-name-openserverless-was-approved/</guid><description>We are in the process of submitting thr open source codebase of Nuvolaris Community, to the Apache Software Foundation as an Apache project, and our proposed name is Apache OpenServerless.
-The name is excellent because it conveys what the project is: a complete serverless environment for running cloud-native applications anywhere.We have already written the proposal and found our champions and mentors.
-But before we voted the project in the Incubator PMC, we wanted to make sure that the chosen name was available.</description></item><item><title>Project Accepted for Incubation!</title><link>/blog/2024/06/18/project-accepted-for-incubation/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>/blog/2024/06/18/project-accepted-for-incubation/</guid><description>It is official! Apache OpenServerless is now an incubating project at the Apache Software Foundation! The result of the vote was positive and this is the email announcing the result of the vote on the Incubator Mailing List.
-From: Jean-Baptiste Onofré Date: Tuesday 18 June 2024 16:20:06 BST Subject: [RESULT][VOTE] Accept OpenServerless into the ASF incubator Hi folks, this vote passed with the following result: +1 (binding): Francis Chuang, PJ Fanning, Yu Xiao, Duo Zhang, Bertrand Delacretaz, Zhongyi Tan, Zhang Yonglun, Charles Zhang, Enrico Olivelli, Dave Fisher, François Papon, Roman Shaposhnik, Yu Li, Calvin Kirs +1 (non binding): ZhangJian He, Nicolò Boschi, likeho Thanks all for your vote !</description></item><item><title>OpenServerless Proposal Submitted</title><link>/blog/2024/06/10/openserverless-proposal-submitted/</link><pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate><guid>/blog/2024/06/10/openserverless-proposal-submitted/</guid><description>Hello everyone, we are happy to announce that we submitted the OpenServerless project to the Apache Software Foundation. We are going to develop our Nuvolaris Community into a worldwide open source project at the highest level.
-The goal is to provide the open source foundation of our Nuvolaris Enterprise product as a vendor independent and stable project maintained by a community.
-To achieve this goal, we have submitted the Apache OpenServerless proposal is the natual step.</description></item><item><title>About Apache OpenServerless</title><link>/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/about/</guid><description>Apache OpenServerless A complete Serverless Development Environment for Any Cloud and Any Kubernetes
-Managed by a Kubernetes Operator Here are some of the operator&amp;rsquo;s strong points:
-The first operator capable of configuring a complete OpenWhisk distribution on various versions of Kubernetes, both on cloud providers and on bare metal.
-The operator takes care of resources setup and maintenance.
-Allows you to configure a set of resources to be used for the development / deployment of cloud native applications based on the OpenWhisk serverless engine: redis, postgresql, minio and much more!</description></item><item><title>Search Results</title><link>/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/search/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Apache OpenServerless™</title><link>/</link><description>Recent content on Apache OpenServerless™</description><generator>Hugo</generator><language>en</language><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>Contribution Guidelines</title><link>/contribution-guidelines/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/contribution-guidelines/</guid><description>&lt;h2 id="contribution-guidelines">Contribution Guidelines&lt;/h2>
+&lt;ol>
+&lt;li>Subscribe our mailing list sending an email to &lt;code>dev-subscribe@openserverless.apache.org&lt;/code>&lt;/li>
+&lt;li>Discuss your contribution and get a ticket assigned in our &lt;a href="https://github.com/apache/openserverless/issues">Issue Tracker&lt;/a>&lt;/li>
+&lt;li>setup your virtual machine as described &lt;a href="https://github.com/apache/openserverless">here&lt;/a> .&lt;/li>
+&lt;li>Learn about &lt;a href="https://git-scm.com/book/en/v2/Git-Tools-Submodules">git submodules&lt;/a> (we use them), and use the script &lt;code>update-tree.sh&lt;/code> to update your source tree to the latest version of all the branches.&lt;/li>
+&lt;li>Fork the subrepo you want to contribute and code your contribution.&lt;/li>
+&lt;li>Download and sign the &lt;a href="https://www.apache.org/licenses/icla.pdf">ICLA&lt;/a> and send to &lt;code>secretary@apache.org&lt;/code> before submitting any Pull Request&lt;/li>
+&lt;li>Send a pull request to the relevant subrepo.&lt;/li>
+&lt;/ol></description></item><item><title>Apache OpenServerless: A FaaS Solution with Privacy and Power</title><link>/blog/2024/11/16/apache-openserverless-a-faas-solution-with-privacy-and-power/</link><pubDate>Sat, 16 Nov 2024 00:00:00 +0000</pubDate><guid>/blog/2024/11/16/apache-openserverless-a-faas-solution-with-privacy-and-power/</guid><description>&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Apache OpenServerless is an innovative project from the Apache Incubator, designed to deliver a versatile and scalable serverless environment compatible with any cloud provider or Kubernetes distribution. Built upon the robust Apache OpenWhisk framework, it aims to empower developers to create applications of any complexity, from simple forms to advanced AI-driven solutions.&lt;/p>
+&lt;p>Currently in its preview phase, Apache OpenServerless invites the community to provide feedback and contributions, accelerating its journey towards a stable release.&lt;/p></description></item><item><title>Assembling the lab for OpenServerless</title><link>/blog/2024/07/12/assembling-the-lab-for-openserverless/</link><pubDate>Fri, 12 Jul 2024 00:00:00 +0000</pubDate><guid>/blog/2024/07/12/assembling-the-lab-for-openserverless/</guid><description>&lt;img src="/blog/devenv.png" alt="Development environment as a laboratory" class="mb-2 img-fluid">
+&lt;p>OpenServerless is a complex project. It has a lot of moving parts and relies heavily on Kubernetes.&lt;/p>
+&lt;p>There are many subprojects, and each subproject has a complex set of dependencies. Setting up all those dependencies is usually complex and time consuming.&lt;/p>
+&lt;p>I have worked in a project where it used to take literally a couple of days to get everything ready to code. Also, you were never sure that everything was set up correctly because the dependencies were constantly changing.&lt;/p></description></item><item><title>Apache OpenServerless started</title><link>/blog/2024/07/09/apache-openserverless-started/</link><pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate><guid>/blog/2024/07/09/apache-openserverless-started/</guid><description>&lt;p>The Apache OpenServerless project&amp;rsquo;s goal is to build a serverless distribution that runs in all major flavors of Kubernetes in public and private clouds, and in any virtual machine running Linux in any cloud. It is not just a serverless engine, but a complete set of integrated tools to easily build cloud-native applications, with a focus on building AI applications.&lt;/p>
+&lt;p>Specifically, we are building on top of Apache OpenWhisk, which includes Apache Kafka and Apache CouchDB as components, adding Apache APISix as an API gateway, and a set of custom runtimes.&lt;/p></description></item><item><title>The Name OpenServerless Was Approved</title><link>/blog/2024/06/20/the-name-openserverless-was-approved/</link><pubDate>Thu, 20 Jun 2024 00:00:00 +0000</pubDate><guid>/blog/2024/06/20/the-name-openserverless-was-approved/</guid><description>&lt;p>We are in the process of submitting thr open source codebase of Nuvolaris Community, to the Apache Software Foundation as an Apache project, and our proposed name is Apache OpenServerless.&lt;/p>
+&lt;p>The name is excellent because it conveys what the project is: a complete serverless environment for running cloud-native applications anywhere.We have already written the proposal and found our champions and mentors.&lt;/p>
+&lt;p>But before we voted the project in the Incubator PMC, we wanted to make sure that the chosen name was available.There was some concern because the name &amp;ldquo;serverless&amp;rdquo; is already trademarked, although we found that combinations using the name &amp;ldquo;serverless&amp;rdquo; are disjointly trademarked, so it should work.&lt;/p></description></item><item><title>Project Accepted for Incubation!</title><link>/blog/2024/06/18/project-accepted-for-incubation/</link><pubDate>Tue, 18 Jun 2024 00:00:00 +0000</pubDate><guid>/blog/2024/06/18/project-accepted-for-incubation/</guid><description>&lt;p>It is official! Apache OpenServerless is now an incubating project at the Apache Software Foundation! The result of the vote was positive and this is the email announcing the result of the vote on the Incubator Mailing List.&lt;/p>
+&lt;pre tabindex="0">&lt;code>From: Jean-Baptiste Onofré 
+Date: Tuesday 18 June 2024 16:20:06 BST 
+Subject: [RESULT][VOTE] Accept OpenServerless into the ASF incubator 
+
+Hi folks,
+
+this vote passed with the following result:
+
++1 (binding): Francis Chuang, PJ Fanning, Yu Xiao, Duo Zhang,
+ Bertrand Delacretaz, Zhongyi Tan, Zhang Yonglun, Charles Zhang, 
+ Enrico Olivelli, Dave Fisher, François Papon, 
+ Roman Shaposhnik, Yu Li, Calvin Kirs 
+
++1 (non binding): ZhangJian He, Nicolò Boschi, likeho
+
+
+Thanks all for your vote !
+
+Regards JB
+&lt;/code>&lt;/pre></description></item><item><title>OpenServerless Proposal Submitted</title><link>/blog/2024/06/10/openserverless-proposal-submitted/</link><pubDate>Mon, 10 Jun 2024 00:00:00 +0000</pubDate><guid>/blog/2024/06/10/openserverless-proposal-submitted/</guid><description>&lt;p>Hello everyone, we are happy to announce that we submitted the OpenServerless project to the Apache Software Foundation. We are going to develop our Nuvolaris Community into a worldwide open source project at the highest level.&lt;/p>
+&lt;p>The goal is to provide the open source foundation of our Nuvolaris Enterprise product as a vendor independent and stable project maintained by a community.&lt;/p>
+&lt;p>To achieve this goal, we have submitted the Apache OpenServerless proposal is the natual step. The link to the proposal can be found &lt;a href="https://cwiki.apache.org/confluence/display/INCUBATOR/OpenServerlessProposal">here&lt;/a>.&lt;/p></description></item><item><title>About Apache OpenServerless</title><link>/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/about/</guid><description>&lt;link rel="preload" as="image" href="/about/background_hu_3a7121d39aa10458.png" media="(max-width: 1200px)">
+&lt;link rel="preload" as="image" href="/about/background_hu_ebe491ce39df404c.png" media="(min-width: 1200px)">
+&lt;style>
+#td-cover-block-0 {
+ background-image: url(/about/background_hu_3a7121d39aa10458.png);
+}
+@media only screen and (min-width: 1200px) {
+ #td-cover-block-0 {
+ background-image: url(/about/background_hu_ebe491ce39df404c.png);
+ }
+}
+&lt;/style>
+&lt;section id="td-cover-block-0" class="row td-cover-block td-cover-block--height-max js-td-cover td-overlay td-overlay--dark -bg-dark">
+ &lt;div class="col-12">
+ &lt;div class="container td-overlay__inner">
+ &lt;div class="text-center">
+ &lt;h1 class="display-1 mt-0 mt-md-5 pb-4">Apache OpenServerless&lt;/h1>
+ 
+ &lt;div class="pt-3 lead">
+ 
+ 
+ 
+ &lt;/div>
+ &lt;/div>
+ &lt;/div>
+ &lt;/div>
+ 
+&lt;/section>
+
+&lt;div>&lt;a id="td-block-1" class="td-offset-anchor">&lt;/a>&lt;/div>
+&lt;section class="row td-box td-box--1 position-relative td-box--height-auto">
+&lt;div class="col-12">
+&lt;div class="container text-center td-arrow-down">
+&lt;div class="h4 mb-0">
+&lt;div class="text-center">
+&lt;img class="img-fluid mx-auto d-block rounded-image" src="/about/openserverless-diagram_hu_99960a65e850ebef.webp" width="3456" height="1728" />
+&lt;/div>
+&lt;p>&lt;br/>A complete Serverless Development Environment for Any Cloud and Any Kubernetes&lt;/p>
+&lt;/div>
+&lt;/div>
+&lt;/div>
+&lt;/section>
+&lt;div>&lt;a id="td-block-2" class="td-offset-anchor">&lt;/a>&lt;/div>
+&lt;section class="row td-box td-box--2 position-relative td-box--height-auto">
+&lt;div class="col-12">
+&lt;div class="container text-center td-arrow-down">
+&lt;div class="h4 mb-0">
+&lt;h1 class="text-center" id="managed-by-a-kubernetes-operator">Managed by a Kubernetes Operator&lt;/h1>
+&lt;p>Here are some of the operator&amp;rsquo;s strong points:&lt;/p></description></item><item><title>Search Results</title><link>/search/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>/search/</guid><description/></item></channel></rss>
