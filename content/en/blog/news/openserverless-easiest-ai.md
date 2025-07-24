@@ -18,7 +18,7 @@ OpenWhisk is an excellent foundation to provide FaaS services and indeed it is a
 
 A team of contributors to OpenWhisk, working initially with the startup Nimbella (acquired by Digital Ocean), and later Nuvolaris, developed it further to make it widely accessible and more useful out-of-the-box, adding all the required components with the goal of making it a complete serverless environment. Indeed in general serverless is useful when it is coupled with storage, cache, database and frontend. Given the popularity of LLM based application development it has been also extended to fully support the development of AI applications.
 
-The project was then donated to the [Apache Software Foundation](https://apache.org/) and released as Apache OpenServerless. Note in this text we sometimes omit Apache in the name, but always keep in mind that the full names of the projects are respectively Apache OpenWhisk and Apache OpenServerles, as they are both projects copyrighted by the Apache Software Foundation.
+The project was then donated to the [Apache Software Foundation](https://apache.org/) and released as Apache OpenServerless. Note in this text we sometimes omit Apache in the name, but always keep in mind that the full names of the projects are respectively Apache OpenWhisk and Apache OpenServerless, as they are both projects copyrighted by the Apache Software Foundation.
 
 ## What is in Apache OpenServerless?
 
