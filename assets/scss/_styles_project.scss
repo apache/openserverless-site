@@ -182,3 +182,43 @@ aside{
     }
 }
 
+
+// Author card styles
+.author-card {
+  display: flex;
+  align-items: flex-start;
+  background: #f5f6f7;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  gap: 16px;
+  max-width: 100%;
+}
+.author-card img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #ddd;
+  background: #fff;
+}
+.author-card .author-info {
+  flex: 1;
+}
+.author-card .author-info strong {
+  font-size: 1.1em;
+}
+@media (max-width: 600px) {
+  .author-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .author-card .author-info {
+    margin-top: 8px;
+  }
+}
+
