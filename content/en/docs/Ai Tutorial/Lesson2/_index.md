@@ -1,3 +1,11 @@
+---
+title: Lesson 2
+weight: 10
+draft: true
+---
+## Lesson 2
+transcript here:
+
 0:00
 welcome to the second lesson of the Open LLM course with Apache Open Serverless
 0:05

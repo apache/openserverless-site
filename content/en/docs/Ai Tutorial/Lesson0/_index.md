@@ -1,3 +1,10 @@
+---
+title: Lesson 0
+weight: 10
+draft: true
+---
+## Lesson 0
+transcript here:
 0:00
 hello everyone and welcome to the course application development with LLM open 
 0:06

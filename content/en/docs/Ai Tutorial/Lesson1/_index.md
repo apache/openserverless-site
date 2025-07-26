@@ -1,3 +1,10 @@
+---
+title: Lesson 1
+weight: 10
+draft: true
+---
+## Lesson 1
+transcript here:
 0:00
 hello everyone to access the lesson after starting the environment and after
 0:06
