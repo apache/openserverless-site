@@ -1,0 +1,149 @@
+Hello everyone and welcome to the sixth lesson of the private AI course.
+In this lesson, we will talk about vector databases.
+Let's start immediately from your fork. I recommend that you update if you notice that
+your fork is not updated from here, after which, as always, launch your code space using the extension
+log and then we can start taking the lesson number six. Here it is. We have downloaded the lesson.
+Let's open, as always, the text of the version. In this lesson, we talk about the vector database.
+One thing closely related to the reader database that is embedding, which is the transformation
+of text into vectors, and I will now explain what it is, the search for vectors and finally the
+import of PDFS from which we will extract text for import. Material databases are the foundation
+for doing the RAG, the retrieval augmented generation that we will see in the next lesson,
+which will conclude this first edition of the course. Let's talk about vector databases.
+As vector databases, we use Milvus. Milvus is a no-SQL vector database optimized for vector
+searches. In fact, it is said to be a vector database. What is a vector search? It is a search
+that finds similarities in a set of data regarding their numerical representation.
+Vector research is important when trying to instruct LLMs by taking information from texts.
+You look for sentences that are similar to a given sentence, typically a question you ask an LLM.
+To do this, it is necessary to encode all the text you want to search for in numerical format that
+represents it semantically, and this is done by LLMs that make a transformation of the text into
+a series of numbers that are organized by semantic similarities. For example, the word cat and the
+word dog are closer between the word cat and the word orange. So when you are searching for this
+information that is semantically similar is extracted such that the LLM is instructed with
+the relevant information when you do an augmented generation. We will see this better in the next
+lesson, for now we limit ourselves to embedding the text and extracting it by similarity.
+Milvus is a multiple database, each database has multiple collections. You can think of the
+collection with a table. Just like the tables for each collection, you can assign a schema, i.e.
+a structure and indexes. Let's try it right away. We need some information to access it,
+so the host, i.e. where it is located, the key, the token, and the name of the database. So with
+this information we can access Python by creating an instance of the Milvus client class. At this
+point we can operate on the database. I'll show you. So we import libraries as an operating system
+is Milvus, so here I take the URL to access, here I take the token and here I take the database,
+and it comes to an instance of the Milvus client. With the client I can do operations such as listing
+the collections, see here I have. Listed the collection that were there and I found one,
+I remove it. Now the collection looks a lot like a table, you can recognize that you have fields,
+so title, title vector, i.e. that the vectorized version transformed into title numbers, links,
+other information. In a collection there are so many entities that are the records,
+so how do the records in a database change? Let's see how to create a schema. We choose
+to use the collection and we also choose the dimension which is the size of a vector which
+is important because it's also the default size produced by the embedding template that I need
+to use, so it has to be that number there. The one we're going to use produces outputs in that
+format there. With that information we go create a schema, we add an ID field, just like in relational
+databases a common concept is the auto ID, that is, the automatic assignment which means that the ID,
+if you create a record is automatically generated. Let's add a text field where we will put text in
+text format, the one we are used to, and an embedding field that will instead contain the text
+transformed into numbers, and you see that the size of this vector is the one we have chosen,
+so this is the minimum to be able to make a collection that contains text and with associated
+embedding on which to do vector searches. It is also advisable to associate an index,
+so that searches are speeded up. Then we'll create an index that indexes the embedding field.
+The vector search can be done with many functions that calculate the distance.
+There are several, the most common being IP, but there are many others that we will see in detail
+later. Practically it is a distance that measures the proximity of the points of one vector to the
+other vector, but other metrics may be more appropriate in particular cases. Once we have
+index schema we can create the collection with that schema. Here I import the data type. The
+collection will be called test, the size will be 1024. I create a schema object, create a first ID
+field, a second text field, an embedding field, and then we define the schema. Now I'll create an
+index. I add an index of type autoindex with that type of metric which is a way of, index,
+and find the distances. Find the distances with the vectors contained in the, in the,
+now we can create the collection. We have created a. One operation we can do is obviously the
+insertion of texts. I also have to associate a vector representation of that text. At this moment
+we can't do it because we have to learn how to do the embedding. Let's do it later, so for the
+moment we put a sequence of numbers, but only to show how to do the insert and once they have
+done the insert I'll show you how to extract them then the global search, i.e. we consider all records
+then we will do a more appropriate search using a vector search. So going back to the text hello
+world for example, a vector that is a simple sequence of numbers of 1024 numbers exclusively
+for demonstration purposes. Here you see I have included it in the collection. Now I can extract
+it, I create an iterator, all the records of a record extracting the text field. So I take a record
+of this object I can extract the value, so you see we inserted a record and we retrieved it.
+Now we can deepen the discussion by addressing embedding. What is embedding? Embedding is the
+transformation of text into numbers with a semantic structure as I had done the example dog and cat
+are closer between dog and orange. A numerical vector representation could be imagined as points
+in a hyperspace as internally LLMs represent the information they process. To transform this text
+into this series of numbers you need to have it done by an LLM. To do the embedding we have to
+use a model that does the embedding, a model like the LLM-ACCS, with the difference that instead of
+producing the answer to a question as it usually does an LLM produces a series of numbers that
+are a semantically meaningful representation of these words, then transforms the text into a series
+of concepts grouped by proximity. Using this we connect the LLM exactly like the other cases,
+but we will use embedding as the call. So I get the name of them spy embed large model.
+We want to embed hello word we keep the URL and build a message exactly as we have done
+all the other times to connect to Olima and make the request. Here. Now let's extract the output
+and see that the output is precisely a numerical representation that is suitable for vector searches
+for similarity. Therefore, let's now proceed by embedding a few texts. So I'll show you how
+similarity works. Therefore, I will use this class vector DB of which I will show you that it is able
+to write an embed after that I proceed to insert some text into it and then I will do a vector search
+and show you that the result is words that are close to the word we searched for. I use this
+vector DB class. It's a class that encapsulates what we did before. So the setup does the
+initialization and here is an insert that you see that does the embed first and the embed is
+the same procedure I did before. So with this class, I'm able to easily insert text embedding
+together into the records of our vector database. I import this class. I get a vector database and
+here I insert this is a test. This is another test and testing. I also put hello word so it's a
+complete example. Now I'm doing the vector search. As a text I have test. I embed it because the
+vector search is done between embedded text and other embedded texts. I perform a search. I perform
+a search. You see, this is a vector search in which I specify the type and the metric i.e. how it
+calculates the distance between my numerical representation and the numerical representations
+that are there. The field on which I do the vector search. The lookup data and output. I compare
+the numerical distance but then it is with the text because that interests us. So if I now try to
+iterate the result, see, I tried testing and found me testing first which has a distance of 271 which
+is closer than this is a test and always the word test that is closer. This is another test
+while the word hello world is rather distant. See? 97. By the way, if I repeat the same thing and
+write hello hello as text instead, I repeat the procedure, embeddo and redo the search and now
+you see that hello came first because it is closer for him. This came far because in reality this
+was the representation that I put with random numbers so for him it means nothing. You have
+understood how vector representation helps you find information associated with what you are
+talking about. Now let's put everyone together with this action load there should be nothing,
+it's empty. Now I write this is a test, this is another test, hello world, testing the system
+and then asterisk test and find me this is a test, this is another test hello world.
+If instead I do asterisk hello, I find hello first and then the rest so see how it allows you to
+load databases with textual information. It is inconvenient to digital everything when by hand
+we can use scripts. So if you see the example you can invoke it from the command line. So I enter a
+text and you can also invoke the command line search and found me first for open serverless.
+So I entered the text open serverless. I did the search and it found me first open serverless
+etc. So taking advantage of this ability that can be used both from the command line and from the
+user interface we will make an importer which I will show you in the next section in the meantime
+let's explore the code. So as you can see this is the class that you have already seen before
+that allows you to manage the vector database. There is also a feature that allows you to delete
+data. And this is the action so if the input starts with an asterisk it does a search. If it
+starts with an exclamation mark it does a removal otherwise it makes a database insert using the
+vector db class. Well we have everything and now we close the round by entering the database data
+importing a pdf. To do it I'll show you how to do it. We will use the paimu pdf library. We have
+a file. I took a pdf at random. I took the bitcoin white paper which is an open source document and
+I extract the page after which the page must be broken into sentences because it works if it has
+many small pieces and for this I will use another feature. There will be another library capable
+of analyzing the data and dividing them into sentences this other. I'll show you how it always
+works from the command line. Now I'll show you how it works. I take the document and I can extract
+the text of the first page. See this is the first page test. Obviously it is generally too long.
+You can insert an embed although the embedding can also compress it but it comes out badly
+so it's better to break it into sentences so I now use this library that uses a tokenizer.
+This tokenizes the phrase second sentence. See here we took a pdf we extracted all the pages
+we broke each page into sentences and now we know how to do it. Of course we would have to
+import it into the database sentence by sentence. We do this work to a script since it is a frequent
+job. I added to the opsai plugin because ops is the tool opsai is the plugin a loader that is
+capable of importing documents which is capable of transforming them into text and then importing
+them one by one so now I'll show you how to do it opsai has a new command which is loader
+so opsai loader loader is the one that does the action using a data file so now I take
+lessons bitcoin pdf and now he has it at and converted it so if I go to open it now we will see
+all the text contained in that pdf this is the bitcoin pdf and this is the text contained in
+this document now loader I can also specify an action to execute which is what we did vdb load
+therefore we can export it and see the result and now we can specify an action that will pass
+each sentence as input so vdb load here now is taking after converting and breaking into sentences
+the vdb is loading all the sentences one by one since it already has to stop the
+temporaries it shows you the files it is uploading and in this way we upload the whole document to
+the vector database directly from a pdf now let's see what we have uploaded we see that if I do the
+search for bitcoin it has come up with a whole sentence related to bitcoin or we choose merkle
+and we will have phrases related to merkle tree which are a format used by bitcoin so we basically
+loaded and vectorized the information ready to do some research and be used for the llm applications
+that use it now I conclude the lesson with an exercise the exercise is to modify the loader
+to be able to import content from the web directly online so if you write http something url you
+should extract the content you should extract the test using the beautiful soap library and then I
+recommend you to break using regular expressions and not that tokenizer because it is heavy instead
+you can do it using an example that is demonstrated in that link in stack overflow thank you very much
+and see you next time

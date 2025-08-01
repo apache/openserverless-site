@@ -1,0 +1,265 @@
+Welcome to the second lesson of the OpenLLM course with Apache Open Serverless,
+for friends the course of Mastro GPT for Private AI.
+We start immediately by going to the Mastro GPT site, then GitHub, Mastro GPT,
+here you will find the starter, as explained in the first lesson, which we can launch.
+This way you will have the environment pointing to our Mastro GPT Stator Repository,
+on which you obviously do not have right permissions. So you should fork, that is,
+create a copy of the environment and choose your account. This way you can write all your changes
+and save them without depending on the original, so you can save everything using the Git version
+control tool. Here I have already made a fork as you can see and I have launched the code space.
+I repeat that you can also use the local environment, but simply for this course.
+We will use the code space that allows you to work quickly,
+without too much effort and without having to configure by hand.
+Then click on create code space and you will see this screen.
+You should see the speech bubble which is our extension that allows you to log in.
+Using the parameters we gave you in the first lesson, you can log into the open serverless
+environment that we provide. At this point you see the starter files basically empty.
+By selecting the lessons you can select the files of the second lesson.
+In this way we are downloading all the files of the second lesson. Each lesson is independent of
+the others so you don't have to have the files of the first lesson to be able to use those of
+the second. In the second lesson you will find the lesson both in markdown format and in PDF
+format for ease of reading, so that you can also consult it by downloading the local.
+So this is the second lesson and we are going to talk about how to start actually talking to
+LLMs by creating an LLM chat in which we will implement an important feature that is streaming,
+which is the ability to see what the LLM produces along the way without having to wait until everything
+has been completely generated and this makes interaction with these systems much more immediate
+instead of waiting until the end for everything to come.
+We will also address a series of related topics so the plan of this lesson will be
+first of all how to access the LLM and then we will learn how to manage the secrets that
+allow you to access it then we will embark on streaming then we will put everything together
+by accessing the LLM in streaming mode basically having you implement it with an exercise before
+starting since I will use a lot of a trick which is to copy lines and texts from a file
+opened in the editor directly from the terminal to repeat the experience I recommend you to
+configure a key in my case control enter which allows you to copy the text from a file to the
+terminal this is a feature present in studio code only that it is not normally enabled by default
+so to enable it you have to go to settings i.e. the wheel in the bottom left select the keyboard
+shortcuts and we'll try run selected text in active terminal this one you click on it and
+set your preferred sequence for example I set control enter which allows me to copy the text
+of the file into the terminal it is truly extremely comfortable and I recommend it now
+let's start talking about how to access the LLM to access the LLM we need the credentials
+the credentials we need are stored in environment variables then I will explain
+exactly how they get there and how to use them however these credentials are in the environment
+variables olima host which is the URL and for AUTH we use the credentials in reality the credentials
+are the same ones that are used to log in to the environment open serverless so the LLM is protected
+with the same credentials as open serverless let's see it right away we do it by opening a
+terminal and at the terminal we type this command OBS AI CLI which launches an interactive phyton
+environment and now I use the trick I was talking about I copy these commands which are used to
+read the environment variables so as a first step I import the O s module I tie the olima host
+variable and AUTH this one you see that we will use to access olima host now using these credentials
+you can get a URL to access the olima server where we can invoke the LLMs in particular we will use
+these commands ie host note that here I am doing a technique which is the one you have to follow
+in the code ie every definitive function in open serverless receives addiction called args I will
+always look for the secret parameters in args and if I don't find them I search the environment
+this is a technique that is used to be able to write code that takes secrets both in the test
+environment and in the production environment so these are the three commands to give and I'm
+going to give them like this so let's set the empty args to simulate in the command line what is done
+in test I take the host I take the off and I compose a URL simply by putting the HTTPS prefix
+on it using the key as username and password and at host our this URL that we have called base
+is the URL we need to access to olima password protected so if I invoke beware of this exclamation
+mark which allows me to run while I'm in the shell command editor without having to exit the shell
+and re-enter and I can use variables so I basically run curl and in this way I invoked the URL to
+access olima and you can see that I got this message olima is running now we see that the
+credentials are correct now let's always see at the command line how to access olima therefore
+we have to use a simple API that basically uses JSON messages that specify the template
+the prompt the stream false because we start immediately by disabling the streaming which
+is easier and we get the whole complete answer so let's set the llama as a model llama 3.1.8
+billions which is a model made by meta small enough to fit into the gpt we have as input we ask you
+who are you and let's compose this message at this point using that URL the base API
+slash generate we can invoke it we invoke it by executing a post therefore here now I import the
+request another python library which allows you to make HTTP calls and I make a post to the
+request using the URL I composed and the message I composed and extract the result in JSON now from
+here the result will be the answer to my request who are you so this is basically the generic way
+you interact with olima with its API there are also libraries that allow you to avoid composing
+messages but generally it is convenient to know how to do it and in many cases it is not needed
+you just need when the requests become complex then I always teach the essential information
+and then complicate it with library when it becomes necessary so we can try running this
+code right away let's set the model first let's set the input let's compose a message let's
+compose the URL using the base we prepared before and so now we have a full URL and a full message
+to make the request to olima asking him to use the llama 3.1.8b template with this prompt without
+streaming so now I do a post then we import requests we make a request he performed all
+the result without streaming so now I get this item here res which is all the complete answer
+that has various information of this one I am only interested in extracting the answer that I can
+print that's it like this I was able to quickly create a call and then we can write our first
+function now I'll show you the code I made put inside the code of a function so we simply open it
+the code is what we saw before let's take the secrets then we compose a message being careful
+that the input is not empty and we invoke it at this point we make the request we return the result
+with boy and output as we have seen the previous time now we will do another somewhat magical thing
+we'll expressly create the action from the file and pass the parameters directly to it so one
+and two don't do that because this is to understand how it works below because there is actually a
+feature that is there in the deploy that automatically implements this feature but as you see when you
+create a function or update so for this you can use update even if the function does not exist
+it creates it in this package using a single file and these parameters are enough for him
+obviously instead of doing this directly we will use the deploy command which does a series of more
+complex actions that I will now explain to you this is to understand what are the steps necessary
+to do the deployment now this can be tried actually now since you need to deploy everything else
+you also need the front end and so on I now perform a complete deployment and go to see
+here we have that simple action that allows you to converse without streaming so now it takes
+a while with llama so we learned how to create a simple llm without streaming at the moment
+but we have already made some steps forward by learning all the steps necessary to build our
+system that will become seems more complex now we have stumbled over the secrets which are necessary
+to be able to pass the information to allama and also to the other services for this modification
+we would have to answer some questions where do the allama host and auth variables come from
+in reality they come from many places the main source is the configuration that is loaded when
+you log in here comes a whole series of information that is made available both to the test environment
+and to the deployment environment they are not available in shell for this reason I use it directly
+from the cli which instead sees them this information can be overwritten i.e. you can add your own by
+creating an env file or you can further create a packages env file that puts additional variables
+but valid only for deployment and an additional env which instead applies only to the if we go to
+check we see that there are values i try to read these two variables then i try to look for them
+i make grep and you see that i find llama new valeris.io if instead i do the grep of the test
+i see that different words in general these values are different because the variables
+for the tests they are used to perform tests in a test environment while the default variables are
+used for production therefore in the new valeris deployment environment so the cli looks at the
+test ones not those of production but if someone goes to look at these variables which are available
+he realizes that auth is not in any of the env so if one tries to make this command by looking for
+it in this case there is no output because because the information is actually in the config that we
+can read with the command oops config dump which lists them all let's make a nice grep and we see
+only the ones we want to look for and in fact there is off so off we have it and we can pass it
+this one is actually generally used to access all the features of your open serverless in particular
+it is used to access allama how are secrets propagated to actions the way in which secrets
+propagate to actions is simply to pass on a command line as i did before but it is quite
+an inconvenient thing because in practice you would have to write a rather long command line
+each time to pass these operations by the way this command can only be done from the cli because
+these variables are not visible from the shell then the problem is solved simply with these
+annotations that begin with a sharp dash dash which basically allow you to specify in the action
+the arguments to pass to the command line so if i go and see the simple code you can see
+that above i have these three annotations that are used to specify the parameters and these
+annotations are able to read the environment variables of the configuration as well to use
+just use ops id deploy all or just one function note that here i deploy a function that is composed
+of its own file and here i have to specify the extension alternatively if i have a directory
+i specify the directory and it is zipped so in this case i do the deploy and you see that the
+deploy has composed the action by passing all the parameters that are in the config in this way
+from the login the secrets are prepaid to the actions in practice i have revealed almost all
+the tricks of the secrets keep in mind that the tests and cli see the configuration on
+env and the test env while the deployment sees configuration env and packages
+that the cli only sees test env it makes sense because it is normally used to develop tests
+and not production if you want to see what happens in production write an integration test that
+doesn't need access to the variables as a rule to follow always use secrets from the args and get
+a default by taking the equivalent value on the environment this way you are able to have code
+that works both in production and in testing note that you need to add the perms in the main file
+of an action when it is a single file or in underscore underscore main when an action is
+multi file then deploy with ops id deploy and you will have all the parameters passed for this
+reason it is never advisable to use the creation of actions directly except for special cases when
+you have to debug here's a few things about what ops id deploy does it's built on top of ops actions
+and packages it currently supports python node and php we will also support other create packages
+for the actions create zip for multi file actions resolves dependencies so a requirement of packages
+json or the php composer it extracts annotations and is used to propagate secrets and also integrates
+with the ops id devil by doing an interactive incremental deploy every time you change something
+it only redeploys the function you changed with this we have finished the discussion of secrets
+now let's focus on the other topic of this lesson which is streaming how do you do streaming
+let's try streaming from the command line right away let's import the libraries to invoke now here
+i have created a url in a quick way because i am in a test environment don't do this do as i told
+you in general i create a message and pass it to him note that this time the stream is true for this
+reason if i now execute the result i will be given a streamed answer what is a stream in python it's
+an iterator so now i get an ideator from the answer this is a particular object called a generator
+that can be executed with a four cycle if i now execute the before you see that it produces not
+one but several answers so the iterator is iterated each piece of response that the streamer is
+returning is extracted so the requests from alama are streamed note that the format of each request
+has this format remember this because we will use it in the exercise when you stream an alama request
+he returns a sequence of juns that have the model response and the done flag until the last one says
+done equals true and puts a series of additional information including context duration and other
+information so here we have seen the iteration now let's make a function that whole let's create
+for simplicity an iterator that counts to zero by waiting for a second then count to zero i give it
+n puts a second pause between one request and another this is to show the streaming that i
+can try so if i now simply copy this code in the environment here i can test it and see that it
+counts down to zero see this is a dummy iterator that we can use to test streaming and since we
+write in tests for everything we do then we will use a socket to do the streaming the problem is this
+the actions when they are performed are asynchronous so they are managed in a rather
+complex serverless environment so they lose contact with the web server because the serverless system
+is quite complex so to do the steaming that is only useful in special cases there is a component
+called streamer that invokes the action and passes it a socket to receive the intermediate results
+the socket is passed in two parameters stream host and stream port by the way the door is
+always changing so it is necessary so to do the streaming you will take the parameters stream host
+and stream port you will have a socket and you will connect to this socket and then along the way
+when you produce the output you send the result to this socket this is the full streaming feature
+that you can use with minor tweaks that depend on what you're streaming with this function
+you receive an iterator and send it to the stream that was passed through the arguments
+most of the time you can copy it like this i collect the result and return it at the end
+all concatenated even though i have gradually sent the intermediate steps but testing something
+like this is not easy that's why we have a mock something called a stream mock that's able to
+simulate what's happening on the stream so you can write code that uses the stream and test it
+locally to see what effect it has so that when you send it to production it's already been tested
+so using the mock everything is prepared args is created the mock is created then both
+executes the stream you simply need to pass the args the args are located where the stream is
+created from the mock so the code is the same both in production and in testing and then the
+mock stops and you see the results so now i'll show you how it works in the command line amount
+this is necessary because it is used to refund the stream because it is in the test folder import
+a stream mock and i'll give you the args you see this created me a host stream is a random
+stream port that change every time and then using these arguments i create the mock now he is
+practically listening something he will receive okay this is normal because the mock wait five
+seconds and then and then stops therefore so we have to do it quickly so now i'll show you how
+the streamer works first of all i take this stream function and put it in the command line
+so now i have this stream function and i can use the mock be careful because the mock is
+a bit impatient because it waits five seconds and then finishes this serves to prevent the texts
+from getting caught in fact if i start and i don't do anything the mock times out and it dies
+because it waits five seconds at most however now i do it again because if there were no this time
+out the mock could remain stuck indefinitely so now let's do the test we have to hurry because
+we have five seconds so i now i launched the mock i take the generator and launch the stream here it
+is it's steaming count to zero so it'll be 10 seconds there there you go you're done now i can
+stop the mock and see the result so you see that it produced the various results nine eight seven
+five four three this is to understand how the mock basically simulates what the streamer does in
+production now i'll show you the actual test code and test it then let's open the countdown and
+countdown test code this is a countdown function this is the iterator this is the streaming function
+then here is the main which is usual reads and input gives default messages if there is no
+in pot it does a conversion of the input into a number and then executes take the iterator and
+it does the streaming a very important thing is that when you write a function you have to return
+streaming equals true in this way the first response sustainably did not stream but if you
+return streaming equals true the client and in particular pinocchio he knows he needs to do the
+streaming and so he will reinvoke the request to the streamer so instead of calling the normal url
+it will call a special url that is used to do the streaming now let's see the test code which is
+similar to the one before the difference is that you create the mock and then run the two functions
+count to zero and stream in such a way as to see if it works if i now go to the tests i run it
+you see that the test passes because it is able to test a streamed code with a mock
+so now if i go to see countdown i can now write three he does two one zero we put 10 and it makes
+nine eight seven it is implementing the streamed and tested feature we put everything we've learned
+into practice and create an llm stream we have three exercises to do for the first exercise look for
+to do e2 1 and here you have to add the parameters to access and authorize allama so see here the
+point where you need to complete the code and to add the secrets then the second exercise
+is to fix the streaming because if you watch the streaming feature at the moment it is written to
+work with the countdown and does not handle the format that instead returns allama so you have
+to decode the object i return allama extract the part one i'm interested in an estimate only that
+part the third exercise is to modify the application which will be a chat that accesses the llm in
+streaming and adds a model switcher that is a command that allows you to change the model from
+llama to deep seek and there is also a correction to be made because deep seek produces a think
+that is not readable you need to make a modification so that thing is readable by writing in square
+brackets and instead of staples now if you want to try do it otherwise i will solve the exercises
+in the rest of the video so exercise number one let's add the secrets so i'm going here
+here it is the solution is obviously to add perm allama host and then we have to add here
+off args get allama host args get off here right now as exercise says the result of this changes
+that the test url passes but the stream test does not so the url test before did not pass
+i forgot to run it it was read so much so that if we deduce an error for example to see we put out
+one if i put this the test breaks because you can't access allama if on the other hand
+it takes the right parameter the test passes the streaming tests instead do not pass we have to
+correct exercise two says to correct the streaming here it is fixed streaming now if you remember
+in this code we're accessing allama using the code we used with an iterator what is produced
+at each step is no longer a simple 1098 but is an object so what we have to do here is
+decode the object then i do deck equals json loads which is the function that decodes a json
+object among other things the streamer returns it to me like this so i have to transform it into
+a string utfa decoder and i get an item that i have to extract response and by default let's put
+error if it does not find it at this point i can return to this deck and i can add to the final
+result this is what we have to do to properly implement streaming when we access allama which
+returns to me that sequence of objects that we only care about a part not everything so now
+the streaming test should pass now i run the test stream and it passes here we have corrected and we
+can deploy and now if we go here on the chat i say who are you and here he is answering me in an
+exhausted way list the capitals of united states here it is this is the list is giving it to me
+in streamed mode now last finesse this is the third exercise test the model switch so now simply
+let us to do e 2 3 and let's add a if to manage the model switch so if i write if imp equals
+llama model equals llama and i change the input so that it changes the model and makes it say who
+are you if the input is deep seek the model is this and i make him say who are you so in this
+way i basically added the functionality of switch of the models being able to change from llama to
+deep seek and others if we want now we deploy always diloy also that i could do it incrementally
+with devil and let's see the result now i'm going to pinocchio again calling the chat here now i
+write deep seek to him it is taking a while because it is carrying out the change of model and therefore
+it is loading the model here is if i write llama here now i change to llama here what about slope
+okay do you see this empty space this blank space is actually due to the fact that it says what it
+thinks but you can't see it so a subtlety is going to modify this code and when i reverse engineer it
+i do so if i ask what about china deep seek this changes deep seek tell me about the meaning of
+life universe and everything banning of life universe epic see that's thinking sometimes
+it begins to think and does not come out anymore so it goes into a loop however the execution
+it ends after a timeout that you can change with the action parameters so usually it seems to me
+that it is three minutes and after that he stops it when he begins to loop in his infinite thoughts
+and in fact if he doesn't loop on a question of this kind i don't know what else can send him
+into a loop here is his endless answer about life the universe and everything else okay that's it
+because there is a limit that how can be changed with the parameters of the duration of an execution
+for this reason it stopped when it took too long okay thank you for your attention and with this
+we finish the second lesson

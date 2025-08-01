@@ -1,0 +1,205 @@
+Hello everyone and welcome to the last lesson of this first edition of the Private AI course.
+Let's start right away by going to the fork of our starter before starting I recommend you as
+usual to update your fork because there can be updates on the starter and I also recommend that
+you save all the data on git and delete the code space because there may be changes so it's better
+to start with a clean environment. At this point we launched the code space.
+Let's log in. Let's select lesson seven. This is lesson number seven. In this lesson we'll talk
+about how to create a RAG system. This lesson is different from the others because it has many
+examples and code already done. I will also show you the code but basically it closes and completes
+what we have explained in the previous lessons putting it into practice to create a system that
+has its own intrinsic utility which you can modify, extend and generalize for your personal uses.
+We will talk about how to implement a RAG system, what exactly it means, how to load data into the
+vector database including PDF documents and then a chat that is multi-document and multi-LLM to explore
+data contained in the vector database, individual documents or other types of data. Let's start
+by looking at what a RAG is and how it is implemented. In the world of programming for
+artificial intelligence we talk about RAG as retrieval augmented generation that is we talk
+about LLMs to which requests are made by increasing the context to which the request is made with
+so-called context information which is automatically provided together with the request that is made
+to the RAG. Basically you make questions and these questions are used to find the relevant
+content to provide the answer. So the mechanism of embeddings is used because vectors that represent
+questions in a format that also has semantic content so if I say dog there is the concept of
+animal and therefore content related to other animals can be extracted in context and vector
+search is used to extract the semantic content from data sources. Let's see in practice with an
+example how this mechanism works and we do it by initializing a vector database. Now we're going
+to take an example on the command line to see how this mechanism of RAG works. Let's follow
+preliminary commands to access the code. In this example we will use the vector database class that
+we used last time. If you know in lesson 6 there is explained how this vector class works. It has
+actually been slightly modified to be able to specify the collection but basically it works
+the same as the previous time. So now I create a vector database, clean it, even if it is actually
+empty but to be safe I remove all the contents and insert three statements related to Lisa,
+Steve Jobs' daughter. So, Lisa is the first daughter of Steve Jobs, her name Lisa Brennan,
+the name Lisa was used for what was supposed to be his masterpiece, the Apple Lisa, which then
+actually failed and it is supposed that Lisa's name is inspired by the Mona Lisa, Leonardo's masterpiece.
+I uploaded a series of statements to the vector database to be able to do some research.
+Using this content we create a context that is a series of additional information that
+enriches any requests related to Lisa. Let's see how we create this context.
+Let's do the vector search. See? I go to inspect it and I see that using the word Lisa they are
+chosen for me. In the example they were all words related to Lisa but in general doing a victory
+search you find what is somehow related to the searched word. Using this context I now concatenate
+and create what will be a context that is an additional piece of information that I give
+to the LLM. I tell him consider this text that Lisa's name is inspired by Mona Lisa,
+that Lisa is the name of Steve Jobs' first daughter. That Steve Jobs called his masterpiece
+like Lisa etc. This is the background information which at this point I can use to pass them to
+the LLM. So now we use an LLM function similar to functions that we have already seen in previous
+lessons so I won't repeat it and I try to ask questions without context and with context.
+If I now choose the Llama 38 Billions model if I try to ask the question who is Lisa. Without
+context the LLM thinks for a moment and will give me an answer but one without additional
+information. So he lists a series of Lisa, generic Lisa because he doesn't have specific
+information. But if instead I add that string of context to the context and ask him the question
+he replies that there are two different Lisa, Mona Lisa and Steve Jobs' daughter. He says
+the answer is likely to be Lisa Brennan, Steve Jobs' daughter. This is how context has completely
+changed the response and the LLM is able to respond by giving appropriate answers to context
+information that it does not already know. This important that he does not already know and
+that therefore we have increased his knowledge with a specific context. This is the fundamental
+mechanism of RAG systems. In reality, there is a lot to be said. There are a few things to watch
+out for. First of all, the context information must be small pieces, so called, chunks, that
+should be significant. Now empirically the size of these chunks should be between 500 and 800 words,
+so approximately around 4000 characters, considering an average of 5 characters per word
+which is the typical number for the English language. It's hard to achieve, but the best thing
+is that these chunks are semantically related, so they should ideally be sections or paragraphs
+with content from a book or other source. Actually this is quite difficult to achieve,
+so in this example we will settle for chunks which are blocks of text of about 4000 characters.
+This is not ideal but it is the easiest way you can go about it. There is actually a lot to do
+and it takes a lot of content engineering to get great results which we will not address here,
+however, it is important to understand this concept. In addition, the dimensions are also
+important. A request that is made to an LLM has a size that depends on the model. There are templates
+that can handle even 2 million characters. The size that can support the main model we will use,
+which is Llama 3 is 128000, which means that approximately the maximum size is 30 chunks
+to leave some room for any questions as well. So I was saying that we used blocks of about
+4000 characters and each question increased it with about 30 relative conks. However,
+it is generally essential to provide structured information for best results.
+You can also get results with information that is not particularly structured,
+but the quality of the result expires and this will soon be noticed in the examples we will do.
+Okay, so far we have seen the theory and now we put it into practice by showing the system we
+have used. Basically we have created a loader, which is an action, a chat, which can also be
+used by external tools to import information. The feature of this loader is to manage multiple
+collections, to set different limits, to do searches and to be able to delete contents and
+collections. So with this loader we could load more collections of content and do research tests
+and possibly be able to do maintenance by cleaning up. It allows direct input from the content also
+automated, in fact I will also show you an automated loader and allows you to try searches
+manually. We will now see this in practice. This is the loader. So let's see that if I write.
+I list the collections, I can change the collection, if I write asterisk basically
+does a search for what is in the collection. Asterisk and test does a search based on what
+I asked it, then I can also delete part of the text. So if I write exclamation mark test,
+it deletes two records. So if I do it again now it tells me that there is test with three elements,
+I can also delete the entire collection and so on. So it's pretty much a simple loader that is
+used to manage collections and load multiple contents. Multiple contents that can also be loaded
+by hand. So if I now write test again and then I write this is a test and then I write this is
+another test again testing it all and then hello and hello world. Okay, this should give you an idea
+of how the loader works. However, the charger alone does not do all the work. The loader is good
+at loading data manually, which is convenient for checking the collections that are there for adding
+information, etc. But this is used as a counterpart to a better command line loader, which is allows
+you to load text from PDFS and then extract texts in blocks, which by default are 4000 characters.
+The syntax is what you see, it specifies the action to be used to load the size of the chunks,
+the name of the collection where to load and the action to be imported. So minus less action loader
+is needed to load, while less less collection is needed to specify the collection to be used.
+I'll show you now how I am out. Here I had already imported Bitcoin. Now I select it and
+delete it. You see that I no longer have the text of Bitcoin because I deleted it. Now I'll show you
+how to upload the text of a document. For example, we download it from the internet.
+Bitcoin org slash Bitcoin PDF. We download the document from the internet and import it. So oops
+AI loader. The action to load is RAG loader. We put it in a collection that we call Bitcoin again.
+And we specify the Bitcoin PDF file. Now the loader takes the document, breaks it up,
+turns it into text and loads it. The text is quite short, so he took it into four pieces of about
+4,000 characters. In reality, it breaks it into sentences until it does not exceed 4,000 characters.
+If we now go back to the collections, we see that now there is the Bitcoin collection. I select it
+and now I try to ask something about Bitcoin, Bitcoin, and I extract some text. Actually,
+I can select the size of the searches. The default is 30. So if I look for Bitcoin, now I get only
+one, the most relevant, but still a block of 4,000 characters. All right. In reality,
+using Bitcoin is not very useful because these are things that the LLM already knows, so it is
+better to use more specific information. To give a more significant example, we will use the CDI
+a little more relevant information. In this case, I made an importer who imports all my linked in
+contacts. Obviously, these are my private data. And I did this because in this way I show you that
+you can do interesting things with data that are not known because if you try to upload any document,
+someone tries to download from the internet, you will realize that he already knows it.
+Because these LLMs have already been instructed with practically all the internet that is publicly
+accessible. So data such as any PDF that you can easily download generally does not give significant
+results because it is information because it is information that in some way the LLM already knows.
+You have to use private data to get results that are not exactly obvious.
+Now I upload a file that contains my linked in connections. Okay. This file is obtained by going
+to LinkedIn, exporting my data and gives you this file in separate comma value format. In which there
+are all the contacts. For example, if I ask grep DeGiro Lamo connection CSV, I get this information.
+I use this name because I had permission to publish it. Obviously, this is not a particularly
+convenient format to use. So I wrote a script that converts to a text format. So I do a I run ops.
+This code is part of the lesson. So if you want, you can see it connection,
+here this file is converting all my connections into an easier to import text format that the
+LLM choose better. It is converting all the contents. There are many.
+There we go. So if we now grep on TXT, you see that it has produced a text. So I transform that
+file that was in comma separate value into a more textual format that is better handled by the LLM.
+And now I import it. So ops a I less collection loader RAG collection less collection linked in.
+And here we give him the connections TXT aisle. Here now he takes and begins to load the data
+in blocks of 4000 characters each. Right now, let's go and inspect. We actually see that we
+have it linked in. And we can do some research. He is telling me that there are more than 1000,
+because in order not to weigh down too much, the search limits it to 100 chunks.
+One. So if I look for CEO, the problem is that in this way, the contents are divided into blocks
+and therefore in practice, if I write CEO, it takes all related things and not necessarily
+relevant. This is just a generic example because the system would be very refined. Actually,
+transforming into smaller chunks or creating larger information or extracting information by
+scraping data from linked in. It is only an initial example, however, to give you an idea
+of what such a system can do. Surely this is not the optimal way to manage data like this,
+but it was a quick way to show how the system works. Now let's take a look at the loader code.
+We use for most of the features the vector DB class that we have already implemented last time,
+of which I basically show the. So we have methods that do insert, remove.
+Therefore, it is slightly modified compared to the example of the previous lesson because here we
+can specify a collection so it handles multiple collections, but with an extra method to remove
+a collection and an extra method to count the elements. But apart from fairly simple changes
+the vector DB class is the same that we showed in lesson six. The magazine uses it. First of all,
+here I read a status. The status is basically a stinga in which it chooses the current collection
+and the current length of searches after which if I use the at I changed the current collection.
+If I use the sharp, I change the current limit of the search. If I use the insert, I search on the
+vector database. Finally, with the double exclamation mark, I remove a collection and with the single
+exclamation point, I remove a part of the records per substring. This is how the loader works,
+which is a modified and improved version of the loader we saw in the previous lesson.
+Now let's conclude the tour by showing a query action, which works substantially as you saw at
+the beginning, but in a function. So even the RAG query has the ability to extract text from
+the database and do searches with LLM. It supports multiple LLMs, variable context sizes, and multiple
+collections. So in this way, using a collection in which I have uploaded data, I can ask questions
+using different sets of content using different LLMs. In this case, I put llama, phi and deep seek.
+Now to make it convenient, I ask questions and I can use it by enriching the content with
+contexts from different collections using different LLMs. Another thing is that it is expected.
+The abbreviation so as not to have to write long names. So to be able to choose the collection
+from which to enrich, I can simply use a prefix. So even a letter is enough to identify the right
+collection. So let's see it in practice. I show how we can use the system. In practice, we take
+the available collections. For example, we take jobs collection. Here I said some information
+about Lisa. So now I go to the RAG and if I say who is Lisa, it will give me some generic information.
+As before, if I specify at jobs, you see that this that allows me to select the LLM and I ask
+him who is Lisa. Here you are. And now he replies because I add the context of the jobs collection
+that I had chosen before. And here by default, it uses llama. But for example, I can use phi for
+writing it, phi, then the syntax is explained here. At LPM allows you to select an LLM.
+Then I can specify the size of the context, which by default is 30. And then the name of the
+collection that I can abbreviate. We have done this to allow you to easily and quickly ask questions
+by changing LLM or changing collection. If I write it PJ, now he is telling me to use phi for as an
+LLM with the jobs collection. And I say who is Lisa. Right now I'm asking the same question,
+though I'm using another LLM. This has expanded it a bit, you see, the behavior of
+phi for and llama is slightly different. Now let's try with Mistrol. Here you see,
+here instead I used Mistrol, who also replied to me at the same time. Now we can try to use
+particular data instead. For example, using the one that begins with L, that is the LinkedIn one
+that I uploaded. And now I can write it L and say list all the contacts with the role of CEO.
+Now it's going to do a database search and it's listing me in my view of content,
+those he finds as CEO, or I try to ask at L list all the contacts in a developer role.
+And so instead he will take some data and list the people who he thinks have a developer role,
+list all the contacts who works in software engineering. This is also very dependent on how
+the model interprets vector searches. And as mentioned, this example is absolutely not optimal
+because the data should be structured better, certainly not in this way, but grouped in different
+ways and probably we need to choose better the way to do searches. But I still wanted to show
+this example to show how the system is very suitable for manipulating private data. Obviously,
+it must be optimized. Now let's see the code of the RAG. As you can see, it's pretty simple.
+Basically, there is a function that scans that query in that particular format that I am now
+showing you. Then it does a search in the vector database and creates a prompt exactly as I said
+before to ask it questions. From the practical point of view, it is all here. The only particular
+thing is this parser, which takes this string that is used to select which collection we want to use
+in such a way that we can ask questions about different documents. But other than that, it is
+basically a selection and here is a regular expression that is extracts and decides which
+template to use, how much to use, which collection to use, and what content to provide. Other than
+that, the rest are things we've already seen, such as connecting to an LLM, streaming, and all
+things we've already seen in previous lessons. So there is no great news from a practical point of
+view. This basically brings together quite a few things that we have seen in previous lessons.
+So this closes the course and we close it with a relatively complex exercise,
+which will be to implement a RAG on images. Here I give a few details. You will have to modify
+the database to accept an image, upload images that you can upload with a form or upload them to
+the S3, process it, and then make a RAG of the image description information so that you can make
+a RAG in which you describe the image you want to use and you will find groups of images that you
+have loaded based on the description, then make an LLM of the images using image recognition that
+will produce descriptions. So the final exercise is basically to do a RAG of images. Okay, thank you
+for following the course so far and for the moment we have concluded with this. We will continue with
+open source projects and new more enriched editions of the course. For the moment, thank you all and
+see you next time.

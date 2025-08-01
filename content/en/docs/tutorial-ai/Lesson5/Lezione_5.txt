@@ -1,0 +1,178 @@
+Hello everyone and welcome to the lesson of the Private AI course with Apache Open Serverless.
+Let's start immediately by starting the code space from your starter, which in this case I have
+already started, then you will see this screen login and after logging in you can choose the
+lesson in this case lesson number five. Now let's open the PDF of the lesson. In this lesson we
+talk about computer vision that can be done with LLMs and file storage which is closely related
+to the vision itself. The plan of the course is to learn how to analyze images using open source
+LLMs, in particular we will use in this case Lama's vision model which is the model we mainly use.
+Then we will see how to create actions that generate a form to load images. At this point we
+deepen the storage using the s3 standard which is used precisely to save objects. They are called
+this and are actually files inside a web file system and then we do an action that will use to
+apply the vision the objects that have been loaded into this storage. So first step, let's analyze
+the images. Let's see how it's done. To analyze an image using the Lama vision model we need to
+connect to Halama and call this endpoint chat API in the Halama URL. So as a first step I create a
+URL to access it and then to test the system we load an image from a file and transform it into
+base 64 format which is necessary because it is the way you send information in JSON format
+to the LLM using the Halama APIs. To analyze an image you must first choose a model that is capable
+of making vision. Then you must send a message that specifies precisely this model and among the
+various parameters it sends a message that contains a list of images in basic 64 format
+as in this example. At this point you can make a post at the right endpoint asking to analyze the
+image and the result is a stream. In fact you see here that I explore the result to see what if there
+is in this stream but in reality the steam must be unrolled so you have to take all the pieces
+one by one and collect the result to see the response of the LLM. Let's see it in practice with an
+example. Let's try to execute step by step the code we have seen. First of all let's import these
+libraries and compare the URL we need to work. So we can see this screen. Now let's load the image
+in base 64 so if the printout we see the sequence of characters which is basically the textual
+representation of a binary file. Now we can analyze the image then we build the message. Here it is
+so you see the message specify the model specify the role specify a request what's in this image
+and attach an array images in this case it's only one i.e. the image we uploaded from the file.
+So now we can send the request to the LLM. The result is a generator so of a stream.
+Let's see the first piece of the stream so this next line that allows you to read one. See he
+replied duh so the first touch returned is duh to see them all we have to unroll the stream
+with this code and so let's see the rest. I'll show you that it's in the image I uploaded.
+The image represents an Abyssinian cat.
+Moving on. So far we have seen how to use the vision with Halima. Now let's do an action that
+uses it. We see it in this example. It uses a form that allows you to upload a file once the
+file is uploaded it is passed to the LLMs for analysis and the return value is displayed so
+that they can also see the image that we asked them to analyze and the result of the analysis.
+In particular in this action we will use a form of type file whose format is this so you have to
+specify file type the name of the file and the label then you have to extract the result by
+verifying that the form has returned a dictionary and from this you can be the pick field which
+represents the image already queued in base 64. To display the image we have returned we will
+produce a piece of html using the base 64 encoding that is already present in html that is it is
+possible to have a base 64 image to display it by building a tag in which source there is this
+string here data image png and then the base 64 image in this way since Pinocchio's display is
+able to display pieces of html simply by returning this html we are able to display the image
+so now let's see the action code that we have written analyze it for a moment and then see it
+in action let's take the action code first i wrote the class a vision class that encapsulates
+access to the url see here it reads the yards and creates the url to access them after which the
+decode method creates that famous message you saw before makes a call to the llm and iterates it
+and then calls a collect function that collects everything this feature basically unrolls the
+stream collecting the results step by step here it should actually put the streaming but for
+simplicity i avoided streaming and i collected the data so as not to complicate the code so if we
+open the test we see how this code works i first import the image of before that of the cat it creates
+a vision object since it is a test the default values are taken from the environment variables
+and then uses the test configuration and then i call decode which is calling the llm to understand
+what is in the image if you print this image contains an abyssinian cat etc etc so the
+test confirms that the class i created works at this point let's look at the actual code of the form
+so do you remember that here i create a form that asks for an ipet and the code decodes the form
+so if there is a form it extracts the image then creates a vision object and then decodes it and
+as a final step the display of an html returns that will display with the url that i explained
+before the image in base 64 so now i'll try to run our example i log in here it is here is the form
+when i activated do you see that a form is displayed here at this point i simply choose a
+file then take this which is an image again and send it right now it has been uploaded and is
+processing it see there is an egg in the image and displayed image let's try another i choose
+for example a parrot here a parrot that is on the branch has been updated and has updated the
+display so here you have seen how this simple function that is able to do vision works now
+let's complicate things a bit and learn how to manage how to store files in the open serverless
+s3 cloud file system be careful because here you can get confused because there are three different
+s3 endpoints endpoints are the access points of s3 there is an internal one which is used
+when deployment is done so it is the one actually used by functions when they are production to
+access this endpoint which is internal to the new velaris class so it is not public you use the s3
+host and s3 port variables which are provided by the system when you log in and are the famous
+psychrists that are automatically provided by the system but when you do the tests there is
+another one that is configured instead in the test env variables because in the test environment
+there is another s3 because since the open serverless s3 is not directly accessible to do the tests
+there is another one that is started together with the container and the editor and is accessible
+using the parameters that are stored on test point env but then when we use the system to view images
+we will need to export externally that is with a public url therefore accessible via web to images
+so we would have to modify the internal url has an external url and this is the production
+external endpoint which is pointed to by the s3 ap url we will see that to use this we will make
+the modification to the internal one to make it external so let's be careful because being between
+the different cases you can easily get confused we are not confused if we think that the internal
+deployment is normally managed for production the test endpoint is managed when we do the tests
+and the external one is used when internal images must be waited for externally here it had to be
+clarified well because otherwise you can lose so now let's take a good look at these endpoints
+endpoints are the access points of the s3 service where images are read and written
+let's take some examples i import the os library and initialize the args now i open the host
+i extract the port and build the url here it is this is the url which in this case is actually
+the internal url that is used for testing from this i extract the bucket the bucket is a kind
+of collection of let's clarify what we are talking about the s3 has an endpoint that is basically a
+url that is used to read and write inside an s3 server there is an initial path which is called
+a bucket and basically serves as an area that is different and separate for each user we now
+extract the bucket that will be used in practically all calls because each file ends up in a different
+bucket another thing we take is then the external url which has not been defined because it is not
+there in the test environment so we will explain it when we do the tests you can verify that the
+secrets to access the internal s3 are these the bucket is called msiab data the host is internal
+and the external url is it's this one the external access point when we would like to make internal
+information accessible externally instead the test values are these you see s3 host minio s3
+port etc the keys are also different and the url is different so as you can see the internal and
+external values are different now let's try to log in to create the to create the client in addition
+to the url that we have configured by taking those various parameters we also require a key and a
+secret in practice a username and a password which are called so which are also provided as
+environment variables and there is also the region which however in the case of s3 of open
+serverless is fake there is only one region we always use the us east one one because s3 is
+basically a standard defined by amazon but everyone uses it because we use a system compatible with
+that amazon has various regions and the first us east one region is the default one in reality you
+could put anything it would not change anything after that we got a client that allows us to access
+s3 now let's see how it is possible to read and write these additional steps show the reading from
+s3 so i'll take a file and i read it so body contains the file not encoded in base 64 just
+the file as it is and i write it there you have it he gave me an answer that basically tells me
+that the writing went well let's check simply by doing lend body and you tell me that we have
+practically loaded 494356 bytes okay now let's try to read it note the key so pretty much in the
+file will be called cat jpg now i'll read it again here and now i take the data and if i
+now do lend data i realize that the value is the same so in practice the reading and writing were
+successful so then so we saw the direct features and a now there are other features that we mention
+one is the one that is used to listed so list objects which will return an object of which you
+must specify contents and delete which is used to remove the object instead so now let's take the
+list of the content object is not empty in fact it is a list of dictionaries that give us a series
+of information including one of this is the name of the file and then there is also other information
+now i can delete it then i perform a delete here you see and with this delete if i now rerun the
+list now contents is false because the bucket is empty it returned a false value because it has no
+content so we also used the ancillary features of listing the contents of a bucket and deleting bucket
+objects with this new knowledge of how to manipulate objects we create another function that does the
+same things with the added possibility of doing visualization on objects that are loaded therefore
+we're going to do a function like this where we're going to use the of upload which instead of
+displaying a form that asks for an input and instead he has a instead it has a button that
+allows you to upload directly to s3 you can list the files that have been found and you can apply
+the vision by simply selecting with the prefix add one of the the vision is read and carried out
+and it is also displayed and the display will be done using a public url on s3 so it's a more
+evolved and more sophisticated version of the viewer we saw before so let's go into detail
+the important thing to know is that now in order to show an object to show an image and make it
+public you need to generate a signed url what is a signed url it is a temporary url that has a
+very specific lifetime and that has a whole series of keys that are used temporarily to
+access a file until the lifetime which in this case is one hour has passed so it is a feature
+that allows you to export to the public temporarily and make it readable to everyone without permission
+for a limited time of the objects so if you want to display an image externally you have to create
+a signed url and set a limited lifetime since the signed urls are generated by internal access
+we have to do this trick here so that the url is accessible from the outside because open serverless
+has both an internal access and an external access but to use the external access you have to change
+the url because for photos the url is produced with the internal url now let's see the code of
+this action that uploads the visualization if i go to see the code first of all i'll show you the
+bucket this class here basically encapsulates all the bucket management features so let's
+see how this class initializes all the parameters to access s3 here there is the right method that
+is used to write here is the read method that is used to read here is the remove method that it is
+used to delete the file in fact this deletes a series of files with a prefix this is the
+external method that it generates the signed url i mentioned and then modifies it so that it can be
+used from the outside here there is a method to see the size of a file and a method to search for
+it so it looks for files as a prefix so this is a slight evolution of what i explained to you before
+we can try everything so let's test all of this first of all let's upload the bucket and let's
+make sure that there is nothing then we read the file again that of the cat and write it okay he gave
+me an okay answer so it was successful now let's look if there's a file named cat so we found one
+which keeps substringing cat and we assert that the length is one in fact there should only be one
+let's take its size and verify that it is greater than zero now let's read it again and assert that
+the length is equal to the length of the file we wrote and initialize a vision we decode it to base
+64 and we invoke the llm to analyze it now the answer is obviously that it looks like an abyssinian
+cat as before let's check that in the description there is precisely cat we remove it let's see that
+we have removed one and make sure that now there is no more cat here this test allows you to verify
+that the whole system is working so once we have verified the test we can focus on on the actual
+action you see it has a use that involves use asterisk to do searches the shield point to remove
+files the at to interpret the files then searches through the files that are there and applies
+the description the upload is done directly from Pinocchio and the code is now extremely simple
+so if the request begins with an asterisk it does a search if the search begins with the
+exclamation mark makes a removal if the search instead begins with the at the matter becomes
+more complicated after because first it searches for the file if it finds it it says i'm looking at
+this file and here it reads the file from the bucket it codents it in base 65 passes it to the
+vision decodes it and returns the result and in addition it creates an external url to be able
+to view it and passes it as a fragment of html for visualization all this put together gives us the
+sto store here it is inside there are already some things loaded we can load for example or the egg
+very well if i write asterisk now i see that now there is also the egg now i use the at egg at this
+point a search is done and it is passed to the llm and tells me that this allows you to interpret
+the image i uploaded or if i do at galaxy he will make me the analysis of the warranty usually even
+longer and more detailed there you go you see so it is also possible to delete them the removal
+is more precise so it doesn't want a substring but a prefix that way i can specifically delete
+just one here now i deleted the extra file that i had uploaded okay with this we are done i leave you
+with an exercise which is to put the two things together so the exercise is to modify the form
+that we said uploads the files and have the file saved on s3 if and then applying then the encode
+in base 64 the view using the external url in this slide the steps to follow to solve the exercise
+are suggested all right thank you all and see you next lesson
