@@ -1,0 +1,277 @@
+---
+title: Lesson 0
+weight: 10
+draft: true
+---
+## Lesson 0
+transcript here:
+0:00
+hello everyone and welcome to the course application development with LLM open 
+0:06
+using Apache open serverless a mileage title worthy of Wart Muller but it's the
+0:11
+Mastro GPT course for friends the first step is: start the environment.
+0:18
+environment that at this moment I have already started you can do it by simply
+0:23
+going here on GitHub/mastrogpt and you will find here
+0:29
+the slide shows it. it says to go to GitHub master GPT you will find the
+0:34
+starter and from here you have to press the code button and launch the code
+0:39
+space so you see go to master GPT launch the starter here is this code button and
+0:47
+here it appears to make a button this one create code space on main I have
+0:52
+already launched it because otherwise it takes a while to start so you see that
+0:57
+this is already active it's what I'm working with it's not the only job
+1:01
+option so you don't have to you are not obliged to use the code space on the web
+1:07
+because not everyone likes to work in the cloud like I'm doing however but it
+1:12
+is convenient than both for training and for other reasons for this reason for
+1:19
+this reason I use it and I recommend you to use it too because it saves you a lot
+1:24
+a lot of time to configure the things but if you want you can configure yours
+1:28
+as you want so at this point once launched all this will start and above
+1:33
+all you will have to have these icons which I'm matting here at the beginning
+1:39
+the icon icon with the little cloud which actually starts this this
+1:44
+extension which has the main functions of the and the first button is the login
+1:48
+button so the first step is to log in to open serverless so the first step is to
+1:54
+write your name your username and password and log in and then you should
+1:59
+see this message you successfully logged in you can now use open serless here is
+2:06
+the message and all therefore first step actually this this I am paying for is
+2:12
+not the first lesson it is the pre-lessson the zero module to
+2:16
+initialize to verify that everything works and understand if everything is
+2:20
+okay in short so if everything is fine you will see the extension you will see
+2:25
+the login and you can log in and start working let's take a tour of the
+2:30
+environment so it is important in addition to the little cloud this other
+2:35
+icon the test tube who it must also show the tests therefore the tests that are
+2:42
+there however for everything so you should see by clicking on the cloud icon
+2:47
+the extension clicking on the icon of the test tube you will see the tests and
+2:53
+then there is one more thing to see this lesson here you will have to go to the
+2:57
+docs icon on the documents icon you will see the list of all the documents under
+3:03
+lessons you can find this text which is the slide you only see the source but
+3:09
+actually just click on preview and you can see the slide real already rendering
+3:15
+and we also use the source because sometimes we take and use the sources to
+3:21
+take the exercises etc so it's convenient to have the slide in markdown
+3:26
+in source so this slide it recapitulates the various parts document test research
+3:34
+research is useful for example to find points in the source where you need to
+3:40
+intervene to do the exercises okay then so recapping documents search testing
+3:47
+the open serverless icon and here are the buttons to perform the tests the
+3:52
+first step is to deploy then go to the deploy icon that if you don't deploy you
+3:59
+can't run the tests so now he's taking the initial code and is installing it
+4:06
+here now you can go here and run the test and therefore everything works
+4:11
+because the test passes okay now when you work you don't deploy but go into
+4:18
+development mode which also allows you to see the user interface so now let's
+4:23
+also try this other feature which is on "devel" will open here too the deployment
+4:30
+window and now some of you will even see an open button in browser if you don't
+4:35
+see it this is a bit hidden it is explained in the slide in the slide this
+4:40
+small detail is explained which is a bit hidden there is this antenna below this
+4:46
+antenna below simply shows the ports the ports of the services launched then
+4:52
+devel launches a web server to run the user interface so you simply have to
+4:57
+click here it opens and to see it this icon of the globe also hidden but there
+5:02
+is the slide that explains it and here you can log in then you can log in and
+5:07
+since you are master GPT reference to master Geppetto we have called the user
+5:13
+interface with great effort of imagination Pinocchio so you can log in
+5:18
+Pinocchio the default password is already Geppetto the initial password is
+5:24
+Pinocchio or Geppetto anyway we change it immediately so no problem obviously she
+5:30
+immediately tells me that she is not sure in fact now I'll show you how to
+5:35
+change it here in part of the user interface so here I am going to give you
+5:40
+a tour then this is user interface so all the resort will use Python as a
+5:46
+programming language but we have developed a user interface that serves
+5:50
+as a front end for the applications that we will use to make the course but then
+5:55
+you don't have to modify it because this will remain more or less fixed you will
+6:00
+simply develop chats so this is the multi-hat application so the first chat
+6:07
+just to see if everything works is called hello and does nothing but say
+6:12
+hello to whatever you write to him then hello Michelle Mela hello Mela etc and
+6:19
+then here there is a chat a little more interesting which is instead the demo of
+6:24
+the characteristics of Pinocchio of this interface so basically that this
+6:30
+interface can display code see you can also close this side view so when
+6:37
+something is produced that it is interesting part of the side view to
+6:41
+view it or you can view HTML or a chessboard here therefore the support
+6:49
+for so if I ask form shows me a form and I write on it because it's good we use
+6:58
+this in the exercises CEO etc and here it gives me the result of the form this
+7:05
+is fine so you understand that here there is an extendable menu this is the
+7:10
+menu and there is another thing which is the upload of documents so here you can
+7:15
+choose a document to upload it i'll show you this later how to use it the side
+7:21
+display is customizable so you can powerful extend it with your own
+7:25
+displays and the side view that can be open and closed and with this we have
+7:31
+seen this sums up the features of our interface last step the terminal because
+7:37
+we will use a lot of terminal because many many commands are command line and
+7:43
+therefore for this reason let's start immediately to show the command line
+7:48
+commands and as a command I show you immediately the terminal opens in
+7:53
+various ways the easiest way is to go here terminal new terminal and this
+7:59
+opens a terminal okay here let's do a command right away to change the
+8:05
+password then the password is actually stored here master GPT packages master
+8:13
+GPT login users but as you can see it is encrypted so it is not easy to change so
+8:19
+if I now decide to change the password therefore I give this command
+8:25
+ops ai user update Pinocchio and I put another password here I changed it here
+8:33
+I changed my password here the login is customizable so instead of using the
+8:39
+file you can use anything a database an external system whatever you want and of
+8:45
+course the easy implementation is that si increase users of the interface are
+8:50
+in the file that we can change which we have changed but when we change the
+8:55
+users we also have to redeploy so second command is ops ai deploy master gpt
+9:02
+login so now he deploys an action to me this is to show that you can otherwise
+9:08
+you could have gone here do deploy and we deployed them all this serves to make
+9:14
+it clear which also exist many command line commands that are used to do the
+9:20
+most advanced things when you work a lot with the command line then for those who
+9:24
+use code space let me give you a note here on GitHub a piece of advice go here
+9:31
+go to settings here are code space and here I recommend you to change
+9:37
+eventually the timeout because there are 120 hours free so you really do a lot
+9:43
+but it puts you the auto off time at 5 or 10 minutes maximum because otherwise
+9:49
+it consumes 30 minutes each time and if you forget it you quickly run out of
+9:53
+credit you can also decide to use and instead of Visual Studio on the web as I
+10:00
+did you can use the local one so you can change this option in reality it is
+10:05
+possible also do not use the environment in the cloud but use everything locally
+10:12
+with docker so you can also install nuvolaris locally instead of use what we
+10:17
+offer regarding all these things for those who are interested we can do an ad
+10:22
+hoc lesson in which I show how to install in a different way however for
+10:28
+the course we have provided this environment ultra simplified which
+10:32
+should allow everyone to start with practically zero effort then course
+10:38
+support what is available first of all as a support to the nuvolaris course
+10:44
+enterprise available to everyone with a free account which as you can see
+10:48
+includes several services so it includes Redis understands Mino includes postgres
+10:55
+SQL although in this course I don't think I'll use it you can deploy on AWS
+11:01
+G-Cloud Azure Akamai on physical servers we for example use Hezner on Ubuntu on Red
+11:08
+Hat Open Shift so you to get an account on the our open serverless environment
+11:14
+where you can practice ask now so if you have already written account we
+11:20
+are already preparing it for you or you can go to the
+11:24
+mastrogpt.com website where there is a chatbot and you can ask for it here or
+11:29
+you can contact us on LinkedIn and there you send a message on LinkedIn or you
+11:34
+can install it yourself on the open serverless site where there is all the
+11:39
+documentation for the installation so how to install it etc as for support
+11:44
+there is Discord i ask you and I recommend you to use that so go to
+11:49
+Discord and here we are there are already the first people this is a brand
+11:54
+new server this is the second lesson so come and this is where we offer support
+12:00
+possibly use the Italian channel because the language and then there's always
+12:06
+Reddit there is also Reddit which is a forum and here you can ask your
+12:11
+questions and discuss etc so these are the course support options we offer the
+12:17
+next step and with this I conclude the first module even in reality this as
+12:22
+mentioned is lesson zero then we will do the first real lesson go still on the
+12:28
+extension then therefore here you see click on the lessons and here simply
+12:35
+click on the first lesson so here is downloading all the lessons downloaded
+12:41
+the lessons and so we are ready to start and move on to the next lesson
