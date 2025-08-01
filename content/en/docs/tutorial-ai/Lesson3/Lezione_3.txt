@@ -1,0 +1,211 @@
+Welcome to the third lesson of the private AI course with open serverless.
+Let's start right away.
+If you remember the previous lessons you should go to your fork of the starter so that you keep all the changes.
+But now there is an update, because changes have been made to the starter and you need to update it so in your fork
+you will almost certainly find this comment, a commit behind, which says that you are behind one commit.
+So if you don't want to have problems before doing anything do an update then go to synk fork,
+lower it and do an update which will update the starter to the changes that have been made,
+but keeping your code unless you have also modified the starter code.
+At this point we can launch the code space.
+You should delete what is there but be careful if you delete it you lose any changes
+so be careful if there is this uncommitted change.
+In this case if you want to keep the changes you have made go there and update.
+At this point you can delete the code space, although it should update it automatically,
+however for safety it is better to delete it and start it again so that you will get a fresh and
+updated environment that you can use for lesson three, which is independent of the other two,
+so you are able to run the code regardless of whether there is code from lesson one of lesson two.
+Now let's wait a minute.
+Notice here that it is downloading.
+You can also see that there are different components here that I will explain later.
+After loading everything our speech bubble appeared.
+First we log into Open Serverless using the credentials you have already been given
+and we can take the new lesson.
+So let's select and take lesson number three.
+Okay we can start the lesson of the day.
+Let's open the slide which is in PDF format here.
+Let's also open in markdown format to make references.
+In this lesson we will deal with form and display management, i.e.
+the ability to create structured inputs with forms and also a structured output with the display,
+thus substantially enhancing the input and output of your artificial intelligence applications.
+In addition, we will also begin to do prompt engineering, that is,
+build prompts no longer based on user input but based on forms and other types of information
+that will be provided.
+As I said before, wait to update the branch because the starter is updated and therefore
+you may be left behind.
+First topic is authentication, which concerns the important aspect of information security.
+You will say, but isn't it already protected?
+Actually not entirely.
+On Pinocchio, the interface that we have provided you and that we will use,
+there is a password that protects the user interface but in reality the actions to be
+invoked by Pinocchio must be public because they must be web action and therefore they are not
+protected.
+For this reason it is necessary to add an ad hoc authentication layer,
+the one I will explain in this lesson, but before going into detail I will explain how
+open serverless authentication works normally.
+When you want to create actions in open serverless, these are normally not directly accessible.
+The access must be mediated through a key that is stored in the whisk props file,
+which one can read and use for his own purposes.
+However, the actions can also be public, so they can be used by anyone and this is true
+when they are web actions and are deployed with the web true flag.
+The problem is that when we use Pinocchio we have to use only web actions and therefore
+all actions by default are not authenticated and therefore can be accessed by anyone.
+But there is a way to protect, which is what we are going to talk about now,
+which is a custom authentication ready to use and available in the provided GPT master
+infrastructure with Pinocchio and with the back end functions that are already provided.
+But now I'll explain some things and to do so I also have to use some shell tricks that not
+everyone knows.
+When you log in the login information is found in this file.
+There's this string off and this stinging API host.
+This string off is the key, which is composed of a UID.
+Here that is basically the user and a secret here after.
+So it can be considered a username and a colon password.
+And then there's the AP host pointing to our server.
+I can load these values into the shell with the command source ID point isk props
+so that it becomes an environment variable that I can use.
+This is convenient to be able to work with the environment.
+Now to take an action I do UPS URL master GPT index.
+See the problem is that this command however gives me this okay here it's annoying.
+Then I can remove it with tail plus two and I get only this and I can catch everything
+when with the syntax dollar bracket bracket.
+Then assign a variable all this to say that I did a command that takes the URL of an
+action that I extracted directly because I will use this thing to do verifications.
+Now I'll show you in practice how protected actions are and how to access them.
+I now open the code of this action which by default is protected because it does not have
+web true. If I now deploy and I have not specified web true this is protected by default.
+So if I take the URL with the technique I outlined before and invoke it it will tell me
+that it is protected because the action cannot be invoked without the key by default
+because as I said this is a normal action that does not have web true.
+Instead I'll show you how I can use it by loading the off
+this one which is now the key that I use it as a user username and password basically to invoke
+that action but it is also important to pass these flags because otherwise it becomes asynchronous.
+So basically the command to invoke the action will be off we'll use a post and add these
+additional flags to it this is all the way open serverless actions are normally invoked under
+the floor by doing so the action is invoked correctly and is accessed. So this is how you
+invoke actions that are protected by default but in order to use them with a user interface like
+Pinocchios we have to make them unprotected so for example an auth action that is normally
+public has web true and the result is that I can invoke it now I deploy it I take the URL
+and I invoke it you're authenticated because in because there's actually no protection when
+their web actions which can be a problem if you log in LLMs but there is a way to hook them to the
+same authentication this one there is an easy way to hook it to this authentication that we
+have provided and that is what I will explain to you in fact Pinocchio supports an authentication token
+so let's look at Pinocchio and now put it in devil mode thus we can realize what happens
+and modify along the way okay watch what happens carefully I now invoke off and he tells me that
+you are authenticated actually this function here if we go to see the logs it prints me a token
+which is what is created when you log in and that you can use to protect your actions
+in fact if I go to see what's inside redis here inside the cache I can inspect the keys
+do you see this it's your prefix then there's token and that's the logged in user if I do get
+msib token messiah I get this secret here which coincidentally it's just the secret that was
+printed here so it practically happens that every time you log in Pinocchio will send you this token
+at every request to allow me to authenticate users so practically you have to accept requests only
+from those who present you with this token which is random of course and is always different
+so to prevent someone from sniffing it this token is kept in a cookie and is passed to each request
+and you must verify with this code that follows you simply have to add and here is an example
+you simply need to disable this if unauthorized return you are not authenticated in practice
+with this command unauthorized you can check if one is logged into Pinocchio or not the code here
+is this in practice takes the token goes to see if the secret that has passed coincides with the
+one on redis and in this way it is sure that the user has logged in so you simply have to add this
+function here and check if you are authenticated or not so now activating this function now if I go
+to the auth I am always authenticated because I am turning on via Pinocchio but if I call it directly
+as I did before taking the URL differently now it says that I am no longer authenticated
+so now the actions can only be invoked after one has logged into Pinocchio here this is basically
+the point I realized that the topic is a bit intricate however in the end it's basically a
+matter of adding this code here is checking who if unauthorized to verify that it is a logged
+in or not on each service that is public as all those with web true are normally
+let's go ahead and continue the discussion let's now analyze an interesting topic that is the forms
+and we will do it by writing a post generator what is a post generator it is this post gen
+see I clicked on post gen and this form appears and I say to him CEO because it solves
+all the problems of kubernetes difficulty okay and here I say it's formal so he generates me
+a promotional post for Apache open serverless and asks me what information I want to provide
+so I send it and now he will make a post that if you read it has a formal tone follows the
+instructions I gave etc or I can try to make another one for example I say I'm a developer
+because it is cool and it must have an informal tone now it will generate me see the post depends
+on the input so I did this thing by generating a formula and then building an ad hoc prompt based
+on the form so this is an example of prompt in geniring before going into the details of how
+it works let's clarify how to define a field so a form as you see here is a field has a description
+the kind that can be a text input a radio button a text area etc and then it has a name
+and a description which are essentially the fields explained here the description the name if it is
+required what type text text area checkbox radio file if it is a radio what are the options if it
+is a file there is also the file option it allows you to upload even an image in 64 format
+so you know this to analyze when you want to make a form you have to do something like this
+a form is an area of these fields described in this way so if I go and see the code of the post
+generator you see that in the code I created this area of records and each record defines the form
+so to get effect basically I have to go back remember that it is mandatory to always return
+output we said it in the first lesson and in the second lesson we said that we have to return
+streaming if we want to enable streaming and if now they want to produce a form we have to
+return a form that is an object that is a list of records as before so looking at the code I
+realized that if the input is null at the first request it produces residential form equals form
+that is in the request dictionary the form field is the form you saw before in this way you get the
+effect that when I select the form or request for a form is returned and Pinocchio displays it
+the whole form and so far we have seen how to request an input the next step is how to request
+the output and how to process the form when you produce a form in response an object is sent as
+input that is of type dictionary and has a form field whose values are the fields of the form
+that I can process therefore using the values of the form I build a prompt so basically I'm
+replacing the input so instead of writing an ad hoc input I write a prompt that corresponds to the
+fields of the form so I ask you to generate me a form that promotes a patchy open serverless
+your job role is job the reason you are using it is why and the tone of the post must be according
+to this tone that's all it takes return the form when it is required and when you receive the form
+data you process it produce a prompt and return the result like this that's all you need you have
+the ready example of how to make a chat that asks for information when it is required okay soon we
+will do an exercise that uses this but before doing this exercise let's see another important
+topic the display now I'll show you a display which is Pinocchio's ability to display content that
+depends on the output of the LLM or from other sources in this case I show that Pinocchio is
+able to visualize a chessboard but it is an example because it can display anything there are those
+who have used it to view PDFS those who have used it to visualize circuits so only the sky is the
+limit because the mechanism of the display is completely extensible and worked like this
+simply every time the invocation of a function returns an object that has unknown keys which
+are not one of the ones that are processed that are currently three output state and form are
+forwarded to Mastro GPT display which is an extensible viewer now I'll show you in practice how it
+works by making command line calls so I now launch the CLI I'll show you how it works by
+showing below what this demo does this demo does just that it displays a chessboard now I'll show
+you what happens under invoking it if I do so I invoke the demo with chess input and as output
+you see that it produces me this additional value this additional key chess with output and state
+could also produce a form it produces this chess then when there is something this is
+forwarded to the display so I now grab it and save it on a file so I caught it on the chess
+jason file now I forward it to the display so now I take this output and invoke the display with
+the value that was returned to me from the input it's practically a chain the input is not good
+forwards it and passes it to the display the result is what you see it also produced me a
+whole realization of a chessboard so the details of how it does it you can see in the display
+function but basically there is the code that uses it to produce an svg that displays that chessboard
+and that's it so if now you have gone to see how the puzzle generator works now let's see the puzzle
+viewer let's use the display to make a chess puzzle generator for example we go here on puzzle and
+write puzzles and now it will happen that we ask for an llm who is quite good with chess which will
+generate a chess puzzle which is displayed here because in the output there is and I expressly
+requested it this string which is called the fen string is a string that is used in the game of
+chess to describe the position for example if we go to this site we see that we can explore well
+known chess puzzles and here is reported the string fen of a certain position so much so that if I
+write fen and the location he reports it to me identical based on the description I have given
+instead the puzzle generator requires to the llm a chess puzzle and then extracts the fen
+string from the code and forwards it to the display the code that does all this is quite
+simple if I say puzzle then I make the request to it generates a chess puzzle in fen format chat
+after which I extract the fen string from the output and return it as an additional value
+of the answer so that the display will grab it and display it the extraction of the fen string
+is done via a regular expression that a very standard technique it basically takes the output
+dlllm searches for a strina that conforms to a certain situation and displays it so the technique
+of extracting output with regular expressions is ubiquitous so it's a worthwhile thing use however
+you don't have to go crazy with regular expressions because usually the lllm helps you a lot to build
+it's one of the things it does quite well if we now look at the code for a moment we understand
+how it works here it is the codex you ask for how to input puzzles creates a request that you want
+to generate a chess puzzle in fen format chat with lllm extracts the fen string and if fen
+stings it there is the includes as the key chess at this point the value will be propagated by
+pinocchio who will take care of making the visualization the same works when you make the
+fen request in this case simply take the request from the input instead of the output and display
+it directly again the code is pretty simple and so it should be clear how to accomplish
+now the exercise of which this time I will not provide the solution but I will let you realize
+it step by step you have to do the following you have to modify the puzzle in such a way that
+instead of providing me with a generic puzzle it provides me with a specific puzzle so you have
+to ask the lllm not to generate a chess puzzle in fen format but you have to produce a form that
+asks for the format of the puzzle a simple form like this with a queen with a rook with a knight
+with an ensign our check boxes and you have to if for example you select queen and bishop
+produce an output generates a chess puzzle fen that has a queen that has a knight so based on
+what you have chosen I don't give you the solution I don't do it I'll let you see it but I tell you
+how to get the solution easily obviously after you have tried you can extract the solution like
+this with this command by default the command is not available but if you do so extracts the
+solution you find here so puzzle upload here is the solution so you can do something as trivial
+as a select for compare comparison compare with selected and see the difference practically
+what I did to achieve and the result is something like this now I copy it and paste it deploy it
+once you've deployed the puzzle generator with form you should see something like this then
+puzzle when I write puzzles this one should appear to me here and I say with a queen and with a knight
+send and he has to produce a puzzle for me who has a queen and a horse so now you should see
+here you see he produced me a puzzle which is exactly what I asked him a puzzle with the queen
+and a horse all right then thank you very much and see you in the next exercise we'll see how
+you got on with this exercise
