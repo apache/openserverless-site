@@ -1,0 +1,150 @@
+Hello everyone, and welcome to the course application development with LLM Open using Apache Open Serverless.
+A mileage title worthy of Wartmuller, but it's the Mastro GPT course for friends.
+The first step is start the environment, environment that at this moment I have already started.
+You can do it by simply going here on GitHub, slash Mastro GPT, and you will find
+Here the slide shows it, it says to go to GitHub, Mastro GPT.
+You will find the starter, and from here you have to press the code button and launch the code space.
+So you see, go to Mastro GPT, launch the starter.
+Here is this code button, and here it appears to make a button, this one, create code space on main.
+I have already launched it because otherwise it takes a while to start.
+So you see that this is already active, it's what I'm working with.
+It's not the only job option so you don't have to.
+You are not obliged to use the code space on the web because not everyone likes to work in the cloud like I'm doing.
+However, but it is convenient then both for training and for other reasons.
+For this reason, for this reason I use it and I recommend you to use it too because it saves you a lot.
+A lot of time to configure the things but if you want you can configure yours as you want.
+So at this point, once launched, all this will start, and above all you will have to have.
+These, icons, which I'm matting here at the beginning.
+The icon with the little cloud, which actually starts this.
+This extension which has the main functions of the, and the first button is the login button so the first step is to login.
+To open serverless so the first step is to write your name, your username and password, and login.
+And then you should see this message, you successfully logged in.
+You can now use open serverless.
+Here is the message in all.
+Therefore, first step, actually this this I am paying for is not the first lesson, it is the pre-lesson, the zero module.
+To initialize to verify that everything works and understand if everything is okay in short.
+So if everything is fine you will see the extension, you will see the logins.
+And you can login and start working.
+Let's take a tour of the environment.
+So it is important in addition to the little cloud this other icon, the test tube.
+Who?
+It must also show the tests.
+Therefore, the tests that are there, however, for everything so you should see.
+By clicking on the cloud icon, the extension, clicking on the icon of the test tube, you will see the tests.
+And then there is one more thing to see this lesson here, you will have to go to the docs icon.
+On the documents icon, you will see the list of all the documents.
+Under lessons you can find this text, which is the slide.
+You only see the source, but actually just click on preview.
+And you can see the slide, real already, rendering.
+And we also use the source because sometimes we take and use the sources to take the exercises, etc.
+So it's convenient to have the slide in markdown, in source.
+So this slide, it recapitulates the various parts, document, test, research.
+Research is useful, for example.
+To find points in the source where you need to intervene to do the exercises.
+Ok then.
+So recapping documents, search, testing, the open serverless icon.
+And here are the buttons to perform the tests.
+The first step is to deploy then.
+Go to the deploy icon.
+That if you don't deploy, you can't run the tests.
+So now he's taking the initial code and is installing it.
+Here.
+Now you can go here and run the test.
+And therefore everything works because the test passes.
+Ok, now when you work you don't deploy.
+But go into development mode, which also allows you to see the user interface.
+So now let's also try this other feature, which is on devil.
+We'll open here too.
+The deployment window.
+And now some of you will even see an open button in browser.
+If you don't see it.
+This is a bit hidden, it is explained in the slide.
+In the slide this small detail is explained which is a bit hidden.
+There is this antenna below.
+This antenna below simply shows the doors.
+The doors of the service is launched.
+Then devil launches a web server to run the user interface.
+So you simply have to click here.
+It opens and to see at this icon of the globe also hidden.
+But there is the slide that explains it.
+And here you can log in.
+Then you can log in and since you are Mastro GPT reference to Mastro Geppetto.
+We have called the user interface with great effort of imagination Pinocchio.
+So you can log in Pinocchio.
+The default password is already Geppetto.
+The initial password is Pinocchio or Geppetto anyway.
+We change it immediately so no problem.
+Obviously she immediately tells me that she is not sure.
+In fact now I'll show you how to change it.
+Here in part of the user interface.
+So here I am going to give you a tour.
+Then this is user interface.
+So all the resort will use Python as a programming language.
+But we have developed a user interface that serves as a front end for the applications.
+That we will use to make the course but then you don't have to modify it
+because this will remain more or less fixed.
+You will simply develop chats.
+So this is the multi chat application.
+So the first chat just to see if everything works is called hello
+and does nothing but say hello to whatever you write to him.
+Then hello Michelle.
+Mirella hello Mirella etc.
+And then here there is a chat a little more interesting which is instead the demo
+of the characteristics of Pinocchio of this interface.
+So basically that this interface can display code.
+See you can also close this side view.
+So when something is produced that it is interesting part of the side view to view it
+or you can view HTML or a chess board here.
+Therefore the support for.
+So if I ask form shows me a form and I write on it because it's good.
+We use this in the exercises CEO etc.
+And here it gives me the result of the form.
+This is fine.
+So you understand that here there is an extendable menu.
+This is the menu and there is another thing which is the upload of documents.
+So here you can choose a document to upload it.
+I'll show you this later.
+How to use it.
+The side display is customizable so you can powerful extend it with your own displays
+and the side view that can be open and closed.
+And with this we have seen.
+This sums up the features of our interface.
+Last step the terminal because we will use a lot of terminal.
+Because many many commands are command line and therefore for this reason.
+Let's start immediately to show the command line commands and as a command I show you immediately.
+The terminal opens in various ways.
+The easiest way is to go here terminal new terminal and this opens a terminal.
+Okay here.
+Let's do a command right away to change the password.
+Then the password is actually stored here master GPT packages master GPT login users.
+But as you can see it is encrypted so it is not easy to change.
+So if I now decide to change the password.
+Therefore I give this command OBS AI user update Pinocchio.
+And I put another password here I changed it.
+Here I changed my password.
+Here the login is customizable so instead of using the file you can use anything a database an external system whatever you want.
+And of course the easy implementation is that as I increase users of the interface are in the file that we can change which we have changed.
+But when we change the users we also have to redeploy so second command is upside.
+Deploy master GPT login.
+So now he deploys an action to me.
+This is to show that you can otherwise you could have gone here do deploy and we deployed them all.
+This serves to make it clear which also exist.
+Many command line commands that are used to do the most advanced things when you work a lot with the command line.
+Then for those who use code space let me give you a note here on GitHub a piece of advice.
+Go here go to settings here are code space and here I recommend you to change.
+Eventually the timeout because there are 120 hours free so you really do a lot but it puts you the auto off time at 5 or 10 minutes maximum because otherwise it consumes 30 minutes each time and if you forget it you quickly run out of credit.
+You can also decide to use and instead of visual studio on the web as I did you can use the local one so you can change this option in reality it is possible.
+Also do not use the environment in the cloud but use everything locally with Docker so you can also install new Valaris locally instead of use what we offer regarding all these things for those who are interested.
+We can do an ad hoc lesson in which I show how to install in a different way.
+For the course we have provided this environment ultra simplified which should allow everyone to start with practically zero effort then course support what is available.
+First of all as a support to the new Valaris course enterprise available to everyone with a free account which is you can see includes several services.
+So it includes Redis understands Minio includes PostgreSQL although in this course I don't think I'll use it.
+You can deploy on AWS G Cloud Azure Akamai on physical servers we for example use Hezner on Ubuntu on Red Hat OpenShift so you to get an account on the our open serverless environment where you can practice.
+Gain ask now so if you have already written account we are already preparing it for you or you can go to the master gpt.com website where there is a chatbot and you can ask for it here.
+Or you can contact us on LinkedIn and there you send a message on LinkedIn or you can install it yourself on the open serverless site where there is all the documentation for the installation.
+So how to install it etc as for support there is discord.
+I ask you and I recommend you to use that so go to discord and here we are there are already the first people this is a brand new server.
+This is the second lesson so come and this is where we offer support possibly use the Italian channel because the language and then there's always read it.
+There is also read it which is a forum and here you can ask your questions and discuss etc so these are the course support options we offer the next step.
+And with this I conclude the first module even in reality this is mentioned is lesson zero then we will do the first real lesson go still on the extension then therefore here you see click on the lessons and here simply.
+Click on the first lesson so here is downloading all the lessons downloaded the lessons and so we are ready to start and move on to the next lesson.

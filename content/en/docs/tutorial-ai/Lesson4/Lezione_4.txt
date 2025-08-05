@@ -1,0 +1,371 @@
+Welcome to Lesson 4 of the AI, Private with a PACE Open Serverless.
+To begin with, let's go to your starter.
+I remind you to do a synchronization, then go here to syncfork if you see Update,
+to update it in case there have been any changes to the starter,
+and let's start immediately by launching the code space,
+which contains the development environment for the course.
+By launching the code space we will get to this point,
+where there is the starter, which is empty,
+and once it has been initialized we can go to the extension,
+and download lesson 4.
+So first let's log in.
+Okay, and then we can choose lesson number 4.
+These are the files of lesson number 4.
+Let's start immediately by opening the PDF of lesson 4.
+We also open the markdown, which we will use to copy commands.
+So in lesson 4, we'll talk about how to create an assistant.
+In reality, an assistant is simply a chat that remembers what you said before,
+maybe you haven't noticed it so far, but I'll tell you right away.
+All the chats we have implemented so far are stateless, that is,
+you can practically only interact with the request you make at the moment,
+the chat does not remember anything.
+From this version, however, we introduce assistants that are stateful,
+that is, they remember all the conversation that has been performed,
+and therefore you will have to memorize the conversation somewhere.
+To implement this state, we will start using an API.
+Now Universal, which is the API, by OpenAI, to access the LLMs.
+It's actually not just for OpenA.
+But it works with practically all LLMs, including the one we use, which is Alima.
+The program of the lesson will be first of all to see how this API
+works and to study it a little.
+After that, we will create a class that wraps around this OpenA.
+I, which basically allows you to interact in a simple way using a class in Python
+for the first time, so I will also explain a little bit about the classes.
+Now I don't explain Python in this course,
+so I invite you to learn more about how to program objects in Python.
+I assume that you already know object programming in some way.
+To store the information and the history of interactions, we will use Redis.
+So let's explore a little bit also how Redis works,
+and we will also implement a class that maintains a history,
+and we will put everything together, creating a stateful assistant,
+an assistant that actually remembers what you said before
+and interacts in a stateful way by carrying out a real conversation.
+The first step is to see the API.
+By OpenAI.
+The A. I have OpenAI.
+Was the first that was developed?
+When it is.
+ChatGPT was also made available in API,
+a library that defines some ways of interacting with LLMs.
+This mode of interaction has become the de facto standard.
+So much so that using the OpenA.
+I library, it is actually possible to use practically any other LLM
+because practically all of them implement an API at least partially compatible.
+So if you write an application that uses an LLM using these API,
+you can practically hook up to any provider by changing parameters
+such as the URL and the access key.
+Now let's introduce the OpenAI.
+AI specifically to start interacting more richly with the LLMs.
+The first step to use this API is to create a connection.
+So it is a matter of using this OpenAI builder by passing the two parameters.
+One is base URL and the other is the API key.
+The base URL is the access point of the call and the API key is used to authorize.
+So we will use the A. B. I have OpenAI compatible that is inside Alima.
+In fact, we will use the keys from before used to build the access URL.
+Now let's try this mode immediately by opening a terminal.
+And let's try it right away.
+Let's launch a CLI and see how it works right away.
+First of all, OpenAI has to import and I take the host and the key
+after which I compose the URL using the API key and the host.
+Attention with Alima authentication takes place on the basis of URL
+and the API key is irrelevant.
+So you basically have to put what we call the API key as username and password.
+And that of the URL and the value of the API key is completely unused in this case
+because the protection is done at the URL base level, but this is accidental.
+In general, if you use another provider,
+you almost certainly have to specify both the API key and the base URL.
+So in the example we do, we specify both so we get a client.
+This client object here is the one that allows you to access OpenAI's API.
+Now let's see how to interact.
+In practice, every request to OpenAI requires a list of messages.
+Not one, but a list.
+And these messages represent the conversation that we have had so far with LLM.
+Each message has a role and you have to provide not only your requests,
+but also the answers that the LLM has given to obtain a coherent result.
+So you have to keep track of both what you said and what the assistant said.
+So there are two important roles, user, which is you who are interacting,
+and the assistant, which are the answers.
+In addition, it is also possible to have another role,
+which is that of the system, which is basically a configuration of requests.
+So what you have to do is create a list of these messages and pass it to them.
+So now in this example, I'll show you how to interact.
+I now create a message.
+I specify the model here.
+In this case, we are always with Olima.
+The message list in this case contains only one message, but it is still a list.
+And to get the answer, I invoke this.
+Chat client completion create.
+I basically use the client to connect and then call this chat completion create
+to create a conversation completion.
+In practice, the LLM takes the list of all the things that have been said before and adds a new one.
+This is the answer.
+Rez, which is quite structured, contains many fields and can actually produce multiple answers
+because it is part of the ability of LLMs to respond differently.
+But in general, I take the first available option,
+take the returned message and take the content.
+So if I asked him, what is the capital of Italy?
+He replied to me.
+In this way, you see how I interacted with open AI and you should have understood.
+So create this list of messages, each message has a role and content and pass it on to them
+to the client that you initialized with the key and the initial URL.
+This is therefore the essential part of how open AI is API works,
+which allow you to create assistance sequences of interactions with the LLM.
+For our purposes, it is important that the API also supports streaming.
+Then you can return the answer step by step.
+So to get the stream, you have to add stream true to the request.
+The answer will be a generator in Python that can be iterated to extract content that is called delta.
+So now I take the next step.
+I call the a pie.
+I re-execute the request by specifying stream equals true.
+Here is this time I get back a stream object,
+which I can iterate and this will iterate it and show it step by step.
+It sends it to the end.
+So now I can put it here, for example, and equals.
+And so I see it all below.
+I have to re-execute the request.
+I execute the request.
+If instead I perform it like this, you have it all in a row.
+But you have seen that in reality, the answers are returned one piece at a time in streamed mode.
+So now you've seen how streaming works with open AI.
+Now we have all the tools we need to encapsulate all of this into a class.
+It's the first time we've seen a class in Python.
+First, I'll give you a super crash course of how classes are made in Python.
+I won't explain object programming, but assuming you know what a class is,
+in Python you define a class with a name you specify methods,
+a particular method that underscore underscore.
+Is the constructor, all methods require you to explicitly pass a self parameter,
+which is the object you are pointing to and the characteristic of Python,
+is that the changes of an object are dynamic.
+So they are created when needed using self value.
+And they are always accessed using this self parameter that is present in every method.
+So in practice, this is a very trivial counterclass,
+which is created with an initial value every time
+that you call the counter method returns the current value and then increments it by one.
+So for those who already knew about programming objects in some other language,
+it should be enough to write classes.
+If it is not enough, I suggest you study it because otherwise it will be a bit difficult
+to understand the mechanism, but assuming you know object programming.
+Here I have defined this class counter C.
+Now that I have created this counter class,
+so I can create an instance of this class with counter C equals counter.
+Okay, and then I invoke the half counter, and then you see that it goes on.
+I'm assuming you know programming objects, I realize.
+So if you don't know it, probably these things that I have done,
+as simple as they are, can be difficult.
+In this case, I have to invite you to deepen the programming of objects
+because the rest of the course and this lesson will use it.
+Now I'm going to show you how to write a class that basically encapsulates OpenAI's API.
+I'll first show you how it works and then I'll explain how it's done,
+which allows you to create a chat.
+To add a request, complete it, add another, complete it, add, complete it, etc.
+So if I go here now, and I try this line is used to access the classes.
+Here is now this chat object that I create and initialize without arguments,
+so it will practically take the default arguments.
+But anyway, this object is actually accessing Olima using OpenAI's API,
+and I'll show you the code later.
+But in the meantime, let's see how it works.
+In this object, I can add a request, add, you see.
+I wrote all the requests with this syntax, i.e.
+Role, request.
+Do you remember that all messages have a role?
+For convenience, I put the role as a prefix,
+so all requests are of type role two message points.
+Now I have added a message to the chat and I tell him to complete.
+Since the role is system, the completion is null.
+If it doesn't respond, it's like AE saying, okay, it's fine.
+But I configured it to say that I tell you the nation and you tell me the capital.
+And so if I now add another message, Italy,
+then it is as if I had written Italy on the chat,
+and I tell him to complete, he will answer me Rome.
+Now you see that you already remember?
+He remembered that I told you to tell me the capital.
+If I now give another interaction like France, he will answer Paris.
+I can also go and see what is underneath.
+I see that this class actually created a whole bunch of posts,
+every time I added one and completed it.
+He memorized it and therefore did all the history.
+So basically simulating what happens when you guarantee with the LLM.
+Now let's see the code as it is done.
+I advise you to study it, it should not be difficult to understand.
+Here is the builder.
+In the constructor, I initialize the client to access.
+These are the usual codes that are used to access Alima,
+and here I initialize a field that accesses open AI,
+and then it creates a list of messages for me,
+and I initialize it with the role.
+Then every time I do the add, I take that two-point message role message
+and turn it into a content role object instead as required by the API.
+Finally, it completes and does nothing but take the messages
+and send them to open AI, returning the result and adding it to the history.
+This is important.
+What we have seen so far is enough to create a chat with which to interact.
+Now let's move on.
+Now an exercise.
+Your exercise is to implement streaming to this class,
+because if I deploy it now, as it is you will notice that it does not stream.
+If I open it now, I go here I see that there is the open AI one.
+If I try to use it you see that I wonder something is there a bit,
+and then it answers you because there is no streaming.
+Then the first exercise is to implement it.
+There are various steps to take, here you are guided.
+Search for, to do, and for one.
+And here are the various points that you have to implement.
+You have to follow these tips here they are also written in the code,
+add a stream function, then retrieve the stream function,
+adapt it because you have to adapt it to the answer that open AI gives.
+Save arguments when you initialize the class, request a stream when.
+Make the request, stream the response, and finally turn on streaming.
+It's pretty easy.
+I'll be clearer to familiarize you.
+With the development of classes.
+If you want to have the solution, Ops AI's lesson for.
+Assistant minus minus solution.
+So you can download the solution.
+So here you can see the solution, now I simply use it, I copy it.
+Here in such a way that you have the result.
+I take the solution here, and I copy it here,
+and the result once done you will see that the chat becomes streamed.
+So here basically in the exercise is to invent a class of streamable chat
+that you can obviously use for your programs.
+All right.
+The next step now is to save the state.
+This one here is still stateless.
+You don't remember anything because even though we used the AI.
+By open AI.
+We have to memorize the history somewhere.
+And in fact now what we are going to talk about is precisely this,
+how to memorize the history.
+We'll use Redis.
+We have already seen it.
+When we discussed.
+Now let's introduce what Redis does for a moment.
+Redis stands for remote dictionary server.
+It is a cache of data structures.
+So strings but also list maps and much more.
+And it is for server applications and all microservices applications.
+Usually the backbone because it allows the various functions to communicate
+or to remember information become full states using Redis.
+Here we see for a moment how it works.
+So now I launched the CLI.
+Important warning.
+Redis has a somewhat strange way of doing multi user.
+Basically it is as if it were.
+A single user even if the various users cannot access each other.
+But they can see the keys on one side.
+In fact this is a collaborative multi user.
+One cannot read but can see what keys others have.
+Each user must use a prefix that is assigned to them.
+It is possible to do otherwise but in open serverless we have a single Redis
+shared among the various users.
+So each user must use the prefix.
+So now let's try Redis right away.
+As before we import it.
+Let's read the prefix.
+We read the Redis URL and access Redis with this object.
+RD which is a client and allows you to interact.
+Now let's see what can be done.
+Here are a couple of examples where I can read and write a value key and then another
+example where I create a list and then read it.
+So there you have it.
+Right now I set a key and I read it.
+Note that there is this B that says that it is a ready byte and therefore must be
+decoded when you want to convert it back to a string.
+Redis stores only ready bytes and not strings.
+Instead I make a push a light push in a list.
+Another light push and then I'll iterate.
+That's it.
+And here instead I.
+Piscotto 2 and then I iterated them.
+So in this case I saw how they are managed.
+Individual values and how to manage them.
+In reality there are many other data structures that I mentioned now only for completeness.
+There are hashes which are basically tables.
+There are sets which are unordered sets.
+Then there are the sorted sets which are ordered sets instead.
+And there are many others bitmaps streams hyper logs.
+There are a fair number of them so Redis is quite rich in these components.
+Now let's put it all together and create an assistant using Redis to store the history
+and then using the chat class we saw earlier.
+So the first thing we do is create a historic class.
+This historic class is the one we'll use to store state in Redis.
+In practice it works that every time I create a history
+a unique key is generated that is unique every time one connects to a history
+and it will be kept in a conversation carrying this key with it.
+In practice it is used to create a list on Redis where a list of conversations is created.
+Each list is identified by a unique key.
+We carry this unique key with us on the user interface
+on Pinocchio as the state of a single conversation though.
+In addition in order not to fill Redis with information
+all conversations are deleted after a day.
+So let's see how it is done in practice.
+The calls used are these.
+Use it to generate the UID key which is a Python standard library
+which generates a unique unique identifier.
+So so I'm sure each conversation has an ID that doesn't conflict with any other.
+So you see this here generates it for me.
+This will be the key where I go to store a list of objects and a list of conversations.
+So here I add one then I set the expire so that after a day from the moment it is created
+it is deleted.
+So the system will basically create a new key every time a conversation starts
+and after a day it will delete it.
+The code of this class is quite simple and I'll show you it.
+I suggest you study it and then I'll show you how to use it.
+So when we initialize them it reads.
+The prefix and keys in such a way as to find it to connect to Redis
+and if there is no queue it creates it.
+So practically every time I create this class without specifying the ID it creates a new ID
+if it sees specific the ID it reuses it.
+So the ID is returned by this method and then we have two methods.
+Save which saves a history and load which reloads it.
+Using this class and the chat class we implement an assistant that remembers the history of conversations.
+Now we practically test this class immediately.
+So I'll show you what's in the history.
+So a history it is a chat.
+So first I create the history then high and historical object and save it a message.
+I basically tell him to tell me that when I ask him the country he replies with the capital
+and I get the ID.
+See now since here when I initialized it I did not specify any ID he created a new one for me.
+Now let's make sure we're in a later conversation.
+Now I recreate the history from scratch but this time I pass him the previous ID.
+Now I can save Rome.
+So I said to him when I tell you in the nation you tell me the capital.
+If I tell him Italy he should tell me Rome.
+Now the nice thing is that it hooks up to the chat so now it creates a chat
+and I make you upload the messages and here are the messages.
+See?
+So we have a history class that is capable of saving a sequence of messages to Redis.
+Now let's try it in practice.
+Let's perform this sequence.
+First of all let's create a new history.
+Initially it is empty.
+I initialize it by giving it a command if I tell you the nation you tell me the capital.
+This one if I read it gives me the ID.
+Since when I connect to the chat for the first time he creates a new history
+he creates a new key and carries this key with him to remember the history.
+The next time you can load the history from Redis.
+This is a later time I loaded the history specifying the ID.
+I create the history.
+Now I tell him I tell you the nation you tell me the capital and he saves a further message.
+The characteristic of this history is that if I pass him a chat he is able to load the list of
+messages. If I go to see the messages in the chat I will see a history.
+Putting everything together I can implement a full chat state like this.
+I load the history and then I create a chat and load the history into the chat.
+At this point I create a message with the user role taking from the input.
+I add it to the chat and save the result.
+At this point I interact with the chat and tell him to complete it and save his answer.
+All this.
+I remember it the next time returning to the state.
+La next time the state will be called by the args.
+So when this is initialized it will be able to work again.
+As an exercise I tell you to add history to the stateless chat by transforming the stateless
+into stateful. Then you have to reload the history from Redis, view the chat for the history,
+save the replies to return the ID as status.
+So if you do the search and 4.2 it tells you where you have to go to enter the specified
+steps of the message. This is already the solution, already ready, so if I deploy it now we would
+have the chat state full already working. Okay. So if I open it now. Open. Okay.
+We go to the full state class, so now I tell him I tell you the country and you tell me the
+capital, well. There is no streaming. I tell him Italy. Now France. United States. See?
+By implementing the chat with history you have obtained a state full assistant, that is,
+a chat that is able to remember to converse, maintaining the state on Redis in a temporary
+way because after a day it is forgotten and cleaned. Okay. Thank you for your attention and see you at
+the next lesson.
