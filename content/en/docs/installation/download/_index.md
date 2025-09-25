@@ -19,26 +19,24 @@ It is a task executor on steroids.
 
 The predefined set of tasks are all you need to install and manage an OpenServerless cluster.
 
-### Download links
+### How to install
 You can install OpenServerless using its Command Line Interface, `ops`.
 
-{{< blockquote warning >}}
-Since we are in a preview phase, this is not an official link approved by the Apache Software Foundation.
+{{< blockquote info >}}
+Since we are in a preview phase, we do not yet have an official build approved by the Apache Software Foundation.
+However is ok to install using the following method.
 {{< /blockquote >}}
 
-Quick install in Linux, MacOS and Windows with WSL or GitBash:
+### Prerequisite - install Go
+Before you begin, make sure you have a recent installation of Go Lang.
+If you don't have Go, access the official Go Lang Download and Installation page (https://go.dev/doc/install) in your browser
+and follow the instructions.
+
+### Install the CLI
+After Go is installed, you can quick install in Linux, MacOS and Windows with WSL or GitBash:
 
 ```bash
-curl -sL bit.ly/get-ops | bash
-```
-
-Quick install in Windows with PowerShell
-
-Open a powershell. Then give these commands:
-
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force
-irm bit.ly/get-ops-exe | iex
+go install github.com:apache/openserverless-cli/cmd/ops
 ```
 
 ### After the installation
