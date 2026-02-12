@@ -42,8 +42,13 @@ For announcement of latest features etc.
 
 
 {{% blocks/section %}}
-<span style="color: black">Get involved! Subscribe our mailing list</span><br><a href="mailto:dev-subscribe@openserverless.apache.org">dev-subscribe@openserverless.apache.org</a>
-{.h2 .text-center .text-black}
+<div class="h2 text-center text-black">
+  <span>Get involved! Subscribe our mailing list</span><br>
+  <a href="mailto:dev-subscribe@openserverless.apache.org"
+     class="text-break">
+     dev-subscribe@openserverless.apache.org
+  </a>
+</div>
 {{% /blocks/section %}}
 
 
