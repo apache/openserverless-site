@@ -27,6 +27,10 @@ Start ensuring the prerequsites are satisfied:
     **Hint:** if you already have [Go](https://go.dev) installed, you can
     skip the installer entirely and just do:
 
+    This quick start intentionally pins CLI version `0.9.0` because the
+    steps below were validated with that release. When following this guide,
+    use the version shown here unless the documentation is updated.
+
     ```bash
     go install github.com/apache/openserverless-cli/cmd/ops@0.9.0
     ```
