@@ -19,7 +19,7 @@ apply the rule: "if everything fails, read the manual".
 
 Start ensuring the prerequsites are satisfied:
 
-- [Download and install](/docs/installation/download/) `ops`, the
+- [Install](/docs/installation/install-cli/) `ops`, the
     OpenServerless CLI, picking version suitable for your environment.
     We support 64-bit versions of recent Windows, MacOS and major Linux
     distributions.

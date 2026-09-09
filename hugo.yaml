@@ -199,32 +199,20 @@ params:
   links:
     # End user relevant links. These will show up on left side of footer and in the community page if you have one.
     user:
-      - name: Developer mailing list
-        url: mailto:dev-subscribe@openserverless.apache.org
+      - name: Mailing list
+        url: https://lists.apache.org/list.html?dev@openserverless.apache.org
         icon: fa fa-envelope
-        desc: Discussion and help from your fellow users
-      - name: X.com
-        url: https://x.com/open_serverless
-        icon: fab fa-x-twitter
-        desc: Follow us on Twitter to get the latest news!
-      - name: Reddit
-        url: https://reddit.com/r/openserverless
-        icon: fab fa-reddit
-        desc: Practical questions and curated answers
+        desc: "The primary channel - read the archives and subscribe to dev@openserverless.apache.org"
+      - name: Slack
+        url: https://the-asf.slack.com/archives/C07B6K5R3F0
+        icon: fab fa-slack
+        desc: "The #openserverless channel on the Apache Software Foundation Slack"
     # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
     developer:
       - name: GitHub
         url: https://github.com/apache/openserverless
         icon: fab fa-github
-        desc: Development takes place here!
-      - name: Discord
-        url: https://discord.com/invite/PkD7CcHgGP
-        icon: fab fa-discord
-        desc: A public discor server to discuss everything about OpenServerless
-      - name: Slack
-        url: https://the-asf.slack.com/archives/C07B6K5R3F0
-        icon: fab fa-slack
-        desc: Chat with other project developers
+        desc: "Sources and issues - development takes place here!"
       
 
 module:

@@ -14,7 +14,7 @@ Before installing, you need to:
 
 - [Configure](/docs/installation/configure/) the installation
 
-- install [Download and install](/docs/installation/download/) OpenServerless CLI, `ops`.
+- install [Download and install](/docs/installation/install-cli/) OpenServerless CLI, `ops`.
 
 ### Installation
 

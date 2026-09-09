@@ -25,8 +25,8 @@ on.
 OpenServerless can be installed in many environments, using our powerful
 command line interface `ops`.
 
-So you should start downloading the CLI [from this
-page](/docs/installation/download/index.adoc).
+So you should start installing the CLI [from this
+page](/docs/installation/install-cli/).
 
 Once you installed `ops`, before installing you need to [check the
 prerequisites](/docs/installation/prereq/index.adoc) for the installation, and satisfy
@@ -38,7 +38,7 @@ installation.
 
 Finally, once you have:
 
-1. downloaded `ops`
+1. installed `ops`
 
 2. satisfied the prerequisites
 

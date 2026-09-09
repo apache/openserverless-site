@@ -14,7 +14,7 @@ development purposes.
 
 Before installing, you need to:
 
-1. install the OpenServerless CLI [ops](/docs/installation/download/);
+1. install the OpenServerless CLI [ops](/docs/installation/install-cli/);
 
 2. provision a [server running a Linux operating system](/docs/installation/prereq/server/), 
    either a virtual machine or a physical server, and you know its IP address 

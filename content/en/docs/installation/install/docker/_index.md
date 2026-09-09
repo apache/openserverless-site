@@ -16,7 +16,7 @@ Before installing, you need to:
 
 - install [Docker](/docs/installation/prereq/docker/).
 
-- install [ops](/docs/installation/download/).
+- install [ops](/docs/installation/install-cli/).
 
 Furthermore you will need a decent PC / Mac. 
 

@@ -157,7 +157,7 @@ In this example, we use [5ire](https://5ire.app/), a free AI assistant and MCP c
 
 ### Step 1: Install the `ops` CLI
 
-First, install the `ops` CLI. You can find installation instructions on the [OpenServerless installation page](https://openserverless.apache.org/docs/installation/download/).
+First, install the `ops` CLI. You can find installation instructions on the [OpenServerless installation page](https://openserverless.apache.org/docs/installation/install-cli/).
 
 ### Step 2: Add the MCP Plugin
 

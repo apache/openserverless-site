@@ -7,8 +7,8 @@ title: Apache OpenServerless™
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
 </a> 
-<a class="btn btn-lg btn-secondary me-3 mb-4" href="/docs/installation/download/">
-  Download <i class="fas fa-download ms-2 "></i>
+<a class="btn btn-lg btn-secondary me-3 mb-4" href="/docs/installation/install-cli/">
+  Install <i class="fas fa-download ms-2 "></i>
 </a>
 
 <h1 class="lead mt-5">Upgrading Kubernetes to a Serverless powerhouse to build your cloud-native A.I. application!</h1> 
@@ -25,17 +25,17 @@ title: Apache OpenServerless™
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fab fa-reddit" title="Join our subreddit!" url="https://reddit.com/r/openserverless" %}}
-A friendly place to discuss Apache OpenServerless™
+{{% blocks/feature icon="fa fa-envelope" title="Join the mailing list!" url="mailto:dev-subscribe@openserverless.apache.org" %}}
+The primary channel of the project. Subscribe to **dev@openserverless.apache.org**
 {{% /blocks/feature %}}
 
 
 {{% blocks/feature icon="fab fa-github" title="Contributions welcome!" url="https://github.com/apache/openserverless" %}}
-We accept  [Pull Request](https://github.com/google/docsy-example/pulls)  on **GitHub**. New contributors are always welcome!
+We accept [Pull Requests](https://github.com/apache/openserverless/pulls) on **GitHub**. New contributors are always welcome!
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fab fa-x-twitter" title="Follow us on X.com!" url="https://twitter.com/open_serverless" %}}
-For announcement of latest features etc.
+{{% blocks/feature icon="fab fa-slack" title="Chat with us!" url="https://the-asf.slack.com/archives/C07B6K5R3F0" %}}
+Join the **#openserverless** channel on the ASF Slack
 {{% /blocks/feature %}}
 
 {{% /blocks/section %}}

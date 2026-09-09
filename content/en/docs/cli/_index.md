@@ -10,8 +10,7 @@ The `ops` command is the command line interface to OpenServerless
 It let’s you to install and manipulate the components of the system.
 
 If it is not already included in the development environment provided
-you can [download the CLI suitable for your platform from here, and
-install it](/docs/installation/download/)
+you can [install the CLI for your platform from here](/docs/installation/install-cli/)
 
 ## Login into the system
 

@@ -10,7 +10,7 @@ draft: false
 OpenServerless offers a powerful command line interface named `ops` which
 extends and embeds the OpenWhisk `wsk`.
 
-Download instructions are available [here](/docs/installation/download/).
+Download instructions are available [here](/docs/installation/install-cli/).
 
 Let's see some advanced uses of `ops`.
 

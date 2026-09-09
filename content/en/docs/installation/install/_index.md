@@ -10,7 +10,7 @@ This page provides an overview of the installation process.
 
 Please ensure you have:
 
-- [downloaded the installer](/docs/installation/download/)
+- [installed the CLI](/docs/installation/install-cli/)
 - [satisfied the prerequisites](/docs/installation/prereq/)
 - [configured your installation](/docs/installation/configure/)
 

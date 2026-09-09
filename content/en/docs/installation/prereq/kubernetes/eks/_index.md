@@ -9,7 +9,7 @@ cluster offered by the cloud provider [Amazon Web
 Services](https://aws.amazon.com/).
 
 You can create an EKS Cluster in Amazon AWS for installing using
-OpenServerless using [ops](/docs/installation/download/) as follows:
+OpenServerless using [ops](/docs/installation/install-cli/) as follows:
 
 1. install `aws`, the [AWS CLI](#install-cli)
 
