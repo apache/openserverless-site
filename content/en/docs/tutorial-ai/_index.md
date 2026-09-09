@@ -1,11 +1,10 @@
 ---
-title: Tutorial
-description: Showcase serverless development in action
-weight: 10
-draft: true
+title: Tutorial MastroGPT
+description: Private AI tutorial with MastroGPT and Apache OpenServerless
+weight: 60
 ---
 
-## AI Tutorial
+## Tutorial MastroGPT
 We are transcribing all the lessons done for the MastroGPT AI tutorial.
 
 The ultimate goal is to build a consistent and well-structured documentation set based on the original course content, enabling easier access, referencing, and further processing.
