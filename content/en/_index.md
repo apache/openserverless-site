@@ -4,11 +4,14 @@ title: Apache OpenServerless™
 
 {{< blocks/cover title="Welcome to Apache OpenServerless™ (incubating)!"  height="full" >}}
 
+<a class="btn btn-lg btn-warning me-3 mb-4" href="/docs/installation/quickstart/">
+  Quick Start <i class="fas fa-bolt ms-2"></i>
+</a>
+<a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/installation/install-cli/">
+  Install CLI <i class="fas fa-download ms-2 "></i>
+</a>
 <a class="btn btn-lg btn-primary me-3 mb-4" href="/docs/">
   Learn More <i class="fas fa-arrow-alt-circle-right ms-2"></i>
-</a> 
-<a class="btn btn-lg btn-secondary me-3 mb-4" href="/docs/installation/install-cli/">
-  Install <i class="fas fa-download ms-2 "></i>
 </a>
 
 <h1 class="lead mt-5">Upgrading Kubernetes to a Serverless powerhouse to build your cloud-native A.I. application!</h1> 

@@ -8,6 +8,24 @@ aliases:
 ---
 ## Install `ops`
 
+{{< blockquote warning "DISCLAIMER" >}}
+The prebuilt binaries published on the
+[openserverless-cli releases](https://github.com/apache/openserverless-cli/releases)
+page are **convenience builds** only. They are **not** official Apache releases,
+they are **not** endorsed by the Apache Software Foundation, and they are
+**not** meant to be production ready. The only official artifacts are the
+source releases; build from source with `go install` if you need a supported,
+production-grade installation.
+
+Apache OpenServerless is also an effort undergoing **incubation** at the Apache
+Software Foundation. Incubation is required of all newly accepted projects
+until a further review indicates that the infrastructure, communications and
+decision making process have stabilized in a manner consistent with other
+successful ASF projects. While incubation status is not necessarily a
+reflection of the completeness or stability of the code, it does indicate that
+the project has yet to be fully endorsed by the ASF.
+{{< /blockquote >}}
+
 ### What is `ops`?
 
 As you can guess it helps with operations: ops is the <strong>OP</strong>en<strong>S</strong>erverless CLI.
@@ -21,7 +39,7 @@ It is a task executor on steroids.
 
 The predefined set of tasks are all you need to install and manage an OpenServerless cluster.
 
-### Install with `go install`
+### Install CLI
 
 You install `ops` by building it from the official Apache sources with a Go
 compiler. You need [Go](https://go.dev/dl/) installed first.
@@ -30,17 +48,37 @@ compiler. You need [Go](https://go.dev/dl/) installed first.
 go install github.com/apache/openserverless-cli/cmd/ops@0.9.0
 ```
 
+{{< details title="Installing a specific version" >}}
 You can replace `0.9.0` with any other version you want to install, including
 unreleased ones — for example a snapshot such as
 `v0.9.0-2609031727.SNAPSHOT`. The available versions are the tags of the
 [openserverless-cli](https://github.com/apache/openserverless-cli/tags)
 repository.
+{{< /details >}}
 
 This installs `ops` into `$(go env GOPATH)/bin`. Make sure that directory is on
 your `PATH`:
 
 ```bash
 export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
+### Download a convenience build
+
+If you prefer not to build from source, prebuilt binaries for the most common
+platforms are published as convenience builds at:
+
+[https://github.com/apache/openserverless-cli/releases](https://github.com/apache/openserverless-cli/releases)
+
+Download the archive matching your operating system and architecture, extract
+the `ops` executable and place it in a directory on your `PATH`.
+
+On **macOS**, binaries downloaded from the Internet are quarantined by
+Gatekeeper and refuse to run. Remove the quarantine attribute before using
+`ops`:
+
+```bash
+xattr -d com.apple.quarantine ops
 ```
 
 ### Check the installation
@@ -77,27 +115,6 @@ Check that `OPS_REPO` is `http://github.com/apache/openserverless-task` and that
 `OPS_BRANCH` matches the version you installed.
 
 Use `ops -t` to list the available tasks.
-
-## Create a local OpenServerless
-
-If you have [Docker](https://docs.docker.com/get-started/get-docker/) installed,
-you can now create a complete OpenServerless on your own machine with a single
-command:
-
-```bash
-ops setup mini
-```
-
-This is the fastest way to get a working system, and the recommended starting
-point: it installs everything locally, so you can try OpenServerless without a
-cluster and without a cloud account.
-
-When it finishes, follow the [Quick Start](/docs/installation/quickstart/) to
-deploy your first action.
-
-To install on a real cluster instead — Kubernetes, K3s, MicroK8s, EKS, AKS, GKE
-and more — check the [prerequisites](/docs/installation/prereq/) and then the
-[installation guides](/docs/installation/install/).
 
 ### Keeping it up to date
 

@@ -5,6 +5,23 @@ weight: 5
 ---
 ## Quick Start
 
+{{< blockquote warning "DISCLAIMER" >}}
+The prebuilt binaries are **convenience builds** only.
+They are **not** official Apache releases,
+they are **not** endorsed by the Apache Software Foundation, and they are
+**not** meant to be production ready. The only official artifacts are the
+source releases; build from source with `go install` if you need a supported,
+production-grade installation.
+
+Apache OpenServerless is also an effort undergoing **incubation** at the Apache
+Software Foundation. Incubation is required of all newly accepted projects
+until a further review indicates that the infrastructure, communications and
+decision making process have stabilized in a manner consistent with other
+successful ASF projects. While incubation status is not necessarily a
+reflection of the completeness or stability of the code, it does indicate that
+the project has yet to be fully endorsed by the ASF.
+{{< /blockquote >}}
+
 This is a quick start guide to the installation process, targeting
 experienced users in a hurry.
 
@@ -24,36 +41,38 @@ Start ensuring the prerequsites are satisfied:
     We support 64-bit versions of recent Windows, MacOS and major Linux
     distributions.
 
+    You can download a prebuilt convenience binary for your platform
+    [here](https://github.com/apache/openserverless-cli/releases).
+    On macOS, remove the Gatekeeper quarantine attribute before running it:
+
+    ```bash
+    xattr -d com.apple.quarantine ops
+    ```
+
+    **Hint:** if you already have [Go](https://go.dev) installed, you can
+    skip the installer entirely and just do:
+
+    ```bash
+    go install github.com/apache/openserverless-cli/cmd/ops@0.9.0
+    ```
+
 - Check that ops is correctly installed: open the terminal and write:
 
     ops -info
-
-- Configure the services you want to enable. By default,
-    OpenServerless will install only the serverless engine, accessible
-    in http with no services enabled.
-
-If you want to enable all the services, use:
-
-    ops config enable --all
-
-otherwise pick the services you want, among `--redis`, `--mongodb`,
-`--minio`, `--cron`, `--postgres`. Note that `--mongodb` is actually
-[FerretDB](https://www.ferretdb.com/) and requires Postgres which is
-implicitly also enabled. More details [here](/docs/installation/configure).
 
 Now, choose where to install OpenServerless.
 
 Your options are:
 
-- [locally](#locally) in your workstation;
+- [locally](#local-installation) in your workstation;
 
-- in a Linux [server](#server) in your intranet
+- in a Linux [server](#server-installation) in your intranet
 
-- in a Linux [server](#internet-server) available on Internet
+- in a Linux [server](#internet-server-configuration) available on Internet
 
-- in a Kubernetes [cluster](#cluster) in your intranet
+- in a Kubernetes [cluster](#cluster-install) in your intranet
 
-- in [cloud](#cloud-cluster), where you can provision a Kubernetes
+- in [cloud](#cloud-cluster-provisioning), where you can provision a Kubernetes
     cluster
 
 ## Local Installation
@@ -72,7 +91,10 @@ then install OpenServerless in it. Once you have:
 Make sure Docker Desktop its running before the next operation. Install OpenServerless and its services in Docker with just this
 command:
 
-    ops setup devcluster
+    ops setup mini
+
+This is the recommended way to run OpenServerless locally. It requires
+**16GB of memory** and **60GB of free disk space**.
 
 Once it is installed, you can proceed to read the
 [tutorial](#../../tutorial/index.adoc) to learn how to code with it.
@@ -87,6 +109,15 @@ doing and can tolerate inefficiency, you can install with less using:
 
 If you have access to a server on the Internet, you will know its **IP
 address**.
+
+{{< blockquote important >}}
+The server must have a **public IP address**, reachable from the Internet, for
+the whole duration of the installation. This is not optional: the setup obtains
+TLS certificates from Let's Encrypt, which validates your domain by connecting
+back to your server from the outside. If the IP is private, behind NAT, or
+otherwise unreachable, that validation fails and **the installation will not
+work**.
+{{< /blockquote >}}
 
 Many cloud providers also give you a DNS name usually derived by the IP
 and very hard to remember such as
@@ -169,15 +200,15 @@ install OpenServerless with no issues.
 We provide the support to easily configure and install a compliant
 Kubernetes cluster for the following clouds:
 
-- [Amazon AWS](#aws)
+- [Amazon AWS](#amazon-aws)
 
-- [Microsoft Azure](#azure)
+- [Microsoft Azure](#azure-aks)
 
-- [Google Cloud](#gcloud)
+- [Google Cloud](#google-cloud-gke)
 
 At the end of the installation you will have available and accessible a
 Kubernetes Cluster able to install OpenServerless, so proceed with a
-[cluster installation](#cluster).
+[cluster installation](#cluster-install).
 
 ### Amazon AWS
 
@@ -186,7 +217,7 @@ Configure and install an Amazon EKS cluster on Amazon AWS with:
     ops config eks
     ops cloud eks create
 
-then [install the cluster](#cluster).
+then [install the cluster](#cluster-install).
 
 ### Azure AKS
 
@@ -195,7 +226,7 @@ Configure and install an Azure AKS cluster on Microsoft Azure with:
     ops config aks
     ops cloud aks create
 
-then [install the cluster](#cluster).
+then [install the cluster](#cluster-install).
 
 ### Google Cloud GKE
 
@@ -204,7 +235,7 @@ Configure and install a Google Cloud GKE with:
     ops config gke
     ops cloud gke create
 
-then [install the cluster](#cluster).
+then [install the cluster](#cluster-install).
 
 ## Cluster Install
 
@@ -232,7 +263,7 @@ you can install OpenServerless in it. You can read [more details
 here](#../prereq/kubernetes/cluster/index.adoc).
 
 You can get this access either by provisioning a Kubernetes cluster in
-[cloud](#cloud-cluster) or getting access to it from your system
+[cloud](#cloud-cluster-provisioning) or getting access to it from your system
 administrator.
 
 Whatever the way you get access to your Kubernetes cluster, you will end
