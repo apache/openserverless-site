@@ -42,3 +42,8 @@ You can:
 
   - [FerretDB](/docs/installation/configure/services/#ferretdb) a NO-SQL, MongoDB
         compatible adapter for Postgres
+
+### Single Sign-On
+
+After installation, [configure Single Sign-On (SSO)](/docs/installation/configure/sso/)
+to connect an existing Keycloak identity provider and configure OPS login.
