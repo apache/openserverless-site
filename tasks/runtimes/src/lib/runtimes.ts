@@ -115,7 +115,7 @@ export const getRuntimeDependecies = async (runtime: string, kind: string) => {
 export const handleRuntimeKind = async (kind: kind, kindName: string, runtimeName: string, kindPath: string) => {
     const { image, default: kindDefault } = kind;
     const kindIndexPath = join(kindPath, '_index.md')
-    const dependecies = await getRuntimeDependecies(runtimeName, image.tag.split('-')[0]!)
+    const dependencies = await getRuntimeDependecies(runtimeName, image.tag.split('-')[0]!)
     let kindMD = getKindHeaderMD(kindName, kindDefault)
     kindMD += `\n\n${dependecies}`
     await writeFile(kindIndexPath, kindMD)
